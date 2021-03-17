@@ -209,11 +209,3 @@ Check out [`HomePage/saga.js`](https://github.com/react-boilerplate/react-boiler
 - If the API successfully returns some data, a `reposLoaded()` action will be dispatched which carries the data. When the Redux store receives this action, [a reducer](https://github.com/react-boilerplate/react-boilerplate/blob/master/app/containers/App/reducer.js) will set incoming data in the new state tree.
 
 _An update has occurred!_ `mapStateToProps()` will be triggered. `<HomePage />` will receive the new data and rerender.
-
-## Why all this fuss just to load a list of repos?
-
-Quite an understandable question!
-
-In the example app, we're basically using a [bazooka](https://en.wikipedia.org/wiki/Bazooka) to kill a fly. The primary purpose of this boilerplate is to provide a robust and scalable infrastructure for large scale projects. Every bit of your project should be predictable. You should have granular control over all the operations. It's overkill for the example app, but not for the real world.
-
-If you want to build a mature application you're going to need a mature infrastructure. That's what this boilerplate provides.
