@@ -1,11 +1,9 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable react/no-access-state-in-setstate */
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MenuItems } from './Constants';
-// import StyledSideBarWrapper from './StyledSideBarWrapper';
 
 const { Sider } = Layout;
 

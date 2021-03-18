@@ -1,11 +1,20 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-access-state-in-setstate */
+/**
+ * MainLayout.js
+ *
+ * This is the entry file for the application, only setup and boilerplate
+ * code.
+ */
+
 import React from 'react';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import App from 'containers/App';
 import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
-import SideBar from '../SideBar/SideBar';
+import SideBar from 'components/SideBar';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
 const { Header, Content } = Layout;
 
@@ -31,13 +40,17 @@ class MainLayout extends React.Component {
           <Layout className="site-layout">
             <Header className="headerLayout">
               <ToggleBreadCrumb>
-                {React.createElement(
-                  this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-                  {
-                    className: 'sideBarTrigger',
-                    onClick: this.toggle,
-                  },
-                )}
+                <span
+                  className="sideBarTrigger"
+                  onClick={this.toggle}
+                  data-testid="ToggleIcon"
+                >
+                  {this.state.collapsed ? (
+                    <MenuUnfoldOutlined />
+                  ) : (
+                    <MenuFoldOutlined />
+                  )}
+                </span>
               </ToggleBreadCrumb>
               <AppHeader />
             </Header>

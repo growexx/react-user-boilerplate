@@ -1,7 +1,7 @@
 /**
  * app.js
  *
- * This is the entry file for the application, only setup and boilerplate
+ * This is the route file for the application
  * code.
  */
 
