@@ -18,7 +18,7 @@ import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
-import App from 'containers/App';
+import MainLayout from 'components/MainLayout';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -51,7 +51,7 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <MainLayout />
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,

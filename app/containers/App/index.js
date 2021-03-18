@@ -14,9 +14,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Footer from 'components/Footer';
 import GlobalStyle from '../../global-styles';
-import SideBar from '../../components/SideBar/SideBar';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -27,24 +25,18 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <SideBar>
-        <Helmet
-          titleTemplate="%s - React.js Boilerplate"
-          defaultTitle="React.js Boilerplate"
-        >
-          <meta
-            name="description"
-            content="A React.js Boilerplate application"
-          />
-        </Helmet>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/features" component={FeaturePage} />
-          <Route path="" component={NotFoundPage} />
-        </Switch>
-        <Footer />
-        <GlobalStyle />
-      </SideBar>
+      <Helmet
+        titleTemplate="%s - React.js Boilerplate"
+        defaultTitle="React.js Boilerplate"
+      >
+        <meta name="description" content="A React.js Boilerplate application" />
+      </Helmet>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/features" component={FeaturePage} />
+        <Route path="" component={NotFoundPage} />
+      </Switch>
+      <GlobalStyle />
     </AppWrapper>
   );
 }

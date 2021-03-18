@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const StyledSideBarWrapper = styled.div`
-  #components-layout-demo-custom-trigger .trigger {
+const StyledMainLayout = styled.div`
+  .sideBarTrigger {
     padding: 0 24px;
     font-size: 18px;
     line-height: 64px;
@@ -9,7 +9,7 @@ const StyledSideBarWrapper = styled.div`
     transition: color 0.3s;
   }
 
-  #components-layout-demo-custom-trigger .trigger:hover {
+  .sideBarTrigger:hover {
     color: #1890ff;
   }
 
@@ -24,4 +24,4 @@ const StyledSideBarWrapper = styled.div`
   }
 `;
 
-export default StyledSideBarWrapper;
+export default StyledMainLayout;
