@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledMainLayout = styled.div`
+export const StyledMainLayout = styled.div`
   .sideBarTrigger {
     padding: 0 24px;
     font-size: 18px;
@@ -22,6 +22,14 @@ const StyledMainLayout = styled.div`
   .site-layout .site-layout-background {
     background: #fff;
   }
+
+  .headerLayout {
+    display: flex;
+    padding: 0;
+    background-color: white;
+  }
 `;
 
-export default StyledMainLayout;
+export const ToggleBreadCrumb = styled.div`
+  display: flex;
+`;

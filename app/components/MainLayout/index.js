@@ -3,8 +3,9 @@ import React from 'react';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import App from 'containers/App';
+import AppHeader from 'components/Header';
 import SideBar from '../SideBar/SideBar';
-import StyledMainLayout from './StyledMainLayout';
+import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
 const { Header, Footer, Content } = Layout;
 
 class MainLayout extends React.Component {
@@ -27,14 +28,17 @@ class MainLayout extends React.Component {
         <Layout>
           <SideBar collapsed={this.state.collapsed} />
           <Layout className="site-layout">
-            <Header className="site-layout-background" style={{ padding: 0 }}>
-              {React.createElement(
-                this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-                {
-                  className: 'sideBarTrigger',
-                  onClick: this.toggle,
-                },
-              )}
+            <Header className="headerLayout">
+              <ToggleBreadCrumb>
+                {React.createElement(
+                  this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                  {
+                    className: 'sideBarTrigger',
+                    onClick: this.toggle,
+                  },
+                )}
+              </ToggleBreadCrumb>
+              <AppHeader />
             </Header>
             <Content
               className="site-layout-background"
