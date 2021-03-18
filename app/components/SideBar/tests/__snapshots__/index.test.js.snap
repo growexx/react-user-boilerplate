@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MainLayout /> should render and match the snapshot 1`] = `
+exports[`<SideBar /> should render and match the snapshot 1`] = `
 <aside
   class="ant-layout-sider ant-layout-sider-dark"
   id="components-layout-demo-custom-trigger"
