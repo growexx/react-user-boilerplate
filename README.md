@@ -123,22 +123,13 @@ Stoiber. For more information see `LICENSE.md`.
 
 ## Commit Tools Setup
 
-For commit we use commitizen so the commit messages are in the same format for all the developers and can be used to create change logs
-We use https://github.com/commitizen/cz-cli
+For commit, we use [commitizen](https://github.com/commitizen/cz-cli) so the commit messages are in the same format for all the developers. This formatted messages are used in to create change logs.
 
-Install Globally
-npm install -g commitizen
-npm install -g cz-conventional-changelog
-`set as default adapter for your projects`
-echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
-
-Usage
-now instead of using git commit use git cz
-
-If you want to use commit messages with emojis you can use following package
-npm install --global cz-emoji
-`set as default adapter for your projects`
-echo '{ "path": "cz-emoji" }' > ~/.czrc
-
-Usage
-git cz
+1. Install Globally Commitizen `npm install -g commitizen`
+2. Install Adapter `npm install -g cz-conventional-changelog`
+3. Set as default adapter for your projects `echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc`
+4. Usage: now instead of using `git commit` use `git cz`
+5. If you want to use commit messages with emojis you can use following package
+6. Install Adapter `npm install --global cz-emoji`
+7. Set as default adapter for your projects `echo '{ "path": "cz-emoji" }' > ~/.czrc`
+8. Usage `git cz`
