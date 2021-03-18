@@ -3,10 +3,11 @@ import React from 'react';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import App from 'containers/App';
+import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
 import SideBar from '../SideBar/SideBar';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 class MainLayout extends React.Component {
   constructor(props) {
@@ -50,7 +51,9 @@ class MainLayout extends React.Component {
             >
               <App />
             </Content>
-            <Footer>Footer</Footer>
+            <Layout className="site-layout">
+              <Footer />
+            </Layout>
           </Layout>
         </Layout>
       </StyledMainLayout>
