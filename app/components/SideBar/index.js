@@ -1,4 +1,9 @@
 /* eslint-disable react/no-array-index-key */
+/**
+ * SideBar.js
+ *
+ * This is the SideBar Component File.
+ */
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
