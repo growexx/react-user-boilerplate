@@ -7,9 +7,18 @@ export const StyledAppHeader = styled.div`
 `;
 export const AvatarWrapper = styled.div`
   margin-left: auto;
-  margin-right: 3%;
+  margin-right: 16px;
   align-self: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  .anticon-bell {
+    font-size: 18px;
+    padding-right: 20px;
+  }
+  .ant-btn-group > .ant-btn:first-child {
+    display: none;
+  }
   .ant-dropdown-trigger {
     border-radius: 50% !important;
     background-color: #1890ff;

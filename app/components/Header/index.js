@@ -3,6 +3,7 @@
 import React from 'react';
 import { Dropdown, Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import Notification from 'components/Notification';
 import { MenuItems } from './Constants';
 import { StyledAppHeader, AvatarWrapper } from './StyledAppHeader';
 class Header extends React.Component {
@@ -19,6 +20,7 @@ class Header extends React.Component {
     return (
       <StyledAppHeader>
         <AvatarWrapper>
+          <Notification />
           <Dropdown.Button
             overlay={menu}
             placement="bottomCenter"
