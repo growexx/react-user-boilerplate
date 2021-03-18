@@ -1,5 +1,9 @@
 import React from 'react';
-import { UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  CheckCircleOutlined,
+  SmileOutlined,
+} from '@ant-design/icons';
 
 export const MenuItems = [
   {
@@ -10,6 +14,11 @@ export const MenuItems = [
   {
     to: '/features',
     tabName: 'Features',
-    icon: <VideoCameraOutlined />,
+    icon: <CheckCircleOutlined />,
+  },
+  {
+    to: '/font-awesome',
+    tabName: 'Font Awesome Demo',
+    icon: <SmileOutlined />,
   },
 ];

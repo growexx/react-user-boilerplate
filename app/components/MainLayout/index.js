@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/no-access-state-in-setstate */
 /**
  * MainLayout.js
  *
@@ -27,8 +24,9 @@ class MainLayout extends React.Component {
   }
 
   toggle = () => {
+    const { collapsed } = this.state;
     this.setState({
-      collapsed: !this.state.collapsed,
+      collapsed: !collapsed,
     });
   };
 
@@ -44,6 +42,10 @@ class MainLayout extends React.Component {
                   className="sideBarTrigger"
                   onClick={this.toggle}
                   data-testid="ToggleIcon"
+                  onKeyDown={this.toggle}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Navigation Toggle"
                 >
                   {this.state.collapsed ? (
                     <MenuUnfoldOutlined />

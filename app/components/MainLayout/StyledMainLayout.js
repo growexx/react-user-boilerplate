@@ -7,6 +7,7 @@ export const StyledMainLayout = styled.div`
     line-height: 64px;
     cursor: pointer;
     transition: color 0.3s;
+    outline: none;
   }
 
   .sideBarTrigger:hover {
