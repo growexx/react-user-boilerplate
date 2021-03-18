@@ -14,6 +14,8 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
+
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
@@ -34,6 +36,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
+        <Route path="/font-awesome" component={FontAwesomeDemo} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

@@ -82,3 +82,16 @@ Now you're ready to rumble!
 
 This project is licensed under the MIT license, Copyright (c) 2019 Maximilian
 Stoiber. For more information see `LICENSE.md`.
+
+## Commit Tools Setup
+
+For commit, we use [commitizen](https://github.com/commitizen/cz-cli) so the commit messages are in the same format for all the developers. This formatted messages are used in to create change logs.
+
+1. Install Globally Commitizen `npm install -g commitizen`
+2. Install Adapter `npm install -g cz-conventional-changelog`
+3. Set as default adapter for your projects `echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc`
+4. Usage: now instead of using `git commit` use `git cz`
+5. If you want to use commit messages with emojis you can use following package
+6. Install Adapter `npm install --global cz-emoji`
+7. Set as default adapter for your projects `echo '{ "path": "cz-emoji" }' > ~/.czrc`
+8. Usage `git cz`
