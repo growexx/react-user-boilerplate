@@ -1,7 +1,7 @@
 /**
  * app.js
  *
- * This is the entry file for the application, only setup and boilerplate
+ * This is the route file for the application
  * code.
  */
 
@@ -25,7 +25,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 // Import root app
-import App from 'containers/App';
+import MainLayout from 'components/MainLayout';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -61,7 +61,7 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <MainLayout />
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
