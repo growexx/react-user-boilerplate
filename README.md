@@ -7,46 +7,6 @@
 
 <br />
 
-<div align="center">
-  <!-- Dependency Status -->
-  <a href="https://david-dm.org/react-boilerplate/react-boilerplate">
-    <img src="https://david-dm.org/react-boilerplate/react-boilerplate.svg" alt="Dependency Status" />
-  </a>
-  <!-- devDependency Status -->
-  <a href="https://david-dm.org/react-boilerplate/react-boilerplate#info=devDependencies">
-    <img src="https://david-dm.org/react-boilerplate/react-boilerplate/dev-status.svg" alt="devDependency Status" />
-  </a>
-  <!-- Build Status -->
-  <a href="https://travis-ci.org/react-boilerplate/react-boilerplate">
-    <img src="https://travis-ci.org/react-boilerplate/react-boilerplate.svg" alt="Build Status" />
-  </a>
-  <!-- Test Coverage -->
-  <a href="https://coveralls.io/r/react-boilerplate/react-boilerplate">
-    <img src="https://coveralls.io/repos/github/react-boilerplate/react-boilerplate/badge.svg" alt="Test Coverage" />
-  </a>
-  <a href="https://spectrum.chat/react-boilerplate">
-  <img alt="Chat with us on Spectrum" src="https://withspectrum.github.io/badge/badge.svg" />
-</a>
-
-</div>
-<div align="center">
-    <!-- Backers -->
-  <a href="#backers">
-    <img src="https://opencollective.com/react-boilerplate/backers/badge.svg" alt="Backers" />
-  </a>
-      <!-- Sponsors -->
-  <a href="#sponsors">
-    <img src="https://opencollective.com/react-boilerplate/sponsors/badge.svg" alt="Sponsors" />
-  </a>
-  <a href="http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=react-boilerplate">
-    <img alt="Supported by Thinkmill" src="https://thinkmill.github.io/badge/heart.svg" />
-  </a>
-</div>
-
-<br />
-
-
-
 ## Features
 
 <dl>
@@ -122,3 +82,16 @@ Now you're ready to rumble!
 
 This project is licensed under the MIT license, Copyright (c) 2019 Maximilian
 Stoiber. For more information see `LICENSE.md`.
+
+## Commit Tools Setup
+
+For commit, we use [commitizen](https://github.com/commitizen/cz-cli) so the commit messages are in the same format for all the developers. This formatted messages are used in to create change logs.
+
+1. Install Globally Commitizen `npm install -g commitizen`
+2. Install Adapter `npm install -g cz-conventional-changelog`
+3. Set as default adapter for your projects `echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc`
+4. Usage: now instead of using `git commit` use `git cz`
+5. If you want to use commit messages with emojis you can use following package
+6. Install Adapter `npm install --global cz-emoji`
+7. Set as default adapter for your projects `echo '{ "path": "cz-emoji" }' > ~/.czrc`
+8. Usage `git cz`

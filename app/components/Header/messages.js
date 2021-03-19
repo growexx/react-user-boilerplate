@@ -16,4 +16,8 @@ export default defineMessages({
     id: `${scope}.features`,
     defaultMessage: 'Features',
   },
+  fontAwesome: {
+    id: `${scope}.fontAwesome`,
+    defaultMessage: 'Font Awesome Demo',
+  },
 });
