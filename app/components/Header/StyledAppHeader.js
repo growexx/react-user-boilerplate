@@ -16,17 +16,4 @@ export const AvatarWrapper = styled.div`
     font-size: 18px;
     padding-right: 20px;
   }
-  .ant-btn-group > .ant-btn:first-child {
-    display: none;
-  }
-  .ant-dropdown-trigger {
-    border-radius: 50% !important;
-    background-color: #1890ff;
-    color: white;
-  }
-  .ant-dropdown-trigger:hover {
-    border-radius: 50% !important;
-    background-color: #1890ff;
-    color: white;
-  }
 `;

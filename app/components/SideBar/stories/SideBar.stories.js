@@ -1,6 +1,5 @@
-import React from 'react';
-import { WrappedStoryComponent } from '../../../stories/utils';
 import SideBar from '../index';
+import { WrappedStoryComponent } from '../../../stories/utils';
 
 export default {
   title: 'Components/SideBar',
