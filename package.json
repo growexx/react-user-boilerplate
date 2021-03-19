@@ -43,7 +43,9 @@
     "test:snapshot": "cross-env NODE_ENV=test jest --coverage --updateSnapshot",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "browserslist": [
     "last 2 versions",
@@ -110,6 +112,10 @@
     "@babel/preset-env": "7.4.3",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.0",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
     "add-asset-html-webpack-plugin": "3.1.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
@@ -122,6 +128,7 @@
     "circular-dependency-plugin": "5.0.2",
     "compare-versions": "3.4.0",
     "compression-webpack-plugin": "2.0.0",
+    "core-js": "^3.9.1",
     "coveralls": "3.0.3",
     "css-loader": "2.1.1",
     "eslint": "5.16.0",
@@ -164,7 +171,7 @@
     "svg-url-loader": "2.3.2",
     "terser-webpack-plugin": "1.2.3",
     "url-loader": "1.1.2",
-    "webpack": "4.30.0",
+    "webpack": "^4.28.4",
     "webpack-cli": "3.3.0",
     "webpack-dev-middleware": "3.6.2",
     "webpack-hot-middleware": "2.24.3",

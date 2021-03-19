@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /**
- * SideBar.js
+ * SideBar/index.js
  *
  * This is the SideBar Component File.
  */
