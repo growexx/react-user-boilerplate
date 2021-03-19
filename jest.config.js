@@ -7,6 +7,7 @@ module.exports = {
     '!app/global-styles.js',
     '!app/*/*/Loadable.{js,jsx}',
   ],
+  modulePathIgnorePatterns: ['stories'],
   coverageThreshold: {
     global: {
       statements: 98,
