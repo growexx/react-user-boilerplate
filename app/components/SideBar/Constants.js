@@ -1,3 +1,8 @@
+/*
+ * Sidebar Constants
+ * This file contains constants used in Sidebar component.
+ */
+
 import React from 'react';
 import {
   UserOutlined,
