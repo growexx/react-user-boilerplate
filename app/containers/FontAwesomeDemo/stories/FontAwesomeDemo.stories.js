@@ -1,12 +1,11 @@
+import React from 'react';
 import FontAwesomeDemo from '../index';
-import { WrappedStoryComponent } from '../../../stories/utils';
 
 export default {
   title: 'Components/FontAwesomeDemo',
   component: FontAwesomeDemo,
 };
 
-export const FontAwesomeDemoComponent = () =>
-  WrappedStoryComponent(FontAwesomeDemo);
+export const FontAwesomeDemoComponent = () => <FontAwesomeDemo />;
 
 FontAwesomeDemoComponent.storyName = 'Font Awesome Icons';

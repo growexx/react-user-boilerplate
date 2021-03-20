@@ -31,5 +31,5 @@ const Avatar = props => (
 export default Avatar;
 
 Avatar.propTypes = {
-  menu: PropTypes.object,
+  menu: PropTypes.array,
 };
