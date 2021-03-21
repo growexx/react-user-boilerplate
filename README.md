@@ -40,10 +40,11 @@
   <dt>SEO</dt>
   <dd>We support SEO (document head tags management) for search engines that support indexing of JavaScript content. (eg. Google)</dd>
 
-  <dt>[Storybook](https://storybook.js.org/) Support</dt>
-  <dd>Get storybook setup out of the box in the boilerplate. Storybook is the environment for rapid UI development in React. With Storybook you write stories in JavaScript files. It allows you to browse a component library, view the different states of each component, and interactively develop and test components. StoryBook helps you develop components in isolation from your app, which also encourages better reusability and testability for your components. You can browse components from your library, play with their properties and get an instant impression with hot-reload on the web. It helps the developer to decide weather the component is the right choice for the requirement.
+  <dt>Storybook Support</dt>
+  <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>
 
   For easy use and development of stories in our boilerplate. Follow these [instructions](docs/general/storybook.md)
+
 
 </dd>
 </dl>
