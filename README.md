@@ -43,7 +43,7 @@
   <dt>Storybook Support</dt>
   <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>.
 
-  For easy use and development of stories in our boilerplate. Follow these [instructions](docs/general/storybook.md).
+  For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
 
 
 </dd>

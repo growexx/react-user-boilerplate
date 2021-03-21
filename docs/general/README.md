@@ -82,7 +82,7 @@ Read more about linting in our [introduction](./introduction.md) and don't forge
 Storybook is the environment for rapid UI development in React. With Storybook you write stories in JavaScript files. It allows you to browse a component library, view the different states of each component, and interactively develop and test components. Storybook helps you develop components in isolation from your app, which also encourages better reusability and testability for your components. You can browse components from your library, play with their properties and get an instant impression with hot-reload on the web. It helps the developer to decide weather the component is right choice for the requirement. 
 
 
-For easy use and development of stories in our boilerplate. Follow these [instructions](./storybook.md)
+For easy use and development of stories in our boilerplate, follow these [instructions](./storybook.md)
 
 Learn more about storybook [here](https://storybook.js.org/).
 

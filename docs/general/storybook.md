@@ -33,7 +33,7 @@ Builds and starts the development server for storybook at
 ## Building
 
 ```Shell
-npm run build
+npm run build-storybook
 ```
 
 Preps our storybook components for deployment.Optimizes and minifies all files, piping them to the `storybook-static` folder.
