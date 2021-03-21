@@ -44,6 +44,12 @@ module.exports = {
       default: false,
       message: 'Do you want to load the component asynchronously?',
     },
+    {
+      type: 'confirm',
+      name: 'wantStorybookFile',
+      default: false,
+      message: 'Do you want to create the storybook file for the component',
+    },
   ],
   actions: data => {
     // Generate index.js and index.test.js
@@ -78,6 +84,16 @@ module.exports = {
         type: 'add',
         path: '../../app/components/{{properCase name}}/Loadable.js',
         templateFile: './component/loadable.js.hbs',
+        abortOnFail: true,
+      });
+    }
+
+    // If the user wants to create story file for the component
+    if (data.wantStorybookFile) {
+      actions.push({
+        type: 'add',
+        path: '../../app/components/{{properCase name}}/stories/{{properCase name}}.stories.js',
+        templateFile: './component/storybook.js.hbs',
         abortOnFail: true,
       });
     }
