@@ -1,11 +1,11 @@
+import React from 'react';
 import MainLayout from '../index';
-import { WrappedStoryComponent } from '../../../stories/utils';
 
 export default {
   title: 'Components/MainLayout',
   component: MainLayout,
 };
 
-export const MainLayoutComponent = () => WrappedStoryComponent(MainLayout);
+export const MainLayoutComponent = () => <MainLayout />;
 
 MainLayoutComponent.storyName = 'Base Layout Of App';

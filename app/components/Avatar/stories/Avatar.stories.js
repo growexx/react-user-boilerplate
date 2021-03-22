@@ -1,7 +1,6 @@
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import Avatar from '../index';
-import { WrappedStoryComponent } from '../../../stories/utils';
 
 export default {
   title: 'Components/Avatar',
@@ -11,7 +10,7 @@ export default {
   },
 };
 
-const Template = args => WrappedStoryComponent(Avatar, args);
+const Template = args => <Avatar {...args} />;
 
 export const AvatarComponent = Template.bind({});
 AvatarComponent.args = {

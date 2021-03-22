@@ -1,12 +1,12 @@
+import React from 'react';
 import SideBar from '../index';
-import { WrappedStoryComponent } from '../../../stories/utils';
 
 export default {
   title: 'Components/SideBar',
   component: SideBar,
 };
 
-const Template = args => WrappedStoryComponent(SideBar, args);
+const Template = args => <SideBar {...args} />;
 
 export const Sidebar = Template.bind({});
 Sidebar.args = {

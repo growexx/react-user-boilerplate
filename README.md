@@ -39,6 +39,14 @@
 
   <dt>SEO</dt>
   <dd>We support SEO (document head tags management) for search engines that support indexing of JavaScript content. (eg. Google)</dd>
+
+  <dt>Storybook Support</dt>
+  <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>.
+
+  For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
+
+
+</dd>
 </dl>
 
 But wait... there's more!
@@ -54,7 +62,7 @@ But wait... there's more!
 
 There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on how to structure your React.js apps with scalability in mind. It provides rationale for the majority of boilerplate's design decisions.
 
-<sub><i>Keywords: React.js, Redux, Hot Reloading, ESNext, Babel, react-router, Offline First, ServiceWorker, `styled-components`, redux-saga, FontFaceObserver</i></sub>
+<sub><i>Keywords: React.js, Redux, Hot Reloading, ESNext, Babel, react-router, Offline First, ServiceWorker, `styled-components`, redux-saga, FontFaceObserver, storybook</i></sub>
 
 ## Quick start
 
