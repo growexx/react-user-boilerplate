@@ -126,7 +126,6 @@ export const text = {
     fontSize: fontSizes.f64,
     fontWeight: fontWeights.medium,
     lineHeight: lineHeights.heading,
-    backgroundColor: colors.brandPrimary,
   },
   h2: {
     fontSize: fontSizes.f40,
