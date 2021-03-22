@@ -16,10 +16,10 @@ const brandPrimary = purple;
 const brandPrimaryHover = darkPurple;
 const brandSecondary = blue;
 const brandSecondaryHover = darkBlue;
-const brandDestructive = red;
+const brandDestructive = red; // error
 const brandDestructiveHover = darkRed;
 const brandWarning = orange;
-const brandAffirmative = green;
+const brandAffirmative = green; // success
 const brandAffirmativeHover = darkGreen;
 
 // GREY-SCALE
