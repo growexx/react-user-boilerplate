@@ -10,6 +10,7 @@ const getSrcURLs = srcs => {
   });
   return src;
 };
+
 export const injectFontFaces = (
   name,
   src = [],

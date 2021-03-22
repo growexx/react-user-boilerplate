@@ -65,22 +65,47 @@ const colors = {
 export { colors };
 
 // FONT-FAMILY
-export const fontFamily = [
-  { fontRubik: '"Rubik", -apple-system, BlinkMacSystemFont, sans-serif' },
-  { fontAg: 'autograph' },
-  { fontEpilogue: 'Epilogue' },
-  { fontMonospace: 'monospace' },
-  { fontEpiOblique: 'Epilogue-Stamp' },
-];
+export const fontFamily = {
+  fontRubik: '"Rubik", -apple-system, BlinkMacSystemFont, sans-serif',
+  fontAg: 'autograph',
+  fontEpilogue: 'Epilogue',
+  fontMonospace: 'monospace',
+  fontEpiOblique: 'Epilogue-Stamp',
+};
 
 // TYPOGRAPHY
-export const fontSizes = [0.75, 0.875, 1, 1.25, 1.563, 2];
+const baseFontSize = 1; // 1rem or 16px
+export const fontSizes = {
+  f3: `${baseFontSize * 0.1875}rem`, // 3px
+  f4: `${baseFontSize * 0.25}rem`, // 4px
+  f5: `${baseFontSize * 0.3125}rem`, // 5px
+  f6: `${baseFontSize * 0.375}rem`, // 6px
+  f8: `${baseFontSize * 0.5}rem`, // 8px
+  f9: `${baseFontSize * 0.5625}rem`, // 9px
+  f10: `${baseFontSize * 0.625}rem`, // 10px
+  f11: `${baseFontSize * 0.6875}rem`, // 11px
+  f12: `${baseFontSize * 0.75}rem`, // 12px
+  f13: `${baseFontSize * 0.8125}rem`, // 13px
+  f14: `${baseFontSize * 0.875}rem`, // 14px
+  f15: `${baseFontSize * 0.9375}rem`, // 15px
+  f18: `${baseFontSize * 1.125}rem`, // 18px
+  f20: `${baseFontSize * 1.25}rem`, // 20px
+  f21: `${baseFontSize * 1.3125}rem`, // 21px
+  f22: `${baseFontSize * 1.375}rem`, // 22px
+  f24: `${baseFontSize * 1.5}rem`, // 24px
+  f25: `${baseFontSize * 1.563}rem`, // 25px
+  f26: `${baseFontSize * 1.625}rem`, // 26px
+  f28: `${baseFontSize * 1.75}rem`, // 28px
+  f31: `${baseFontSize * 1.938}rem`, // 31px
+  f40: `${baseFontSize * 2.5}rem`, // 40px
+  f42: `${baseFontSize * 2.63}rem`, // 42.08px
+  f64: `${baseFontSize * 4}rem`, // 64px
+};
 
 // FONT-WEIGHTS
 export const regular = 400;
 export const medium = 500;
 export const bold = 700;
-// styled-system's 'fontWeight' function can hook into the 'fontWeights' object
 export const fontWeights = {
   regular,
   medium,
@@ -98,79 +123,66 @@ export const lineHeights = {
 // SCALE
 export const text = {
   h1: {
-    fontSize: `${fontSizes[5]}rem`,
+    fontSize: fontSizes.f64,
     fontWeight: fontWeights.medium,
     lineHeight: lineHeights.heading,
+    backgroundColor: colors.brandPrimary,
   },
   h2: {
-    fontSize: `${fontSizes[4]}rem`,
+    fontSize: fontSizes.f40,
     fontWeight: fontWeights.medium,
     lineHeight: lineHeights.heading,
   },
   h3: {
-    fontSize: `${fontSizes[3]}rem`,
+    fontSize: fontSizes.f28,
     fontWeight: fontWeights.medium,
     lineHeight: lineHeights.heading,
   },
   h4: {
-    fontSize: `${fontSizes[2]}rem`,
+    fontSize: fontSizes.f20,
     fontWeight: fontWeights.medium,
     lineHeight: lineHeights.heading,
   },
   h5: {
-    fontSize: `${fontSizes[1]}rem`,
+    fontSize: fontSizes.f18,
     fontWeight: fontWeights.medium,
-    lineHeight: lineHeights.standard,
-  },
-  bodyLarge: {
-    fontSize: `${fontSizes[2]}rem`,
-    fontWeight: fontWeights.regular,
-    lineHeight: lineHeights.standard,
-  },
-  bodyStrong: {
-    fontSize: `${fontSizes[1]}rem`,
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights.standard,
-  },
-  body: {
-    fontSize: `${fontSizes[1]}rem`,
-    fontWeight: fontWeights.regular,
-    lineHeight: lineHeights.standard,
-  },
-  small: {
-    fontSize: `${fontSizes[0]}rem`,
-    fontWeight: fontWeights.regular,
     lineHeight: lineHeights.standard,
   },
 };
 
-// SPACING
-export const space = [0, 4, 8, 16, 32, 40, 64, 128];
+// SPACING (Based on an 8pt scale)
+const baseSpacing = 0.5; // 8px or 0.5rem
+export const space = {
+  sSpacing: `${baseSpacing / 2}rem`, // 4px
+  mSpacing: `${baseSpacing * 2}rem`, // 16px
+  lSpacing: `${baseSpacing * 3}rem`, // 24px
+  xlSpacing: `${baseSpacing * 4}rem`, // 32px
+  xxlSpacing: `${baseSpacing * 6}rem`, // 48px
+};
 
 // SIZES
-export const sizes = [0, 4, 8, 16, 32, 40, 64, 80, 100, 128];
+export const sizes = {
+  baseBorderWidth: `1px`,
+  baseBorderRadius: `4px`,
+  baseInputHeight: space.xxlSpacing,
+  baseCheckboxSize: space.mSpacing * 1.25,
+};
 
 // BOX-SHADOWS
-export const shadows = [
-  '0px 2px 4px rgba(17, 22, 24, 0.08);',
-  '0px 3px 5px rgba(17, 22, 24, 0.15);',
-  `0 0 10px ${colors.gray200}`,
-  `inset 0 0 0 1px ${colors.brandSecondary}`,
-  `inset 0 0 0 1px ${colors.brandDestructive}`,
-];
+export const shadows = {
+  baseBoxShadow: '0px 2px 4px rgba(17, 22, 24, 0.08);',
+  darkBoxShadow: '0px 3px 5px rgba(17, 22, 24, 0.15);',
+  cardBoxShadow: `0 0 10px ${colors.gray200}`,
+  brandInputBoxShadow: `inset 0 0 0 1px ${colors.brandSecondary}`,
+  brandInputBoxDestructiveShadow: `inset 0 0 0 1px ${colors.brandDestructive}`,
+};
 
 // BORDERS
-// styled-system's 'borderRadius' function can hook into the 'radii' object/array
-export const radii = [0, 4, 8, '50%'];
-export const radius = '8px';
-
-const baseBorder = `1px solid ${colors.baseBorderColor}`;
-const avatarBorder = `2px solid ${colors.white}`;
-const lightBorder = `1px solid ${colors.gray100}`;
-
-const borders = [baseBorder, avatarBorder, lightBorder];
-
-export { borders };
+export const borders = {
+  baseBorder: `1px solid ${colors.baseBorderColor}`,
+  avatarBorder: `2px solid ${colors.white}`,
+  lightBorder: `1px solid ${colors.gray100}`,
+};
 
 // Z-INDEX
 export const zIndices = [0, 9, 99, 999, 9999];
@@ -224,8 +236,6 @@ const theme = {
   bold,
   text,
   colors,
-  radii,
-  radius,
   borders,
   shadows,
   zIndices,
