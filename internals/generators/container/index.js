@@ -59,6 +59,12 @@ module.exports = {
       default: true,
       message: 'Do you want to load resources asynchronously?',
     },
+    {
+      type: 'confirm',
+      name: 'wantStorybookFile',
+      default: false,
+      message: 'Do you want to create the storybook file for the component',
+    },
   ],
   actions: data => {
     // Generate index.js and index.test.js
@@ -166,7 +172,15 @@ module.exports = {
         abortOnFail: true,
       });
     }
-
+    // If the user wants to create story file for the component
+    if (data.wantStorybookFile) {
+      actions.push({
+        type: 'add',
+        path: '../../app/containers/{{properCase name}}/stories/{{properCase name}}.stories.js',
+        templateFile: './component/storybook.js.hbs',
+        abortOnFail: true,
+      });
+    }
     actions.push({
       type: 'prettify',
       path: '/containers/',
