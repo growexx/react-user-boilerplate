@@ -1,19 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 import 'antd/dist/antd.css';
+import theme, { fontFamily, lineHeights } from './styles/index';
 const GlobalStyle = createGlobalStyle`
   html,
   body {
     height: 100%;
     width: 100%;
-    line-height: 1.5;
-  }
-
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-
-  body.fontLoaded {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: ${lineHeights.standard};
+    font-family: ${fontFamily.fontRubik}
   }
 
   #app {
@@ -25,8 +19,13 @@ const GlobalStyle = createGlobalStyle`
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.5em;
+    line-height: ${lineHeights.standard};
   }
+  h1 : ${theme.h1}
+  h2 : ${theme.h2}  
+  h3 : ${theme.h3}
+  h4 : ${theme.h4}
+  h5 : ${theme.h5}
 `;
 
 export default GlobalStyle;
