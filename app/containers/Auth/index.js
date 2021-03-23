@@ -7,7 +7,15 @@ import { Login } from './Login';
 import { Registration } from './Registration';
 
 const getLoginSideContent = () => (
-  <div className="loginContainer">Login Sidebar</div>
+  <div className="loginContainer">
+    <div className="registrationSideContainer">
+      <p className="title">New Here!</p>
+      <p className="subTitle">
+        To join us, please sign up with your personal info
+      </p>
+      <Button>SIGN UP</Button>
+    </div>
+  </div>
 );
 const getRegisterSideContent = () => (
   <div className="registrationSideContainer">

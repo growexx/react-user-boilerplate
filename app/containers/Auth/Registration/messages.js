@@ -14,15 +14,15 @@ export default defineMessages({
     defaultMessage: 'This is the Registration container!',
   },
   createAccount: {
-    id: `${scope}.header`,
+    id: `${scope}.createAccount.message`,
     defaultMessage: 'Create Account',
   },
   emailRegistration: {
-    id: `${scope}.header`,
+    id: `${scope}.emailRegistration.message`,
     defaultMessage: 'or use your email for registration',
   },
   signUp: {
-    id: `${scope}.header`,
+    id: `${scope}.signUp.message`,
     defaultMessage: 'SIGN UP',
   },
 });

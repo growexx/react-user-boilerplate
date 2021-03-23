@@ -11,6 +11,7 @@ import { Switch, Route } from 'react-router-dom';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import AuthContainer from 'containers/Auth/Loadable';
 import GlobalStyle from '../../global-styles';
+import { AUTH_TYPE } from '../Auth/constants';
 
 export default function App() {
   return (
@@ -22,7 +23,10 @@ export default function App() {
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Switch>
-        <Route path="/login" component={AuthContainer} />
+        <Route
+          path="/login"
+          component={() => <AuthContainer authType={AUTH_TYPE[0]} />}
+        />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

@@ -13,4 +13,16 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the Login container!',
   },
+  accountDetails: {
+    id: `${scope}.accountDetails.message`,
+    defaultMessage: 'Account Details',
+  },
+  emailLogin: {
+    id: `${scope}.emailLogin.message`,
+    defaultMessage: 'or use your email for Login',
+  },
+  signIn: {
+    id: `${scope}.signIn.message`,
+    defaultMessage: 'SIGN IN',
+  },
 });

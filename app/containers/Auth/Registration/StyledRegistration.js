@@ -3,24 +3,29 @@ import { colors, fontSizes, fontWeights, borders } from '../../../styles';
 export const StyledRegistration = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   .createAccount {
+    margin: 0;
     text-align: center;
     font-size: ${fontSizes.f42};
     font-weight: ${fontWeights.bold};
     color: ${colors.brandPrimary};
   }
   .emailRegistration {
+    margin-top: ${fontSizes.f31};
     color: ${colors.gray400};
     font-weight: ${fontWeights.regular};
     font-size: ${fontSizes.f14};
+    text-align: center;
   }
   .registrationSubContainer {
     width: 50%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
   }
@@ -28,7 +33,7 @@ export const StyledRegistration = styled.div`
     display: flex;
   }
   .socialIcons > span {
-    border: 1px solid ${colors.gray500};
+    border: 1px solid ${colors.gray300};
     padding: 10px;
     border-radius: 50%;
     margin: 10px;
@@ -45,7 +50,7 @@ export const StyledRegistration = styled.div`
     }
   }
   button {
-    margin-top: 35px;
+    margin-top: ${fontSizes.f31};
     background: ${colors.brandPrimary};
     border: ${borders.avatarBorder};
     border-radius: 50px;
@@ -54,5 +59,17 @@ export const StyledRegistration = styled.div`
     text-align: center;
     font-size: ${fontSizes.f15};
     font-weight: ${fontWeights.medium};
+    height: ${fontSizes.f40};
+    width: 160px;
+  }
+  button:hover {
+    background: ${colors.brandPrimary};
+    border: ${borders.avatarBorder};
+    color: ${colors.white};
+  }
+  button:focus {
+    background: ${colors.brandPrimary};
+    border: ${borders.avatarBorder};
+    color: ${colors.white};
   }
 `;
