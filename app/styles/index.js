@@ -1,6 +1,6 @@
 // COLOR-PALETTE
 const lightPurple = 'hsl(259, 55%, 55%)';
-const purple = 'hsl(259, 66%, 47%)';
+// const purple = 'hsl(259, 66%, 47%)';
 const darkPurple = 'hsl(259, 66%, 37%)';
 const lightBlue = 'hsl(216, 100%, 98%)';
 const blue = 'hsl(216, 100%, 65%)';
@@ -10,9 +10,14 @@ const darkRed = 'hsl(353, 64%, 60%)';
 const orange = 'hsl(36, 96%, 59%)';
 const green = 'hsl(140, 44%, 61%)';
 const darkGreen = 'hsl(141, 44%, 51%)';
+const lightBackgroundGreen =
+  'linear-gradient(207.91deg, #3AADA1 0%, #3AB397 47.37%, #4DC196 100%)';
+const lightGreen = '#3AB299';
+const transparent = 'transparent';
 
 // BRAND COLOR ALIASES
-const brandPrimary = purple;
+const brandBackgroundPrimary = lightBackgroundGreen;
+const brandPrimary = lightGreen;
 const brandPrimaryHover = darkPurple;
 const brandSecondary = blue;
 const brandSecondaryHover = darkBlue;
@@ -38,6 +43,7 @@ const inputBg = gray100;
 const baseBorderColor = gray200;
 
 const colors = {
+  brandBackgroundPrimary,
   brandPrimary,
   brandPrimaryHover,
   brandSecondary,
@@ -50,6 +56,7 @@ const colors = {
   lightPurple,
   lightBlue,
   black,
+  transparent,
   purpleBlack,
   gray500,
   gray400,
