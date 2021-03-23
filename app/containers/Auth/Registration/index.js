@@ -6,29 +6,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
 import { Input, Button } from 'antd';
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
 import {
   FacebookFilled,
   GoogleOutlined,
   WindowsFilled,
 } from '@ant-design/icons';
-import makeSelectRegistration from './selectors';
-import reducer from './reducer';
-import saga from './saga';
 import messages from './messages';
 import { StyledRegistration } from './StyledRegistration';
 
 export function Registration() {
-  useInjectReducer({ key: 'registration', reducer });
-  useInjectSaga({ key: 'registration', saga });
-
   return (
     <div>
       <Helmet>
@@ -66,19 +55,4 @@ Registration.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  registration: makeSelectRegistration(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(withConnect)(Registration);
+export default Registration;

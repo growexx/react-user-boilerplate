@@ -17,7 +17,6 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
 
 import GlobalStyle from '../../global-styles';
-import AuthContainer from '../Auth';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -38,7 +37,6 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/font-awesome" component={FontAwesomeDemo} />
-        <Route path="/login" component={AuthContainer} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
