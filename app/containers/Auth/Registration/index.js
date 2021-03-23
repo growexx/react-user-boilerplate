@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Input, Button } from 'antd';
@@ -50,9 +49,5 @@ export function Registration() {
     </div>
   );
 }
-
-Registration.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
 
 export default Registration;

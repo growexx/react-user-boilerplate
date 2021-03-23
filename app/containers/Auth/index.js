@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { Button } from 'antd';
+import messages from './messages';
 import { StyledAuthContainer } from './StyledAuthContainer';
 import { AUTH_TYPE } from './constants';
 import { Login } from './Login';
@@ -9,21 +11,29 @@ import { Registration } from './Registration';
 const getLoginSideContent = () => (
   <div className="loginContainer">
     <div className="registrationSideContainer">
-      <p className="title">New Here!</p>
-      <p className="subTitle">
-        To join us, please sign up with your personal info
+      <p className="title">
+        <FormattedMessage {...messages.sidebarLoginTitle} />
       </p>
-      <Button>SIGN UP</Button>
+      <p className="subTitle">
+        <FormattedMessage {...messages.sidebarLoginSubtitle} />
+      </p>
+      <Button>
+        <FormattedMessage {...messages.sidebarSignUp} />
+      </Button>
     </div>
   </div>
 );
 const getRegisterSideContent = () => (
   <div className="registrationSideContainer">
-    <p className="title">Welcome Back!</p>
-    <p className="subTitle">
-      To keep connected with us, please log in with your personal info
+    <p className="title">
+      <FormattedMessage {...messages.sidebarRegistrationTitle} />
     </p>
-    <Button>SIGN IN</Button>
+    <p className="subTitle">
+      <FormattedMessage {...messages.sidebarRegistrationSubtitle} />
+    </p>
+    <Button>
+      <FormattedMessage {...messages.sidebarLogin} />
+    </Button>
   </div>
 );
 const AuthContainer = props => (
