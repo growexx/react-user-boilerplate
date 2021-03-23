@@ -3,6 +3,7 @@ import { colors, fontSizes, fontWeights, borders } from '../../../styles';
 export const StyledRegistration = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +29,9 @@ export const StyledRegistration = styled.div`
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    @media only screen and (max-width: 767px) {
+      width: 80%;
+    }
   }
   .socialIcons {
     display: flex;

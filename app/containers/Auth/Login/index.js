@@ -19,34 +19,32 @@ import { StyledLogin } from './StyledLogin';
 
 export function Login() {
   return (
-    <div>
+    <StyledLogin>
       <Helmet>
         <title>Login</title>
         <meta name="description" content="Description of Login" />
       </Helmet>
-      <StyledLogin>
-        <p className="createAccount">
-          <FormattedMessage {...messages.accountDetails} />
-        </p>
-        <div className="LoginSubContainer">
-          <div className="socialIcons">
-            <FacebookFilled />
-            <GoogleOutlined />
-            <WindowsFilled />
-          </div>
-          <p className="emailLogin">
-            <FormattedMessage {...messages.emailLogin} />
-          </p>
-          <div className="accountData">
-            <Input defaultValue="Email" />
-            <Input defaultValue="Password" />
-          </div>
-          <Button>
-            <FormattedMessage {...messages.signIn} />
-          </Button>
+      <p className="createAccount">
+        <FormattedMessage {...messages.accountDetails} />
+      </p>
+      <div className="LoginSubContainer">
+        <div className="socialIcons">
+          <FacebookFilled />
+          <GoogleOutlined />
+          <WindowsFilled />
         </div>
-      </StyledLogin>
-    </div>
+        <p className="emailLogin">
+          <FormattedMessage {...messages.emailLogin} />
+        </p>
+        <div className="accountData">
+          <Input defaultValue="Email" />
+          <Input defaultValue="Password" />
+        </div>
+        <Button>
+          <FormattedMessage {...messages.signIn} />
+        </Button>
+      </div>
+    </StyledLogin>
   );
 }
 

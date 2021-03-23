@@ -4,10 +4,10 @@ export const StyledLogin = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-wrap: wrap;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   height: 100vh;
   .createAccount {
     margin: 0;
@@ -24,12 +24,14 @@ export const StyledLogin = styled.div`
     text-align: center;
   }
   .LoginSubContainer {
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-  }
+    @media only screen and (max-width: 767px) {
+      width: 80%;
+    }  
   .socialIcons {
     display: flex;
   }
