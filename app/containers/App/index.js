@@ -17,8 +17,9 @@ import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import PrivateRoute from './PrivateRoute';
+import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
-
+import { ROUTES } from '../Auth/constants';
 const AppWrapper = styled.div`
   display: flex;
   min-height: 100vh;
@@ -35,11 +36,11 @@ export default function App() {
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Switch>
-        <PrivateRoute exact path="/" component={HomePage} />
-        <PrivateRoute path="/features" component={FeaturePage} />
-        <PrivateRoute path="/font-awesome" component={FontAwesomeDemo} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
+        <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
+        <PrivateRoute path={ROUTES.FONTAWESOME} component={FontAwesomeDemo} />
+        <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
+        <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
