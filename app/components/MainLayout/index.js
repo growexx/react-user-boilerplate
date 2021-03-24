@@ -9,11 +9,11 @@ import React from 'react';
 import { Layout } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import App from 'containers/App';
-import NonAuthRoutes from 'containers/App/NonAuthRoutes';
 import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
 import SideBar from 'components/SideBar';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
+import { userExists } from '../../utils/userExists';
 const { Header, Content } = Layout;
 
 class MainLayout extends React.Component {
@@ -32,8 +32,7 @@ class MainLayout extends React.Component {
   };
 
   render() {
-    const isLoggedIn = false;
-    if (isLoggedIn) {
+    if (userExists()) {
       return (
         <StyledMainLayout>
           <Layout>
@@ -80,7 +79,7 @@ class MainLayout extends React.Component {
       );
     }
 
-    return <NonAuthRoutes />;
+    return <App />;
   }
 }
 

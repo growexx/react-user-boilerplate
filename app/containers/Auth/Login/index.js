@@ -15,35 +15,41 @@ import {
 } from '@ant-design/icons';
 import messages from './messages';
 import { StyledLogin } from './StyledLogin';
+import { StyledAuthContainer } from '../StyledAuthContainer';
+import AuthSideContainer from '../index';
+import { AUTH_TYPE } from '../constants';
 
 export function Login() {
   return (
-    <StyledLogin>
+    <StyledAuthContainer>
       <Helmet>
         <title>Login</title>
         <meta name="description" content="Description of Login" />
       </Helmet>
-      <p className="createAccount">
-        <FormattedMessage {...messages.accountDetails} />
-      </p>
-      <div className="LoginSubContainer">
-        <div className="socialIcons">
-          <FacebookFilled />
-          <GoogleOutlined />
-          <WindowsFilled />
-        </div>
-        <p className="emailLogin">
-          <FormattedMessage {...messages.emailLogin} />
+      <AuthSideContainer authType={AUTH_TYPE[0]} />
+      <StyledLogin>
+        <p className="createAccount">
+          <FormattedMessage {...messages.accountDetails} />
         </p>
-        <div className="accountData">
-          <Input defaultValue="Email" />
-          <Input defaultValue="Password" />
+        <div className="LoginSubContainer">
+          <div className="socialIcons">
+            <FacebookFilled />
+            <GoogleOutlined />
+            <WindowsFilled />
+          </div>
+          <p className="emailLogin">
+            <FormattedMessage {...messages.emailLogin} />
+          </p>
+          <div className="accountData">
+            <Input defaultValue="Email" />
+            <Input defaultValue="Password" />
+          </div>
+          <Button>
+            <FormattedMessage {...messages.signIn} />
+          </Button>
         </div>
-        <Button>
-          <FormattedMessage {...messages.signIn} />
-        </Button>
-      </div>
-    </StyledLogin>
+      </StyledLogin>
+    </StyledAuthContainer>
   );
 }
 

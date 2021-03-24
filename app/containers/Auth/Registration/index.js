@@ -15,14 +15,18 @@ import {
 } from '@ant-design/icons';
 import messages from './messages';
 import { StyledRegistration } from './StyledRegistration';
+import AuthSideContainer from '../index';
+import { AUTH_TYPE } from '../constants';
+import { StyledAuthContainer } from '../StyledAuthContainer';
 
 export function Registration() {
   return (
-    <div>
+    <StyledAuthContainer>
       <Helmet>
         <title>Registration</title>
         <meta name="description" content="Description of Registration" />
       </Helmet>
+      <AuthSideContainer authType={AUTH_TYPE[1]} />
       <StyledRegistration>
         <p className="createAccount">
           <FormattedMessage {...messages.createAccount} />
@@ -46,7 +50,7 @@ export function Registration() {
           </Button>
         </div>
       </StyledRegistration>
-    </div>
+    </StyledAuthContainer>
   );
 }
 

@@ -4,15 +4,16 @@
  */
 import React from 'react';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { ROUTES } from '../../containers/Auth/constants';
 
 export const MenuItems = [
   {
-    to: '/profile',
+    to: ROUTES.PROFILE,
     tabName: 'Profile',
     icon: <UserOutlined />,
   },
   {
-    to: '/logout',
+    to: ROUTES.LOGOUT,
     tabName: 'Logout',
     icon: <LockOutlined />,
   },

@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Button } from 'antd';
 import messages from './messages';
-import { StyledAuthContainer } from './StyledAuthContainer';
-import { AUTH_TYPE } from './constants';
-import { Login } from './Login';
-import { Registration } from './Registration';
+import { AUTH_TYPE, ROUTES } from './constants';
 
 const getLoginSideContent = () => (
   <div className="loginContainer">
@@ -17,9 +15,11 @@ const getLoginSideContent = () => (
       <p className="subTitle">
         <FormattedMessage {...messages.sidebarLoginSubtitle} />
       </p>
-      <Button>
-        <FormattedMessage {...messages.sidebarSignUp} />
-      </Button>
+      <Link to={ROUTES.REGISTER}>
+        <Button>
+          <FormattedMessage {...messages.sidebarSignUp} />
+        </Button>
+      </Link>
     </div>
   </div>
 );
@@ -31,24 +31,23 @@ const getRegisterSideContent = () => (
     <p className="subTitle">
       <FormattedMessage {...messages.sidebarRegistrationSubtitle} />
     </p>
-    <Button>
-      <FormattedMessage {...messages.sidebarLogin} />
-    </Button>
+    <Link to={ROUTES.LOGIN}>
+      <Button>
+        <FormattedMessage {...messages.sidebarLogin} />
+      </Button>
+    </Link>
   </div>
 );
-const AuthContainer = props => (
-  <StyledAuthContainer>
-    <div className="sideContainer">
-      {props.authType === AUTH_TYPE[0]
-        ? getLoginSideContent()
-        : getRegisterSideContent()}
-    </div>
-    {props.authType === AUTH_TYPE[0] ? <Login /> : <Registration />}
-  </StyledAuthContainer>
+const AuthSideContainer = props => (
+  <div className="sideContainer">
+    {props.authType === AUTH_TYPE[0]
+      ? getLoginSideContent()
+      : getRegisterSideContent()}
+  </div>
 );
 
-export default AuthContainer;
+export default AuthSideContainer;
 
-AuthContainer.propTypes = {
+AuthSideContainer.propTypes = {
   authType: PropTypes.string,
 };
