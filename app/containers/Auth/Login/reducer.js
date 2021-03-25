@@ -24,18 +24,30 @@ const loginReducer = (state = initialState, action) =>
     switch (action.type) {
       case CHANGE_EMAIL:
         draft.email = action.email;
+        draft.loading = false;
+        draft.error = false;
+        draft.success = false;
         break;
       case CHANGE_PASSWORD:
         draft.password = action.password;
+        draft.loading = false;
+        draft.error = false;
+        draft.success = false;
         break;
       case LOADING:
         draft.loading = action.loading;
+        draft.error = false;
+        draft.success = false;
         break;
       case ERROR:
         draft.error = action.error;
+        draft.loading = false;
+        draft.success = false;
         break;
       case SUCCESS:
         draft.success = action.success;
+        draft.loading = false;
+        draft.error = false;
         break;
       case RESET:
         draft.email = '';

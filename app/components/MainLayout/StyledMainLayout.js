@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../styles/index';
+import { colors, fontSizes, fontWeights } from '../../styles/index';
 
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
@@ -13,7 +13,7 @@ export const StyledMainLayout = styled.div`
   }
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
-    background-color: #001529;
+    background-color: ${colors.blackPearl};
     color: ${colors.white};
   }
   .ant-menu-dark .ant-menu-item,
@@ -42,6 +42,12 @@ export const StyledMainLayout = styled.div`
     height: 32px;
     margin: 16px;
     background: rgba(255, 255, 255, 0.3);
+    p {
+      text-align: center;
+      font-size: ${fontSizes.f20};
+      font-weight: ${fontWeights.bold};
+      color: ${colors.blackPearl};
+    }
   }
 
   .site-layout .site-layout-background {

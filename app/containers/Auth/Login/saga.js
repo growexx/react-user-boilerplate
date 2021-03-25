@@ -42,10 +42,15 @@ export function* getSignIn() {
       yield put(resetState());
       yield put(push(ROUTES.HOME));
       Emitter.emit(EMITTER_EVENTS.LOG_IN);
+    } else {
+      yield put(resetState());
+      yield put(changeLoading(false));
+      yield put(logInError(true));
     }
   } catch (err) {
-    yield put(logInError(err));
     yield put(resetState());
+    yield put(changeLoading(false));
+    yield put(logInError(true));
   }
 }
 

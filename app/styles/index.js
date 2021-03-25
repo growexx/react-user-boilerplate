@@ -3,6 +3,7 @@ const lightPurple = 'hsl(259, 55%, 55%)';
 const lightBlue = 'hsl(216, 100%, 98%)';
 const blue = 'hsl(216, 100%, 65%)';
 const darkBlue = 'hsl(216, 80%, 55%)';
+const blackPearl = '#001529';
 const red = 'hsl(353, 64%, 67%)';
 const darkRed = 'hsl(353, 64%, 60%)';
 const orange = 'hsl(36, 96%, 59%)';
@@ -42,6 +43,7 @@ const baseBorderColor = gray200;
 
 const colors = {
   brandBackgroundPrimary,
+  blackPearl,
   brandPrimary,
   brandPrimaryHover,
   brandSecondary,

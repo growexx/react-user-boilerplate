@@ -7,7 +7,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 import {
   FacebookFilled,
   GoogleOutlined,
@@ -36,7 +36,21 @@ import reducer from './reducer';
 import saga from './saga';
 
 const key = 'login';
-export function Login({ loading, onSignIn, onChangeEmail, onChangePassword }) {
+
+const showNotification = () => {
+  notification.open({
+    message: 'Login Error',
+  });
+};
+export function Login({
+  loading,
+  onSignIn,
+  email,
+  password,
+  error,
+  onChangeEmail,
+  onChangePassword,
+}) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
   return (
@@ -78,6 +92,7 @@ export function Login({ loading, onSignIn, onChangeEmail, onChangePassword }) {
                   placeholder="Email"
                   onChange={onChangeEmail}
                   type="email"
+                  value={email}
                 />
               </Form.Item>
               <Form.Item
@@ -90,6 +105,7 @@ export function Login({ loading, onSignIn, onChangeEmail, onChangePassword }) {
                 ]}
               >
                 <Input.Password
+                  value={password}
                   placeholder="Password"
                   onChange={onChangePassword}
                   type="password"
@@ -103,6 +119,7 @@ export function Login({ loading, onSignIn, onChangeEmail, onChangePassword }) {
             </Form.Item>
           </div>
         </StyledLogin>
+        {error === true && showNotification()}
       </StyledAuthContainer>
     </Form>
   );
@@ -112,7 +129,7 @@ Login.propTypes = {
   history: PropTypes.object,
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  success: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  success: PropTypes.string,
   onSignIn: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
