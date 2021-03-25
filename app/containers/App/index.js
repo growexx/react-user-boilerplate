@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /**
  *
  * App
@@ -5,6 +6,10 @@
  * This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
+
+/* eslint-disable no-sparse-arrays */
+/* eslint-disable global-require */
+/* eslint-disable import/no-unresolved */
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -28,6 +33,37 @@ const AppWrapper = styled.div`
 `;
 
 export default function App() {
+  const favIcons = [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '512x512',
+      href: require('../../images/favicons/android-chrome-512x512.png'),
+    },
+
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '192x192',
+      href: require('../../images/favicons/android-chrome-192x192.png'),
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      href: require('../../images/favicons/favicon-32x32.png'),
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: require('../../images/favicons/favicon-16x16.png'),
+    },
+    {
+      rel: 'apple-touch-icon',
+      href: require('../../images/favicons/apple-touch-icon.png'),
+    },
+  ];
   return (
     <AppWrapper>
       <Helmet
@@ -35,6 +71,9 @@ export default function App() {
         defaultTitle="React.js Boilerplate"
       >
         <meta name="description" content="A React.js Boilerplate application" />
+        {favIcons.map((favIcon, index) => (
+          <link {...favIcon} key={index} />
+        ))}
       </Helmet>
       <Switch>
         <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />

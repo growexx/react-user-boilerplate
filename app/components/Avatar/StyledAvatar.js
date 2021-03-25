@@ -10,9 +10,4 @@ export const AvatarWrapper = styled.div`
     background-color: ${colors.brandPrimary};
     color: white;
   }
-  // .ant-dropdown-trigger:hover {
-  //   border-radius: 50% !important;
-  //   background-color: ${colors.brandPrimary};
-  //   color: white;
-  // }
 `;
