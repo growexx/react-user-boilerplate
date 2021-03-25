@@ -1,6 +1,27 @@
 import styled from 'styled-components';
+import { colors } from '../../styles/index';
 
 export const StyledMainLayout = styled.div`
+  .ant-layout-sider {
+    background: ${colors.brandBackgroundPrimary};
+  }
+  .ant-menu.ant-menu-dark,
+  .ant-menu-dark .ant-menu-sub,
+  .ant-menu.ant-menu-dark .ant-menu-sub {
+    background-color: ${colors.brandPrimary};
+    color: ${colors.black};
+  }
+  .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
+    .ant-menu-item-selected {
+    background: #001529;
+    color: ${colors.white};
+  }
+  .ant-menu-dark .ant-menu-item,
+  .ant-menu-dark .ant-menu-item-group-title,
+  .ant-menu-dark .ant-menu-item > a,
+  .ant-menu-dark .ant-menu-item > span > a {
+    color: ${colors.black};
+  }
   .sideBarTrigger {
     padding: 0 24px;
     font-size: 18px;
@@ -11,7 +32,7 @@ export const StyledMainLayout = styled.div`
   }
 
   .sideBarTrigger:hover {
-    color: #1890ff;
+    color: ${colors.brandPrimary};
   }
 
   #components-layout-demo-custom-trigger .logo {

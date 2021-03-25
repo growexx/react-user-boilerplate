@@ -3,7 +3,7 @@ import { STORAGE_KEY } from './constants';
 import StorageService from './StorageService';
 
 export function userExists() {
-  return false;
+  return true;
   /**
    * NOTE: LOGIN API TO BE INTEGRATED.
    */
