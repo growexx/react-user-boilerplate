@@ -9,20 +9,21 @@ import {
   CheckCircleOutlined,
   SmileOutlined,
 } from '@ant-design/icons';
+import { ROUTES } from '../../containers/Auth/constants';
 
 export const MenuItems = [
   {
-    to: '/',
+    to: ROUTES.HOME,
     tabName: 'Home',
     icon: <UserOutlined />,
   },
   {
-    to: '/features',
+    to: ROUTES.FEATURES,
     tabName: 'Features',
     icon: <CheckCircleOutlined />,
   },
   {
-    to: '/font-awesome',
+    to: ROUTES.FONTAWESOME,
     tabName: 'Font Awesome Demo',
     icon: <SmileOutlined />,
   },

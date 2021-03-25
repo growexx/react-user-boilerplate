@@ -13,6 +13,7 @@ import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
 import SideBar from 'components/SideBar';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
+import { userExists } from '../../utils/userExists';
 const { Header, Content } = Layout;
 
 class MainLayout extends React.Component {
@@ -31,48 +32,54 @@ class MainLayout extends React.Component {
   };
 
   render() {
-    return (
-      <StyledMainLayout>
-        <Layout>
-          <SideBar collapsed={this.state.collapsed} />
-          <Layout className="site-layout">
-            <Header className="headerLayout">
-              <ToggleBreadCrumb>
-                <span
-                  className="sideBarTrigger"
-                  onClick={this.toggle}
-                  data-testid="ToggleIcon"
-                  onKeyDown={this.toggle}
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Navigation Toggle"
+    if (userExists()) {
+      return (
+        <StyledMainLayout>
+          <Layout>
+            <Layout>
+              <SideBar collapsed={this.state.collapsed} />
+              <Layout className="site-layout">
+                <Header className="headerLayout">
+                  <ToggleBreadCrumb>
+                    <span
+                      className="sideBarTrigger"
+                      onClick={this.toggle}
+                      data-testid="ToggleIcon"
+                      onKeyDown={this.toggle}
+                      role="button"
+                      tabIndex={0}
+                      aria-label="Navigation Toggle"
+                    >
+                      {this.state.collapsed ? (
+                        <MenuUnfoldOutlined />
+                      ) : (
+                        <MenuFoldOutlined />
+                      )}
+                    </span>
+                  </ToggleBreadCrumb>
+                  <AppHeader />
+                </Header>
+                <Content
+                  className="site-layout-background"
+                  style={{
+                    margin: '24px 16px',
+                    padding: 24,
+                    minHeight: 280,
+                  }}
                 >
-                  {this.state.collapsed ? (
-                    <MenuUnfoldOutlined />
-                  ) : (
-                    <MenuFoldOutlined />
-                  )}
-                </span>
-              </ToggleBreadCrumb>
-              <AppHeader />
-            </Header>
-            <Content
-              className="site-layout-background"
-              style={{
-                margin: '24px 16px',
-                padding: 24,
-                minHeight: 280,
-              }}
-            >
-              <App />
-            </Content>
-            <Layout className="site-layout">
-              <Footer />
+                  <App />
+                </Content>
+                <Layout className="site-layout">
+                  <Footer />
+                </Layout>
+              </Layout>
             </Layout>
           </Layout>
-        </Layout>
-      </StyledMainLayout>
-    );
+        </StyledMainLayout>
+      );
+    }
+
+    return <App />;
   }
 }
 
