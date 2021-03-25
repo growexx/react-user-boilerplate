@@ -39,7 +39,7 @@ const key = 'login';
 
 const showNotification = () => {
   notification.open({
-    message: 'Login Error',
+    message: <FormattedMessage {...messages.notificationToast} />,
   });
 };
 export function Login({
@@ -80,11 +80,13 @@ export function Login({
                 rules={[
                   {
                     type: 'email',
-                    message: 'The input is not valid E-mail!',
+                    message: <FormattedMessage {...messages.validEmail} />,
                   },
                   {
                     required: true,
-                    message: 'Please input your E-mail!',
+                    message: (
+                      <FormattedMessage {...messages.emailRequiredMessage} />
+                    ),
                   },
                 ]}
               >
@@ -100,7 +102,9 @@ export function Login({
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your password!',
+                    message: (
+                      <FormattedMessage {...messages.passwordRequiredMessage} />
+                    ),
                   },
                 ]}
               >

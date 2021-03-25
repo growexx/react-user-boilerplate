@@ -18,17 +18,12 @@ import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
+import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../Auth/constants';
-import {
-  FAV_ICON_152_152,
-  FAV_ICON_16_16,
-  FAV_ICON_32_32,
-  APPLE_TOUCH_ICON,
-  FAV_ICON_192_192,
-} from '../../images/favicons';
+
 const AppWrapper = styled.div`
   display: flex;
   min-height: 100vh;
@@ -36,37 +31,6 @@ const AppWrapper = styled.div`
 `;
 
 export default function App() {
-  const favIcons = [
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '512x512',
-      href: FAV_ICON_152_152,
-    },
-
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '192x192',
-      href: FAV_ICON_192_192,
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      href: FAV_ICON_32_32,
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      href: FAV_ICON_16_16,
-    },
-    {
-      rel: 'apple-touch-icon',
-      href: APPLE_TOUCH_ICON,
-    },
-  ];
   return (
     <AppWrapper>
       <Helmet
@@ -74,7 +38,7 @@ export default function App() {
         defaultTitle="React.js Boilerplate"
       >
         <meta name="description" content="A React.js Boilerplate application" />
-        {favIcons.map((favIcon, index) => (
+        {FAV_ICONS.map((favIcon, index) => (
           <link {...favIcon} key={index} />
         ))}
       </Helmet>

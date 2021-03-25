@@ -25,4 +25,20 @@ export default defineMessages({
     id: `${scope}.signIn.message`,
     defaultMessage: 'SIGN IN',
   },
+  notificationToast: {
+    id: `${scope}.notification.message`,
+    defaultMessage: 'Login Error',
+  },
+  emailRequiredMessage: {
+    id: `${scope}.emailRequiredMessage.message`,
+    defaultMessage: 'Please input your E-mail!',
+  },
+  validEmail: {
+    id: `${scope}.valid.message`,
+    defaultMessage: 'The input is not valid E-mail!',
+  },
+  passwordRequiredMessage: {
+    id: `${scope}.passwordRequiredMessage.message`,
+    defaultMessage: 'Please input your password!',
+  },
 });

@@ -51,7 +51,7 @@ export const StyledLogin = styled.div`
     > div:nth-child(2){
       margin-top: 10px;
     }
-    span {
+    .ant-input-password {
       background-color: ${colors.gray200};
     }
     > input: first-child {
