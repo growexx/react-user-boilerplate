@@ -37,10 +37,13 @@ import saga from './saga';
 
 const key = 'login';
 export function Login({
-  error,
+  // history,
+  // error,
+  email,
+  password,
   loading,
   onSignIn,
-  success,
+  // success,
   onChangeEmail,
   onChangePassword,
 }) {
@@ -67,8 +70,14 @@ export function Login({
             <FormattedMessage {...messages.emailLogin} />
           </p>
           <div className="accountData">
-            <Input placeholder="Email" onChange={onChangeEmail} />
             <Input
+              placeholder="Email"
+              onChange={onChangeEmail}
+              value={email}
+              type="email"
+            />
+            <Input.Password
+              value={password}
               placeholder="Password"
               onChange={onChangePassword}
               type="password"
@@ -77,6 +86,7 @@ export function Login({
           <Button loading={loading} onClick={onSignIn}>
             <FormattedMessage {...messages.signIn} />
           </Button>
+          {/* {success !== false && error !== true && history.push(ROUTES.HOME)} */}
         </div>
       </StyledLogin>
     </StyledAuthContainer>
@@ -84,9 +94,10 @@ export function Login({
 }
 
 Login.propTypes = {
+  history: PropTypes.object,
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  success: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  success: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   onSignIn: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,

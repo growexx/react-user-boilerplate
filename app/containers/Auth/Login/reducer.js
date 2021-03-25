@@ -6,6 +6,7 @@ import {
   CHANGE_PASSWORD,
   ERROR,
   LOADING,
+  RESET,
   SUCCESS,
 } from './constants';
 
@@ -35,6 +36,13 @@ const loginReducer = (state = initialState, action) =>
         break;
       case SUCCESS:
         draft.success = action.success;
+        break;
+      case RESET:
+        draft.email = '';
+        draft.password = '';
+        draft.loading = false;
+        draft.error = false;
+        draft.success = false;
         break;
       default:
         return state;

@@ -10,6 +10,7 @@ import {
   ERROR,
   LOADING,
   LOGIN,
+  RESET,
   SUCCESS,
 } from './constants';
 
@@ -91,5 +92,15 @@ export function logInSuccess(success) {
 export function fireLogin() {
   return {
     type: LOGIN,
+  };
+}
+
+/**
+ * resets the state
+ *
+ */
+export function resetState() {
+  return {
+    type: RESET,
   };
 }

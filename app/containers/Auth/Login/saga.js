@@ -3,7 +3,7 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-
+import sha256 from 'sha256';
 import request from 'utils/request';
 import {
   makeSelectEmail,
@@ -11,8 +11,8 @@ import {
 } from 'containers/Auth/Login/selectors';
 
 import { LOGIN } from './constants';
-import { API_ENDPOINTS, ROUTES } from '../constants';
-import { changeLoading, logInError, logInSuccess } from './actions';
+import { API_ENDPOINTS } from '../constants';
+import { changeLoading, logInError, logInSuccess, resetState } from './actions';
 import StorageService from '../../../utils/StorageService';
 import { STORAGE_KEY } from '../../../utils/constants';
 
@@ -24,7 +24,7 @@ export function* getSignIn() {
   const passWord = yield select(makeSelectPassword());
   const payload = {
     email: emailId,
-    password: passWord,
+    password: sha256(passWord),
   };
   const data = {
     method: 'POST',
@@ -38,9 +38,11 @@ export function* getSignIn() {
       yield put(logInSuccess(log.message));
       StorageService.set(STORAGE_KEY, log.data.token);
       yield put(changeLoading(false));
+      yield put(resetState());
     }
   } catch (err) {
     yield put(logInError(err));
+    yield put(resetState());
   }
 }
 
