@@ -1,3 +1,6 @@
+import { STORAGE_KEY } from './constants';
+import StorageService from './StorageService';
+import { userExists } from './userExists';
 /**
  * Parses the JSON returned by a network request
  *
@@ -38,7 +41,27 @@ function checkStatus(response) {
  * @return {object}           The response data
  */
 export default function request(url, options) {
-  return fetch(url, options)
+  const option = {
+    method: options.method,
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  if (options.body) {
+    option.body = JSON.stringify(options.body);
+  }
+  if (options.data) {
+    option.data = options.data;
+  }
+  if (options.headers) {
+    option.headers = options.headers;
+  }
+  if (userExists()) {
+    option.headers.Authorization = `${StorageService.get(STORAGE_KEY)}`;
+    option.headers.accessToken = `${StorageService.get(STORAGE_KEY)}`;
+  }
+  return fetch(url, option)
     .then(checkStatus)
     .then(parseJSON);
 }

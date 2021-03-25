@@ -26,7 +26,7 @@ const PrivateRoute = mainProps => {
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.node.isRequired,
+  component: PropTypes.func,
 };
 
 export default PrivateRoute;

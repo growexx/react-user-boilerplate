@@ -15,6 +15,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
+import Logout from 'containers/Auth/Logout/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
@@ -39,6 +40,7 @@ export default function App() {
         <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
         <PrivateRoute path={ROUTES.FONTAWESOME} component={FontAwesomeDemo} />
+        <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
         <Route path="" component={NotFoundPage} />

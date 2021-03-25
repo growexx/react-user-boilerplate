@@ -13,13 +13,39 @@ import {
   GoogleOutlined,
   WindowsFilled,
 } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
+import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
+import {
+  makeSelectEmail,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectPassword,
+} from 'containers/Auth/Login/selectors';
 import messages from './messages';
 import { StyledLogin } from './StyledLogin';
 import { StyledAuthContainer } from '../StyledAuthContainer';
 import AuthSideContainer from '../index';
 import { AUTH_TYPE } from '../constants';
+import { makeSelectSuccess } from './selectors';
+import { changeEmail, changePassword, fireLogin } from './actions';
+import reducer from './reducer';
+import saga from './saga';
 
-export function Login() {
+const key = 'login';
+export function Login({
+  error,
+  loading,
+  onSignIn,
+  success,
+  onChangeEmail,
+  onChangePassword,
+}) {
+  useInjectReducer({ key, reducer });
+  useInjectSaga({ key, saga });
   return (
     <StyledAuthContainer>
       <Helmet>
@@ -41,10 +67,14 @@ export function Login() {
             <FormattedMessage {...messages.emailLogin} />
           </p>
           <div className="accountData">
-            <Input defaultValue="Email" />
-            <Input defaultValue="Password" />
+            <Input placeholder="Email" onChange={onChangeEmail} />
+            <Input
+              placeholder="Password"
+              onChange={onChangePassword}
+              type="password"
+            />
           </div>
-          <Button>
+          <Button loading={loading} onClick={onSignIn}>
             <FormattedMessage {...messages.signIn} />
           </Button>
         </div>
@@ -53,4 +83,39 @@ export function Login() {
   );
 }
 
-export default Login;
+Login.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  success: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  onSignIn: PropTypes.func,
+  email: PropTypes.string,
+  password: PropTypes.string,
+  onChangePassword: PropTypes.func,
+  onChangeEmail: PropTypes.func,
+};
+
+const mapStateToProps = createStructuredSelector({
+  email: makeSelectEmail(),
+  password: makeSelectPassword(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+  success: makeSelectSuccess(),
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeEmail: evt => dispatch(changeEmail(evt.target.value)),
+    onChangePassword: evt => dispatch(changePassword(evt.target.value)),
+    onSignIn: evt => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(fireLogin());
+    },
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(withConnect)(Login);
