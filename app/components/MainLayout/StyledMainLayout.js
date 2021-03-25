@@ -13,7 +13,7 @@ export const StyledMainLayout = styled.div`
   }
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
-    background: #001529;
+    background-color: #001529;
     color: ${colors.white};
   }
   .ant-menu-dark .ant-menu-item,
@@ -21,6 +21,9 @@ export const StyledMainLayout = styled.div`
   .ant-menu-dark .ant-menu-item > a,
   .ant-menu-dark .ant-menu-item > span > a {
     color: ${colors.black};
+  }
+  .ant-menu-item-selected > span > a {
+    color: ${colors.white} !important;
   }
   .sideBarTrigger {
     padding: 0 24px;
