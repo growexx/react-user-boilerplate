@@ -7,10 +7,6 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-/* eslint-disable no-sparse-arrays */
-/* eslint-disable global-require */
-/* eslint-disable import/no-unresolved */
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
@@ -26,6 +22,13 @@ import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../Auth/constants';
+import {
+  FAV_ICON_152_152,
+  FAV_ICON_16_16,
+  FAV_ICON_32_32,
+  APPLE_TOUCH_ICON,
+  FAV_ICON_192_192,
+} from '../../images/favicons';
 const AppWrapper = styled.div`
   display: flex;
   min-height: 100vh;
@@ -38,30 +41,30 @@ export default function App() {
       rel: 'icon',
       type: 'image/png',
       sizes: '512x512',
-      href: require('../../images/favicons/android-chrome-512x512.png'),
+      href: FAV_ICON_152_152,
     },
 
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '192x192',
-      href: require('../../images/favicons/android-chrome-192x192.png'),
+      href: FAV_ICON_192_192,
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: require('../../images/favicons/favicon-32x32.png'),
+      href: FAV_ICON_32_32,
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: require('../../images/favicons/favicon-16x16.png'),
+      href: FAV_ICON_16_16,
     },
     {
       rel: 'apple-touch-icon',
-      href: require('../../images/favicons/apple-touch-icon.png'),
+      href: APPLE_TOUCH_ICON,
     },
   ];
   return (
