@@ -1,17 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import StorageService from 'utils/StorageService';
-import { ROUTES } from '../constants';
+import { EMITTER_EVENTS } from '../../../utils/constants';
+import Emitter from '../../../utils/events';
 
-const Logout = props => {
+const Logout = () => {
   StorageService.clear();
-  props.history.push(ROUTES.LOGIN);
-
+  Emitter.emit(EMITTER_EVENTS.LOG_OUT);
   return <React.Fragment />;
-};
-
-Logout.propTypes = {
-  history: PropTypes.object,
 };
 
 export default Logout;

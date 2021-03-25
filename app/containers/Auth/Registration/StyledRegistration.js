@@ -46,7 +46,6 @@ export const StyledRegistration = styled.div`
     input {
       margin-top: 10px;
       background-color: ${colors.gray200};
-      height: ${fontSizes.f40};
     }
     input[value] {
       color: ${colors.gray400};

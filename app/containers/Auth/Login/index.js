@@ -7,7 +7,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Input, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 import {
   FacebookFilled,
   GoogleOutlined,
@@ -36,60 +36,75 @@ import reducer from './reducer';
 import saga from './saga';
 
 const key = 'login';
-export function Login({
-  // history,
-  // error,
-  email,
-  password,
-  loading,
-  onSignIn,
-  // success,
-  onChangeEmail,
-  onChangePassword,
-}) {
+export function Login({ loading, onSignIn, onChangeEmail, onChangePassword }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
   return (
-    <StyledAuthContainer>
-      <Helmet>
-        <title>Login</title>
-        <meta name="description" content="Description of Login" />
-      </Helmet>
-      <AuthSideContainer authType={AUTH_TYPE[0]} />
-      <StyledLogin>
-        <p className="createAccount">
-          <FormattedMessage {...messages.accountDetails} />
-        </p>
-        <div className="LoginSubContainer">
-          <div className="socialIcons">
-            <FacebookFilled />
-            <GoogleOutlined />
-            <WindowsFilled />
-          </div>
-          <p className="emailLogin">
-            <FormattedMessage {...messages.emailLogin} />
+    <Form onFinish={onSignIn}>
+      <StyledAuthContainer>
+        <Helmet>
+          <title>Login</title>
+          <meta name="description" content="Description of Login" />
+        </Helmet>
+        <AuthSideContainer authType={AUTH_TYPE[0]} />
+        <StyledLogin>
+          <p className="createAccount">
+            <FormattedMessage {...messages.accountDetails} />
           </p>
-          <div className="accountData">
-            <Input
-              placeholder="Email"
-              onChange={onChangeEmail}
-              value={email}
-              type="email"
-            />
-            <Input.Password
-              value={password}
-              placeholder="Password"
-              onChange={onChangePassword}
-              type="password"
-            />
+          <div className="LoginSubContainer">
+            <div className="socialIcons">
+              <FacebookFilled />
+              <GoogleOutlined />
+              <WindowsFilled />
+            </div>
+            <p className="emailLogin">
+              <FormattedMessage {...messages.emailLogin} />
+            </p>
+            <div className="accountData">
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
+                  },
+                  {
+                    required: true,
+                    message: 'Please input your E-mail!',
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Email"
+                  onChange={onChangeEmail}
+                  type="email"
+                />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your password!',
+                  },
+                ]}
+              >
+                <Input.Password
+                  placeholder="Password"
+                  onChange={onChangePassword}
+                  type="password"
+                />
+              </Form.Item>
+            </div>
+            <Form.Item>
+              <Button loading={loading} htmlType="submit">
+                <FormattedMessage {...messages.signIn} />
+              </Button>
+            </Form.Item>
           </div>
-          <Button loading={loading} onClick={onSignIn}>
-            <FormattedMessage {...messages.signIn} />
-          </Button>
-          {/* {success !== false && error !== true && history.push(ROUTES.HOME)} */}
-        </div>
-      </StyledLogin>
-    </StyledAuthContainer>
+        </StyledLogin>
+      </StyledAuthContainer>
+    </Form>
   );
 }
 

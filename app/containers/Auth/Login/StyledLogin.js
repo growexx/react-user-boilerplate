@@ -48,8 +48,10 @@ export const StyledLogin = styled.div`
     > span:hover, >span:focus >span:visited {
       border-color: ${colors.brandPrimaryHover}
     }
-    > span {
+    > div:nth-child(2){
       margin-top: 10px;
+    }
+    span {
       background-color: ${colors.gray200};
     }
     > input: first-child {
