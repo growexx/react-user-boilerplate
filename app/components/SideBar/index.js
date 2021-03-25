@@ -21,7 +21,7 @@ const SideBar = props => (
     id="components-layout-demo-custom-trigger"
   >
     <div className="logo">
-      {!props.collapsed ? <p>GrowExx</p> : <image src={GrowExxLogo} />}
+      {!props.collapsed ? <p>GrowExx</p> : <img src={GrowExxLogo} alt="logo" />}
     </div>
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
       {MenuItems.map((menu, i) => (
