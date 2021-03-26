@@ -1,17 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 import 'antd/dist/antd.css';
 import {
-  EPILOGUE_STAMP_WOFF2,
-  EPILOGUE_STAMP_WOFF,
-} from './styles/fonts/Epilogue';
+  ROBOTO_BLACK_TTF,
+  ROBOTO_BOLD_ITALIC_TTF,
+} from './styles/fonts/Roboto';
 
 import injectFontFaces from './styles/injectFontFaces';
 const getFormattedURL = (name, format) => `url(${name}) format(${format})`;
 
 const GlobalStyle = createGlobalStyle`
-  ${injectFontFaces('Epilogue', [
-    getFormattedURL(EPILOGUE_STAMP_WOFF2, 'woff2'),
-    getFormattedURL(EPILOGUE_STAMP_WOFF, 'woff'),
+  ${injectFontFaces('Roboto', [
+    getFormattedURL(ROBOTO_BLACK_TTF, 'ttf'),
+    getFormattedURL(ROBOTO_BOLD_ITALIC_TTF, 'ttf'),
   ])}
   body {
     height: 100%;

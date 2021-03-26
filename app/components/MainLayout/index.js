@@ -44,7 +44,7 @@ class MainLayout extends React.Component {
 
   componentWillUnmount() {
     Emitter.off(EMITTER_EVENTS.LOG_IN);
-    Emitter.off(EMITTER_EVENTS.LOG_IN);
+    Emitter.off(EMITTER_EVENTS.LOG_OUT);
   }
 
   render() {
