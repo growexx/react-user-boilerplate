@@ -28,6 +28,21 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     min-width: 100%;
   }
+  .u-m-4{
+    margin: @margin-xss;
+  }
+  .u-m-8{
+    margin: @margin-xs;
+  }
+  .u-m-12{
+    margin: @margin-sm;
+  }
+  .u-m-16{
+    margin: @margin-md;
+  }
+  .u-m-24{
+    margin: @margin-lg;
+  }
 `;
 
 export default GlobalStyle;
