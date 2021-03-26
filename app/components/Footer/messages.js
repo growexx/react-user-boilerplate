@@ -8,14 +8,12 @@ import { defineMessages } from 'react-intl';
 export const scope = 'boilerplate.components.Footer';
 
 export default defineMessages({
-  licenseMessage: {
-    id: `${scope}.license.message`,
-    defaultMessage: 'This project is licensed under the MIT license.',
+  copyRightMessage: {
+    id: `${scope}.copyRightMessage.message`,
+    defaultMessage: `&copy; ${new Date().getFullYear()} React Boilerplate`,
   },
-  authorMessage: {
-    id: `${scope}.author.message`,
-    defaultMessage: `
-      Made with love by {author}.
-    `,
+  copyRightSubMessage: {
+    id: `${scope}.copyRightSubMessage.message`,
+    defaultMessage: `Get started with your react application in minutes.`,
   },
 });

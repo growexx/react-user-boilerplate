@@ -33,11 +33,9 @@ export const StyledMainLayout = styled.div`
     transition: color 0.3s;
     outline: none;
   }
-
   .sideBarTrigger:hover {
     color: ${colors.brandPrimary};
   }
-
   #components-layout-demo-custom-trigger .logo {
     height: 32px;
     margin: 16px;
@@ -49,11 +47,9 @@ export const StyledMainLayout = styled.div`
       color: ${colors.blackPearl};
     }
   }
-
   .site-layout .site-layout-background {
     background: #fff;
   }
-
   .headerLayout {
     display: flex;
     padding: 0;
