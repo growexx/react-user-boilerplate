@@ -42,10 +42,23 @@ export const StyledLogin = styled.div`
     margin: 10px;
   }
   .accountData {
-    input {
+    .ant-input:focus, .ant-input-focused, .ant-input:hover {
+      border-color: ${colors.brandPrimaryHover}
+    }
+    > span:hover, >span:focus >span:visited {
+      border-color: ${colors.brandPrimaryHover}
+    }
+    > div:nth-child(2){
       margin-top: 10px;
+    }
+    .ant-input-password {
       background-color: ${colors.gray200};
-      height: ${fontSizes.f40};
+    }
+    > input: first-child {
+      margin-top: 10px;
+    }
+    input   {
+      background-color: ${colors.gray200};
     }
     input[value] {
       color: ${colors.gray400};

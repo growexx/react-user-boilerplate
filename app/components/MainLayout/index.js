@@ -12,8 +12,10 @@ import App from 'containers/App';
 import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
 import SideBar from 'components/SideBar';
+import Emitter from 'utils/events';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
 import { userExists } from '../../utils/userExists';
+import { EMITTER_EVENTS } from '../../utils/constants';
 const { Header, Content } = Layout;
 
 class MainLayout extends React.Component {
@@ -30,6 +32,20 @@ class MainLayout extends React.Component {
       collapsed: !collapsed,
     });
   };
+
+  componentDidMount() {
+    Emitter.on(EMITTER_EVENTS.LOG_IN, () => {
+      this.forceUpdate();
+    });
+    Emitter.on(EMITTER_EVENTS.LOG_OUT, () => {
+      this.forceUpdate();
+    });
+  }
+
+  componentWillUnmount() {
+    Emitter.off(EMITTER_EVENTS.LOG_IN);
+    Emitter.off(EMITTER_EVENTS.LOG_IN);
+  }
 
   render() {
     if (userExists()) {
