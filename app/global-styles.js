@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import 'antd/dist/antd.css';
 import {
   ROBOTO_BLACK_TTF,
   ROBOTO_BOLD_ITALIC_TTF,
@@ -43,6 +42,9 @@ const GlobalStyle = createGlobalStyle`
   .u-m-24{
     margin: @margin-lg;
   }
+  .ant-layout-sider{
+    background: @primary-color !important;
+   }
 `;
 
 export default GlobalStyle;

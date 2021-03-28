@@ -12,12 +12,13 @@ module.exports = {
     [
       'styless',
       {
-        import: '~antd/lib/style/themes/default.less',
+        import: './app/styles/antDefaultVars.less',
         lessOptions: {
           javascriptEnabled: true,
         },
       },
     ],
+    ['import', { libraryName: 'antd', style: true }],
     'styled-components',
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
