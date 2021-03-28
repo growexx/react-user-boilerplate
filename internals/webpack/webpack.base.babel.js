@@ -4,7 +4,15 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
 
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(
+  fs.readFileSync(
+    path.join(__dirname, '../../app/styles/antDefaultVars.less'),
+    'utf8',
+  ),
+);
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -36,6 +44,7 @@ module.exports = options => ({
             loader: 'less-loader',
             options: {
               javascriptEnabled: true,
+              modifyVars: themeVariables,
             },
           },
         ],

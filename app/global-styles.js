@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     margin: @margin-lg;
   }
   .ant-layout-sider{
-    background: @primary-color !important;
+    background: @error-color !important;
    }
 `;
 
