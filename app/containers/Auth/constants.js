@@ -9,6 +9,7 @@ export const ROUTES = {
   REGISTER: '/register',
   PROFILE: '/profile',
   LOGOUT: '/logout',
+  INFINITELOADER: '/infinite-loader',
 };
 
 // API-ROUTES

@@ -8,6 +8,7 @@ import {
   UserOutlined,
   CheckCircleOutlined,
   SmileOutlined,
+  LoadingOutlined,
 } from '@ant-design/icons';
 import { ROUTES } from '../../containers/Auth/constants';
 
@@ -26,5 +27,10 @@ export const MenuItems = [
     to: ROUTES.FONTAWESOME,
     tabName: 'Font Awesome Demo',
     icon: <SmileOutlined />,
+  },
+  {
+    to: ROUTES.INFINITELOADER,
+    tabName: 'Infinite Loader Demo',
+    icon: <LoadingOutlined />,
   },
 ];

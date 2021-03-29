@@ -17,6 +17,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
+import InfiniteLoader from 'components/InfiniteLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
@@ -47,6 +48,7 @@ export default function App() {
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
         <PrivateRoute path={ROUTES.FONTAWESOME} component={FontAwesomeDemo} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
+        <PrivateRoute path={ROUTES.INFINITELOADER} component={InfiniteLoader} />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
         <Route path="" component={NotFoundPage} />
