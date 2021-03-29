@@ -42,9 +42,9 @@ const GlobalStyle = createGlobalStyle`
   .u-m-24{
     margin: @margin-lg;
   }
-  .ant-layout-sider{
-    background: @error-color !important;
-   }
+  // .ant-layout-sider{
+  //   background: @error-color !important;
+  //  }
 `;
 
 export default GlobalStyle;

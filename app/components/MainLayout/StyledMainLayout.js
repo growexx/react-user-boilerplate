@@ -3,7 +3,13 @@ import { colors, fontSizes, fontWeights } from '../../styles/index';
 
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
+    transition: none;
     background: ${colors.brandBackgroundPrimary};
+  }
+  .ant-menu .ant-menu-item,
+  .ant-menu-submenu-title,
+  .ant-menu {
+    transition: none;
   }
   .ant-menu.ant-menu-dark,
   .ant-menu-dark .ant-menu-sub,
@@ -37,14 +43,20 @@ export const StyledMainLayout = styled.div`
     color: ${colors.brandPrimary};
   }
   #components-layout-demo-custom-trigger .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: ${colors.blackPearl};
     p {
       text-align: center;
       font-size: ${fontSizes.f20};
       font-weight: ${fontWeights.bold};
-      color: ${colors.blackPearl};
+      color: ${colors.white};
+      margin: 16px 0;
+    }
+    img {
+      margin: 5px 0 0 0;
+      width: 200px;
     }
   }
   .site-layout .site-layout-background {
