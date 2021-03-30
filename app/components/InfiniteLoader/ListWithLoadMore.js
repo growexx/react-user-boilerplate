@@ -5,13 +5,9 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import { List, Avatar, Button, Skeleton } from 'antd';
 import request from 'utils/request';
 import { API_ENDPOINTS } from '../../containers/Auth/constants';
-// import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
 
 const count = 3;
 

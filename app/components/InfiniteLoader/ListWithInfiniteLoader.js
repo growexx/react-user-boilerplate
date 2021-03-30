@@ -9,8 +9,10 @@ import React from 'react';
 import { List, message, Avatar, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import request from 'utils/request';
+import { FormattedMessage } from 'react-intl';
 import { ListWithInfiniteLoader as StyledList } from './StyledList';
 import { API_ENDPOINTS } from '../../containers/Auth/constants';
+import messages from './messages';
 
 class ListWithInfiniteLoader extends React.Component {
   state = {
@@ -40,13 +42,16 @@ class ListWithInfiniteLoader extends React.Component {
     const { data } = this.state;
     this.setState({
       loading: true,
-      list: data.map(singleData => ({ loading: true, ...singleData })),
+      list: data.concat(
+        [...new Array(3)].map(() => ({ loading: true, name: {} })),
+      ),
     });
     if (data.length > 14) {
-      message.warning('Infinite List loaded all');
+      message.warning(<FormattedMessage {...messages.listLoaded} />);
       this.setState({
         hasMore: false,
         loading: false,
+        list: data,
       });
       return;
     }
@@ -69,7 +74,7 @@ class ListWithInfiniteLoader extends React.Component {
             pageStart={0}
             loadMore={this.handleInfiniteOnLoad}
             hasMore={!this.state.loading && this.state.hasMore}
-            useWindow={false}
+            useWindow
           >
             <List
               dataSource={this.state.list}

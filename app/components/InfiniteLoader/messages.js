@@ -13,4 +13,8 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the InfiniteLoader component!',
   },
+  listLoaded: {
+    id: `${scope}.listLoaded`,
+    defaultMessage: 'Infinite List loaded all',
+  },
 });
