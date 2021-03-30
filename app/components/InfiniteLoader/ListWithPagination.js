@@ -1,12 +1,13 @@
 /* eslint-disable no-plusplus */
 /**
  *
- * Demo With LoadMore Button and Skeleton Loader
+ * Demo with List having Pagination.
  *
  */
 
 import React from 'react';
 import { List } from 'antd';
+import { API_ENDPOINTS } from '../../containers/Auth/constants';
 
 const ListWithPagination = () => {
   const listData = [];
@@ -14,8 +15,7 @@ const ListWithPagination = () => {
     listData.push({
       href: 'https://ant.design',
       title: `ant design part ${i}`,
-      avatar:
-        'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+      avatar: API_ENDPOINTS.LIST_AVATAR,
       description:
         'Ant Design, a design language for background applications, is refined by Ant UED Team.',
       content:
@@ -32,6 +32,8 @@ const ListWithPagination = () => {
           // eslint-disable-next-line no-console
           console.log(page);
         },
+        size: 'small',
+        position: 'top',
         pageSize: 3,
       }}
       dataSource={listData}

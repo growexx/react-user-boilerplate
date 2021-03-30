@@ -9,13 +9,13 @@ import React from 'react';
 // import styled from 'styled-components';
 import { List, Avatar, Button, Skeleton } from 'antd';
 import request from 'utils/request';
+import { API_ENDPOINTS } from '../../containers/Auth/constants';
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
 const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
-class LoadMoreDemo extends React.Component {
+class ListWithLoadMore extends React.Component {
   state = {
     initLoading: true,
     loading: false,
@@ -34,7 +34,7 @@ class LoadMoreDemo extends React.Component {
   }
 
   getData = callback => {
-    request(fakeDataUrl, {
+    request(API_ENDPOINTS.LIST, {
       method: 'GET',
     }).then(res => callback(res));
   };
@@ -92,11 +92,9 @@ class LoadMoreDemo extends React.Component {
           <List.Item>
             <Skeleton avatar title={false} loading={item.loading} active>
               <List.Item.Meta
-                avatar={
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                }
-                title={<a href="https://ant.design">{item.name.last}</a>}
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                avatar={<Avatar src={API_ENDPOINTS.LIST_AVATAR} />}
+                title={item.name.last}
+                description={item.email}
               />
             </Skeleton>
           </List.Item>
@@ -105,6 +103,6 @@ class LoadMoreDemo extends React.Component {
     );
   }
 }
-LoadMoreDemo.propTypes = {};
+ListWithLoadMore.propTypes = {};
 
-export default LoadMoreDemo;
+export default ListWithLoadMore;

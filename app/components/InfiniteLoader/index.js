@@ -5,11 +5,11 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import { Tabs } from 'antd';
-import LoadMoreDemo from './LoadMoreDemo';
+import ListWithLoadMore from './ListWithLoadMore';
 import ListWithPagination from './ListWithPagination';
+import ListWithInfiniteLoader from './ListWithInfiniteLoader';
+import { TABS } from './constants';
 
 function InfiniteLoader() {
   const { TabPane } = Tabs;
@@ -20,14 +20,14 @@ function InfiniteLoader() {
   return (
     <div>
       <Tabs defaultActiveKey="1" onChange={callback}>
-        <TabPane tab="Load More" key="1">
-          <LoadMoreDemo />
+        <TabPane tab={TABS.TITLE.TAB_ONE} key="1">
+          <ListWithInfiniteLoader />
         </TabPane>
-        <TabPane tab="List With Pagination" key="2">
+        <TabPane tab={TABS.TITLE.TAB_TWO} key="2">
+          <ListWithLoadMore />
+        </TabPane>
+        <TabPane tab={TABS.TITLE.TAB_THREE} key="3">
           <ListWithPagination />
-        </TabPane>
-        <TabPane tab="Tab 3" key="3">
-          Content of Tab Pane 3
         </TabPane>
       </Tabs>
     </div>
