@@ -9,6 +9,7 @@ import {
   CheckCircleOutlined,
   SmileOutlined,
   LoadingOutlined,
+  ExportOutlined,
 } from '@ant-design/icons';
 import { ROUTES } from '../../containers/Auth/constants';
 
@@ -32,5 +33,10 @@ export const MenuItems = [
     to: ROUTES.LOADER,
     tabName: 'Loader Demo',
     icon: <LoadingOutlined />,
+  },
+  {
+    to: ROUTES.EXPORTDATA,
+    tabName: 'Export Data To CSV',
+    icon: <ExportOutlined />,
   },
 ];

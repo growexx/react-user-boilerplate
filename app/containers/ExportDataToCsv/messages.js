@@ -9,8 +9,8 @@ import { defineMessages } from 'react-intl';
 export const scope = 'app.containers.ExportDataToCsv';
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the ExportDataToCsv container!',
+  exportData: {
+    id: `${scope}.exportData`,
+    defaultMessage: 'Export Data',
   },
 });

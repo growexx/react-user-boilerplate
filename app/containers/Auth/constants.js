@@ -10,6 +10,7 @@ export const ROUTES = {
   PROFILE: '/profile',
   LOGOUT: '/logout',
   LOADER: '/loader',
+  EXPORTDATA: '/export-data',
 };
 
 // API-ROUTES
