@@ -11,6 +11,7 @@ export const ROUTES = {
   LOGOUT: '/logout',
   LOADER: '/loader',
   EXPORTDATA: '/export-data',
+  NUMERALCONVERTER: '/number-converter-demo',
 };
 
 // API-ROUTES

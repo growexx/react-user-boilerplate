@@ -25,6 +25,7 @@ import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../Auth/constants';
 import ExportDataToCsv from '../ExportDataToCsv';
+import NumeralConversion from '../NumeralConversion';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -51,6 +52,10 @@ export default function App() {
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
         <PrivateRoute path={ROUTES.EXPORTDATA} component={ExportDataToCsv} />
+        <PrivateRoute
+          path={ROUTES.NUMERALCONVERTER}
+          component={NumeralConversion}
+        />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
         <Route path="" component={NotFoundPage} />
