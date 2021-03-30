@@ -1,6 +1,6 @@
 /**
  *
- * InfiniteLoader
+ * Loader
  *
  */
 
@@ -11,7 +11,7 @@ import ListWithPagination from './ListWithPagination';
 import ListWithInfiniteLoader from './ListWithInfiniteLoader';
 import { TABS } from './constants';
 
-function InfiniteLoader() {
+function Loader() {
   const { TabPane } = Tabs;
   function callback(key) {
     // eslint-disable-next-line no-console
@@ -34,6 +34,6 @@ function InfiniteLoader() {
   );
 }
 
-InfiniteLoader.propTypes = {};
+Loader.propTypes = {};
 
-export default InfiniteLoader;
+export default Loader;

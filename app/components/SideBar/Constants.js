@@ -29,8 +29,8 @@ export const MenuItems = [
     icon: <SmileOutlined />,
   },
   {
-    to: ROUTES.INFINITELOADER,
-    tabName: 'Infinite Loader Demo',
+    to: ROUTES.LOADER,
+    tabName: 'Loader Demo',
     icon: <LoadingOutlined />,
   },
 ];
