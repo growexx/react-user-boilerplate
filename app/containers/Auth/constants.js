@@ -21,4 +21,5 @@ export const API_ENDPOINTS = {
   LIST: 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo',
   LIST_AVATAR:
     'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+  EXPORT_CSV: '',
 };

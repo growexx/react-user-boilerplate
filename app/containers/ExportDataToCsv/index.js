@@ -8,7 +8,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Button, Table } from 'antd';
 import { FormattedMessage } from 'react-intl';
-import { exportJsonAsCSV } from '../../utils/csvExport';
+import { exportJsonAsCSV } from 'utils/csvExport';
+import request from 'utils/request';
 import { StyledButton, StyledExport } from './StyledExport';
 import {
   CSV_FILE_NAME,
@@ -17,6 +18,7 @@ import {
   TABLE_DATA,
 } from './constants';
 import messages from './messages';
+import { API_ENDPOINTS } from '../Auth/constants';
 class ExportDataToCsv extends React.Component {
   state = {
     selectedRows: [],
@@ -36,12 +38,33 @@ class ExportDataToCsv extends React.Component {
     },
   };
 
-  exportData = () => {
+  /**
+   * export data client side
+   */
+  exportDataClientSide = () => {
     exportJsonAsCSV(
       this.state.selectedRows || [],
       FIELDS_FOR_CSV,
       CSV_FILE_NAME,
     );
+  };
+
+  /**
+   * export data server side
+   */
+  exportDataServerSide = () => {
+    const payload = {
+      data: this.state.selectedRows,
+      fields: FIELDS_FOR_CSV,
+    };
+    request(API_ENDPOINTS.EXPORT_CSV, payload).then(res => {
+      const downloadLink = document.createElement('a');
+      downloadLink.href = res.url;
+      downloadLink.download = CSV_FILE_NAME;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    });
   };
 
   render() {
@@ -55,7 +78,7 @@ class ExportDataToCsv extends React.Component {
           <StyledButton>
             <Button
               type="primary"
-              onClick={this.exportData}
+              onClick={this.exportDataClientSide}
               disabled={this.state.selectedRows.length === 0}
             >
               <FormattedMessage {...messages.exportData} />
