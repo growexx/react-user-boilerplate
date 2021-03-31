@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights, borders } from '../../../styles';
+import { colors, fontWeights } from '../../../styles';
 export const StyledRegistration = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -12,15 +12,15 @@ export const StyledRegistration = styled.div`
   .createAccount {
     margin: 0;
     text-align: center;
-    font-size: ${fontSizes.f42};
+    font-size: @font-size-lg+26;
     font-weight: ${fontWeights.bold};
     color: ${colors.brandPrimary};
   }
   .emailRegistration {
-    margin-top: ${fontSizes.f31};
+    margin-top: @font-size-lg+15;
     color: ${colors.gray400};
     font-weight: ${fontWeights.regular};
-    font-size: ${fontSizes.f14};
+    font-size: @font-size-base;
     text-align: center;
   }
   .registrationSubContainer {
@@ -49,30 +49,30 @@ export const StyledRegistration = styled.div`
     }
     input[value] {
       color: ${colors.gray400};
-      font-size: ${fontSizes.f15};
+      font-size: @font-size-base+1px;
     }
   }
   button {
-    margin-top: ${fontSizes.f31};
+    margin-top: @font-size-lg+15;
     background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    border-radius: 50px;
+    border: 2px solid @white;
+    border-radius: @border-radius-base+48;
     text-align: center;
-    color: ${colors.white};
+    color: @white;
     text-align: center;
-    font-size: ${fontSizes.f15};
+    font-size: @font-size-lg-15;
     font-weight: ${fontWeights.medium};
-    height: ${fontSizes.f40};
+    height: @font-size-lg+24;
     width: 160px;
   }
   button:hover {
     background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    color: ${colors.white};
+    border: 2px solid @white;
+    color: @white;
   }
   button:focus {
     background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    color: ${colors.white};
+    border: 2px solid @white;
+    color: @white;
   }
 `;

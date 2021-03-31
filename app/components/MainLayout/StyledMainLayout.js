@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../styles/index';
-
+import '../../styles/antDefaultVars.less';
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
     transition: none;
@@ -20,20 +19,20 @@ export const StyledMainLayout = styled.div`
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
     background-color: @secondary-color;
-    color: ${colors.white};
+    color: @white;
   }
   .ant-menu-dark .ant-menu-item,
   .ant-menu-dark .ant-menu-item-group-title,
   .ant-menu-dark .ant-menu-item > a,
   .ant-menu-dark .ant-menu-item > span > a {
-    color: ${colors.black};
+    color: @black;
   }
   .ant-menu-item-selected > span > a {
-    color: ${colors.white} !important;
+    color: @white !important;
   }
   .sideBarTrigger {
-    padding: 0 24px;
-    font-size: 18px;
+    padding: 0 @padding-lg;
+    font-size: @font-size-base+4px;
     line-height: 64px;
     cursor: pointer;
     transition: color 0.3s;
@@ -47,7 +46,7 @@ export const StyledMainLayout = styled.div`
     justify-content: center;
     align-items: center;
     img {
-      margin: 20px;
+      margin: @margin-md;
     }
   }
   .site-layout .site-layout-background {
@@ -56,7 +55,7 @@ export const StyledMainLayout = styled.div`
   .headerLayout {
     display: flex;
     padding: 0;
-    background-color: white;
+    background-color: @white;
   }
 `;
 

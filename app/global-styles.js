@@ -27,24 +27,59 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     min-width: 100%;
   }
-  .u-m-4{
+  /*
+  * margin utility class
+  */
+  .u-m-1{
     margin: @margin-xss;
   }
-  .u-m-8{
+  .u-m-2{
     margin: @margin-xs;
   }
-  .u-m-12{
+  .u-m-3{
     margin: @margin-sm;
   }
-  .u-m-16{
+  .u-m-4{
     margin: @margin-md;
   }
-  .u-m-24{
+  .u-m-5{
     margin: @margin-lg;
   }
-  // .ant-layout-sider{
-  //   background: @error-color !important;
-  //  }
+
+  /**
+   * display utility class
+  */
+   .u-d-block{
+    display: block;
+  }
+  .u-d-flex{
+    display: flex;
+  }
+  .u-d-inline{
+    display: inline;
+  }
+  .u-d-inline-block{
+    display: inline-block;
+  }
+  .u-d-inline-flex{
+    display: inline-flex;
+  }
+  .u-d-none{
+    display: none;
+  }
+  .u-d-table{
+    display: table;
+  }
+  .u-d-table-cell{
+    display: table-cell;
+  }
+
+  /**
+   * Utility classes for flex-box 
+  */
+  .u-flex-column {
+    flex-direction: column;
+  }
 `;
 
 export default GlobalStyle;
