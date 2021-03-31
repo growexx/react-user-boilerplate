@@ -3,11 +3,13 @@ export const CREATE_COLUMNS = [
     title: 'Input',
     dataIndex: 'input',
     key: 'input',
+    width: 200,
   },
   {
     title: 'Value',
     dataIndex: 'value',
     key: 'value',
+    width: 150,
   },
 ];
 export const FORMAT_COLUMNS = [
@@ -15,16 +17,19 @@ export const FORMAT_COLUMNS = [
     title: 'Number',
     dataIndex: 'number',
     key: 'number',
+    width: 100,
   },
   {
     title: 'Format',
     dataIndex: 'format',
     key: 'format',
+    width: 100,
   },
   {
     title: 'String',
     dataIndex: 'string',
     key: 'string',
+    width: 100,
   },
 ];
 

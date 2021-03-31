@@ -12,7 +12,6 @@ import messages from './messages';
 import List from './List';
 import ListItem from './ListItem';
 import ListItemTitle from './ListItemTitle';
-import { toCurrency } from '../../utils/numeral';
 
 export default function FeaturePage() {
   return (
@@ -44,7 +43,6 @@ export default function FeaturePage() {
           <p>
             <FormattedMessage {...messages.feedbackMessage} />
           </p>
-          {toCurrency('123456789', 'USD')}
         </ListItem>
 
         <ListItem>

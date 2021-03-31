@@ -20,6 +20,12 @@ import {
   EXPONENTIAL_FORMAT,
   PERCENTAGES_FORMAT,
 } from './constants';
+import {
+  StyledHeader,
+  StyledTableContainer,
+  StyledFormatHeader,
+  StyledInput,
+} from './StyledNumeralConversion';
 const { Search } = Input;
 class NumeralConversion extends React.Component {
   state = {
@@ -98,72 +104,103 @@ class NumeralConversion extends React.Component {
           <title>NumeralConversion</title>
           <meta name="description" content="Description of NumeralConversion" />
         </Helmet>
-        <FormattedMessage {...messages.header} />
-        <Search
-          placeholder="Enter number to convert"
-          onSearch={onSearch}
-          enterButton="GO"
-          onChange={event => {
-            this.setState({
-              value: event.target.value,
-            });
-          }}
-          value={this.state.value}
-        />
-        <FormattedMessage {...messages.createHeader} />
-        <br />
-        <FormattedMessage {...messages.createMessage} />
-        <Table
-          pagination={false}
-          columns={CREATE_COLUMNS}
-          dataSource={createData()}
-        />
-        <FormattedMessage {...messages.formatHeader} />
-        <br />
-        <FormattedMessage {...messages.formatMessage} />
-        <br />
-        <br />
-        <FormattedMessage {...messages.number} />
-        <Table
-          pagination={false}
-          columns={FORMAT_COLUMNS}
-          dataSource={numbersData()}
-        />
-        <br />
-        <FormattedMessage {...messages.currency} />
-        <Table
-          pagination={false}
-          columns={FORMAT_COLUMNS}
-          dataSource={currencyData()}
-        />
-        <br />
-        <FormattedMessage {...messages.bytes} />
-        <Table
-          pagination={false}
-          columns={FORMAT_COLUMNS}
-          dataSource={bytesData()}
-        />
-        <br />
-        <FormattedMessage {...messages.percentages} />
-        <Table
-          pagination={false}
-          columns={FORMAT_COLUMNS}
-          dataSource={percentagesData()}
-        />
-        <br />
-        <FormattedMessage {...messages.time} />
-        <Table
-          pagination={false}
-          columns={FORMAT_COLUMNS}
-          dataSource={timeData()}
-        />
-        <br />
-        <FormattedMessage {...messages.exponential} />
-        <Table
-          pagination={false}
-          columns={FORMAT_COLUMNS}
-          dataSource={exponentialData()}
-        />
+        <StyledHeader>
+          <FormattedMessage {...messages.header} />
+        </StyledHeader>
+        <StyledInput>
+          <Search
+            placeholder="Enter number to convert"
+            onSearch={onSearch}
+            enterButton="GO"
+            onChange={event => {
+              this.setState({
+                value: event.target.value,
+              });
+            }}
+            value={this.state.value}
+          />
+        </StyledInput>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.createHeader} />
+          </p>
+          <p>
+            <FormattedMessage {...messages.createMessage} />
+          </p>
+          <Table
+            pagination={false}
+            columns={CREATE_COLUMNS}
+            dataSource={createData()}
+          />
+        </StyledTableContainer>
+        <StyledFormatHeader>
+          <p>
+            <FormattedMessage {...messages.formatHeader} />
+          </p>
+          <p>
+            <FormattedMessage {...messages.formatMessage} />
+          </p>
+        </StyledFormatHeader>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.number} />
+          </p>
+          <Table
+            pagination={false}
+            columns={FORMAT_COLUMNS}
+            dataSource={numbersData()}
+          />
+        </StyledTableContainer>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.currency} />
+          </p>
+          <Table
+            pagination={false}
+            columns={FORMAT_COLUMNS}
+            dataSource={currencyData()}
+          />
+        </StyledTableContainer>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.bytes} />
+          </p>
+          <Table
+            pagination={false}
+            columns={FORMAT_COLUMNS}
+            dataSource={bytesData()}
+          />
+        </StyledTableContainer>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.percentages} />
+          </p>
+          <Table
+            pagination={false}
+            columns={FORMAT_COLUMNS}
+            dataSource={percentagesData()}
+          />
+        </StyledTableContainer>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.time} />
+          </p>
+          <Table
+            pagination={false}
+            columns={FORMAT_COLUMNS}
+            dataSource={timeData()}
+          />
+        </StyledTableContainer>
+        <StyledTableContainer>
+          <p>
+            <FormattedMessage {...messages.exponential} />
+          </p>
+          <Table
+            pagination={false}
+            columns={FORMAT_COLUMNS}
+            dataSource={exponentialData()}
+          />
+        </StyledTableContainer>
       </div>
     );
   }
