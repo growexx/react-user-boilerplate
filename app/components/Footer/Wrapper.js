@@ -3,7 +3,7 @@ import { colors, fontSizes, fontWeights } from '../../styles/index';
 const Wrapper = styled.footer`
   display: flex;
   flex-wrap: wrap;
-  background: ${colors.blackPearl};
+  background: @secondary-color;
   justify-content: space-between;
   align-items: center;
   font-size: ${fontSizes.f14};

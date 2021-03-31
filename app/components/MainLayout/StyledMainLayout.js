@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights } from '../../styles/index';
+import { colors } from '../../styles/index';
 
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
     transition: none;
-    background: ${colors.brandBackgroundPrimary};
+    background: @primary-color;
   }
   .ant-menu .ant-menu-item,
   .ant-menu-submenu-title,
@@ -14,12 +14,12 @@ export const StyledMainLayout = styled.div`
   .ant-menu.ant-menu-dark,
   .ant-menu-dark .ant-menu-sub,
   .ant-menu.ant-menu-dark .ant-menu-sub {
-    background-color: ${colors.brandPrimary};
-    color: ${colors.black};
+    background-color: @primary-color;
+    color: @secondary-color;
   }
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
-    background-color: ${colors.blackPearl};
+    background-color: @secondary-color;
     color: ${colors.white};
   }
   .ant-menu-dark .ant-menu-item,
@@ -40,23 +40,14 @@ export const StyledMainLayout = styled.div`
     outline: none;
   }
   .sideBarTrigger:hover {
-    color: ${colors.brandPrimary};
+    color: @primary-color;
   }
   #components-layout-demo-custom-trigger .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: ${colors.blackPearl};
-    p {
-      text-align: center;
-      font-size: ${fontSizes.f20};
-      font-weight: ${fontWeights.bold};
-      color: ${colors.white};
-      margin: 16px 0;
-    }
     img {
-      margin: 5px 0 0 0;
-      width: 200px;
+      margin: 20px;
     }
   }
   .site-layout .site-layout-background {
