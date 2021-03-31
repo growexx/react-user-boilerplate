@@ -1,5 +1,8 @@
 ## Packages
 
+Following are the packages used in the boilerplate
+
+
 | Package                          | Description                                      |
 | ---------------------------------| ------------------------------------------------ |
 | font-awesome                     | Icons Library                                    |
@@ -45,4 +48,6 @@
 | react-test-renderer              | Javascript testing solution                      |
 | rimraf                           | Directory cleanup                                |
 | compare-versions                 | Library to maintain sem versioning               |
-
+| numeral                          | Library to numbers to different formats          |
+| json2csv                         | Library to convert json to csv                   |
+| react-infinite-scroller          | Library for infinite scrolling                   |
