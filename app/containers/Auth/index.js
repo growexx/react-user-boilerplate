@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Button } from 'antd';
 import messages from './messages';
-import { AUTH_TYPE, ROUTES } from './constants';
+import { AUTH_TYPE } from './constants';
+import { ROUTES } from '../constant';
 
 const getLoginSideContent = () => (
   <div className="loginContainer">

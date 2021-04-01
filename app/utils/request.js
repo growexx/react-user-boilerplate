@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from './constants';
+import { TOKEN_KEY } from './constants';
 import StorageService from './StorageService';
 import { userExists } from './userExists';
 /**
@@ -58,8 +58,7 @@ export default function request(url, options) {
     option.headers = options.headers;
   }
   if (userExists()) {
-    option.headers.Authorization = `${StorageService.get(STORAGE_KEY)}`;
-    option.headers.accessToken = `${StorageService.get(STORAGE_KEY)}`;
+    option.headers.Authorization = `${StorageService.get(TOKEN_KEY)}`;
   }
   return fetch(url, option)
     .then(checkStatus)

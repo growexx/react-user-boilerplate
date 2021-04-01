@@ -10,6 +10,7 @@ import { Button, Table } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import { exportJsonAsCSV } from 'utils/csvExport';
 import request from 'utils/request';
+import { API_ENDPOINTS } from 'containers/constant';
 import { StyledButton, StyledExport } from './StyledExport';
 import {
   CSV_FILE_NAME,
@@ -18,7 +19,6 @@ import {
   TABLE_DATA,
 } from './constants';
 import messages from './messages';
-import { API_ENDPOINTS } from '../../containers/Auth/constants';
 class ExportDataToCsv extends React.Component {
   state = {
     selectedRows: [],
