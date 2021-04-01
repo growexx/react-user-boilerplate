@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import '../../styles/antDefaultVars.less';
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
     transition: none;

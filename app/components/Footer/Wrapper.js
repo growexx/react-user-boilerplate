@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { fontWeights } from '../../styles/index';
 const Wrapper = styled.footer`
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +8,7 @@ const Wrapper = styled.footer`
   font-size: @font-size-base;
   color: @white;
   padding: @padding-xs 0;
-  font-weight: ${fontWeights.bold};
+  font-weight: @font-weight-bold;
   > section:first-child {
     margin-left: @margin-xs;
   }

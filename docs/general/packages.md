@@ -40,7 +40,6 @@ Following are the packages used in the boilerplate
 | shelljs                          | Typescript support                               |
 | react-testing-library            | Javascript testing solution                      |
 | corejs                           | To generate code documentation                   |
-| less-vars-to-js                  | Library to use less variables into js files      |
 | ngrok                            | Tunneling                                        |
 | plop                             | Microgenerator Framework                         |
 | pre-commit                       | Git pre-commit hook                              |

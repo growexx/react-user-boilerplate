@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors, fontWeights } from '../../../styles';
 export const StyledRegistration = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -13,13 +12,13 @@ export const StyledRegistration = styled.div`
     margin: 0;
     text-align: center;
     font-size: @font-size-lg+26;
-    font-weight: ${fontWeights.bold};
-    color: ${colors.brandPrimary};
+    font-weight: @font-weight-bold;
+    color: @primary-color;
   }
   .emailRegistration {
     margin-top: @font-size-lg+15;
-    color: ${colors.gray400};
-    font-weight: ${fontWeights.regular};
+    color: @text-color;
+    font-weight: @font-weight-regular;
     font-size: @font-size-base;
     text-align: center;
   }
@@ -37,7 +36,7 @@ export const StyledRegistration = styled.div`
     display: flex;
   }
   .socialIcons > span {
-    border: 1px solid ${colors.gray300};
+    border: 1px solid @border-color-base;
     padding: 10px;
     border-radius: 50%;
     margin: 10px;
@@ -45,33 +44,33 @@ export const StyledRegistration = styled.div`
   .accountData {
     input {
       margin-top: 10px;
-      background-color: ${colors.gray200};
+      background-color: @background-color-base;
     }
     input[value] {
-      color: ${colors.gray400};
+      color: @text-color-secondary;
       font-size: @font-size-base+1px;
     }
   }
   button {
     margin-top: @font-size-lg+15;
-    background: ${colors.brandPrimary};
+    background: @primary-color;
     border: 2px solid @white;
     border-radius: @border-radius-base+48;
     text-align: center;
     color: @white;
     text-align: center;
     font-size: @font-size-lg-15;
-    font-weight: ${fontWeights.medium};
+    font-weight: @font-weight-medium;
     height: @font-size-lg+24;
     width: 160px;
   }
   button:hover {
-    background: ${colors.brandPrimary};
+    background: @primary-color;
     border: 2px solid @white;
     color: @white;
   }
   button:focus {
-    background: ${colors.brandPrimary};
+    background: @primary-color;
     border: 2px solid @white;
     color: @white;
   }
