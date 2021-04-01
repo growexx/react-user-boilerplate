@@ -18,7 +18,7 @@ import {
   TABLE_DATA,
 } from './constants';
 import messages from './messages';
-import { API_ENDPOINTS } from '../Auth/constants';
+import { API_ENDPOINTS } from '../../containers/Auth/constants';
 class ExportDataToCsv extends React.Component {
   state = {
     selectedRows: [],

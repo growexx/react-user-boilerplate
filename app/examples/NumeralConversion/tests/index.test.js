@@ -1,6 +1,6 @@
 /**
  *
- * Tests for ExportDataToCsv
+ * Tests for NumeralConversion
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -11,16 +11,16 @@ import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import { ExportDataToCsv } from '../index';
+import NumeralConversion from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
-describe('<ExportDataToCsv />', () => {
+describe('<NumeralConversion />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
     render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <ExportDataToCsv dispatch={dispatch} />
+        <NumeralConversion dispatch={dispatch} />
       </IntlProvider>,
     );
     expect(spy).not.toHaveBeenCalled();
@@ -40,7 +40,7 @@ describe('<ExportDataToCsv />', () => {
       container: { firstChild },
     } = render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <ExportDataToCsv />
+        <NumeralConversion />
       </IntlProvider>,
     );
     expect(firstChild).toMatchSnapshot();
