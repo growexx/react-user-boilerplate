@@ -9,8 +9,4 @@ export const AvatarWrapper = styled.div`
     background-color: @primary-color;
     color: white;
   }
-  .ant-btn:hover,
-  .ant-btn:focus {
-    border-color: @primary-hover;
-  }
 `;

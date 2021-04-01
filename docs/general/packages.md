@@ -50,3 +50,4 @@ Following are the packages used in the boilerplate
 | numeral                          | Library to numbers to different formats          |
 | json2csv                         | Library to convert json to csv                   |
 | react-infinite-scroller          | Library for infinite scrolling                   |
+| less-vars-to-js                  | Library to use less variables into js files      |
