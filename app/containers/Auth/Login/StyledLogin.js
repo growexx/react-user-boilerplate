@@ -30,7 +30,8 @@ export const StyledLogin = styled.div`
     align-items: center;
     @media only screen and (max-width: 767px) {
       width: 80%;
-    }  
+    }
+  }
   .socialIcons {
     display: flex;
   }
@@ -41,22 +42,25 @@ export const StyledLogin = styled.div`
     margin: 10px;
   }
   .accountData {
-    .ant-input:focus, .ant-input-focused, .ant-input:hover {
+    .ant-input:focus,
+    .ant-input:focused,
+    .ant-input:hover {
       border-color: @primary-hover;
     }
-    > span:hover, >span:focus >span:visited {
-      border-color: @border-color-base
+    > span:hover,
+    > span:focus > span:visited {
+      border-color: @border-color-base;
     }
-    > div:nth-child(2){
+    > div:nth-child(2) {
       margin-top: 10px;
     }
     .ant-input-password {
       background-color: @background-color-base;
     }
-    > input: first-child {
+    > input:first-child {
       margin-top: 10px;
     }
-    input   {
+    input {
       background-color: @background-color-base;
     }
     input[value] {
