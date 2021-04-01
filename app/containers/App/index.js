@@ -14,10 +14,13 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import FontAwesomeDemo from 'containers/FontAwesomeDemo/Loadable';
+import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
+import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
+import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
+import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
@@ -47,6 +50,12 @@ export default function App() {
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
         <PrivateRoute path={ROUTES.FONTAWESOME} component={FontAwesomeDemo} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
+        <PrivateRoute path={ROUTES.LOADER} component={Loader} />
+        <PrivateRoute path={ROUTES.EXPORTDATA} component={ExportDataToCsv} />
+        <PrivateRoute
+          path={ROUTES.NUMERALCONVERTER}
+          component={NumeralConversion}
+        />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
         <Route path="" component={NotFoundPage} />
