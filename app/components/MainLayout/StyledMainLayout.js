@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
     transition: none;
-    background: @primary-color;
+    background: #190426;
   }
   .ant-menu .ant-menu-item,
   .ant-menu-submenu-title,
@@ -12,19 +12,19 @@ export const StyledMainLayout = styled.div`
   .ant-menu.ant-menu-dark,
   .ant-menu-dark .ant-menu-sub,
   .ant-menu.ant-menu-dark .ant-menu-sub {
-    background-color: @primary-color;
+    background-color: #190426;
     color: @secondary-color;
   }
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
-    background-color: @secondary-color;
+    background-color: @primary-color;
     color: @white;
   }
   .ant-menu-dark .ant-menu-item,
   .ant-menu-dark .ant-menu-item-group-title,
   .ant-menu-dark .ant-menu-item > a,
   .ant-menu-dark .ant-menu-item > span > a {
-    color: @black;
+    color: @white;
   }
   .ant-menu-item-selected > span > a {
     color: @white !important;

@@ -10,6 +10,7 @@ import ListWithLoadMore from './ListWithLoadMore';
 import ListWithPagination from './ListWithPagination';
 import ListWithInfiniteLoader from './ListWithInfiniteLoader';
 import { TABS } from './constants';
+import { StyledList } from './StyledList';
 
 function Loader() {
   const { TabPane } = Tabs;
@@ -18,7 +19,7 @@ function Loader() {
     console.log(key);
   }
   return (
-    <div>
+    <StyledList>
       <Tabs defaultActiveKey="1" onChange={callback}>
         <TabPane tab={TABS.TITLE.TAB_ONE} key="1">
           <ListWithInfiniteLoader />
@@ -30,7 +31,7 @@ function Loader() {
           <ListWithPagination />
         </TabPane>
       </Tabs>
-    </div>
+    </StyledList>
   );
 }
 

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 const Wrapper = styled.footer`
   display: flex;
   flex-wrap: wrap;
-  background: @secondary-color;
+  background: @white;
   justify-content: space-between;
   align-items: center;
   font-size: @font-size-base;
-  color: @white;
+  color: @black;
   padding: @padding-xs 0;
   font-weight: @font-weight-bold;
   > section:first-child {

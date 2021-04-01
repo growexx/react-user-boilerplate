@@ -8,8 +8,8 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import GrowExxTriangleLogo from '../../images/Growexx-Triangle-white.svg';
-import GrowExxLogo from '../../images/Growexx.svg';
+import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
+import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
 import { MenuItems } from './Constants';
 
 const { Sider } = Layout;
