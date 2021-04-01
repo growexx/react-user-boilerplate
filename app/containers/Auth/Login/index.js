@@ -66,7 +66,7 @@ export function Login({
             <FormattedMessage {...messages.accountDetails} />
           </p>
           <div className="LoginSubContainer">
-            <div className="socialIcons u-m-24">
+            <div className="socialIcons">
               <FacebookFilled />
               <GoogleOutlined />
               <WindowsFilled />
