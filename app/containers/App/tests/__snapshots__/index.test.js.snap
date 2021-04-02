@@ -69,6 +69,15 @@ exports[`<App /> should render and match the snapshot 1`] = `
       component={[Function]}
       path="/export-data"
     />
+    <withRouter(RoleMiddleWare)
+      component={[Function]}
+      path="/admin"
+      showError={true}
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/sample-form"
+    />
     <PrivateRoute
       component={[Function]}
       path="/number-converter-demo"
@@ -82,6 +91,11 @@ exports[`<App /> should render and match the snapshot 1`] = `
       component={[Function]}
       exact={true}
       path="/register"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/403"
     />
     <Route
       component={[Function]}

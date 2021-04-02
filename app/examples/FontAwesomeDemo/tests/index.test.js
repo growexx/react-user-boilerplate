@@ -8,31 +8,33 @@
 
 import React from 'react';
 import { render } from 'react-testing-library';
-// import 'jest-dom/extend-expect'; // add some helpful assertions
-
+import { Provider } from 'react-redux';
+import history from 'utils/history';
+import { browserHistory } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { IntlProvider } from 'react-intl';
 import { FontAwesomeDemo } from '../index';
+import configureStore from '../../../configureStore';
+let store;
+const componentWrapper = () =>
+  render(
+    <Provider store={store}>
+      <IntlProvider locale="en">
+        <ConnectedRouter history={history}>
+          <FontAwesomeDemo />
+        </ConnectedRouter>
+      </IntlProvider>
+    </Provider>,
+  );
 
 describe('<FontAwesomeDemo />', () => {
-  it('Expect to not log errors in console', () => {
-    const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-    render(<FontAwesomeDemo dispatch={dispatch} />);
-    expect(spy).not.toHaveBeenCalled();
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
   });
-
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
-  });
-
-  /**
-   * Unskip this test to use it
-   *
-   * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
-   */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<FontAwesomeDemo />);
+    } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
   });
 });
