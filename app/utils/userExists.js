@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { STORAGE_KEY } from './constants';
+import { TOKEN_KEY } from './constants';
 import StorageService from './StorageService';
 
 export function userExists() {
-  if (StorageService.exists(STORAGE_KEY)) {
+  if (StorageService.exists(TOKEN_KEY)) {
     return true;
   }
   return false;

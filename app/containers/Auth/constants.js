@@ -1,19 +1,5 @@
 export const AUTH_TYPE = ['LOGIN', 'REGISTER'];
 
-// App-Routes
-export const ROUTES = {
-  HOME: '/',
-  FEATURES: '/features',
-  FONTAWESOME: '/font-awesome',
-  LOGIN: '/login',
-  REGISTER: '/register',
-  PROFILE: '/profile',
-  LOGOUT: '/logout',
-  LOADER: '/loader',
-  EXPORTDATA: '/export-data',
-  NUMERALCONVERTER: '/number-converter-demo',
-};
-
 // API-ROUTES
 export const API_URL = 'https://b0257f3aa104.ngrok.io';
 export const AUTH = 'auth';

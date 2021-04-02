@@ -6,7 +6,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Result } from 'antd';
-import { ROUTES } from '../Auth/constants';
+import { ROUTES } from '../constant';
+
 export default function NotFound() {
   return (
     <article>

@@ -2,8 +2,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
 import PropTypes from 'prop-types';
-import { userExists } from '../../utils/userExists';
-import { ROUTES } from '../Auth/constants';
+import { userExists } from 'utils/Helper';
+import { ROUTES } from '../constant';
 
 const AuthRoute = mainProps => {
   const { component: Component, ...rest } = mainProps;

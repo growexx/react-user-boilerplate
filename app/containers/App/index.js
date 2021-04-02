@@ -25,7 +25,7 @@ import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
-import { ROUTES } from '../Auth/constants';
+import { ROUTES } from '../constant';
 
 const AppWrapper = styled.div`
   display: flex;

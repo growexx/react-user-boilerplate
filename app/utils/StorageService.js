@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable indent */
 import base from 'base-64';
-import { STORAGE_KEY } from './constants';
+import { TOKEN_KEY, USER_DATA_KEY } from './constants';
 
 const getDocument = () =>
   typeof document === 'undefined'
@@ -93,7 +93,8 @@ const StorageService = {
    * clear localStorage of browser.
    */
   clear() {
-    this.delete(STORAGE_KEY);
+    this.delete(TOKEN_KEY);
+    this.delete(USER_DATA_KEY);
     localStorage.clear();
   },
 };

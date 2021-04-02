@@ -12,10 +12,15 @@ import {
 } from 'containers/Auth/Login/selectors';
 import Emitter from 'utils/events';
 import { LOGIN } from './constants';
-import { API_ENDPOINTS, ROUTES } from '../constants';
+import { API_ENDPOINTS } from '../constants';
+import { ROUTES } from '../../constant';
 import { changeLoading, logInError, logInSuccess, resetState } from './actions';
 import StorageService from '../../../utils/StorageService';
-import { STORAGE_KEY, EMITTER_EVENTS } from '../../../utils/constants';
+import {
+  TOKEN_KEY,
+  EMITTER_EVENTS,
+  USER_DATA_KEY,
+} from '../../../utils/constants';
 
 /**
  * user login request/response handler
@@ -37,7 +42,8 @@ export function* getSignIn() {
     yield put(changeLoading(true));
     if (log.status === 1) {
       yield put(logInSuccess(log.message));
-      StorageService.set(STORAGE_KEY, log.data.token);
+      StorageService.set(TOKEN_KEY, log.data.token);
+      StorageService.set(USER_DATA_KEY, log.data);
       yield put(changeLoading(false));
       yield put(resetState());
       yield put(push(ROUTES.HOME));

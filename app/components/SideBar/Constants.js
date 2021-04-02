@@ -12,7 +12,7 @@ import {
   ExportOutlined,
   NumberOutlined,
 } from '@ant-design/icons';
-import { ROUTES } from '../../containers/Auth/constants';
+import { ROUTES } from 'containers/constant';
 
 export const MenuItems = [
   {
