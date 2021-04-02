@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
-import { MenuItems } from './Constants';
+import { GET_FILTERED_MENU_ITEM } from './Constants';
 
 const { Sider } = Layout;
 
@@ -29,7 +29,7 @@ const SideBar = props => (
       )}
     </div>
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-      {MenuItems.map((menu, i) => (
+      {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map((menu, i) => (
         <>
           <Menu.Item key={i} icon={menu.icon}>
             <Link to={menu.to}>{menu.tabName}</Link>
@@ -44,4 +44,5 @@ export default SideBar;
 
 SideBar.propTypes = {
   collapsed: PropTypes.bool,
+  user: PropTypes.object,
 };

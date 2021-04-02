@@ -14,15 +14,18 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
 import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
 import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
+import SampleForm from 'examples/SampleForm/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
+import RoleMiddleWare from './RoleMiddleWare';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../constant';
@@ -48,16 +51,24 @@ export default function App() {
       <Switch>
         <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
-        <PrivateRoute path={ROUTES.FONTAWESOME} component={FontAwesomeDemo} />
+        <PrivateRoute path={ROUTES.FONT_AWESOME} component={FontAwesomeDemo} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
-        <PrivateRoute path={ROUTES.EXPORTDATA} component={ExportDataToCsv} />
+        <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
+        <RoleMiddleWare
+          path={ROUTES.TEST_ADMIN_PAGE}
+          component={() => <div>This is Admin Role Page</div>}
+          // ShowError redirects to 403
+          showError
+        />
+        <PrivateRoute path={ROUTES.SAMPLE_FORM} component={SampleForm} />
         <PrivateRoute
-          path={ROUTES.NUMERALCONVERTER}
+          path={ROUTES.NUMERAL_CONVERTER}
           component={NumeralConversion}
         />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
+        <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
