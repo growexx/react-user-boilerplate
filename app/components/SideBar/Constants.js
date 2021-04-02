@@ -11,8 +11,15 @@ import {
   LoadingOutlined,
   ExportOutlined,
   NumberOutlined,
+  FormOutlined,
+  LockOutlined,
 } from '@ant-design/icons';
-import { ROUTES } from 'containers/constant';
+import {
+  ROUTES,
+  ROLE_BASED_SIDEBAR_MENU,
+  ROLES,
+  RESTRICTED_ROUTES,
+} from 'containers/constant';
 
 export const MenuItems = [
   {
@@ -26,7 +33,7 @@ export const MenuItems = [
     icon: <CheckCircleOutlined />,
   },
   {
-    to: ROUTES.FONTAWESOME,
+    to: ROUTES.FONT_AWESOME,
     tabName: 'Font Awesome Demo',
     icon: <SmileOutlined />,
   },
@@ -36,13 +43,35 @@ export const MenuItems = [
     icon: <LoadingOutlined />,
   },
   {
-    to: ROUTES.EXPORTDATA,
+    to: ROUTES.EXPORT_DATA,
     tabName: 'Export Data To CSV',
     icon: <ExportOutlined />,
   },
   {
-    to: ROUTES.NUMERALCONVERTER,
+    to: ROUTES.NUMERAL_CONVERTER,
     tabName: 'Number Conversion Demo',
     icon: <NumberOutlined />,
   },
+  {
+    to: ROUTES.SAMPLE_FORM,
+    tabName: 'Redux-Saga Form',
+    icon: <FormOutlined />,
+  },
+  {
+    to: ROUTES.TEST_ADMIN_PAGE,
+    tabName: 'Admin Page',
+    icon: <LockOutlined />,
+  },
 ];
+
+/**
+ * Filters Sidebar menu based on role
+ * @param {string} role
+ */
+export const GET_FILTERED_MENU_ITEM = role =>
+  MenuItems.filter(item =>
+    // Check if route is private then role has access to it
+    RESTRICTED_ROUTES.includes(item.to)
+      ? ROLE_BASED_SIDEBAR_MENU[role || ROLES.USER].includes(item.to)
+      : true,
+  );

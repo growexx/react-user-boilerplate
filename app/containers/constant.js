@@ -1,15 +1,21 @@
+// Control Bit
+export const IS_DEMO_CODE = true;
+
 // App-Routes
 export const ROUTES = {
   HOME: '/',
   FEATURES: '/features',
-  FONTAWESOME: '/font-awesome',
+  FONT_AWESOME: '/font-awesome',
   LOGIN: '/login',
   REGISTER: '/register',
   PROFILE: '/profile',
   LOGOUT: '/logout',
   LOADER: '/loader',
-  EXPORTDATA: '/export-data',
-  NUMERALCONVERTER: '/number-converter-demo',
+  EXPORT_DATA: '/export-data',
+  TEST_ADMIN_PAGE: '/admin',
+  UNAUTHORIZED: '/403',
+  NUMERAL_CONVERTER: '/number-converter-demo',
+  SAMPLE_FORM: '/sample-form',
 };
 
 // API-ROUTES
@@ -32,16 +38,22 @@ export const DEFAULT_LIMIT = 10;
  * ACL from frontend
  * This configuration is being used in RoleMiddleware
  */
+// Note: Define role in this constant
 export const ROLES = {
   USER: 1,
+  ADMIN: 10,
 };
 
-export const RESTRICTED_ROUTES = [ROUTES.PROFILE];
+// Note: Add Routes which needs to check role before it's access
+export const RESTRICTED_ROUTES = [ROUTES.PROFILE, ROUTES.TEST_ADMIN_PAGE];
 
+// Note: Define role against all accessible routes
 export const ROLE_BASED_ROUTE_ACCESS = {
   [ROLES.USER]: [ROUTES.PROFILE],
+  [ROLES.ADMIN]: [ROUTES.TEST_ADMIN_PAGE],
 };
 
+// Note: Role based default routes for redirection
 export const ROLE_BASED_DEFAULT_ROUTE = {
   [ROLES.USER]: ROUTES.HOME,
 };
@@ -49,6 +61,8 @@ export const ROLE_BASED_DEFAULT_ROUTE = {
 /**
  * Controls which sidebar entries shown to this user
  */
+// Sidebar role based update
 export const ROLE_BASED_SIDEBAR_MENU = {
   [ROLES.USER]: [],
+  [ROLES.ADMIN]: [ROUTES.TEST_ADMIN_PAGE],
 };
