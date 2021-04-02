@@ -37,13 +37,13 @@ export const StyledRegistration = styled.div`
   }
   .socialIcons > span {
     border: 1px solid @border-color-base;
-    padding: 10px;
+    padding: @padding-sm;
     border-radius: 50%;
-    margin: 10px;
+    margin: @margin-sm;
   }
   .accountData {
     input {
-      margin-top: 10px;
+      margin-top: @margin-sm;
       background-color: @background-color-base;
     }
     input[value] {

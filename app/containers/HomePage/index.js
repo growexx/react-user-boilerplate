@@ -18,7 +18,6 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
@@ -67,17 +66,17 @@ export function HomePage({
       </Helmet>
       <div>
         <CenteredSection>
-          <H2>
+          <h2>
             <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
+          </h2>
           <p>
             <FormattedMessage {...messages.startProjectMessage} />
           </p>
         </CenteredSection>
         <Section>
-          <H2>
+          <h2>
             <FormattedMessage {...messages.trymeHeader} />
-          </H2>
+          </h2>
           <Form onSubmit={onSubmitForm}>
             <label htmlFor="username">
               <FormattedMessage {...messages.trymeMessage} />

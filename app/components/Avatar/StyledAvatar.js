@@ -7,6 +7,6 @@ export const AvatarWrapper = styled.div`
   .ant-dropdown-trigger:hover {
     border-radius: 50% !important;
     background-color: @primary-color;
-    color: white;
+    color: @white;
   }
 `;

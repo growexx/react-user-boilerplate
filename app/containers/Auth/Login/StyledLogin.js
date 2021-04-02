@@ -11,7 +11,7 @@ export const StyledLogin = styled.div`
   .createAccount {
     margin: 0;
     text-align: center;
-    font-size: 42px;
+    font-size: @font-size-lg+26;
     font-weight: @font-weight-bold;
     color: @primary-color;
   }
