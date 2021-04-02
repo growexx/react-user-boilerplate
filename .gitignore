@@ -12,7 +12,4 @@ npm-debug.log
 # storybook files
 
 storybook-static
-
-#sonar config file
-sonar-project.properties
 .scannerwork
