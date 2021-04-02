@@ -59,9 +59,9 @@ export const StyledRegistration = styled.div`
     text-align: center;
     color: @white;
     text-align: center;
-    font-size: @font-size-lg-15;
+    font-size: @font-size-base+1;
     font-weight: @font-weight-medium;
-    height: @font-size-lg+24;
+    height: @height-lg;
     width: 160px;
   }
   button:hover {

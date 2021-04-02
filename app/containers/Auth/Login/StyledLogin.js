@@ -36,7 +36,7 @@ export const StyledLogin = styled.div`
     display: flex;
   }
   .socialIcons > span {
-    border: 1px solid @background-border-base;
+    border: 1px solid @border-color-base;
     padding: 10px;
     border-radius: 50%;
     margin: 10px;
@@ -74,10 +74,10 @@ export const StyledLogin = styled.div`
     border: 2px solid @white;
     border-radius: 50px;
     text-align: center;
-    // color: @white;
+    color: @white;
     text-align: center;
     font-size: @font-size-base+1;
-    font-weight: @font-weight-bold;
+    font-weight: @font-weight-medium;
     height: @height-lg;
     width: 160px;
   }
