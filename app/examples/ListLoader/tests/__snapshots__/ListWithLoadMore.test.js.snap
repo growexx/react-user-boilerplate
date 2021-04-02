@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListWithLoadMore /> should render and match the snapshot 1`] = `
+<div
+  class="ant-list ant-list-split ant-list-loading demo-loadmore-list"
+>
+  <div
+    class="ant-spin-nested-loading"
+  >
+    <div>
+      <div
+        class="ant-spin ant-spin-spinning"
+      >
+        <span
+          class="ant-spin-dot ant-spin-dot-spin"
+        >
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      class="ant-spin-container ant-spin-blur"
+    >
+      <div
+        style="min-height: 53px;"
+      />
+    </div>
+  </div>
+</div>
+`;

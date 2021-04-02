@@ -1,13 +1,5 @@
-/**
- *
- * Tests for Loader
- *
- * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
- *
- */
-
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
@@ -15,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
 import request from 'utils/request';
 import configureStore from '../../../configureStore';
-import Loader from '../index';
+import ListWithInfiniteLoader from '../ListWithInfiniteLoader';
 let store;
 jest.mock('utils/request');
 const componentWrapper = () =>
@@ -23,12 +15,12 @@ const componentWrapper = () =>
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <Loader />
+          <ListWithInfiniteLoader />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
   );
-describe('<Loader />', () => {
+describe('<ListWithInfinteLoader />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
@@ -39,11 +31,5 @@ describe('<Loader />', () => {
       container: { firstChild },
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
-  });
-  it('should fire onchange', () => {
-    const { getByTestId } = componentWrapper();
-    const element = getByTestId('ListTab');
-    fireEvent.change(element);
-    expect(element.tagName).toEqual('DIV');
   });
 });

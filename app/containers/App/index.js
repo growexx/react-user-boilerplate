@@ -56,6 +56,7 @@ export default function App() {
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
         <RoleMiddleWare
+          data-testid="RoleMiddleWare"
           path={ROUTES.TEST_ADMIN_PAGE}
           component={() => <div>This is Admin Role Page</div>}
           // ShowError redirects to 403

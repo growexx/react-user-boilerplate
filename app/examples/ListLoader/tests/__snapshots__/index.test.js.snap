@@ -6,6 +6,7 @@ exports[`<Loader /> should render and match the snapshot 1`] = `
 >
   <div
     class="ant-tabs ant-tabs-top"
+    data-testid="ListTab"
   >
     <div
       class="ant-tabs-nav"

@@ -3,7 +3,9 @@
  */
 
 import 'whatwg-fetch';
+import { TOKEN_KEY } from '../constants';
 import request from '../request';
+import StorageService from '../StorageService';
 
 describe('request', () => {
   // Before each test, stub the fetch function
@@ -25,8 +27,26 @@ describe('request', () => {
     });
 
     it('should format the response correctly', done => {
+      StorageService.set(TOKEN_KEY, 'TESTTOKEN');
       request('/thisurliscorrect', {
         method: 'GET',
+        body: {},
+        headers: {},
+        data: {},
+      })
+        .catch(done)
+        .then(json => {
+          expect(json.hello).toBe('world');
+          done();
+        });
+    });
+    it('should format the response correctly with user not exists', done => {
+      StorageService.clear();
+      request('/thisurliscorrect', {
+        method: 'GET',
+        body: {},
+        headers: {},
+        data: {},
       })
         .catch(done)
         .then(json => {
