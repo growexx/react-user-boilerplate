@@ -15,3 +15,4 @@ storybook-static
 
 #sonar config file
 sonar-project.properties
+.scannerwork

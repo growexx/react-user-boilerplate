@@ -1,6 +1,0 @@
-projectKey=reactJS-user-boilerplate
-serverUrl=https://quality.growexx.com
-serverVersion=7.9.5.38598
-dashboardUrl=https://quality.growexx.com/dashboard?id=reactJS-user-boilerplate
-ceTaskId=AXiR3aUxV1pZC_KiC3MU
-ceTaskUrl=https://quality.growexx.com/api/ce/task?id=AXiR3aUxV1pZC_KiC3MU
