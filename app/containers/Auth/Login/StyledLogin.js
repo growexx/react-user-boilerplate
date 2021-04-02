@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights, borders } from '../../../styles';
 export const StyledLogin = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -12,15 +11,15 @@ export const StyledLogin = styled.div`
   .createAccount {
     margin: 0;
     text-align: center;
-    font-size: ${fontSizes.f42};
-    font-weight: ${fontWeights.bold};
-    color: ${colors.brandPrimary};
+    font-size: @font-size-lg+26;
+    font-weight: @font-weight-bold;
+    color: @primary-color;
   }
   .emailLogin {
-    margin-top: ${fontSizes.f31};
-    color: ${colors.gray400};
-    font-weight: ${fontWeights.regular};
-    font-size: ${fontSizes.f14};
+    margin-top: 31px;
+    color: @text-color;
+    font-weight: @font-weight-regular;
+    font-size: @font-size-base;
     text-align: center;
   }
   .LoginSubContainer {
@@ -31,61 +30,65 @@ export const StyledLogin = styled.div`
     align-items: center;
     @media only screen and (max-width: 767px) {
       width: 80%;
-    }  
+    }
+  }
   .socialIcons {
     display: flex;
   }
   .socialIcons > span {
-    border: 1px solid ${colors.gray300};
+    border: 1px solid @border-color-base;
     padding: 10px;
     border-radius: 50%;
     margin: 10px;
   }
   .accountData {
-    .ant-input:focus, .ant-input-focused, .ant-input:hover {
-      border-color: ${colors.brandPrimaryHover}
+    .ant-input:focus,
+    .ant-input:focused,
+    .ant-input:hover {
+      border-color: @primary-hover;
     }
-    > span:hover, >span:focus >span:visited {
-      border-color: ${colors.brandPrimaryHover}
+    > span:hover,
+    > span:focus > span:visited {
+      border-color: @border-color-base;
     }
-    > div:nth-child(2){
+    > div:nth-child(2) {
       margin-top: 10px;
     }
     .ant-input-password {
-      background-color: ${colors.gray200};
+      background-color: @background-color-base;
     }
-    > input: first-child {
+    > input:first-child {
       margin-top: 10px;
     }
-    input   {
-      background-color: ${colors.gray200};
+    input {
+      background-color: @background-color-base;
     }
     input[value] {
-      color: ${colors.gray400};
-      font-size: ${fontSizes.f15};
+      color: @text-color-secondary;
+      font-size: @font-size-base+1px;
     }
   }
   button {
-    margin-top: ${fontSizes.f31};
-    background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
+    margin-top: 31px;
+    background: @primary-color;
+    border: 2px solid @white;
     border-radius: 50px;
     text-align: center;
-    color: ${colors.white};
+    color: @white;
     text-align: center;
-    font-size: ${fontSizes.f15};
-    font-weight: ${fontWeights.medium};
-    height: ${fontSizes.f40};
+    font-size: @font-size-base+1;
+    font-weight: @font-weight-medium;
+    height: @height-lg;
     width: 160px;
   }
   button:hover {
-    background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    color: ${colors.white};
+    background: @primary-color;
+    border: 2px solid @white;
+    color: @white;
   }
   button:focus {
-    background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    color: ${colors.white};
+    background: @primary-color;
+    border: 2px solid @white;
+    color: @white;
   }
 `;

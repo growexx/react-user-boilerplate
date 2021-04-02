@@ -12,3 +12,9 @@ export const ListWithInfiniteLoader = styled.div`
     text-align: center;
   }
 `;
+
+export const StyledList = styled.div`
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: @primary-color;
+  }
+`;

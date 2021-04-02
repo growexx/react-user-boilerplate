@@ -1,46 +1,45 @@
 import styled from 'styled-components';
-import { borders, colors, fontSizes, fontWeights } from '../../styles';
 
 export const StyledHeader = styled.p`
   text-align: center;
-  font-weight: ${fontWeights.bold};
-  color: ${colors.purpleBlack};
+  font-weight: @font-weight-bold;
+  color: @primary-color;
 `;
 
 export const StyledInput = styled.div`
-  margin: ${fontSizes.f31} ${fontSizes.f18};
+  margin: 31px 18px;
 `;
 
 export const StyledTableContainer = styled.div`
-  margin: ${fontSizes.f31} ${fontSizes.f18};
+  margin: 31px 18px;
   display: flex;
   flex-direction: column;
-  padding: ${fontSizes.f10};
-  border: ${borders.baseBorder};
+  padding: @padding-xs;
+  border: 1px solid @border-color-base;
   p:first-child {
-    font-weight: ${fontWeights.bold};
-    margin-top: ${fontSizes.f10};
-    font-size: ${fontSizes.f22};
+    font-weight: @font-weight-bold;
+    margin-top: @margin-xs;
+    font-size: 22px;
   }
   p:nth-child(2) {
-    font-weight: ${fontWeights.medium};
-    color: ${colors.gray500};
+    font-weight: @font-weight-medium;
+    color: @heading-color;
   }
 `;
 
 export const StyledFormatHeader = styled.div`
-  margin: ${fontSizes.f31} ${fontSizes.f18};
+  margin: 31px 18px;
   display: flex;
   flex-direction: column;
-  padding: ${fontSizes.f10};
+  padding: @padding-xs;
   p:first-child {
-    font-weight: ${fontWeights.bold};
-    margin-top: ${fontSizes.f10};
-    font-size: ${fontSizes.f22};
+    font-weight: @font-weight-bold;
+    margin-top: @margin-xs;
+    font-size: 22px;
   }
   p:nth-child(2) {
     margin-top: 0px;
-    font-weight: ${fontWeights.medium};
-    color: ${colors.gray500};
+    font-weight: @font-weight-medium;
+    color: @heading-color;
   }
 `;

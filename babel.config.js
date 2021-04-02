@@ -9,6 +9,16 @@ module.exports = {
     '@babel/preset-react',
   ],
   plugins: [
+    [
+      'styless',
+      {
+        import: './app/styles/antDefaultVars.less',
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+      },
+    ],
+    ['import', { libraryName: 'antd', style: true }],
     'styled-components',
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
