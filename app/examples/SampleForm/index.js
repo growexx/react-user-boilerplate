@@ -39,8 +39,7 @@ export class SampleForm extends PureComponent {
   }
 
   handleFormSubmit = () => {
-    const { sampleForm, submitData } = this.props;
-    alert(`Inside Component Data\n ${JSON.stringify(sampleForm, null, 2)}`);
+    const { submitData } = this.props;
     submitData();
   };
 
@@ -157,7 +156,6 @@ SampleForm.propTypes = {
   pristine: PropTypes.bool,
   reset: PropTypes.bool,
   submitting: PropTypes.bool,
-  sampleForm: PropTypes.object,
 };
 
 const withReducer = useInjectReducer({
