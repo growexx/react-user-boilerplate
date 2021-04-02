@@ -11,7 +11,12 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
   >
     <div
       class="logo"
-    />
+    >
+      <img
+        alt="logo"
+        src="IMAGE_MOCK"
+      />
+    </div>
     <ul
       class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
       role="menu"
@@ -112,6 +117,102 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
             href="/font-awesome"
           >
             Font Awesome Demo
+          </a>
+        </span>
+      </li>
+      <li
+        class="ant-menu-item"
+        role="menuitem"
+        style="padding-left: 24px;"
+      >
+        <span
+          aria-label="loading"
+          class="anticon anticon-loading anticon-spin ant-menu-item-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="loading"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1024 1024"
+            width="1em"
+          >
+            <path
+              d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+            />
+          </svg>
+        </span>
+        <span>
+          <a
+            href="/loader"
+          >
+            Loader Demo
+          </a>
+        </span>
+      </li>
+      <li
+        class="ant-menu-item"
+        role="menuitem"
+        style="padding-left: 24px;"
+      >
+        <span
+          aria-label="export"
+          class="anticon anticon-export ant-menu-item-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="export"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M888.3 757.4h-53.8c-4.2 0-7.7 3.5-7.7 7.7v61.8H197.1V197.1h629.8v61.8c0 4.2 3.5 7.7 7.7 7.7h53.8c4.2 0 7.7-3.4 7.7-7.7V158.7c0-17-13.7-30.7-30.7-30.7H158.7c-17 0-30.7 13.7-30.7 30.7v706.6c0 17 13.7 30.7 30.7 30.7h706.6c17 0 30.7-13.7 30.7-30.7V765.1c0-4.3-3.5-7.7-7.7-7.7zm18.6-251.7L765 393.7c-5.3-4.2-13-.4-13 6.3v76H438c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h314v76c0 6.7 7.8 10.5 13 6.3l141.9-112a8 8 0 000-12.6z"
+            />
+          </svg>
+        </span>
+        <span>
+          <a
+            href="/export-data"
+          >
+            Export Data To CSV
+          </a>
+        </span>
+      </li>
+      <li
+        class="ant-menu-item"
+        role="menuitem"
+        style="padding-left: 24px;"
+      >
+        <span
+          aria-label="number"
+          class="anticon anticon-number ant-menu-item-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="number"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M872 394c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8H708V152c0-4.4-3.6-8-8-8h-64c-4.4 0-8 3.6-8 8v166H400V152c0-4.4-3.6-8-8-8h-64c-4.4 0-8 3.6-8 8v166H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h168v236H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h168v166c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V706h228v166c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V706h164c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8H708V394h164zM628 630H400V394h228v236z"
+            />
+          </svg>
+        </span>
+        <span>
+          <a
+            href="/number-converter-demo"
+          >
+            Number Conversion Demo
           </a>
         </span>
       </li>

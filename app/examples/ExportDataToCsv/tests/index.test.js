@@ -9,20 +9,32 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
-// import 'jest-dom/extend-expect'; // add some helpful assertions
-
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import history from 'utils/history';
+import { browserHistory } from 'react-router-dom';
 import ExportDataToCsv from '../index';
-import { DEFAULT_LOCALE } from '../../../i18n';
+import configureStore from '../../../configureStore';
+let store;
+const dispatch = jest.fn();
+const componentWrapper = () =>
+  render(
+    <Provider store={store}>
+      <IntlProvider locale="en">
+        <ConnectedRouter history={history}>
+          <ExportDataToCsv dispatch={dispatch} />
+        </ConnectedRouter>
+      </IntlProvider>
+    </Provider>,
+  );
 
 describe('<ExportDataToCsv />', () => {
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
+  });
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-    render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <ExportDataToCsv dispatch={dispatch} />
-      </IntlProvider>,
-    );
+    componentWrapper();
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -38,11 +50,7 @@ describe('<ExportDataToCsv />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <ExportDataToCsv />
-      </IntlProvider>,
-    );
+    } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
   });
 });
