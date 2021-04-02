@@ -4,7 +4,15 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
 
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(
+  fs.readFileSync(
+    path.join(__dirname, '../../app/styles/antDefaultVars.less'),
+    'utf8',
+  ),
+);
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -28,12 +36,18 @@ module.exports = options => ({
         },
       },
       {
-        // Preprocess our own .css files
-        // This is the place to add your own loaders (e.g. sass/less etc.)
-        // for a list of loaders, see https://webpack.js.org/loaders/#styling
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.less$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+              modifyVars: themeVariables,
+            },
+          },
+        ],
       },
       {
         // Preprocess 3rd party .css files located in node_modules

@@ -1,50 +1,51 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights } from '../../styles/index';
-
 export const StyledMainLayout = styled.div`
   .ant-layout-sider {
-    background: ${colors.brandBackgroundPrimary};
+    transition: none;
+    background: #190426;
+  }
+  .ant-menu .ant-menu-item,
+  .ant-menu-submenu-title,
+  .ant-menu {
+    transition: none;
   }
   .ant-menu.ant-menu-dark,
   .ant-menu-dark .ant-menu-sub,
   .ant-menu.ant-menu-dark .ant-menu-sub {
-    background-color: ${colors.brandPrimary};
-    color: ${colors.black};
+    background-color: #190426;
+    color: @secondary-color;
   }
   .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal)
     .ant-menu-item-selected {
-    background-color: ${colors.blackPearl};
-    color: ${colors.white};
+    background-color: @primary-color;
+    color: @white;
   }
   .ant-menu-dark .ant-menu-item,
   .ant-menu-dark .ant-menu-item-group-title,
   .ant-menu-dark .ant-menu-item > a,
   .ant-menu-dark .ant-menu-item > span > a {
-    color: ${colors.black};
+    color: @white;
   }
   .ant-menu-item-selected > span > a {
-    color: ${colors.white} !important;
+    color: @white !important;
   }
   .sideBarTrigger {
-    padding: 0 24px;
-    font-size: 18px;
+    padding: 0 @padding-lg;
+    font-size: @font-size-base+4px;
     line-height: 64px;
     cursor: pointer;
     transition: color 0.3s;
     outline: none;
   }
   .sideBarTrigger:hover {
-    color: ${colors.brandPrimary};
+    color: @primary-color;
   }
   #components-layout-demo-custom-trigger .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 255, 255, 0.3);
-    p {
-      text-align: center;
-      font-size: ${fontSizes.f20};
-      font-weight: ${fontWeights.bold};
-      color: ${colors.blackPearl};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      margin: @margin-md;
     }
   }
   .site-layout .site-layout-background {
@@ -53,7 +54,7 @@ export const StyledMainLayout = styled.div`
   .headerLayout {
     display: flex;
     padding: 0;
-    background-color: white;
+    background-color: @white;
   }
 `;
 

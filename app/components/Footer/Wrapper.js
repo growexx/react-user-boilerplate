@@ -1,25 +1,24 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights } from '../../styles/index';
 const Wrapper = styled.footer`
   display: flex;
   flex-wrap: wrap;
-  background: ${colors.blackPearl};
+  background: @white;
   justify-content: space-between;
   align-items: center;
-  font-size: ${fontSizes.f14};
-  color: ${colors.white};
-  padding: ${fontSizes.f14} 0;
-  font-weight: ${fontWeights.bold};
+  font-size: @font-size-base;
+  color: @black;
+  padding: @padding-xs 0;
+  font-weight: @font-weight-bold;
   > section:first-child {
-    margin-left: ${fontSizes.f8};
+    margin-left: @margin-xs;
   }
   > section:nth-child(2) {
-    margin-right: ${fontSizes.f8};
+    margin-right: @margin-xs;
     option {
-      color: ${colors.black};
+      color: @black;
     }
     @media only screen and (max-width: 767px) {
-      margin-top: ${fontSizes.f12};
+      margin-top: @font-size-sm;
     }
   }
 `;

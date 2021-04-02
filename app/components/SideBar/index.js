@@ -8,7 +8,8 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import GrowExxLogo from '../../images/Growexx.svg';
+import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
+import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
 import { MenuItems } from './Constants';
 
 const { Sider } = Layout;
@@ -21,7 +22,11 @@ const SideBar = props => (
     id="components-layout-demo-custom-trigger"
   >
     <div className="logo">
-      {!props.collapsed ? <p>GrowExx</p> : <img src={GrowExxLogo} alt="logo" />}
+      {!props.collapsed ? (
+        <img src={GrowExxLogo} alt="logo" />
+      ) : (
+        <img src={GrowExxTriangleLogo} alt="logo" />
+      )}
     </div>
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
       {MenuItems.map((menu, i) => (

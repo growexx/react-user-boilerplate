@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights, borders } from '../../../styles';
 export const StyledRegistration = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -12,15 +11,15 @@ export const StyledRegistration = styled.div`
   .createAccount {
     margin: 0;
     text-align: center;
-    font-size: ${fontSizes.f42};
-    font-weight: ${fontWeights.bold};
-    color: ${colors.brandPrimary};
+    font-size: @font-size-lg+26;
+    font-weight: @font-weight-bold;
+    color: @primary-color;
   }
   .emailRegistration {
-    margin-top: ${fontSizes.f31};
-    color: ${colors.gray400};
-    font-weight: ${fontWeights.regular};
-    font-size: ${fontSizes.f14};
+    margin-top: @font-size-lg+15;
+    color: @text-color;
+    font-weight: @font-weight-regular;
+    font-size: @font-size-base;
     text-align: center;
   }
   .registrationSubContainer {
@@ -37,42 +36,42 @@ export const StyledRegistration = styled.div`
     display: flex;
   }
   .socialIcons > span {
-    border: 1px solid ${colors.gray300};
-    padding: 10px;
+    border: 1px solid @border-color-base;
+    padding: @padding-sm;
     border-radius: 50%;
-    margin: 10px;
+    margin: @margin-sm;
   }
   .accountData {
     input {
-      margin-top: 10px;
-      background-color: ${colors.gray200};
+      margin-top: @margin-sm;
+      background-color: @background-color-base;
     }
     input[value] {
-      color: ${colors.gray400};
-      font-size: ${fontSizes.f15};
+      color: @text-color-secondary;
+      font-size: @font-size-base+1px;
     }
   }
   button {
-    margin-top: ${fontSizes.f31};
-    background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    border-radius: 50px;
+    margin-top: @font-size-lg+15;
+    background: @primary-color;
+    border: 2px solid @white;
+    border-radius: @border-radius-base+48;
     text-align: center;
-    color: ${colors.white};
+    color: @white;
     text-align: center;
-    font-size: ${fontSizes.f15};
-    font-weight: ${fontWeights.medium};
-    height: ${fontSizes.f40};
+    font-size: @font-size-base+1;
+    font-weight: @font-weight-medium;
+    height: @height-lg;
     width: 160px;
   }
   button:hover {
-    background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    color: ${colors.white};
+    background: @primary-color;
+    border: 2px solid @white;
+    color: @white;
   }
   button:focus {
-    background: ${colors.brandPrimary};
-    border: ${borders.avatarBorder};
-    color: ${colors.white};
+    background: @primary-color;
+    border: 2px solid @white;
+    color: @white;
   }
 `;

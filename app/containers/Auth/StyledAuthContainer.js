@@ -1,24 +1,23 @@
 import styled from 'styled-components';
-import { colors, fontSizes, fontWeights, space, borders } from '../../styles';
 export const StyledAuthContainer = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-wrap: wrap;
   .sideContainer {
-    background: ${colors.brandBackgroundPrimary};
+    background: @primary-color;
     display: flex;
-    flex-direction: row
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: ${space.xlSpacing};
+    padding: 32px;
     .registrationSideContainer {
       display: flex;
       flex-direction: column;
-      align-items:center;
+      align-items: center;
       .title {
         text-align: center;
-        font-size: ${fontSizes.f42};
-        font-weight: ${fontWeights.bold};
+        font-size: 42px;
+        font-weight: @font-weight-bold;
         margin: 0;
       }
       .subTitle {
@@ -28,18 +27,18 @@ export const StyledAuthContainer = styled.div`
       }
       button {
         margin-top: 35px;
-        height: ${fontSizes.f40};
+        height: @height-lg;
         width: 160px;
-        background: ${colors.transparent};
-        border: ${borders.avatarBorder};
+        background: @btn-default-ghost-bg;
+        border: 2px solid @white;
         border-radius: 50px;
         text-align: center;
-        color: ${colors.white};
+        color: @white;
       }
       button:hover {
-        color: ${colors.white};
+        color: @white;
       }
-      color: ${colors.white};
+      color: @white;
     }
   }
 `;
