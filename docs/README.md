@@ -5,6 +5,7 @@
 - [General](general)
   - [**CLI Commands**](general/commands.md)
   - [Introduction ](general/introduction.md)
+  - [Role Based Route Access ](general/c.md)
   - [Tool Configuration](general/files.md)
   - [Server Configurations](general/server-configs.md)
   - [Deployment](general/deployment.md) _(currently Heroku and AWS S3 specific)_

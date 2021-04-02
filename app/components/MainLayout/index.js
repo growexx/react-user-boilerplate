@@ -13,7 +13,7 @@ import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
 import SideBar from 'components/SideBar';
 import Emitter from 'utils/events';
-import { userExists } from 'utils/Helper';
+import { userExists, getUserData } from 'utils/Helper';
 import { EMITTER_EVENTS } from 'utils/constants';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
 const { Header, Content } = Layout;
@@ -53,7 +53,7 @@ class MainLayout extends React.Component {
         <StyledMainLayout>
           <Layout>
             <Layout>
-              <SideBar collapsed={this.state.collapsed} />
+              <SideBar collapsed={this.state.collapsed} user={getUserData()} />
               <Layout className="site-layout">
                 <Header className="headerLayout">
                   <ToggleBreadCrumb>

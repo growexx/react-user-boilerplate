@@ -13,7 +13,7 @@ import {
 import Emitter from 'utils/events';
 import { LOGIN } from './constants';
 import { API_ENDPOINTS } from '../constants';
-import { ROUTES } from '../../constant';
+import { IS_DEMO_CODE, ROUTES } from '../../constant';
 import { changeLoading, logInError, logInSuccess, resetState } from './actions';
 import StorageService from '../../../utils/StorageService';
 import {
@@ -21,6 +21,7 @@ import {
   EMITTER_EVENTS,
   USER_DATA_KEY,
 } from '../../../utils/constants';
+import { loginSuccessResponse } from './stub/login.stub';
 
 /**
  * user login request/response handler
@@ -36,27 +37,40 @@ export function* getSignIn() {
     method: 'POST',
     body: payload,
   };
-
-  try {
-    const log = yield call(request, API_ENDPOINTS.LOGIN, data);
-    yield put(changeLoading(true));
-    if (log.status === 1) {
-      yield put(logInSuccess(log.message));
-      StorageService.set(TOKEN_KEY, log.data.token);
-      StorageService.set(USER_DATA_KEY, log.data);
-      yield put(changeLoading(false));
-      yield put(resetState());
-      yield put(push(ROUTES.HOME));
-      Emitter.emit(EMITTER_EVENTS.LOG_IN);
-    } else {
+  /**
+   * Remove following code, It's only for demo purpose
+   */
+  if (IS_DEMO_CODE) {
+    yield put(logInSuccess(loginSuccessResponse.message));
+    StorageService.set(TOKEN_KEY, loginSuccessResponse.data.token);
+    StorageService.set(USER_DATA_KEY, loginSuccessResponse.data);
+    yield put(changeLoading(false));
+    yield put(resetState());
+    yield put(push(ROUTES.HOME));
+    Emitter.emit(EMITTER_EVENTS.LOG_IN);
+    // ----------------Demo--------------------
+  } else {
+    try {
+      const log = yield call(request, API_ENDPOINTS.LOGIN, data);
+      yield put(changeLoading(true));
+      if (log.status === 1) {
+        yield put(logInSuccess(log.message));
+        StorageService.set(TOKEN_KEY, log.data.token);
+        StorageService.set(USER_DATA_KEY, log.data);
+        yield put(changeLoading(false));
+        yield put(resetState());
+        yield put(push(ROUTES.HOME));
+        Emitter.emit(EMITTER_EVENTS.LOG_IN);
+      } else {
+        yield put(resetState());
+        yield put(changeLoading(false));
+        yield put(logInError(true));
+      }
+    } catch (err) {
       yield put(resetState());
       yield put(changeLoading(false));
       yield put(logInError(true));
     }
-  } catch (err) {
-    yield put(resetState());
-    yield put(changeLoading(false));
-    yield put(logInError(true));
   }
 }
 
