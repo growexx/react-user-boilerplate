@@ -1,6 +1,6 @@
 /**
  *
- * Tests for Loader
+ * Tests for Registration
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -10,34 +10,39 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
+import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
-import history from 'utils/history';
-import request from 'utils/request';
-import configureStore from '../../../configureStore';
-import Loader from '../index';
+import configureStore from '../../../../configureStore';
+import Logout from '../index';
+import Lodable from '../Loadable';
 let store;
-jest.mock('utils/request');
-const componentWrapper = () =>
+const componentWrapper = Component =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <Loader />
+          <Component />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
   );
-describe('<Loader />', () => {
+
+describe('<Registration />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
 
-  it('should render and match the snapshot', () => {
-    request.mockImplementation(() => Promise.resolve({ status: 1 }));
+  it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = componentWrapper();
+    } = componentWrapper(Logout);
+    expect(firstChild).toMatchSnapshot();
+  });
+  it('Should render and match the snapshot Loadable', () => {
+    const {
+      container: { firstChild },
+    } = componentWrapper(Lodable);
     expect(firstChild).toMatchSnapshot();
   });
 });

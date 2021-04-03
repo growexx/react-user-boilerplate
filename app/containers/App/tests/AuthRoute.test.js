@@ -5,35 +5,44 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
-import SideBar from '../index';
+import { userExists } from 'utils/Helper';
+import Login from 'containers/Auth/Login/Loadable';
 import configureStore from '../../../configureStore';
-let store;
+import AuthRoute from '../AuthRoute';
+jest.mock('utils/Helper');
 const props = {
-  user: {
-    role: 1,
-  },
-  collapsed: true,
+  component: Login,
 };
+let store;
 const componentWrapper = () =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <SideBar {...props} />
+          <AuthRoute {...props} />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
   );
 
-describe('<SideBar />', () => {
+describe('<MainLayout />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
+    userExists.mockImplementation(() => true);
   });
-
   it('should render and match the snapshot', () => {
     const {
       container: { firstChild },
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
+  });
+  it('with login', () => {
+    const { container } = componentWrapper();
+    expect(container.tagName).toBe('DIV');
+  });
+  it('with logout', () => {
+    userExists.mockImplementation(() => false);
+    const { container } = componentWrapper();
+    expect(container.tagName).toBe('DIV');
   });
 });

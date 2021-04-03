@@ -1,5 +1,5 @@
-import { updateField } from '../actions';
-import { UPDATE_FIELD } from '../constants';
+import { submitData, updateField } from '../actions';
+import { SUBMIT_DATA, UPDATE_FIELD } from '../constants';
 
 describe('SampleForm actions', () => {
   describe('Default Action', () => {
@@ -8,6 +8,12 @@ describe('SampleForm actions', () => {
         type: UPDATE_FIELD,
       };
       expect(updateField()).toEqual(expected);
+    });
+    it('has a type of SUBMIT_DATA', () => {
+      const expected = {
+        type: SUBMIT_DATA,
+      };
+      expect(submitData()).toEqual(expected);
     });
   });
 });

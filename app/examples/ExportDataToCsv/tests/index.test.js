@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
@@ -37,5 +37,15 @@ describe('<ExportDataToCsv />', () => {
       container: { firstChild },
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
+  });
+  it('should trigger export', () => {
+    const { container } = componentWrapper();
+    const checkbox = container.querySelector('input');
+    const element = checkbox;
+    fireEvent.click(element);
+    const { getByTestId } = componentWrapper();
+    const buttonElement = getByTestId('ExportButton');
+    fireEvent.click(buttonElement);
+    expect(buttonElement.tagName).toEqual('BUTTON');
   });
 });

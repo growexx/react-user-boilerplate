@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { browserHistory } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -18,6 +18,9 @@ import configureStore from '../../../configureStore';
 let store;
 const props = {
   handleSubmit: jest.fn(),
+  pristine: true,
+  reset: true,
+  submitting: true,
 };
 const componentWrapper = () =>
   render(
@@ -38,5 +41,29 @@ describe('<SampleForm />', () => {
       container: { firstChild },
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
+  });
+  it('Should click submit button', () => {
+    props.pristine = false;
+    const { container } = componentWrapper();
+    const button = container.querySelector('button');
+    fireEvent.click(button);
+    expect(props.handleSubmit).toBeCalled();
+  });
+  it('Should change form fields', () => {
+    const eventObject = {
+      preventDefault: jest.fn(),
+      target: {
+        value: 'test',
+        name: 'test',
+        checked: true,
+      },
+    };
+    const { getByPlaceholderText, getByTestId, debug } = componentWrapper();
+    debug();
+    fireEvent.change(getByPlaceholderText('First Name'), eventObject);
+    fireEvent.change(getByPlaceholderText('Last Name'), eventObject);
+    fireEvent.change(getByPlaceholderText('Email'), eventObject);
+    fireEvent.change(getByTestId('Favorite Color Select'));
+    fireEvent.change(getByTestId('Notes'), eventObject);
   });
 });

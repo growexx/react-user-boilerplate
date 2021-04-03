@@ -1,15 +1,33 @@
 /**
  * Test sagas
  */
+import { runSaga } from 'redux-saga';
+import { takeLatest } from 'redux-saga/effects';
+import configureStore from 'redux-mock-store';
+import { SUBMIT_DATA } from '../constants';
+import setSaga, { submitData as setSagaFunction } from '../saga';
+const initialState = {};
+const mockStore = configureStore();
+const store = mockStore(initialState);
+export async function recordSaga(saga) {
+  const dispatched = [];
 
-/* eslint-disable redux-saga/yield-effects */
-// import { take, call, put, select } from 'redux-saga/effects';
-// import sampleFormSaga from '../saga';
+  await runSaga(
+    {
+      dispatch: action => dispatched.push(action),
+      getState() {
+        return store.getState();
+      },
+    },
+    saga,
+  ).done;
 
-// const generator = sampleFormSaga();
-
-describe('sampleFormSaga Saga', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(true);
+  return dispatched;
+}
+describe('Testing sampleFormSaga', () => {
+  test('sampleFormSaga', async () => {
+    await recordSaga(setSagaFunction);
+    const gen = setSaga();
+    expect(gen.next().value).toEqual(takeLatest(SUBMIT_DATA, setSagaFunction));
   });
 });

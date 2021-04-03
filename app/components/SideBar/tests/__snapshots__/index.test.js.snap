@@ -2,9 +2,9 @@
 
 exports[`<SideBar /> should render and match the snapshot 1`] = `
 <aside
-  class="ant-layout-sider ant-layout-sider-dark"
+  class="ant-layout-sider ant-layout-sider-dark ant-layout-sider-collapsed"
   id="components-layout-demo-custom-trigger"
-  style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+  style="flex: 0 0 80px; max-width: 80px; min-width: 80px; width: 80px;"
 >
   <div
     class="ant-layout-sider-children"
@@ -18,13 +18,12 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       />
     </div>
     <ul
-      class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
+      class="ant-menu ant-menu-dark ant-menu-inline-collapsed ant-menu-root ant-menu-vertical"
       role="menu"
     >
       <li
         class="ant-menu-item"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="user"
@@ -56,7 +55,6 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       <li
         class="ant-menu-item ant-menu-item-selected"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="check-circle"
@@ -91,7 +89,6 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       <li
         class="ant-menu-item"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="smile"
@@ -123,7 +120,6 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       <li
         class="ant-menu-item"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="loading"
@@ -155,7 +151,6 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       <li
         class="ant-menu-item"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="export"
@@ -187,7 +182,6 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       <li
         class="ant-menu-item"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="number"
@@ -219,7 +213,6 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
       <li
         class="ant-menu-item"
         role="menuitem"
-        style="padding-left: 24px;"
       >
         <span
           aria-label="form"

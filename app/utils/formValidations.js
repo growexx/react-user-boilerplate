@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-const VALIDATION_MESSAGES = {
+export const VALIDATION_MESSAGES = {
   EMAIL: 'Email is invalid!',
   URL: 'URL is invalid!',
   REQUIRED: 'Required!',

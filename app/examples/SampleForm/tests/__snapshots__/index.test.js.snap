@@ -198,6 +198,7 @@ exports[`<SampleForm /> Should render and match the snapshot 1`] = `
           >
             <div
               class="ant-select ant-select-single ant-select-show-arrow"
+              data-testid="Favorite Color Select"
               name="favoriteColor"
             >
               <div
@@ -289,6 +290,7 @@ exports[`<SampleForm /> Should render and match the snapshot 1`] = `
               >
                 <input
                   class="ant-checkbox-input"
+                  data-testid="Employed"
                   id="employed"
                   name="employed"
                   type="checkbox"
@@ -327,6 +329,7 @@ exports[`<SampleForm /> Should render and match the snapshot 1`] = `
           >
             <div
               class="ant-picker ant-picker-range"
+              data-testid="Filter dates"
               name="rangepicker"
             >
               <div
@@ -435,6 +438,7 @@ exports[`<SampleForm /> Should render and match the snapshot 1`] = `
           >
             <textarea
               class="ant-input"
+              data-testid="Notes"
               name="notes"
             />
           </div>

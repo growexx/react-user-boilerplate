@@ -9,8 +9,6 @@ import { Helmet } from 'react-helmet';
 import { Button, Table } from 'antd';
 import { FormattedMessage } from 'react-intl';
 import { exportJsonAsCSV } from 'utils/csvExport';
-import request from 'utils/request';
-import { API_ENDPOINTS } from 'containers/constant';
 import { StyledButton, StyledExport } from './StyledExport';
 import {
   CSV_FILE_NAME,
@@ -42,17 +40,12 @@ class ExportDataToCsv extends React.Component {
    * export data client side
    */
   exportDataClientSide = () => {
-    exportJsonAsCSV(
-      this.state.selectedRows || [],
-      FIELDS_FOR_CSV,
-      CSV_FILE_NAME,
-    );
+    exportJsonAsCSV(this.state.selectedRows, FIELDS_FOR_CSV, CSV_FILE_NAME);
   };
 
   /**
    * export data server side
-   */
-  exportDataServerSide = () => {
+   * exportDataServerSide = () => {
     const payload = {
       data: this.state.selectedRows,
       fields: FIELDS_FOR_CSV,
@@ -66,6 +59,7 @@ class ExportDataToCsv extends React.Component {
       document.body.removeChild(downloadLink);
     });
   };
+  */
 
   render() {
     return (
@@ -77,6 +71,7 @@ class ExportDataToCsv extends React.Component {
         <StyledExport>
           <StyledButton>
             <Button
+              data-testid="ExportButton"
               type="primary"
               onClick={this.exportDataClientSide}
               disabled={this.state.selectedRows.length === 0}
@@ -85,6 +80,7 @@ class ExportDataToCsv extends React.Component {
             </Button>
           </StyledButton>
           <Table
+            data-testid="DataTable"
             pagination={false}
             rowSelection={{
               type: 'checkbox',

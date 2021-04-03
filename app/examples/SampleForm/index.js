@@ -91,6 +91,7 @@ export class SampleForm extends PureComponent {
           </Field>
 
           <Field
+            data-testid="Favorite Color Select"
             label="Favorite Color"
             name="favoriteColor"
             component={ASelect}
@@ -102,6 +103,7 @@ export class SampleForm extends PureComponent {
           </Field>
 
           <Field
+            data-testid="Employed"
             label="Employed"
             name="employed"
             id="employed"
@@ -111,6 +113,7 @@ export class SampleForm extends PureComponent {
           />
 
           <Field
+            data-testid="Filter dates"
             label="Filter dates"
             name="rangepicker"
             component={ARangePicker}
@@ -122,6 +125,7 @@ export class SampleForm extends PureComponent {
           />
 
           <Field
+            data-testid="Notes"
             label="Notes"
             name="notes"
             component={ATextarea}

@@ -10,6 +10,7 @@ exports[`<ExportDataToCsv /> Should render and match the snapshot 1`] = `
     >
       <button
         class="ant-btn ant-btn-primary"
+        data-testid="ExportButton"
         disabled=""
         type="button"
       >
@@ -29,6 +30,7 @@ exports[`<ExportDataToCsv /> Should render and match the snapshot 1`] = `
         >
           <div
             class="ant-table"
+            data-testid="DataTable"
           >
             <div
               class="ant-table-container"
