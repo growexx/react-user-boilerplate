@@ -150,3 +150,5 @@ exports[`<Registration /> Should render and match the snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Registration /> Should render and match the snapshot Loadable 1`] = `null`;

@@ -16,13 +16,12 @@ import { browserHistory } from 'react-router-dom';
 import ExportDataToCsv from '../index';
 import configureStore from '../../../configureStore';
 let store;
-const dispatch = jest.fn();
 const componentWrapper = () =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <ExportDataToCsv dispatch={dispatch} />
+          <ExportDataToCsv />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,

@@ -15,14 +15,15 @@ import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import configureStore from '../../../../configureStore';
 import { Registration } from '../index';
+import Lodable from '../Loadable';
 
 let store;
-const componentWrapper = () =>
+const componentWrapper = Component =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <Registration />
+          <Component />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
@@ -36,7 +37,13 @@ describe('<Registration />', () => {
   it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = componentWrapper();
+    } = componentWrapper(Registration);
+    expect(firstChild).toMatchSnapshot();
+  });
+  it('Should render and match the snapshot Loadable', () => {
+    const {
+      container: { firstChild },
+    } = componentWrapper(Lodable);
     expect(firstChild).toMatchSnapshot();
   });
 });

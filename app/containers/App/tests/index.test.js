@@ -38,9 +38,4 @@ describe('<App />', () => {
     const element = container.firstElementChild;
     expect(element.tagName).toEqual('DIV');
   });
-  // it('RoleMiddleWare', () => {
-  //   const { getByTestId } = componentWrapper();
-  //   const element = getByTestId('RoleMiddleWare');
-  //   // expect(element.tagName).toEqual('DIV');
-  // });
 });

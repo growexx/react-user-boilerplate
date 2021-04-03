@@ -237,3 +237,5 @@ exports[`<Login /> Should render and match the snapshot 1`] = `
   </div>
 </form>
 `;
+
+exports[`<Login /> Should render and match the snapshot Loadable 1`] = `null`;

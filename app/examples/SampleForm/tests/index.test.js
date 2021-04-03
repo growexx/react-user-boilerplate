@@ -58,8 +58,7 @@ describe('<SampleForm />', () => {
         checked: true,
       },
     };
-    const { getByPlaceholderText, getByTestId, debug } = componentWrapper();
-    debug();
+    const { getByPlaceholderText, getByTestId } = componentWrapper();
     fireEvent.change(getByPlaceholderText('First Name'), eventObject);
     fireEvent.change(getByPlaceholderText('Last Name'), eventObject);
     fireEvent.change(getByPlaceholderText('Email'), eventObject);

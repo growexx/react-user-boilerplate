@@ -45,11 +45,11 @@ describe('Testing getSignIn', () => {
     );
     await recordSaga(setSagaFunction);
     expect(request).toHaveBeenCalled();
-    await recordSaga(setSagaFunction);
   });
   test('Demo Mode Off and status 0', async () => {
     request.mockImplementation(() => Promise.resolve({ status: 0 }));
     await recordSaga(setSagaFunction);
+    expect(request).toHaveBeenCalled();
   });
   test('Demo Mode Off and Network Error', async () => {
     request.mockImplementation(() => Promise.error({ status: 0 }));
