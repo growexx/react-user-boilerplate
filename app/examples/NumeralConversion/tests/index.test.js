@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import history from 'utils/history';
@@ -36,5 +36,13 @@ describe('<NumeralConversion />', () => {
       container: { firstChild },
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
+  });
+  it('Should fire conversion button', () => {
+    const { container } = componentWrapper();
+    const input = container.querySelector('input');
+    fireEvent.change(input, { target: { value: '1234' } });
+    const button = container.querySelector('button');
+    fireEvent.click(button);
+    expect(button).toBeTruthy();
   });
 });

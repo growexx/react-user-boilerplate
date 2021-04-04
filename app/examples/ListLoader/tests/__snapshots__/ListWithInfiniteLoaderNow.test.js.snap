@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ListWithInfinteLoader /> should render and match the snapshot 1`] = `
+exports[`<ListWithInfiniteLoader /> should render and match the snapshot 1`] = `
 <div
   class="StyledList__ListWithInfiniteLoader-sc-1g8c4g5-0 enoTdC"
 >
@@ -67,6 +67,63 @@ exports[`<ListWithInfinteLoader /> should render and match the snapshot 1`] = `
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ListWithInfiniteLoader /> should render and match the snapshot 2`] = `
+<div
+  class="StyledList__ListWithInfiniteLoader-sc-1g8c4g5-0 enoTdC"
+>
+  <div
+    class="demo-infinite-container"
+  >
+    <div>
+      <div
+        class="ant-list ant-list-split"
+      >
+        <div
+          class="ant-spin-nested-loading"
+        >
+          <div
+            class="ant-spin-container"
+          >
+            <ul
+              class="ant-list-items"
+            >
+              <li
+                class="ant-list-item"
+              >
+                <div
+                  class="ant-list-item-meta"
+                >
+                  <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <span
+                      class="ant-avatar ant-avatar-circle ant-avatar-image"
+                    >
+                      <img
+                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                      />
+                    </span>
+                  </div>
+                  <div
+                    class="ant-list-item-meta-content"
+                  >
+                    <h4
+                      class="ant-list-item-meta-title"
+                    >
+                      testInfiniteLoader
+                    </h4>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

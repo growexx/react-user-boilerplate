@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, wait } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
@@ -20,7 +20,7 @@ const componentWrapper = () =>
       </IntlProvider>
     </Provider>,
   );
-describe('<ListWithInfinteLoader />', () => {
+describe('<ListWithInfiniteLoader />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
@@ -30,6 +30,26 @@ describe('<ListWithInfinteLoader />', () => {
     const {
       container: { firstChild },
     } = componentWrapper();
+    expect(firstChild).toMatchSnapshot();
+  });
+  it('should render and match the snapshot', async () => {
+    request.mockImplementation(() =>
+      Promise.resolve({
+        status: 1,
+        results: [
+          {
+            name: {
+              last: 'testInfiniteLoader',
+              email: 'test@234.com',
+            },
+          },
+        ],
+      }),
+    );
+    const {
+      container: { firstChild },
+    } = componentWrapper();
+    await wait(() => expect(request).toHaveBeenCalledTimes(2));
     expect(firstChild).toMatchSnapshot();
   });
 });
