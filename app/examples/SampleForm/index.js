@@ -158,7 +158,7 @@ SampleForm.propTypes = {
   updateField: PropTypes.func.isRequired,
   submitData: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
-  reset: PropTypes.bool,
+  reset: PropTypes.func,
   submitting: PropTypes.bool,
 };
 

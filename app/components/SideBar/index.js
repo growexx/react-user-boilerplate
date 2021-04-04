@@ -29,12 +29,10 @@ const SideBar = props => (
       )}
     </div>
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-      {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map((menu, i) => (
-        <>
-          <Menu.Item key={i} icon={menu.icon}>
-            <Link to={menu.to}>{menu.tabName}</Link>
-          </Menu.Item>
-        </>
+      {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
+        <Menu.Item key={menu.key} icon={menu.icon}>
+          <Link to={menu.to}>{menu.tabName}</Link>
+        </Menu.Item>
       ))}
     </Menu>
   </Sider>
@@ -44,5 +42,5 @@ export default SideBar;
 
 SideBar.propTypes = {
   collapsed: PropTypes.bool,
-  user: PropTypes.object,
+  user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };

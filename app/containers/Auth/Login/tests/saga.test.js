@@ -18,7 +18,7 @@ const initialState = {
     password: 'test',
     loading: false,
     error: false,
-    success: false,
+    success: 'done',
   },
 };
 const mockStore = configureStore();

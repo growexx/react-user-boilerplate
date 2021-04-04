@@ -133,7 +133,7 @@ Login.propTypes = {
   history: PropTypes.object,
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  success: PropTypes.string,
+  success: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   onSignIn: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
