@@ -5,8 +5,8 @@
 
 > Note: Edit default plugins array and add following code.
 
-   ```
-        ['import', { libraryName: 'antd', style: true }],
+```
+    ['import', { libraryName: 'antd', style: true }],
    ```
 > Note: **true** here indicates importing less version of antd.
 
@@ -31,12 +31,12 @@
 
 4. Create less file overriding ant default theme variables.
 
->> Currently created one: app/styles/antDefaultVars.less.
->> This file should import default.less file of ant design with **@import url('~antd/lib/style/themes/default.less');** 
->> For overriding variables, just create variables with same name as declared in default.less file of ant design. 
+> Currently created one: app/styles/antDefaultVars.less.
+> This file should import default.less file of ant design with **@import url('~antd/lib/style/themes/default.less');** .
+>For overriding variables, just create variables with same name as declared in default.less file of ant design. 
 >> We can only override variables which are declared in default.less file of ant design.
 
-   ```
+```
     @primary-color: #4d186e;
     @primary-hover: #3E1358;
     @blue-base: #4d186e;
@@ -55,7 +55,7 @@
     );
    ```
 Less Loader config.
-    ```
+```
     {
         test: /\.less$/,
         use: [
@@ -70,8 +70,8 @@ Less Loader config.
           },
         ],
       },
-    ```
+   ```
 
->> We are using styles of ant design library and can be found in default.less file.
+> We are using styles of ant design library and can be found in default.less file.
 
-[default variables file of ant design](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less)
+[Default variables file of ant design](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less)
