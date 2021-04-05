@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 /**
  * SideBar/index.js
  *
@@ -8,21 +7,17 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
+import { ROUTES } from 'containers/constants';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
 import { GET_FILTERED_MENU_ITEM } from './Constants';
 
 const { Sider } = Layout;
 const getRouteIndex = props => {
-  let key = 1;
-  // eslint-disable-next-line array-callback-return
-  GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => {
-    if (props.location.pathname === menu.to) {
-      const { key: menuKey } = menu;
-      key = menuKey;
-    }
-  });
-  return key;
+  const route = GET_FILTERED_MENU_ITEM(props.user && props.user.role).find(
+    menu => menu.to === props.location.pathname,
+  );
+  return route.key;
 };
 
 const SideBar = props => (
@@ -33,11 +28,13 @@ const SideBar = props => (
     id="components-layout-demo-custom-trigger"
   >
     <div className="logo">
-      {!props.collapsed ? (
-        <img src={GrowExxLogo} alt="logo" />
-      ) : (
-        <img src={GrowExxTriangleLogo} alt="logo" />
-      )}
+      <Link to={ROUTES.HOME}>
+        {!props.collapsed ? (
+          <img src={GrowExxLogo} alt="logo" />
+        ) : (
+          <img src={GrowExxTriangleLogo} alt="logo" />
+        )}
+      </Link>
     </div>
     <Menu theme="dark" mode="inline" defaultSelectedKeys={getRouteIndex(props)}>
       {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (

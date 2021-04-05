@@ -5,19 +5,26 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { List, Avatar, Button, Skeleton } from 'antd';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import request from 'utils/request';
 import { API_ENDPOINTS } from 'containers/constants';
+import { loadApp } from 'containers/App/actions';
 
 const count = 3;
 
 class ListWithLoadMore extends React.Component {
-  state = {
-    initLoading: true,
-    loading: false,
-    data: [],
-    list: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      initLoading: true,
+      loading: false,
+      data: [],
+      list: [],
+    };
+  }
 
   componentDidMount() {
     this.getData(res => {
@@ -30,9 +37,13 @@ class ListWithLoadMore extends React.Component {
   }
 
   getData = callback => {
+    this.props.onChangeAppLoading(true);
     request(API_ENDPOINTS.LIST, {
       method: 'GET',
-    }).then(res => callback(res));
+    }).then(res => {
+      this.props.onChangeAppLoading(false);
+      callback(res);
+    });
   };
 
   onLoadMore = () => {
@@ -80,7 +91,6 @@ class ListWithLoadMore extends React.Component {
     return (
       <List
         className="demo-loadmore-list"
-        loading={initLoading}
         itemLayout="horizontal"
         loadMore={loadMore}
         dataSource={list}
@@ -99,6 +109,19 @@ class ListWithLoadMore extends React.Component {
     );
   }
 }
-ListWithLoadMore.propTypes = {};
+ListWithLoadMore.propTypes = {
+  onChangeAppLoading: PropTypes.func,
+};
 
-export default ListWithLoadMore;
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeAppLoading: loading => dispatch(loadApp(loading)),
+  };
+}
+
+const withConnect = connect(
+  undefined,
+  mapDispatchToProps,
+);
+
+export default compose(withConnect)(ListWithLoadMore);

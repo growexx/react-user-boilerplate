@@ -1,3 +1,4 @@
+import { initialState } from '../reducer';
 import {
   selectGlobal,
   makeSelectCurrentUser,
@@ -5,6 +6,7 @@ import {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  makeSelectAppLoading,
 } from '../selectors';
 
 describe('selectGlobal', () => {
@@ -14,6 +16,10 @@ describe('selectGlobal', () => {
       global: globalState,
     };
     expect(selectGlobal(mockedState)).toEqual(globalState);
+  });
+  it('should select the global state with initial state', () => {
+    const mockedState = {};
+    expect(selectGlobal(mockedState)).toEqual(initialState);
   });
 });
 
@@ -68,6 +74,18 @@ describe('makeSelectRepos', () => {
       },
     };
     expect(reposSelector(mockedState)).toEqual(repositories);
+  });
+});
+
+describe('makeSelectAppLoading', () => {
+  const appLoader = makeSelectAppLoading();
+  it('should select the repos', () => {
+    const mockedState = {
+      global: {
+        appLoading: true,
+      },
+    };
+    expect(appLoader(mockedState)).toEqual(true);
   });
 });
 

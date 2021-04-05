@@ -12,10 +12,14 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
     <div
       class="logo"
     >
-      <img
-        alt="logo"
-        src="IMAGE_MOCK"
-      />
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          src="IMAGE_MOCK"
+        />
+      </a>
     </div>
     <ul
       class="ant-menu ant-menu-dark ant-menu-inline-collapsed ant-menu-root ant-menu-vertical"

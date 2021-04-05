@@ -15,7 +15,12 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_REPOS,
+  LOAD_REPOS_SUCCESS,
+  LOAD_REPOS_ERROR,
+  LOAD_APP,
+} from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -55,5 +60,17 @@ export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
     error,
+  };
+}
+
+/**
+ * Load the app
+ *
+ * @return {object} An action object with a type of LOAD_APP
+ */
+export function loadApp(loading) {
+  return {
+    type: LOAD_APP,
+    appLoading: loading,
   };
 }
