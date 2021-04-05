@@ -2,16 +2,9 @@
 import { runSaga } from 'redux-saga';
 import { takeLatest } from 'redux-saga/effects';
 import configureStore from 'redux-mock-store';
-import request from 'utils/request';
 import { LOGIN } from '../constants';
 import setSaga, { getSignIn as setSagaFunction } from '../saga';
 jest.mock('utils/request');
-jest.mock('containers/constants', () => ({
-  IS_DEMO_CODE: false,
-  ROUTES: {
-    HOME: '/',
-  },
-}));
 const initialState = {
   login: {
     email: 'test',
@@ -39,22 +32,9 @@ export async function recordSaga(saga) {
   return dispatched;
 }
 describe('Testing getSignIn', () => {
-  test('Demo Mode Off and status 1', async () => {
-    request.mockImplementation(() =>
-      Promise.resolve({ status: 1, data: { token: 'test' } }),
-    );
+  test('Demo Mode On', async () => {
     await recordSaga(setSagaFunction);
-    expect(request).toHaveBeenCalled();
-  });
-  test('Demo Mode Off and status 0', async () => {
-    request.mockImplementation(() => Promise.resolve({ status: 0 }));
-    await recordSaga(setSagaFunction);
-    expect(request).toHaveBeenCalled();
-  });
-  test('Demo Mode Off and Network Error', async () => {
-    request.mockImplementation(() => Promise.error({ status: 0 }));
-    await recordSaga(setSagaFunction);
-    expect(request).toHaveBeenCalled();
+    expect(recordSaga(setSagaFunction)).toBeTruthy();
   });
 });
 describe('Testing login', () => {
