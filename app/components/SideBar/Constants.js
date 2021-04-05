@@ -19,7 +19,7 @@ import {
   ROLE_BASED_SIDEBAR_MENU,
   ROLES,
   RESTRICTED_ROUTES,
-} from 'containers/constant';
+} from 'containers/constants';
 
 export const MenuItems = [
   {

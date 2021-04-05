@@ -11,7 +11,7 @@ import {
   ROLE_BASED_DEFAULT_ROUTE,
   ROUTES,
   IS_DEMO_CODE,
-} from '../constant';
+} from '../constants';
 import { USER_DATA_KEY } from '../../utils/constants';
 import StorageService from '../../utils/StorageService';
 import { loginSuccessResponse } from '../Auth/Login/stub/login.stub';

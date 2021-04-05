@@ -6,7 +6,7 @@ import { browserHistory, MemoryRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import App from '../index';
 import configureStore from '../../../configureStore';
-import { ROUTES } from '../../constant';
+import { ROUTES } from '../../constants';
 import StorageService from '../../../utils/StorageService';
 import { TOKEN_KEY } from '../../../utils/constants';
 

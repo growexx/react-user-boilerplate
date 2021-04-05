@@ -67,7 +67,12 @@ describe('<SampleForm />', () => {
     const getById = queryByAttribute.bind(null, 'id');
     fireEvent.change(getByPlaceholderText('First Name'), eventObject);
     fireEvent.change(getByPlaceholderText('Last Name'), eventObject);
-    fireEvent.change(getByPlaceholderText('Email'), eventObject);
+    fireEvent.change(getByPlaceholderText('Email'), {
+      target: {
+        value: 'TestEmail',
+        name: 'email',
+      },
+    });
     fireEvent.click(getById(container, 'employed'), eventObject);
     fireEvent.click(getByRole('combobox'));
     fireEvent.change(getByTestId('Notes'), eventObject);

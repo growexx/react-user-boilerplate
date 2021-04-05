@@ -194,5 +194,6 @@ export default compose(
       lastName: [formValidations.required],
       email: [formValidations.required, formValidations.validEmail],
     }),
+    touchOnChange: true,
   }),
 )(SampleForm);

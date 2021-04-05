@@ -6,7 +6,7 @@ import request from 'utils/request';
 import { LOGIN } from '../constants';
 import setSaga, { getSignIn as setSagaFunction } from '../saga';
 jest.mock('utils/request');
-jest.mock('containers/constant', () => ({
+jest.mock('containers/constants', () => ({
   IS_DEMO_CODE: false,
   ROUTES: {
     HOME: '/',

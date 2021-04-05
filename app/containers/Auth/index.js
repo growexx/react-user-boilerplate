@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from 'antd';
 import messages from './messages';
 import { AUTH_TYPE } from './constants';
-import { ROUTES } from '../constant';
+import { ROUTES } from '../constants';
 
 const getLoginSideContent = () => (
   <div className="loginContainer">

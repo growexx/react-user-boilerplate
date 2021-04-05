@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { List } from 'antd';
-import { API_ENDPOINTS } from 'containers/constant';
+import { API_ENDPOINTS } from 'containers/constants';
 
 const ListWithPagination = () => {
   const listData = [];

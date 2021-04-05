@@ -28,7 +28,7 @@ import PrivateRoute from './PrivateRoute';
 import RoleMiddleWare from './RoleMiddleWare';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
-import { ROUTES } from '../constant';
+import { ROUTES } from '../constants';
 
 const AppWrapper = styled.div`
   display: flex;

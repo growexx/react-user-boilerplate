@@ -13,7 +13,7 @@ import {
 import Emitter from 'utils/events';
 import { LOGIN } from './constants';
 import { API_ENDPOINTS } from '../constants';
-import { IS_DEMO_CODE, ROUTES } from '../../constant';
+import { IS_DEMO_CODE, ROUTES } from '../../constants';
 import { changeLoading, logInError, logInSuccess, resetState } from './actions';
 import StorageService from '../../../utils/StorageService';
 import {
