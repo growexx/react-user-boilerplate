@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import request from 'utils/request';
-import { logout } from 'utils/Helper';
 import { withRouter } from 'react-router-dom';
-import { Spin } from 'antd';
+/* import { Spin } from 'antd'; */
 import {
-  API_ENDPOINTS,
   RESTRICTED_ROUTES,
   ROLE_BASED_ROUTE_ACCESS,
   ROLE_BASED_DEFAULT_ROUTE,
   ROUTES,
-  IS_DEMO_CODE,
 } from '../constants';
 import { USER_DATA_KEY } from '../../utils/constants';
 import StorageService from '../../utils/StorageService';
 import { loginSuccessResponse } from '../Auth/Login/stub/login.stub';
 
 class RoleMiddleWare extends React.Component {
+  /**
+   * NOTE: for actual implementation of the component, remove comments with following note  "ACTUAL API INTEGRATION CODE" and remove demo code
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -26,17 +25,13 @@ class RoleMiddleWare extends React.Component {
     };
   }
 
-  /**
-   * Get role routes
-   */
+  // Get role routes
   doesRoleHaveRouteAccess = (role, route) =>
     (ROLE_BASED_ROUTE_ACCESS[role || 'user'] || []).includes(route);
 
   static getDerivedStateFromProps(props, state) {
-    /**
-     * Only check if route is restricted or not
-     * Only Reset isRestrictedRoute if userData is not fetched
-     */
+    // Only check if route is restricted or not
+    // Only Reset isRestrictedRoute if userData is not fetched
     if (!state.userData || !Object.keys(state.userData).length) {
       const isRestrictedRoute = RESTRICTED_ROUTES.includes(props.path);
 
@@ -52,19 +47,11 @@ class RoleMiddleWare extends React.Component {
   /**
    * Fetch user data and store in local state
    */
+  /**
+    /* ACTUAL API INTEGRATION CODE
   fetchUserRole = () => {
-    if (IS_DEMO_CODE) {
-      // -------------Demo--------------------
-      const response = loginSuccessResponse;
-      // Save in local storage
-      StorageService.set(USER_DATA_KEY, response.data);
-      this.setState({ userData: response.data }, () => {
-        this.takeDecision((response.data && response.data.role) || '');
-      });
-      // Note: Remove in actual Code
-      // -------------Demo--------------------
-    } else {
-      const data = {
+  
+     const data = {
         method: 'GET',
       };
       const requestURL = `${API_ENDPOINTS.USER_DETAILS_API}`;
@@ -82,6 +69,7 @@ class RoleMiddleWare extends React.Component {
       });
     }
   };
+       */
 
   /**
    * Takes decision and stop the loader
@@ -103,22 +91,37 @@ class RoleMiddleWare extends React.Component {
   };
 
   /**
-   * On component load get user data
-   */
+     * ACTUAL API INTEGRATION CODE
+  // On component load get user data
   componentDidMount() {
     if (this.state.isRestrictedRoute) {
       this.fetchUserRole();
     }
   }
-
+  */
   render() {
     const { component: Component, ...rest } = this.props;
+    // -------------Demo--------------------
+    const response = loginSuccessResponse;
+    // Save in local storage
+    StorageService.set(USER_DATA_KEY, response.data);
+    this.setState({ userData: response.data }, () => {
+      this.takeDecision((response.data && response.data.role) || '');
+    });
+    return (
+      <Component {...rest} Component={null} userData={this.state.userData} />
+    );
+    // Note: Remove in actual Code
+    // -------------Demo--------------------
 
+    /**
+     * ACTUAL API INTEGRATION CODE
     return this.state.loader ? (
       <Spin spinning={this.state.loader} size="large" />
     ) : (
       <Component {...rest} Component={null} userData={this.state.userData} />
     );
+    */
   }
 }
 
