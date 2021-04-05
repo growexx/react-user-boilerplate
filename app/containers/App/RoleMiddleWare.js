@@ -90,17 +90,14 @@ class RoleMiddleWare extends React.Component {
     }
   };
 
-  /**
-     * ACTUAL API INTEGRATION CODE
   // On component load get user data
   componentDidMount() {
+    /**
+     * ACTUAL API INTEGRATION CODE
     if (this.state.isRestrictedRoute) {
       this.fetchUserRole();
     }
-  }
-  */
-  render() {
-    const { component: Component, ...rest } = this.props;
+    */
     // -------------Demo--------------------
     const response = loginSuccessResponse;
     // Save in local storage
@@ -108,6 +105,11 @@ class RoleMiddleWare extends React.Component {
     this.setState({ userData: response.data }, () => {
       this.takeDecision((response.data && response.data.role) || '');
     });
+    // -------------Demo--------------------
+  }
+
+  render() {
+    const { component: Component, ...rest } = this.props;
     return (
       <Component {...rest} Component={null} userData={this.state.userData} />
     );
