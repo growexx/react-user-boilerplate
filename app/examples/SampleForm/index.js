@@ -39,8 +39,7 @@ export class SampleForm extends PureComponent {
   }
 
   handleFormSubmit = () => {
-    const { sampleForm, submitData } = this.props;
-    alert(`Inside Component Data\n ${JSON.stringify(sampleForm, null, 2)}`);
+    const { submitData } = this.props;
     submitData();
   };
 
@@ -123,6 +122,7 @@ export class SampleForm extends PureComponent {
           />
 
           <Field
+            data-testid="Notes"
             label="Notes"
             name="notes"
             component={ATextarea}
@@ -155,9 +155,8 @@ SampleForm.propTypes = {
   updateField: PropTypes.func.isRequired,
   submitData: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
-  reset: PropTypes.bool,
+  reset: PropTypes.func,
   submitting: PropTypes.bool,
-  sampleForm: PropTypes.object,
 };
 
 const withReducer = useInjectReducer({
@@ -195,5 +194,6 @@ export default compose(
       lastName: [formValidations.required],
       email: [formValidations.required, formValidations.validEmail],
     }),
+    touchOnChange: true,
   }),
 )(SampleForm);

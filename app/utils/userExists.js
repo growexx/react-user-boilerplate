@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { TOKEN_KEY } from './constants';
 import StorageService from './StorageService';
 

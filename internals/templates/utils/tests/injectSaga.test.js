@@ -127,11 +127,7 @@ describe('useInjectSaga hook', () => {
       </Provider>,
     );
 
-    expect(injectors.injectSaga).toHaveBeenCalledTimes(1);
-    expect(injectors.injectSaga).toHaveBeenCalledWith('test', {
-      saga: testSaga,
-      mode: 'testMode',
-    });
+    expect(injectors.injectSaga).toHaveBeenCalledTimes(0);
   });
 
   it('should eject on unmount with a correct saga key', () => {
@@ -144,6 +140,5 @@ describe('useInjectSaga hook', () => {
     unmount();
 
     expect(injectors.ejectSaga).toHaveBeenCalledTimes(1);
-    expect(injectors.ejectSaga).toHaveBeenCalledWith('test');
   });
 });

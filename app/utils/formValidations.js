@@ -1,11 +1,12 @@
 import validator from 'validator';
 
-const VALIDATION_MESSAGES = {
+export const VALIDATION_MESSAGES = {
   EMAIL: 'Email is invalid!',
   URL: 'URL is invalid!',
   REQUIRED: 'Required!',
 };
-const isEmpty = value => value === undefined || value === null || value === '';
+const isEmpty = value =>
+  value === undefined || value === null || validator.isEmpty(value);
 const join = rules => (value, data, props) =>
   rules
     .map(rule => rule(value, data, props))
@@ -42,12 +43,8 @@ export function validUrl(value) {
  *
  * @param(value)
  */
-
 export function required(value) {
   if (isEmpty(value)) {
-    return VALIDATION_MESSAGES.REQUIRED;
-  }
-  if (isEmpty(value.trim())) {
     return VALIDATION_MESSAGES.REQUIRED;
   }
   return '';

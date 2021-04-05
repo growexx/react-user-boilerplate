@@ -2,7 +2,7 @@
 
 exports[`<Avatar /> should render a div 1`] = `
 <div
-  class="StyledAvatar__AvatarWrapper-sc-7zqxik-0 cNIBzT"
+  class="StyledAvatar__AvatarWrapper-sc-7zqxik-0 bIXJjY"
 >
   <div
     class="ant-btn-group ant-dropdown-button"

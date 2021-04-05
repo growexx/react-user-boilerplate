@@ -1,4 +1,5 @@
 // import produce from 'immer';
+import { UPDATE_FIELD } from '../constants';
 import sampleFormReducer from '../reducer';
 // import { someAction } from '../actions';
 
@@ -15,18 +16,15 @@ describe('sampleFormReducer', () => {
     const expectedResult = state;
     expect(sampleFormReducer(undefined, {})).toEqual(expectedResult);
   });
-
-  /**
-   * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
-   */
+  it('returns the UPDATE_FIELD state', () => {
+    const payload = {
+      test: 'test',
+    };
+    expect(
+      sampleFormReducer(
+        {},
+        { type: UPDATE_FIELD, payload: 'test', key: 'test' },
+      ),
+    ).toEqual(payload);
+  });
 });

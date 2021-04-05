@@ -20,7 +20,7 @@ function Loader() {
   }
   return (
     <StyledList>
-      <Tabs defaultActiveKey="1" onChange={callback}>
+      <Tabs defaultActiveKey="1" onChange={callback} data-testid="ListTab">
         <TabPane tab={TABS.TITLE.TAB_ONE} key="1">
           <ListWithInfiniteLoader />
         </TabPane>

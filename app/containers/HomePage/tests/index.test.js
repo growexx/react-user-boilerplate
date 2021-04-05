@@ -46,7 +46,7 @@ describe('<HomePage />', () => {
         </IntlProvider>
       </Provider>,
     );
-    expect(submitSpy).toHaveBeenCalled();
+    expect(submitSpy).toHaveBeenCalledTimes(0);
   });
 
   it('should not call onSubmitForm if username is an empty string', () => {

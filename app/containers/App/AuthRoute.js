@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { userExists } from 'utils/Helper';
-import { ROUTES } from '../constant';
+import { ROUTES } from '../constants';
 
 const AuthRoute = mainProps => {
   const { component: Component, ...rest } = mainProps;

@@ -8,13 +8,18 @@ import history from 'utils/history';
 import SideBar from '../index';
 import configureStore from '../../../configureStore';
 let store;
-
+const props = {
+  user: {
+    role: 1,
+  },
+  collapsed: true,
+};
 const componentWrapper = () =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <SideBar />
+          <SideBar {...props} />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,

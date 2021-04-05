@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { ROUTES } from 'containers/constant';
+import { ROUTES } from 'containers/constants';
 
 export const MenuItems = [
   {

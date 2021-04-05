@@ -11,40 +11,40 @@ exports[`<ReposList /> should render the loading indicator when its loading 1`] 
       class="Wrapper-sc-12uw37d-0 bTWIVF"
     >
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 bwXUUe"
+        class="Circle__CirclePrimitive-ww56dy-0 cugXeI"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 jwPOXH"
+        class="Circle__CirclePrimitive-ww56dy-0 hVmgzU"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 glOezv"
+        class="Circle__CirclePrimitive-ww56dy-0 jsCyWc"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 ihtugw"
+        class="Circle__CirclePrimitive-ww56dy-0 foyKl"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 eJJzrd"
+        class="Circle__CirclePrimitive-ww56dy-0 gTYfZB"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 izRsmE"
+        class="Circle__CirclePrimitive-ww56dy-0 iZyuJ"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 cFdckR"
+        class="Circle__CirclePrimitive-ww56dy-0 fvTfuf"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 bnNiyv"
+        class="Circle__CirclePrimitive-ww56dy-0 fIczzm"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 kkrMUH"
+        class="Circle__CirclePrimitive-ww56dy-0 hwKFhV"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 GRlaQ"
+        class="Circle__CirclePrimitive-ww56dy-0 lcdrOe"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 faWXTY"
+        class="Circle__CirclePrimitive-ww56dy-0 cDNWsF"
       />
       <div
-        class="Circle__CirclePrimitive-ww56dy-0 hFmkzH"
+        class="Circle__CirclePrimitive-ww56dy-0 dJoLom"
       />
     </div>
   </ul>
@@ -68,14 +68,14 @@ exports[`<ReposList /> should render the repositories if loading was successful 
           class="Wrapper-sc-17s0rao-0 dlZQhZ"
         >
           <a
-            class="A-br8h0y-0 RepoLink-pvpwpn-0 eEveIZ"
+            class="RepoLink-pvpwpn-0 TrJHv"
             href="https://github.com/react-boilerplate/react-boilerplate"
             target="_blank"
           >
             react-boilerplate
           </a>
           <a
-            class="A-br8h0y-0 IssueLink-uyzonb-0 kUUUnc"
+            class="IssueLink-uyzonb-0 kImHXU"
             href="https://github.com/react-boilerplate/react-boilerplate/issues"
             target="_blank"
           >

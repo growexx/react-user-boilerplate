@@ -1,7 +1,7 @@
 ### Role Based Access
 
 1.  `app/containers/app/RoleMiddleWare.js` file is designed to get role from backend on accessing role based route.
-2.  For making a route protected based on role you need to update roles and routes in constant at `app/containers/constant.js`. This file contains following variables which are used in role based page access
+2.  For making a route protected based on role you need to update roles and routes in constant at `app/containers/constants.js`. This file contains following variables which are used in role based page access
 
 ```
 /**

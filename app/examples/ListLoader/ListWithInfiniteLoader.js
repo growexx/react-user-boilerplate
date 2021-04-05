@@ -10,7 +10,7 @@ import { List, message, Avatar, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import request from 'utils/request';
 import { FormattedMessage } from 'react-intl';
-import { API_ENDPOINTS } from 'containers/constant';
+import { API_ENDPOINTS } from 'containers/constants';
 import { ListWithInfiniteLoader as StyledList } from './StyledList';
 import messages from './messages';
 

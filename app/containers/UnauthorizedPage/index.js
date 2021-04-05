@@ -6,7 +6,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Result } from 'antd';
-import { ROUTES } from '../constant';
+import { ROUTES } from '../constants';
 
 export default function NotFound() {
   return (

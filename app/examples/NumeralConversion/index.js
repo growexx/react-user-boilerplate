@@ -33,70 +33,55 @@ class NumeralConversion extends React.Component {
   };
 
   render() {
-    const createData = () => {
-      const rows = [
-        {
-          key: '1',
-          input: this.state.value,
-          value: numeral(this.state.value).value(),
-        },
-      ];
-      return rows;
-    };
-    const numbersData = () => {
-      const rows = NUMBERS_FORMAT.map((number, index) => ({
+    const createData = () => [
+      {
+        key: '1',
+        input: this.state.value,
+        value: numeral(this.state.value).value(),
+      },
+    ];
+    const numbersData = () =>
+      NUMBERS_FORMAT.map((number, index) => ({
         key: index,
         number: this.state.value,
         format: number,
         string: numeral(this.state.value).format(number),
       }));
-      return rows;
-    };
-    const currencyData = () => {
-      const rows = CURRENCY_FORMAT.map((number, index) => ({
+    const currencyData = () =>
+      CURRENCY_FORMAT.map((number, index) => ({
         key: index,
         number: this.state.value,
         format: number,
         string: numeral(this.state.value).format(number),
       }));
-      return rows;
-    };
-    const bytesData = () => {
-      const rows = BYTES_FORMAT.map((number, index) => ({
+    const bytesData = () =>
+      BYTES_FORMAT.map((number, index) => ({
         key: index,
         number: this.state.value,
         format: number,
         string: numeral(this.state.value).format(number),
       }));
-      return rows;
-    };
-    const percentagesData = () => {
-      const rows = PERCENTAGES_FORMAT.map((number, index) => ({
+    const percentagesData = () =>
+      PERCENTAGES_FORMAT.map((number, index) => ({
         key: index,
         number: this.state.value,
         format: number,
         string: numeral(this.state.value).format(number),
       }));
-      return rows;
-    };
-    const timeData = () => {
-      const rows = TIME_FORMAT.map((number, index) => ({
+    const timeData = () =>
+      TIME_FORMAT.map((number, index) => ({
         key: index,
         number: this.state.value,
         format: number,
         string: numeral(this.state.value).format(number),
       }));
-      return rows;
-    };
-    const exponentialData = () => {
-      const rows = EXPONENTIAL_FORMAT.map((number, index) => ({
+    const exponentialData = () =>
+      EXPONENTIAL_FORMAT.map((number, index) => ({
         key: index,
         number: this.state.value,
         format: number,
         string: numeral(this.state.value).format(number),
       }));
-      return rows;
-    };
     const onSearch = value => this.setState({ value });
     return (
       <div>

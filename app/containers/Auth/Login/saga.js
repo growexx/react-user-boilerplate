@@ -2,19 +2,25 @@
  * Logs the user in the app
  */
 
-import { call, put, select, takeLatest } from 'redux-saga/effects';
-import sha256 from 'sha256';
+import { /* call, select */ put, takeLatest } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
+/* import sha256 from 'sha256'; 
 import request from 'utils/request';
 import {
   makeSelectEmail,
   makeSelectPassword,
 } from 'containers/Auth/Login/selectors';
-import Emitter from 'utils/events';
-import { LOGIN } from './constants';
 import { API_ENDPOINTS } from '../constants';
-import { IS_DEMO_CODE, ROUTES } from '../../constant';
-import { changeLoading, logInError, logInSuccess, resetState } from './actions';
+
+*/
+import Emitter from 'utils/events';
+import { ROUTES } from '../../constants';
+import {
+  /* loginInError */ changeLoading,
+  logInSuccess,
+  resetState,
+} from './actions';
+import { LOGIN } from './constants';
 import StorageService from '../../../utils/StorageService';
 import {
   TOKEN_KEY,
@@ -27,6 +33,20 @@ import { loginSuccessResponse } from './stub/login.stub';
  * user login request/response handler
  */
 export function* getSignIn() {
+  /**
+   * Remove following code, It's only for demo purpose
+   */
+  yield put(logInSuccess(loginSuccessResponse.message));
+  StorageService.set(TOKEN_KEY, loginSuccessResponse.data.token);
+  StorageService.set(USER_DATA_KEY, loginSuccessResponse.data);
+  yield put(changeLoading(false));
+  yield put(resetState());
+  yield put(push(ROUTES.HOME));
+  Emitter.emit(EMITTER_EVENTS.LOG_IN);
+  // ----------------Demo--------------------
+
+  /**
+   * LOGIN API INTEGRATION CODE
   const emailId = yield select(makeSelectEmail());
   const passWord = yield select(makeSelectPassword());
   const payload = {
@@ -37,41 +57,28 @@ export function* getSignIn() {
     method: 'POST',
     body: payload,
   };
-  /**
-   * Remove following code, It's only for demo purpose
-   */
-  if (IS_DEMO_CODE) {
-    yield put(logInSuccess(loginSuccessResponse.message));
-    StorageService.set(TOKEN_KEY, loginSuccessResponse.data.token);
-    StorageService.set(USER_DATA_KEY, loginSuccessResponse.data);
-    yield put(changeLoading(false));
-    yield put(resetState());
-    yield put(push(ROUTES.HOME));
-    Emitter.emit(EMITTER_EVENTS.LOG_IN);
-    // ----------------Demo--------------------
-  } else {
-    try {
-      const log = yield call(request, API_ENDPOINTS.LOGIN, data);
-      yield put(changeLoading(true));
-      if (log.status === 1) {
-        yield put(logInSuccess(log.message));
-        StorageService.set(TOKEN_KEY, log.data.token);
-        StorageService.set(USER_DATA_KEY, log.data);
-        yield put(changeLoading(false));
-        yield put(resetState());
-        yield put(push(ROUTES.HOME));
-        Emitter.emit(EMITTER_EVENTS.LOG_IN);
-      } else {
-        yield put(resetState());
-        yield put(changeLoading(false));
-        yield put(logInError(true));
-      }
-    } catch (err) {
+  try {
+    const log = yield call(request, API_ENDPOINTS.LOGIN, data);
+    yield put(changeLoading(true));
+    if (log.status === 1) {
+      yield put(logInSuccess(log.message));
+      StorageService.set(TOKEN_KEY, log.data.token);
+      StorageService.set(USER_DATA_KEY, log.data);
+      yield put(changeLoading(false));
+      yield put(resetState());
+      yield put(push(ROUTES.HOME));
+      Emitter.emit(EMITTER_EVENTS.LOG_IN);
+    } else {
       yield put(resetState());
       yield put(changeLoading(false));
       yield put(logInError(true));
     }
+  } catch (err) {
+    yield put(resetState());
+    yield put(changeLoading(false));
+    yield put(logInError(true));
   }
+  */
 }
 
 /**

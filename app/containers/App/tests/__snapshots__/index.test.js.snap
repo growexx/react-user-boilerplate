@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<App /> should render and match the snapshot 1`] = `
-<ForwardRef>
+<ForwardRef
+  data-testid="AppRoutes"
+>
   <HelmetWrapper
     defaultTitle="React.js Boilerplate"
     defer={true}
@@ -12,20 +14,88 @@ exports[`<App /> should render and match the snapshot 1`] = `
       content="A React.js Boilerplate application"
       name="description"
     />
+    <link
+      href="IMAGE_MOCK"
+      rel="icon"
+      sizes="512x512"
+      type="image/png"
+    />
+    <link
+      href="IMAGE_MOCK"
+      rel="icon"
+      sizes="192x192"
+      type="image/png"
+    />
+    <link
+      href="IMAGE_MOCK"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="IMAGE_MOCK"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      href="IMAGE_MOCK"
+      rel="apple-touch-icon"
+    />
   </HelmetWrapper>
   <Switch>
-    <Route
+    <PrivateRoute
       component={[Function]}
       exact={true}
       path="/"
     />
-    <Route
+    <PrivateRoute
       component={[Function]}
       path="/features"
     />
-    <Route
+    <PrivateRoute
       component={[Function]}
       path="/font-awesome"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/logout"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/loader"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/export-data"
+    />
+    <withRouter(RoleMiddleWare)
+      component={[Function]}
+      path="/admin"
+      showError={true}
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/sample-form"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/number-converter-demo"
+    />
+    <AuthRoute
+      component={[Function]}
+      exact={true}
+      path="/login"
+    />
+    <AuthRoute
+      component={[Function]}
+      exact={true}
+      path="/register"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/403"
     />
     <Route
       component={[Function]}

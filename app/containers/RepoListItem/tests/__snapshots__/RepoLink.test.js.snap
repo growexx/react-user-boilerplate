@@ -2,7 +2,6 @@
 
 exports[`<RepoLink /> should match the snapshot 1`] = `
 .c0 {
-  color: #41addd;
   height: 100%;
   color: black;
   display: -webkit-box;
@@ -14,10 +13,6 @@ exports[`<RepoLink /> should match the snapshot 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-}
-
-.c0:hover {
-  color: #6cc0e5;
 }
 
 <a

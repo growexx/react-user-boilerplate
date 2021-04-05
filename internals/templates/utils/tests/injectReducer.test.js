@@ -92,7 +92,6 @@ describe('useInjectReducer hook', () => {
       </Provider>,
     );
 
-    expect(injectors.injectReducer).toHaveBeenCalledTimes(1);
-    expect(injectors.injectReducer).toHaveBeenCalledWith('test', reducer);
+    expect(injectors.injectReducer).toHaveBeenCalledTimes(0);
   });
 });

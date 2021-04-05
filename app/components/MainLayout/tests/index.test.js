@@ -4,11 +4,16 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
+import Emitter from 'utils/events';
 import history from 'utils/history';
+import { TOKEN_KEY } from 'utils/constants';
+import StorageService from 'utils/StorageService';
 import MainLayout from '../index';
 import configureStore from '../../../configureStore';
-let store;
+import { EMITTER_EVENTS } from '../../../utils/constants';
 
+let store;
+const tokenValue = 'test token';
 const componentWrapper = () =>
   render(
     <Provider store={store}>
@@ -20,9 +25,13 @@ const componentWrapper = () =>
     </Provider>,
   );
 
+const login = () => StorageService.set(TOKEN_KEY, tokenValue);
+const logout = () => StorageService.clear();
+
 describe('<MainLayout />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
+    login();
   });
 
   it('should render and match the snapshot', () => {
@@ -41,5 +50,17 @@ describe('<MainLayout />', () => {
     const element = getByTestId('ToggleIcon');
     fireEvent.click(element);
     expect(element.tagName).toEqual('SPAN');
+  });
+  it('renders routes file without login', () => {
+    logout();
+    const { getByTestId } = componentWrapper();
+    const element = getByTestId('AppRoutes');
+    expect(element.tagName).toEqual('DIV');
+  });
+  it('emitter events', () => {
+    const { container } = componentWrapper();
+    Emitter.emit(EMITTER_EVENTS.LOG_IN);
+    Emitter.emit(EMITTER_EVENTS.LOG_OUT);
+    expect(container.firstChild.tagName).toEqual('DIV');
   });
 });

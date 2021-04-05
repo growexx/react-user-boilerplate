@@ -7,7 +7,7 @@
 import React from 'react';
 import { List, Avatar, Button, Skeleton } from 'antd';
 import request from 'utils/request';
-import { API_ENDPOINTS } from 'containers/constant';
+import { API_ENDPOINTS } from 'containers/constants';
 
 const count = 3;
 

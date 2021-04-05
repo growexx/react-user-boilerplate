@@ -11,14 +11,14 @@ exports[`<RepoListItem /> should render a ListItem 1`] = `
       class="Wrapper-sc-17s0rao-0 dlZQhZ"
     >
       <a
-        class="A-br8h0y-0 RepoLink-pvpwpn-0 eEveIZ"
+        class="RepoLink-pvpwpn-0 TrJHv"
         href="https://github.com/react-boilerplate/react-boilerplate"
         target="_blank"
       >
         mxstbr/react-boilerplate
       </a>
       <a
-        class="A-br8h0y-0 IssueLink-uyzonb-0 kUUUnc"
+        class="IssueLink-uyzonb-0 kImHXU"
         href="https://github.com/react-boilerplate/react-boilerplate/issues"
         target="_blank"
       >

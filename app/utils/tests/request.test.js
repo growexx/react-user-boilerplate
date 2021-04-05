@@ -3,7 +3,9 @@
  */
 
 import 'whatwg-fetch';
+import { TOKEN_KEY } from '../constants';
 import request from '../request';
+import StorageService from '../StorageService';
 
 describe('request', () => {
   // Before each test, stub the fetch function
@@ -25,7 +27,27 @@ describe('request', () => {
     });
 
     it('should format the response correctly', done => {
-      request('/thisurliscorrect')
+      StorageService.set(TOKEN_KEY, 'TESTTOKEN');
+      request('/thisurliscorrect', {
+        method: 'GET',
+        body: {},
+        headers: {},
+        data: {},
+      })
+        .catch(done)
+        .then(json => {
+          expect(json.hello).toBe('world');
+          done();
+        });
+    });
+    it('should format the response correctly with user not exists', done => {
+      StorageService.clear();
+      request('/thisurliscorrect', {
+        method: 'GET',
+        body: {},
+        headers: {},
+        data: {},
+      })
         .catch(done)
         .then(json => {
           expect(json.hello).toBe('world');
@@ -46,7 +68,9 @@ describe('request', () => {
     });
 
     it('should return null on 204 response', done => {
-      request('/thisurliscorrect')
+      request('/thisurliscorrect', {
+        method: 'GET',
+      })
         .catch(done)
         .then(json => {
           expect(json).toBeNull();
@@ -70,7 +94,7 @@ describe('request', () => {
     });
 
     it('should catch errors', done => {
-      request('/thisdoesntexist').catch(err => {
+      request('/thisdoesntexist', { method: 'GET' }).catch(err => {
         expect(err.response.status).toBe(404);
         expect(err.response.statusText).toBe('Not Found');
         done();

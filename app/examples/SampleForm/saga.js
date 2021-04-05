@@ -5,8 +5,7 @@ import makeSelectSampleForm from './selectors';
 import { SUBMIT_DATA } from './constants';
 
 export function* submitData() {
-  const sampleData = yield select(makeSelectSampleForm());
-  alert(`Inside Saga Data\n ${JSON.stringify(sampleData, null, 2)}`);
+  yield select(makeSelectSampleForm());
   // Note: Add API Call
 }
 

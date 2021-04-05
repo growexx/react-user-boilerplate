@@ -2,12 +2,25 @@
 
 exports[`<Footer /> should render and match the snapshot 1`] = `
 <footer
-  className="Wrapper-wcfdfo-0 dPvBog"
+  className="Wrapper-wcfdfo-0 kJFYpj"
 >
   <section>
-    <span>
-      This project is licensed under the MIT license.
-    </span>
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "&copy; 2021 React Boilerplate",
+        }
+      }
+    />
+    <section>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Get started with your react application in minutes.",
+          }
+        }
+      />
+    </section>
   </section>
   <section>
     <div
@@ -30,20 +43,6 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
         </option>
       </select>
     </div>
-  </section>
-  <section>
-    <span>
-      
-      Made with love by 
-      <a
-        className="A-br8h0y-0 dwVNvo"
-        href="https://twitter.com/mxstbr"
-      >
-        Max Stoiber
-      </a>
-      .
-    
-    </span>
   </section>
 </footer>
 `;
