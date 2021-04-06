@@ -16,6 +16,8 @@ export const ROUTES = {
   UNAUTHORIZED: '/403',
   NUMERAL_CONVERTER: '/number-converter-demo',
   SAMPLE_FORM: '/sample-form',
+  FORGOT_PASSWORD: '/forget-password',
+  CHANGE_PASSWORD: '/change-password',
 };
 
 // API-ROUTES
