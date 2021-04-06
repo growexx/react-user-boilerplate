@@ -13,12 +13,6 @@ import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
 import { GET_FILTERED_MENU_ITEM } from './Constants';
 
 const { Sider } = Layout;
-const getRouteIndex = props => {
-  const route = GET_FILTERED_MENU_ITEM(props.user && props.user.role).find(
-    menu => menu.to === props.location.pathname,
-  );
-  return route && route.key;
-};
 
 const SideBar = props => (
   <Sider
@@ -39,11 +33,11 @@ const SideBar = props => (
     <Menu
       theme="dark"
       mode="inline"
-      defaultSelectedKeys={[getRouteIndex(props)]}
-      selectedKeys={[getRouteIndex(props)]}
+      defaultSelectedKeys={[props.location.pathname]}
+      selectedKeys={[props.location.pathname]}
     >
       {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
-        <Menu.Item key={menu.key} icon={menu.icon}>
+        <Menu.Item key={menu.to} icon={menu.icon}>
           <Link to={menu.to}>{menu.tabName}</Link>
         </Menu.Item>
       ))}
@@ -56,4 +50,5 @@ export default withRouter(SideBar);
 SideBar.propTypes = {
   collapsed: PropTypes.bool,
   user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  location: PropTypes.object.isRequired,
 };
