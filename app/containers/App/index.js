@@ -22,7 +22,6 @@ import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
-import ForgotPassword from 'containers/ForgotPassword/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import Profile from 'containers/Profile/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
@@ -62,10 +61,6 @@ export default function App() {
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
-        />
-        <PrivateRoute
-          path={ROUTES.FORGOT_PASSWORD}
-          component={ForgotPassword}
         />
         <RoleMiddleWare
           path={ROUTES.TEST_ADMIN_PAGE}
