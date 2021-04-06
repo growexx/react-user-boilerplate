@@ -2,16 +2,16 @@
  * Logs the user in the app
  */
 
-import { call, select, put, takeLatest } from 'redux-saga/effects';
-import request from 'utils/request';
+import { /* call */ select, /* put */ takeLatest } from 'redux-saga/effects';
+// import request from 'utils/request';
 import { SUBMIT_DATA } from './constants';
-import { API_ENDPOINTS } from '../constants';
+// import { API_ENDPOINTS } from '../constants';
 import {
   makeSelectConfirmNewPassword,
   makeSelectCurrentPassword,
   makeSelectNewPassword,
 } from './selectors';
-import { updateField } from './actions';
+// import { updateField } from './actions';
 
 /**
  * user login request/response handler
@@ -20,30 +20,34 @@ export function* getPasswordChange() {
   const currentPassword = yield select(makeSelectCurrentPassword());
   const newPassword = yield select(makeSelectNewPassword());
   const confirmNewPassword = yield select(makeSelectConfirmNewPassword());
+  // eslint-disable-next-line no-console
   console.log(currentPassword, newPassword, confirmNewPassword);
-  const payload = {
-    currentPassword,
-    newPassword,
-    confirmNewPassword,
-  };
-  const data = {
-    method: 'POST',
-    body: payload,
-  };
-  try {
-    const log = yield call(request, API_ENDPOINTS.LOGIN, data);
-    yield put(updateField('loading', true));
-    if (log.status === 1) {
-      yield put(updateField('success', log.message));
-      yield put(updateField('loading', false));
-    } else {
-      yield put(updateField('loading', false));
-      yield put(updateField('error', log.message));
-    }
-  } catch (err) {
-    yield put(updateField('loading', false));
-    yield put(updateField('error', err.message));
-  }
+  /**
+   * NOTE: API CODE
+   */
+  // const payload = {
+  //   currentPassword,
+  //   newPassword,
+  //   confirmNewPassword,
+  // };
+  // const data = {
+  //   method: 'POST',
+  //   body: payload,
+  // };
+  // try {
+  //   const log = yield call(request, API_ENDPOINTS.LOGIN, data);
+  //   yield put(updateField('loading', true));
+  //   if (log.status === 1) {
+  //     yield put(updateField('success', log.message));
+  //     yield put(updateField('loading', false));
+  //   } else {
+  //     yield put(updateField('loading', false));
+  //     yield put(updateField('error', log.message));
+  //   }
+  // } catch (err) {
+  //   yield put(updateField('loading', false));
+  //   yield put(updateField('error', err.message));
+  // }
 }
 
 /**
