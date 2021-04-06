@@ -17,7 +17,7 @@ const getRouteIndex = props => {
   const route = GET_FILTERED_MENU_ITEM(props.user && props.user.role).find(
     menu => menu.to === props.location.pathname,
   );
-  return route.key;
+  return route && route.key;
 };
 
 const SideBar = props => (
