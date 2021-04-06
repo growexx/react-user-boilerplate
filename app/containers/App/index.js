@@ -22,6 +22,9 @@ import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
+import ForgotPassword from 'containers/ForgotPassword/Loadable';
+import ChangePassword from 'containers/ChangePassword/Loadable';
+import Profile from 'containers/Profile/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
@@ -55,6 +58,15 @@ export default function App() {
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
+        <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+        <PrivateRoute
+          path={ROUTES.CHANGE_PASSWORD}
+          component={ChangePassword}
+        />
+        <PrivateRoute
+          path={ROUTES.FORGOT_PASSWORD}
+          component={ForgotPassword}
+        />
         <RoleMiddleWare
           path={ROUTES.TEST_ADMIN_PAGE}
           component={() => <div>This is Admin Role Page</div>}

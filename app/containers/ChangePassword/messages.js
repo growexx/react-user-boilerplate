@@ -13,4 +13,12 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the ChangePassword container!',
   },
+  notificationToastError: {
+    id: `${scope}.notificationToastError`,
+    defaultMessage: 'Change Password Error!',
+  },
+  notificationToastSuccess: {
+    id: `${scope}.notificationToastSuccess`,
+    defaultMessage: 'Change Password Success!',
+  },
 });

@@ -6,7 +6,7 @@ import { initialState } from './reducer';
  */
 
 const selectChangePasswordDomain = state =>
-  state.changePassword || initialState;
+  state.ChangePassword || initialState;
 
 /**
  * Other specific selectors
@@ -16,11 +16,47 @@ const selectChangePasswordDomain = state =>
  * Default selector used by ChangePassword
  */
 
-const makeSelectChangePassword = () =>
+const makeSelectCurrentPassword = () =>
   createSelector(
     selectChangePasswordDomain,
-    substate => substate,
+    substate => substate.currentPassword,
   );
 
-export default makeSelectChangePassword;
-export { selectChangePasswordDomain };
+const makeSelectNewPassword = () =>
+  createSelector(
+    selectChangePasswordDomain,
+    substate => substate.newPassword,
+  );
+
+const makeSelectConfirmNewPassword = () =>
+  createSelector(
+    selectChangePasswordDomain,
+    substate => substate.confirmNewPassword,
+  );
+
+const makeSelectLoading = () =>
+  createSelector(
+    selectChangePasswordDomain,
+    substate => substate.loading,
+  );
+const makeSelectSuccess = () =>
+  createSelector(
+    selectChangePasswordDomain,
+    substate => substate.success,
+  );
+
+const makeSelectError = () =>
+  createSelector(
+    selectChangePasswordDomain,
+    substate => substate.error,
+  );
+
+export {
+  selectChangePasswordDomain,
+  makeSelectCurrentPassword,
+  makeSelectConfirmNewPassword,
+  makeSelectNewPassword,
+  makeSelectError,
+  makeSelectLoading,
+  makeSelectSuccess,
+};
