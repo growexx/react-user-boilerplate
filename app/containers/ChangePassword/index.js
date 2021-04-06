@@ -27,13 +27,13 @@ import {
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { FORM_KEY, passwordsMustMatch } from './constants';
 import messages from './messages';
-import { passwordsMustMatch } from './constants';
+
 import { fireSubmit, updateField as updateAction } from './actions';
 
 const FormItem = Form.Item;
 
-const FORM_KEY = 'ChangePassword';
 export class ChangePassword extends PureComponent {
   constructor(props) {
     super(props);
@@ -121,7 +121,7 @@ export class ChangePassword extends PureComponent {
             </center>
           </FormItem>
           {error && this.showNotification(error.message, 'error')}
-          {success && this.showNotification(success, 'success')}
+          {success && this.showNotification(success.message, 'success')}
         </Form>
       </div>
     );
@@ -152,7 +152,7 @@ const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     updateField: evt => {
       dispatch(updateAction(evt.target.name, evt.target.value));

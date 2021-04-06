@@ -1,12 +1,11 @@
 import { createSelector } from 'reselect';
+import { FORM_KEY } from './constants';
 import { initialState } from './reducer';
 
 /**
  * Direct selector to the changePassword state domain
  */
-
-const selectChangePasswordDomain = state =>
-  state.ChangePassword || initialState;
+const selectChangePasswordDomain = state => state[FORM_KEY] || initialState;
 
 /**
  * Other specific selectors

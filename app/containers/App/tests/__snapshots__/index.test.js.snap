@@ -69,6 +69,10 @@ exports[`<App /> should render and match the snapshot 1`] = `
       component={[Function]}
       path="/export-data"
     />
+    <PrivateRoute
+      component={[Function]}
+      path="/change-password"
+    />
     <withRouter(RoleMiddleWare)
       component={[Function]}
       path="/admin"

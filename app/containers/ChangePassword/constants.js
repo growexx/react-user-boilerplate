@@ -17,3 +17,4 @@ export const ERROR = 'boilerplate/ChangePassword/ERROR';
 export const SUCCESS = 'boilerplate/ChangePassword/SUCCESS';
 export const LOADING = 'boilerplate/ChangePassword/LOADING';
 export const SUBMIT_DATA = 'boilerplate/ChangePassword/SUBMIT_DATA';
+export const FORM_KEY = 'ChangePassword';

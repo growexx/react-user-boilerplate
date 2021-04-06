@@ -1,13 +1,60 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import * as actions from '../actions';
+import * as types from '../constants';
 
-describe('ChangePassword actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION,
-      };
-      expect(defaultAction()).toEqual(expected);
-    });
+describe('ChangePassword', () => {
+  it('should create an action to update fields', () => {
+    const value = 'testValue';
+    // change current password
+    const expectedAction = {
+      type: types.CHANGE_CURRENT_PASSWORD,
+      value,
+    };
+    expect(
+      actions.updateField('currentPassword', expectedAction.value),
+    ).toEqual(expectedAction);
+
+    // change new password
+
+    expectedAction.type = types.CHANGE_NEW_PASSWORD;
+    expect(actions.updateField('newPassword', expectedAction.value)).toEqual(
+      expectedAction,
+    );
+
+    // change confirm new password
+    expectedAction.type = types.CHANGE_CONFIRM_NEW_PASSWORD;
+    expect(
+      actions.updateField('confirmNewPassword', expectedAction.value),
+    ).toEqual(expectedAction);
+
+    // change error
+    expectedAction.type = types.ERROR;
+    expect(actions.updateField('error', expectedAction.value)).toEqual(
+      expectedAction,
+    );
+
+    // change loading
+
+    expectedAction.type = types.LOADING;
+    expect(actions.updateField('loading', expectedAction.value)).toEqual(
+      expectedAction,
+    );
+
+    // change success
+
+    expectedAction.type = types.SUCCESS;
+    expect(actions.updateField('success', expectedAction.value)).toEqual(
+      expectedAction,
+    );
+
+    // default case
+    expect(actions.updateField('default', expectedAction.value)).toEqual(
+      undefined,
+    );
+  });
+  it('should create an action to fire submit', () => {
+    const expectedAction = {
+      type: types.SUBMIT_DATA,
+    };
+    expect(actions.fireSubmit()).toEqual(expectedAction);
   });
 });
