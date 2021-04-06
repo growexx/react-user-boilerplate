@@ -2,6 +2,7 @@ import produce from 'immer';
 
 import appReducer from '../reducer';
 import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import { LOAD_APP } from '../constants';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('appReducer', () => {
@@ -14,6 +15,7 @@ describe('appReducer', () => {
       userData: {
         repositories: false,
       },
+      appLoading: false,
     };
   });
 
@@ -62,5 +64,16 @@ describe('appReducer', () => {
     expect(appReducer(state, repoLoadingError(fixture))).toEqual(
       expectedResult,
     );
+  });
+  it('should handle LOADING', () => {
+    expect(
+      appReducer(state, {
+        type: LOAD_APP,
+        appLoading: true,
+      }),
+    ).toEqual({
+      ...state,
+      appLoading: true,
+    });
   });
 });

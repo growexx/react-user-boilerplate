@@ -280,4 +280,6 @@ function Button() {
 
 > For more information about LESS and the `less-loader` see https://github.com/webpack-contrib/less-loader.
 
+Utility Classes for common scenarios are included at app/global-styles.js
+
 [webpackconfig]: ../../internals/webpack/webpack.base.babel.js 'Webpack config'

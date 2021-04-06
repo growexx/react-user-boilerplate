@@ -8,9 +8,13 @@
 import React from 'react';
 import { List, message, Avatar, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-import request from 'utils/request';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { API_ENDPOINTS } from 'containers/constants';
+import { loadApp } from 'containers/App/actions';
+import request from 'utils/request';
 import { ListWithInfiniteLoader as StyledList } from './StyledList';
 import messages from './messages';
 
@@ -23,12 +27,14 @@ class ListWithInfiniteLoader extends React.Component {
   };
 
   componentDidMount() {
+    this.props.onChangeAppLoading(true);
     this.fetchData(res => {
       this.setState({
         data: res.results,
         list: res.results,
         loading: false,
       });
+      this.props.onChangeAppLoading(false);
     });
   }
 
@@ -97,4 +103,19 @@ class ListWithInfiniteLoader extends React.Component {
   }
 }
 
-export default ListWithInfiniteLoader;
+ListWithInfiniteLoader.propTypes = {
+  onChangeAppLoading: PropTypes.func,
+};
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeAppLoading: loading => dispatch(loadApp(loading)),
+  };
+}
+
+const withConnect = connect(
+  undefined,
+  mapDispatchToProps,
+);
+
+export default compose(withConnect)(ListWithInfiniteLoader);
