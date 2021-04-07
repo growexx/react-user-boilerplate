@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
+import Profile from 'containers/Profile/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
@@ -53,6 +54,7 @@ export default function App() {
         <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
         <PrivateRoute path={ROUTES.FONT_AWESOME} component={FontAwesomeDemo} />
+        <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
