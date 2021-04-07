@@ -52,3 +52,4 @@ Following are the packages used in the boilerplate
 | react-infinite-scroller | Library for infinite scrolling                  |
 | less-vars-to-js         | Library to use less variables into js files     |
 | antd-img-crop           | Library to crop images while upload by antd     |
+| draft-js                | Rich text editor framework                      |
