@@ -7,7 +7,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Upload, message } from 'antd';
+import { Upload /* message */ } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { FormattedMessage } from 'react-intl';
 import formattedMessages from './messages';
@@ -16,9 +16,11 @@ const { Dragger } = Upload;
 const props = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
+  onChange(/* info */) {
+    /*
+     * NOTE : CODE FOR ACTUAL FILE UPLOAD WITH API
+      const { status } = info.file;
+      if (status !== 'uploading') {
       // eslint-disable-next-line no-console
       console.log(info.file, info.fileList);
     }
@@ -41,6 +43,7 @@ const props = {
         />,
       );
     }
+     */
   },
 };
 

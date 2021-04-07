@@ -13,6 +13,10 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the FileUpload component!',
   },
+  uploadProcess: {
+    id: `${scope}.uploadProcess`,
+    defaultMessage: `{filename} file uploading started.`,
+  },
   uploadSuccess: {
     id: `${scope}.uploadSuccess`,
     defaultMessage: `{filename} file uploaded successfully.`,
