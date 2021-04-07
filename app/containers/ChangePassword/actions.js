@@ -9,9 +9,7 @@ import {
   CHANGE_NEW_PASSWORD,
   CHANGE_CURRENT_PASSWORD,
   SUBMIT_DATA,
-  SUCCESS,
   LOADING,
-  ERROR,
 } from './constants';
 
 // eslint-disable-next-line consistent-return
@@ -32,19 +30,9 @@ export function updateField(name, value) {
         type: CHANGE_CONFIRM_NEW_PASSWORD,
         value,
       };
-    case 'success':
-      return {
-        type: SUCCESS,
-        value,
-      };
     case 'loading':
       return {
         type: LOADING,
-        value,
-      };
-    case 'error':
-      return {
-        type: ERROR,
         value,
       };
     default:

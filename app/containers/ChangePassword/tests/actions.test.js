@@ -26,23 +26,10 @@ describe('ChangePassword', () => {
       actions.updateField('confirmNewPassword', expectedAction.value),
     ).toEqual(expectedAction);
 
-    // change error
-    expectedAction.type = types.ERROR;
-    expect(actions.updateField('error', expectedAction.value)).toEqual(
-      expectedAction,
-    );
-
     // change loading
 
     expectedAction.type = types.LOADING;
     expect(actions.updateField('loading', expectedAction.value)).toEqual(
-      expectedAction,
-    );
-
-    // change success
-
-    expectedAction.type = types.SUCCESS;
-    expect(actions.updateField('success', expectedAction.value)).toEqual(
       expectedAction,
     );
 

@@ -1,8 +1,7 @@
 /**
  * Logs the user in the app
  */
-
-import { /* call */ select, /* put */ takeLatest } from 'redux-saga/effects';
+import { select, put, takeLatest } from 'redux-saga/effects';
 // import request from 'utils/request';
 import { SUBMIT_DATA } from './constants';
 // import { API_ENDPOINTS } from '../constants';
@@ -11,17 +10,21 @@ import {
   makeSelectCurrentPassword,
   makeSelectNewPassword,
 } from './selectors';
-// import { updateField } from './actions';
+import { updateField } from './actions';
+import { showNotification } from './helper';
 
 /**
  * user login request/response handler
  */
 export function* getPasswordChange() {
   const currentPassword = yield select(makeSelectCurrentPassword());
+  yield put(updateField('loading', false));
   const newPassword = yield select(makeSelectNewPassword());
   const confirmNewPassword = yield select(makeSelectConfirmNewPassword());
-  // eslint-disable-next-line no-console
   console.log(currentPassword, newPassword, confirmNewPassword);
+  // eslint-disable-next-line no-console
+  showNotification('Change Password Error', 'error');
+  showNotification('Change Password Success', 'success');
   /**
    * NOTE: API CODE
    */

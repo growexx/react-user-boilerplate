@@ -38,24 +38,11 @@ const makeSelectLoading = () =>
     selectChangePasswordDomain,
     substate => substate.loading,
   );
-const makeSelectSuccess = () =>
-  createSelector(
-    selectChangePasswordDomain,
-    substate => substate.success,
-  );
-
-const makeSelectError = () =>
-  createSelector(
-    selectChangePasswordDomain,
-    substate => substate.error,
-  );
 
 export {
   selectChangePasswordDomain,
   makeSelectCurrentPassword,
   makeSelectConfirmNewPassword,
   makeSelectNewPassword,
-  makeSelectError,
   makeSelectLoading,
-  makeSelectSuccess,
 };

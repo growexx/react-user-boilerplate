@@ -5,15 +5,14 @@
  */
 
 import React, { PureComponent } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Form, Button } from 'antd';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form';
 import * as formValidations from 'utils/formValidations';
-import { Form, Button, notification } from 'antd';
 import { APassword } from 'utils/Fields';
 import useInjectSaga from 'utils/injectSaga';
 import useInjectReducer from 'utils/injectReducer';
@@ -21,14 +20,11 @@ import {
   makeSelectConfirmNewPassword,
   makeSelectCurrentPassword,
   makeSelectNewPassword,
-  makeSelectSuccess,
   makeSelectLoading,
-  makeSelectError,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { FORM_KEY, passwordsMustMatch } from './constants';
-import messages from './messages';
 
 import { fireSubmit, updateField as updateAction } from './actions';
 
@@ -40,26 +36,10 @@ export class ChangePassword extends PureComponent {
     this.state = {};
   }
 
-  showNotification = (err, type) => {
-    if (type === 'error') {
-      notification.error({
-        message: <FormattedMessage {...messages.notificationToastError} />,
-        description: err,
-      });
-    } else {
-      notification.success({
-        message: <FormattedMessage {...messages.notificationToastSuccess} />,
-        description: err,
-      });
-    }
-  };
-
   render() {
     const {
       invalid,
-      error,
       loading,
-      success,
       currentPassword,
       newPassword,
       confirmNewPassword,
@@ -120,8 +100,6 @@ export class ChangePassword extends PureComponent {
               </Button>
             </center>
           </FormItem>
-          {error && this.showNotification(error.message, 'error')}
-          {success && this.showNotification(success.message, 'success')}
         </Form>
       </div>
     );
@@ -138,8 +116,6 @@ ChangePassword.propTypes = {
   currentPassword: PropTypes.any,
   newPassword: PropTypes.any,
   confirmNewPassword: PropTypes.any,
-  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  success: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   loading: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
@@ -147,8 +123,6 @@ const mapStateToProps = createStructuredSelector({
   currentPassword: makeSelectCurrentPassword(),
   newPassword: makeSelectNewPassword(),
   confirmNewPassword: makeSelectConfirmNewPassword(),
-  error: makeSelectError(),
-  success: makeSelectSuccess(),
   loading: makeSelectLoading(),
 });
 

@@ -7,9 +7,7 @@ const getFormJsStateInstance = config =>
       currentPassword: '',
       newPassword: '',
       confirmNewPassword: '',
-      error: '',
       loading: false,
-      success: '',
     },
     config,
   );
@@ -48,21 +46,5 @@ describe('ChangePassword reducer', () => {
         value,
       }),
     ).toEqual(getFormJsStateInstance({ loading: value }));
-  });
-  it('should handle ERROR', () => {
-    expect(
-      reducer(initialState, {
-        type: types.ERROR,
-        value,
-      }),
-    ).toEqual(getFormJsStateInstance({ error: value }));
-  });
-  it('should handle SUCCESS', () => {
-    expect(
-      reducer(initialState, {
-        type: types.SUCCESS,
-        value,
-      }),
-    ).toEqual(getFormJsStateInstance({ success: value }));
   });
 });

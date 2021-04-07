@@ -3,8 +3,6 @@ import {
   makeSelectNewPassword,
   makeSelectConfirmNewPassword,
   makeSelectLoading,
-  makeSelectSuccess,
-  makeSelectError,
   selectChangePasswordDomain,
 } from '../selectors';
 import { FORM_KEY } from '../constants';
@@ -75,30 +73,6 @@ describe('Selectors Testing', () => {
     const expected = 'test value';
     expect(actual).toEqual(expected);
   });
-  it('Testing makeSelectError', () => {
-    const mockState = {
-      [FORM_KEY]: {
-        currentPassword: '',
-        newPassword: 'test value',
-        confirmNewPassword: '',
-        error: '',
-        loading: false,
-        success: '',
-      },
-    };
-    const result = {
-      currentPassword: '',
-      newPassword: '',
-      confirmNewPassword: '',
-      error: 'test value',
-      loading: false,
-      success: '',
-    };
-    const sel = makeSelectError(mockState);
-    const actual = sel.resultFunc(result);
-    const expected = 'test value';
-    expect(actual).toEqual(expected);
-  });
   it('Testing makeSelectConfirmNewPassword', () => {
     const mockState = {
       [FORM_KEY]: {
@@ -143,30 +117,6 @@ describe('Selectors Testing', () => {
       success: '',
     };
     const sel = makeSelectLoading(mockState);
-    const actual = sel.resultFunc(result);
-    const expected = 'test value';
-    expect(actual).toEqual(expected);
-  });
-  it('Testing makeSelectSuccess', () => {
-    const mockState = {
-      [FORM_KEY]: {
-        currentPassword: '',
-        newPassword: '',
-        confirmNewPassword: '',
-        error: '',
-        loading: false,
-        success: '',
-      },
-    };
-    const result = {
-      currentPassword: '',
-      newPassword: '',
-      confirmNewPassword: '',
-      error: '',
-      loading: false,
-      success: 'test value',
-    };
-    const sel = makeSelectSuccess(mockState);
     const actual = sel.resultFunc(result);
     const expected = 'test value';
     expect(actual).toEqual(expected);
