@@ -9,17 +9,30 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
       class="ant-card-body"
     >
       <div
-        class="StyledProfile-ye6z70-0 bCiiaf"
+        class="StyledProfile-ye6z70-0 bwLVOd"
       >
         <div>
-          Pratibha Hotwani 
-          <br />
-          Jr Software Engineer at Growexx 
-          <br />
-          Ahmedabad, Gujarat, India 
-          <br />
-          <br />
-          <br />
+          <p
+            class="u-mb-1"
+          >
+            <span>
+              John Doe
+            </span>
+          </p>
+          <p
+            class="u-mb-1"
+          >
+            <span>
+              Software Engineer at GrowExx
+            </span>
+          </p>
+          <p
+            class="u-mb-5"
+          >
+            <span>
+              Ahmedabad, Gujarat
+            </span>
+          </p>
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           >
@@ -42,6 +55,7 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
                   >
                     <button
                       class="ant-btn"
+                      data-testid="About_Edit"
                       type="button"
                     >
                       <span>
@@ -83,6 +97,7 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
                   >
                     <button
                       class="ant-btn"
+                      data-testid="Experience_Edit"
                       type="button"
                     >
                       <span>
@@ -124,6 +139,7 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
                   >
                     <button
                       class="ant-btn"
+                      data-testid="Education_Edit"
                       type="button"
                     >
                       <span>
@@ -165,6 +181,7 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
                   >
                     <button
                       class="ant-btn"
+                      data-testid="LicensesAndCertifications_edit"
                       type="button"
                     >
                       <span>

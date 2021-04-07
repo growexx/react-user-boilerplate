@@ -13,7 +13,7 @@ import { Helmet } from 'react-helmet';
 import { Card, Button } from 'antd';
 import FileUpload from 'components/FileUpload/Loadable';
 import { CardExtraContainer } from './StyledProfile';
-import { PROFILE_PLACEHOLDER } from './constants';
+import { DATA_TEST_IDS, PROFILE_PLACEHOLDER } from './constants';
 import messages from './messages';
 import RichTextEditor from '../../components/RichTextEditor';
 
@@ -52,11 +52,15 @@ class ProfileForm extends React.PureComponent {
           <title>ProfileForm</title>
           <meta name="description" content="Description of ProfileForm" />
         </Helmet>
-        Pratibha Hotwani <br />
-        Jr Software Engineer at Growexx <br />
-        Ahmedabad, Gujarat, India <br />
-        <br />
-        <br />
+        <p className="u-mb-1">
+          <FormattedHTMLMessage {...messages.name} />
+        </p>
+        <p className="u-mb-1">
+          <FormattedHTMLMessage {...messages.designation} />
+        </p>
+        <p className="u-mb-5">
+          <FormattedHTMLMessage {...messages.location} />
+        </p>
         <Card
           hoverable
           type="inner"
@@ -65,6 +69,7 @@ class ProfileForm extends React.PureComponent {
             <CardExtraContainer>
               {this.isEditModeOn('editAbout') ? (
                 <Button
+                  data-testid={DATA_TEST_IDS.ABOUT_SAVE}
                   onClick={() => {
                     this.setState({ editAbout: false });
                   }}
@@ -73,6 +78,7 @@ class ProfileForm extends React.PureComponent {
                 </Button>
               ) : (
                 <Button
+                  data-testid={DATA_TEST_IDS.ABOUT_EDIT}
                   onClick={() => {
                     this.setState({ editAbout: true });
                   }}
@@ -85,6 +91,7 @@ class ProfileForm extends React.PureComponent {
         >
           {this.isEditModeOn('editAbout') ? (
             <RichTextEditor
+              testId={DATA_TEST_IDS.ABOUT_EDITOR}
               value={aboutContent}
               onChange={value => {
                 this.setState({
@@ -110,6 +117,7 @@ class ProfileForm extends React.PureComponent {
             <CardExtraContainer>
               {this.isEditModeOn('editExperience') ? (
                 <Button
+                  data-testid={DATA_TEST_IDS.EXPERIENCE_SAVE}
                   onClick={() => {
                     this.setState({ editExperience: false });
                   }}
@@ -118,6 +126,7 @@ class ProfileForm extends React.PureComponent {
                 </Button>
               ) : (
                 <Button
+                  data-testid={DATA_TEST_IDS.EXPERIENCE_EDIT}
                   onClick={() => {
                     this.setState({ editExperience: true });
                   }}
@@ -155,6 +164,7 @@ class ProfileForm extends React.PureComponent {
             <CardExtraContainer>
               {this.isEditModeOn('editEducation') ? (
                 <Button
+                  data-testid={DATA_TEST_IDS.EDUCATION_SAVE}
                   onClick={() => {
                     this.setState({ editEducation: false });
                   }}
@@ -163,6 +173,7 @@ class ProfileForm extends React.PureComponent {
                 </Button>
               ) : (
                 <Button
+                  data-testid={DATA_TEST_IDS.EDUCATION_EDIT}
                   onClick={() => {
                     this.setState({ editEducation: true });
                   }}
@@ -200,6 +211,7 @@ class ProfileForm extends React.PureComponent {
             <CardExtraContainer>
               {this.isEditModeOn('editLicensesAndCertifications') ? (
                 <Button
+                  data-testid={DATA_TEST_IDS.LICENSEANDCERTIFICATION_SAVE}
                   onClick={() => {
                     this.setState({ editLicensesAndCertifications: false });
                   }}
@@ -208,6 +220,7 @@ class ProfileForm extends React.PureComponent {
                 </Button>
               ) : (
                 <Button
+                  data-testid={DATA_TEST_IDS.LICENSEANDCERTIFICATION_EDIT}
                   onClick={() => {
                     this.setState({ editLicensesAndCertifications: true });
                   }}

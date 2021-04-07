@@ -2,7 +2,7 @@
 
 exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
 <div
-  class="StyledEditor-l6ccd5-0 eMPuUg"
+  class="StyledEditor-l6ccd5-0 gzMMsh"
 >
   <div
     class="DraftEditor-root"
@@ -23,15 +23,15 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
           <div
             class=""
             data-block="true"
-            data-editor="4h89q"
-            data-offset-key="9ibuj-0-0"
+            data-editor="85l9q"
+            data-offset-key="echha-0-0"
           >
             <div
               class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-              data-offset-key="9ibuj-0-0"
+              data-offset-key="echha-0-0"
             >
               <span
-                data-offset-key="9ibuj-0-0"
+                data-offset-key="echha-0-0"
               >
                 <br
                   data-text="true"
