@@ -5,18 +5,15 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { Editor, EditorState } from 'draft-js';
+import PropTypes from 'prop-types';
+import { Editor } from 'draft-js';
+import 'draft-js/dist/Draft.css';
 
-// import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
 import { StyledEditor } from './StyledEditor';
 
 class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
-    this.onChange = editorState => this.setState({ editorState });
     this.setEditor = editor => {
       this.editor = editor;
     };
@@ -36,14 +33,17 @@ class RichTextEditor extends React.Component {
       <StyledEditor>
         <Editor
           ref={this.setEditor}
-          editorState={this.state.editorState}
-          onChange={this.onChange}
+          editorState={this.props.value}
+          onChange={this.props.onChange}
         />
       </StyledEditor>
     );
   }
 }
 
-RichTextEditor.propTypes = {};
+RichTextEditor.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
 
 export default RichTextEditor;

@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { EditorState } from 'draft-js';
 import { FormattedHTMLMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import { Card, Button } from 'antd';
@@ -20,10 +21,10 @@ class ProfileForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      aboutContent: PROFILE_PLACEHOLDER,
-      experienceContent: PROFILE_PLACEHOLDER,
-      educationContent: PROFILE_PLACEHOLDER,
-      licensesAndCertificationsContent: PROFILE_PLACEHOLDER,
+      aboutContent: EditorState.createEmpty(),
+      experienceContent: EditorState.createEmpty(),
+      educationContent: EditorState.createEmpty(),
+      licensesAndCertificationsContent: EditorState.createEmpty(),
       editAbout: false,
       editExperience: false,
       editEducation: false,
@@ -31,10 +32,12 @@ class ProfileForm extends React.PureComponent {
     };
   }
 
-  isEditModeOn = state => {
-    console.log('coming', this.state[state]);
-    return this.state[state] === true;
-  };
+  isEditModeOn = state => this.state[state] === true;
+
+  isContentEdited = state =>
+    state.getCurrentContent().getPlainText('\u0001').length > 0
+      ? state.getCurrentContent().getPlainText('\u0001')
+      : PROFILE_PLACEHOLDER;
 
   render() {
     const {
@@ -81,12 +84,19 @@ class ProfileForm extends React.PureComponent {
           }
         >
           {this.isEditModeOn('editAbout') ? (
-            <RichTextEditor />
+            <RichTextEditor
+              value={aboutContent}
+              onChange={value => {
+                this.setState({
+                  aboutContent: value,
+                });
+              }}
+            />
           ) : (
             <FormattedHTMLMessage
               {...messages.aboutContent}
               values={{
-                content: aboutContent,
+                content: this.isContentEdited(aboutContent),
               }}
             />
           )}
@@ -119,12 +129,19 @@ class ProfileForm extends React.PureComponent {
           }
         >
           {this.isEditModeOn('editExperience') ? (
-            <RichTextEditor />
+            <RichTextEditor
+              value={experienceContent}
+              onChange={value => {
+                this.setState({
+                  experienceContent: value,
+                });
+              }}
+            />
           ) : (
             <FormattedHTMLMessage
               {...messages.aboutContent}
               values={{
-                content: experienceContent,
+                content: this.isContentEdited(experienceContent),
               }}
             />
           )}
@@ -157,12 +174,19 @@ class ProfileForm extends React.PureComponent {
           }
         >
           {this.isEditModeOn('editEducation') ? (
-            <RichTextEditor />
+            <RichTextEditor
+              value={educationContent}
+              onChange={value => {
+                this.setState({
+                  educationContent: value,
+                });
+              }}
+            />
           ) : (
             <FormattedHTMLMessage
               {...messages.aboutContent}
               values={{
-                content: educationContent,
+                content: this.isContentEdited(educationContent),
               }}
             />
           )}
@@ -195,12 +219,19 @@ class ProfileForm extends React.PureComponent {
           }
         >
           {this.isEditModeOn('editLicensesAndCertifications') ? (
-            <RichTextEditor />
+            <RichTextEditor
+              value={licensesAndCertificationsContent}
+              onChange={value => {
+                this.setState({
+                  licensesAndCertificationsContent: value,
+                });
+              }}
+            />
           ) : (
             <FormattedHTMLMessage
               {...messages.aboutContent}
               values={{
-                content: licensesAndCertificationsContent,
+                content: this.isContentEdited(licensesAndCertificationsContent),
               }}
             />
           )}
