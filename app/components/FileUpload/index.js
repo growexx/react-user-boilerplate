@@ -51,7 +51,7 @@ function FileUpload() {
         <InboxOutlined />
       </p>
       <p className="ant-upload-text">
-        Click or drag file to this area to upload
+        <FormattedMessage {...formattedMessages.uploadComponentMessage} />
       </p>
     </Dragger>
   );

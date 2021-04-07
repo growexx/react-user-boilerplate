@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet';
 import { Card } from 'antd';
 import ImageUpload from 'components/ImageUpload/Loadable';
 import { StyledProfile } from './StyledProfile';
-import { ProfileForm } from './ProfileForm';
+import ProfileForm from './ProfileForm';
 
 export function Profile() {
   return (

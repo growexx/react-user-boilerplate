@@ -7,3 +7,14 @@ export const StyledProfile = styled.div`
     flex: 1 !important;
   }
 `;
+
+export const CardExtraContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  p {
+    color: @primary-color;
+    font-size: @font-size-base;
+    margin-bottom: 0;
+  }
+`;

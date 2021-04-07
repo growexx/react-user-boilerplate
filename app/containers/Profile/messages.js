@@ -13,4 +13,16 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the Profile container!',
   },
+  aboutContent: {
+    id: `${scope}.aboutContent`,
+    defaultMessage: `{content}`,
+  },
+  save: {
+    id: `${scope}.save`,
+    defaultMessage: 'Save',
+  },
+  edit: {
+    id: `${scope}.edit`,
+    defaultMessage: 'Edit',
+  },
 });

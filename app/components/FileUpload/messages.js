@@ -21,4 +21,8 @@ export default defineMessages({
     id: `${scope}.uploadError`,
     defaultMessage: `{filename} file upload failed.`,
   },
+  uploadComponentMessage: {
+    id: `${scope}.uploadComponentMessage`,
+    defaultMessage: `Click or drag file to this area to upload.`,
+  },
 });
