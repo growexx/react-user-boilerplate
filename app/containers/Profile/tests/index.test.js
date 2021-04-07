@@ -9,40 +9,34 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
-// import 'jest-dom/extend-expect'; // add some helpful assertions
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { browserHistory } from 'react-router-dom';
+import history from 'utils/history';
+import Profile from '../index';
+import configureStore from '../../../configureStore';
 
-import { Profile } from '../index';
-import { DEFAULT_LOCALE } from '../../../i18n';
+let store;
+
+const componentWrapper = () =>
+  render(
+    <Provider store={store}>
+      <IntlProvider locale="en">
+        <ConnectedRouter history={history}>
+          <Profile />
+        </ConnectedRouter>
+      </IntlProvider>
+    </Provider>,
+  );
 
 describe('<Profile />', () => {
-  it('Expect to not log errors in console', () => {
-    const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-    render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <Profile dispatch={dispatch} />
-      </IntlProvider>,
-    );
-    expect(spy).not.toHaveBeenCalled();
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
   });
-
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
-  });
-
-  /**
-   * Unskip this test to use it
-   *
-   * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
-   */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <Profile />
-      </IntlProvider>,
-    );
+    } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
   });
 });

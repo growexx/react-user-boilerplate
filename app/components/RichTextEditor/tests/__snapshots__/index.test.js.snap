@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
+<div
+  class="StyledEditor-l6ccd5-0 eMPuUg"
+>
+  <div
+    class="DraftEditor-root"
+  >
+    <div
+      class="DraftEditor-editorContainer"
+    >
+      <div
+        class="notranslate public-DraftEditor-content"
+        contenteditable="true"
+        role="textbox"
+        spellcheck="false"
+        style="outline: none; user-select: text; white-space: pre-wrap; word-wrap: break-word;"
+      >
+        <div
+          data-contents="true"
+        >
+          <div
+            class=""
+            data-block="true"
+            data-editor="4h89q"
+            data-offset-key="9ibuj-0-0"
+          >
+            <div
+              class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+              data-offset-key="9ibuj-0-0"
+            >
+              <span
+                data-offset-key="9ibuj-0-0"
+              >
+                <br
+                  data-text="true"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

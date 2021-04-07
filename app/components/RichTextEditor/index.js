@@ -17,15 +17,6 @@ class RichTextEditor extends React.Component {
     this.setEditor = editor => {
       this.editor = editor;
     };
-    this.focusEditor = () => {
-      if (this.editor) {
-        this.editor.focus();
-      }
-    };
-  }
-
-  componentDidMount() {
-    this.focusEditor();
   }
 
   render() {
@@ -42,7 +33,7 @@ class RichTextEditor extends React.Component {
 }
 
 RichTextEditor.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.object,
   onChange: PropTypes.func,
 };
 

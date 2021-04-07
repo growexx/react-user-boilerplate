@@ -5,6 +5,7 @@ export const StyledProfile = styled.div`
   flex-direction: column;
   .ant-card {
     flex: 1 !important;
+    cursor: default;
   }
 `;
 

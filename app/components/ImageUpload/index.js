@@ -10,22 +10,16 @@ import ImgCrop from 'antd-img-crop';
 import 'antd/es/modal/style';
 import 'antd/es/slider/style';
 
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-
-// import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
-
 class ImageUpload extends React.Component {
   state = {
     fileList: [
-      //   {
-      //     uid: '-1',
-      //     name: 'image.png',
-      //     status: 'done',
-      //     url:
-      //       'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      //   },
+      {
+        uid: '-1',
+        name: 'image.png',
+        status: 'done',
+        url:
+          'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
     ],
   };
 
@@ -59,7 +53,6 @@ class ImageUpload extends React.Component {
           fileList={this.state.fileList}
           onChange={this.onChange}
           onPreview={this.onPreview}
-          //   className="avatar-uploader"
           maxCount={1}
         >
           {this.state.fileList.length < 5 && '+ Upload'}
