@@ -12,15 +12,7 @@ import 'antd/es/slider/style';
 
 class ImageUpload extends React.Component {
   state = {
-    fileList: [
-      {
-        uid: '-1',
-        name: 'image.png',
-        status: 'done',
-        url:
-          'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      },
-    ],
+    fileList: [],
   };
 
   onChange = ({ fileList: newFileList }) => {
@@ -55,7 +47,7 @@ class ImageUpload extends React.Component {
           onPreview={this.onPreview}
           maxCount={1}
         >
-          {this.state.fileList.length < 5 && '+ Upload'}
+          {this.state.fileList.length < 1 && '+ Upload'}
         </Upload>
       </ImgCrop>
     );
