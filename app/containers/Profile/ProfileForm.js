@@ -9,8 +9,10 @@
 import React from 'react';
 import { EditorState } from 'draft-js';
 import { FormattedHTMLMessage } from 'react-intl';
+import ReactHtmlParser from 'react-html-parser';
 import { Helmet } from 'react-helmet';
 import { Card, Button } from 'antd';
+import { convertToHTML } from 'draft-convert';
 import FileUpload from 'components/FileUpload/Loadable';
 import { CardExtraContainer } from './StyledProfile';
 import { DATA_TEST_IDS, PROFILE_PLACEHOLDER } from './constants';
@@ -36,7 +38,7 @@ class ProfileForm extends React.PureComponent {
 
   isContentEdited = state =>
     state.getCurrentContent().getPlainText('\u0001').length > 0
-      ? state.getCurrentContent().getPlainText('\u0001')
+      ? convertToHTML(state.getCurrentContent())
       : PROFILE_PLACEHOLDER;
 
   render() {
@@ -100,12 +102,7 @@ class ProfileForm extends React.PureComponent {
               }}
             />
           ) : (
-            <FormattedHTMLMessage
-              {...messages.aboutContent}
-              values={{
-                content: this.isContentEdited(aboutContent),
-              }}
-            />
+            ReactHtmlParser(`${this.isContentEdited(aboutContent)}`)
           )}
         </Card>
         <br />

@@ -6,8 +6,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Editor } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import { StyledEditor } from './StyledEditor';
 
@@ -25,7 +25,7 @@ class RichTextEditor extends React.Component {
         <Editor
           ref={this.setEditor}
           editorState={this.props.value}
-          onChange={this.props.onChange}
+          onEditorStateChange={this.props.onChange}
         />
       </StyledEditor>
     );
