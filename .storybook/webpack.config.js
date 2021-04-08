@@ -1,42 +1,112 @@
 const path = require('path');
+const options = require('../babel.config');
+const fs = require('fs');
 
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(
+  fs.readFileSync(
+    path.join(__dirname, '../app/styles/antDefaultVars.less'),
+    'utf8',
+  ),
+);
 module.exports = async ({ config, mode }) => {
-  config.module.rules.push({
-      loader: 'babel-loader',
+  config.module.rules.push(
+    {
+      test: /\.jsx?$/, // Transform all .js and .jsx files required somewhere with Babel
       exclude: /node_modules/,
-      test: /\.(js|jsx)$/,
-      options: {
-          presets: ['@babel/react'],
-          plugins: [
-            [
-              'styless',
-              {
-                import: './app/styles/antDefaultVars.less',
-                lessOptions: {
-                  javascriptEnabled: true,
-                },
-              },
-            ],
-            ['import', { libraryName: 'antd', style: true }],
-            'styled-components',
-            ['@babel/plugin-proposal-class-properties', { loose: true }],
-            '@babel/plugin-syntax-dynamic-import',    
-          ]
+      use: {
+        loader: 'babel-loader',
+        options: options.babelQuery,
       },
-  });
-
-  config.module.rules.push({  
+    },
+    {
       test: /\.less$/,
-      loaders: [
-          {
-              loader: 'less-loader',
-              options: {
-                  modifyVars: {'@primary-color': '#f00'},
-                  javascriptEnabled: true
-              }
-          }
+      exclude: /node_modules/,
+      use: [
+        { loader: 'style-loader' },
+        { loader: 'css-loader' },
+        {
+          loader: 'less-loader',
+          options: {
+            javascriptEnabled: true,
+            modifyVars: themeVariables,
+          },
+        },
       ],
-  });
+    },
+    {
+      // Preprocess 3rd party .css files located in node_modules
+      test: /\.css$/,
+      include: /node_modules/,
+      use: ['style-loader', 'css-loader'],
+    },
+    {
+      test: /\.(eot|otf|ttf|woff|woff2)$/,
+      use: 'file-loader',
+    },
+    {
+      test: /\.svg$/,
+      use: [
+        {
+          loader: 'svg-url-loader',
+          options: {
+            // Inline files smaller than 10 kB
+            limit: 10 * 1024,
+            noquotes: true,
+          },
+        },
+      ],
+    },
+    {
+      test: /\.(jpg|png|gif)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            // Inline files smaller than 10 kB
+            limit: 10 * 1024,
+          },
+        },
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {
+              enabled: false,
+              // NOTE: mozjpeg is disabled as it causes errors in some Linux environments
+              // Try enabling it in your environment by switching the config to:
+              // enabled: true,
+              // progressive: true,
+            },
+            gifsicle: {
+              interlaced: false,
+            },
+            optipng: {
+              optimizationLevel: 7,
+            },
+            pngquant: {
+              quality: '65-90',
+              speed: 4,
+            },
+          },
+        },
+      ],
+    },
+    {
+      test: /\.html$/,
+      use: 'html-loader',
+    },
+    {
+      test: /\.(mp4|webm)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+        },
+      },
+    },
+);
+
+  // config.module.rules.push();
   config.resolve.modules.push(path.resolve(__dirname, "../app"));
 
   return config;
