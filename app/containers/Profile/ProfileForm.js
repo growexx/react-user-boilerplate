@@ -144,12 +144,7 @@ class ProfileForm extends React.PureComponent {
               }}
             />
           ) : (
-            <FormattedHTMLMessage
-              {...messages.aboutContent}
-              values={{
-                content: this.isContentEdited(experienceContent),
-              }}
-            />
+            ReactHtmlParser(`${this.isContentEdited(experienceContent)}`)
           )}
         </Card>
         <br />
@@ -191,12 +186,7 @@ class ProfileForm extends React.PureComponent {
               }}
             />
           ) : (
-            <FormattedHTMLMessage
-              {...messages.aboutContent}
-              values={{
-                content: this.isContentEdited(educationContent),
-              }}
-            />
+            ReactHtmlParser(`${this.isContentEdited(educationContent)}`)
           )}
         </Card>
         <br />
@@ -238,12 +228,9 @@ class ProfileForm extends React.PureComponent {
               }}
             />
           ) : (
-            <FormattedHTMLMessage
-              {...messages.aboutContent}
-              values={{
-                content: this.isContentEdited(licensesAndCertificationsContent),
-              }}
-            />
+            ReactHtmlParser(
+              `${this.isContentEdited(licensesAndCertificationsContent)}`,
+            )
           )}
         </Card>
         <br />

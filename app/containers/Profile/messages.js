@@ -25,10 +25,6 @@ export default defineMessages({
     id: `${scope}.location`,
     defaultMessage: 'Ahmedabad, Gujarat',
   },
-  aboutContent: {
-    id: `${scope}.aboutContent`,
-    defaultMessage: `{content}`,
-  },
   save: {
     id: `${scope}.save`,
     defaultMessage: 'Save',
