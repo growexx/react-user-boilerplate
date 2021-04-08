@@ -54,5 +54,5 @@ Following are the packages used in the boilerplate
 | antd-img-crop           | Library to crop images while upload by antd     |
 | draft-js                | Rich text editor framework                      |
 | react-draft-wysiwyg     | Rich text editor for draft js to use in react   |
-| draft-convert           | Library to convert draft js data to html        |
+| draft-js-export-html    | Library to convert draft js data to html        |
 | react-html-parser       | React HTML Parser for parsing html              |
