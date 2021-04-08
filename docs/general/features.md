@@ -3,11 +3,11 @@ Following are the features included in the boilerplate
 ## React Version : ^16.14.0
 | Feature                 | Description                                     |
 | ----------------------- | ----------------------------------------------- |
-| Features                |                                                 |
+| **Features**            |                                                 |
 |                         |                                                 |
 | Quick Scaffolding       | Create components, containers, routes, selectors| 
-|                           and sagas - and their tests - right from the CLI|
-|                           with npm run generate.                          |
+|                         | and sagas - and their tests - right from the CLI|
+|                         | with npm run generate.                          |
 | Webpack                 | Webpack support added out of box with basic     |
 |                         | loaders.                                        |
 | Babel                   | Babel loader support added out of box.          |
@@ -19,11 +19,11 @@ Following are the features included in the boilerplate
 | Ngrok support           | npm run start:tunnel                            |
 | Commitzen               | standard way for commits                        |
 | Pre-Commit              | Restriction for commits                         |
-| Font-Awesome            | Inbuilt Support for font-awesome                |
+| Font-Awesome            | Inbuilt support for font-awesome                |
 | Role Management         | Role management implemented.                    |
 | App level loader        | Global loader based on app states               |
 |                         |                                                 |
-| Design                  |                                                 |
+| **Design**              |                                                 |
 |                         |                                                 |
 | Ant design              | Ant design library for styles and theme.        | 
 | Style variables         | Boilerplate s configuration supports            |
@@ -34,7 +34,7 @@ Following are the features included in the boilerplate
 | Less support            | Boilerplate supports less files                 |
 | Styled components       | Boilerplate supports style components out of box|
 |                         |                                                 |
-| Components              |                                                 |
+| **Components**          |                                                 |
 |                         |                                                 |
 | Base Layout Integrated  | Base layout with routes, header and sidebar     |                         | Storybook support       | Every component made in boilerplate has         |
 |                         | storybook support where you can get visual      |
@@ -47,12 +47,11 @@ Following are the features included in the boilerplate
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
 |                         |                                                 |
-| Additional Utils        |                                                 |
+| **Additional Utils**    |                                                 |
 |                         |                                                 |
 | Export Data as CSV      | Export data as csv ( client and backend side )  |                         | Numeral Conversion      | Numeral js library added for all numeric actions|   
-| Localstorageutil        | Util to add, delete and get items from          |
+| Localstorage util        | Util to add, delete and get items from         |
 |                         | localstorage.                                   |
-
 | Event Emitter           | Util to on and off emitter events.              |
 | Form Validations        | Redux form fields with validations              |
 | Inject reducer          | Inject reducer in redux form.                   |
@@ -62,7 +61,7 @@ Following are the features included in the boilerplate
 | UserExists              | tells if user is logged in or logged out.       |
 | FontFaces               | Add font faces with this function.              |
 |                         |                                                 |
-| Examples                |                                                 |
+| **Examples**            |                                                 |
 |                         |                                                 |
 | Font-Awesome demo       | Usage for font-awesome.                         |
 | Loader demo             | Infinite, Load More, Pagination Demo.           |
@@ -73,12 +72,12 @@ Following are the features included in the boilerplate
 | File Upload             | Image Upload component demo.                    |
 | Rich Text Editor        | Rich text editor demo.                          |
 |                         |                                                 |
-| Test-Cases              |                                                 |
+| **Test-Cases**          |                                                 |
 |                         |                                                 |
 | React-Testing-Library   | Examples of testing react components with RTL   |
 |                         | implemented.                                    |
 |                         |                                                 |
-| Code-Quality            |                                                 |
+| **Code-Quality**        |                                                 |
 |                         |                                                 |
 | Sonar standards         | All code is written according to standards of   |
 |                         | sonar.                                          |
