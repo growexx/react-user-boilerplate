@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = async ({ config, mode }) => {
-  config.resolve.modules.push(path.resolve(__dirname, "../app"));
   config.module.rules.push({
       loader: 'babel-loader',
       exclude: /node_modules/,
@@ -29,8 +28,6 @@ module.exports = async ({ config, mode }) => {
   config.module.rules.push({  
       test: /\.less$/,
       loaders: [
-          'style-loader',
-          'css-loader',
           {
               loader: 'less-loader',
               options: {
@@ -39,11 +36,8 @@ module.exports = async ({ config, mode }) => {
               }
           }
       ],
-      include: [
-        path.resolve(__dirname, '../app'),
-        /[\\/]node_modules[\\/].*antd/
-      ]
   });
+  config.resolve.modules.push(path.resolve(__dirname, "../app"));
 
   return config;
 };
