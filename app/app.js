@@ -10,7 +10,6 @@ import '@babel/polyfill';
 
 // Import all the third party stuff
 import React from 'react';
-import ReactGA from 'react-ga';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
@@ -56,9 +55,6 @@ openSansObserver.load().then(() => {
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
-ReactGA.initialize(process.env.REACT_APP_GA_TAG_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
-
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>

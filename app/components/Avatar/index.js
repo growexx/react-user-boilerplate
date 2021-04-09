@@ -10,11 +10,24 @@ import { UserOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AvatarWrapper } from './StyledAvatar';
+import { eventGA } from '../../utils/googleAnalytics';
+import { GA_CATEGORY_MENU_CLICKS } from '../../utils/constants';
+import { GA_LABEL_AVATAR } from './constants';
 
 const getMenu = MenuItems => (
   <Menu>
     {MenuItems.map((menuItem, index) => (
-      <Menu.Item key={index} icon={menuItem.icon}>
+      <Menu.Item
+        key={index}
+        icon={menuItem.icon}
+        onClick={() => {
+          eventGA(
+            GA_CATEGORY_MENU_CLICKS,
+            `${menuItem.to} clicked from avatar`,
+            GA_LABEL_AVATAR,
+          );
+        }}
+      >
         <Link to={menuItem.to}>{menuItem.tabName}</Link>
       </Menu.Item>
     ))}

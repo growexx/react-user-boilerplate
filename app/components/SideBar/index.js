@@ -8,9 +8,11 @@ import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { ROUTES } from 'containers/constants';
+import { eventGA } from 'utils/googleAnalytics';
+import { GA_CATEGORY_MENU_CLICKS } from 'utils/constants';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
-import { GET_FILTERED_MENU_ITEM } from './Constants';
+import { GA_LABEL_SIDEBAR, GET_FILTERED_MENU_ITEM } from './Constants';
 
 const { Sider } = Layout;
 
@@ -37,7 +39,17 @@ const SideBar = props => (
       selectedKeys={[props.location.pathname]}
     >
       {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
-        <Menu.Item key={menu.to} icon={menu.icon}>
+        <Menu.Item
+          key={menu.to}
+          icon={menu.icon}
+          onClick={() => {
+            eventGA(
+              GA_CATEGORY_MENU_CLICKS,
+              `${menu.to} clicked from sidebar`,
+              GA_LABEL_SIDEBAR,
+            );
+          }}
+        >
           <Link to={menu.to}>{menu.tabName}</Link>
         </Menu.Item>
       ))}

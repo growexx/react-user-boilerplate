@@ -22,6 +22,7 @@ Following are the features included in the boilerplate
 | Font-Awesome            | Inbuilt support for font-awesome                |
 | Role Management         | Role management implemented.                    |
 | App level loader        | Global loader based on app states               |
+| Analytics Tool          | Google analytics tool integrated                |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -59,6 +60,7 @@ Following are the features included in the boilerplate
 | Loadable                | Load the component asynchronously.              |
 | Request                 | fetch request helper function.                  |
 | UserExists              | tells if user is logged in or logged out.       |
+| Google Analytics        | Analytics helper util.                          |
 | FontFaces               | Add font faces with this function.              |
 |                         |                                                 |
 | **Examples**            |                                                 |
