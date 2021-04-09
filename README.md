@@ -76,7 +76,7 @@ There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on ho
 Now you're ready to rumble!
 
 ## Documentation
-
+- [**Features**](docs/general/features.md): Detail list of features available in the boilerplate.
 - [**The Hitchhiker's Guide to `react-boilerplate`**](docs/general/introduction.md): An introduction for newcomers to this boilerplate.
 - [Overview](docs/general): A short overview of the included tools
 - [**Commands**](docs/general/commands.md): Getting the most out of this boilerplate
