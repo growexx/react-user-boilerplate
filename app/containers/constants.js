@@ -28,6 +28,7 @@ export const API_ENDPOINTS = {
   LIST_AVATAR:
     'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   EXPORT_CSV: '',
+  IMAGE_UPLOAD: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
 };
 
 // Table Pagination default

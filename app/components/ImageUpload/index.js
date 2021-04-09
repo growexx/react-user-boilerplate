@@ -9,6 +9,7 @@ import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import 'antd/es/modal/style';
 import 'antd/es/slider/style';
+import { API_ENDPOINTS } from 'containers/constants';
 
 class ImageUpload extends React.Component {
   state = {
@@ -40,7 +41,7 @@ class ImageUpload extends React.Component {
     return (
       <ImgCrop rotate>
         <Upload
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          action={API_ENDPOINTS.IMAGE_UPLOAD}
           listType="picture-card"
           fileList={this.state.fileList}
           onChange={this.onChange}

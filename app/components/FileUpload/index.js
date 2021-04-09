@@ -8,12 +8,13 @@ import React from 'react';
 import { Upload /* message */ } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { FormattedMessage } from 'react-intl';
+import { API_ENDPOINTS } from 'containers/constants';
 import formattedMessages from './messages';
 const { Dragger } = Upload;
 
 const props = {
   name: 'file',
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  action: API_ENDPOINTS.IMAGE_UPLOAD,
   onChange(/* info */) {
     /*
      * NOTE : CODE FOR ACTUAL FILE UPLOAD WITH API
