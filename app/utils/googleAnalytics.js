@@ -2,8 +2,9 @@
  * REACT - GA : https://www.npmjs.com/package/react-ga
  */
 import ReactGA from 'react-ga';
+import { REACT_APP_GA_TAG_ID } from '../config';
 export const initGA = () => {
-  ReactGA.initialize('UA-194132994-1', {
+  ReactGA.initialize(REACT_APP_GA_TAG_ID, {
     testMode: process.env.NODE_ENV === 'test',
     titleCase: false,
   });

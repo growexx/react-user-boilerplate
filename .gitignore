@@ -13,3 +13,6 @@ npm-debug.log
 
 storybook-static
 .scannerwork
+
+# config file
+config.js
