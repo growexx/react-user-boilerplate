@@ -2,8 +2,11 @@
  * REACT - GA : https://www.npmjs.com/package/react-ga
  */
 import ReactGA from 'react-ga';
-export const initGA = () => {
-  ReactGA.initialize('UA-194132994-1');
+export const initGA = (options = {}) => {
+  ReactGA.initialize('UA-194132994-1', {
+    testMode: process.env.NODE_ENV === 'test',
+    ...options,
+  });
 };
 
 /**
