@@ -2,7 +2,7 @@ import React from 'react';
 import FontAwesomeDemo from '../index';
 
 export default {
-  title: 'Components/FontAwesomeDemo',
+  title: 'Examples/FontAwesomeDemo',
   component: FontAwesomeDemo,
 };
 

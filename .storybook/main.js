@@ -1,4 +1,3 @@
-const fs = require('fs');
 module.exports = {
   "stories": [
     "../app/**/stories/**/*.stories.mdx",
@@ -7,6 +6,5 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "storybook-addon-react-docgen",
   ],
 };

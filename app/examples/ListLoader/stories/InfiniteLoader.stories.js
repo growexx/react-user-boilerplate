@@ -7,7 +7,7 @@ import React from 'react';
 import Loader from '../index';
 
 export default {
-  title: 'Components/Loader',
+  title: 'Examples/Loader',
   component: Loader,
 };
 const Template = args => <Loader {...args} />;

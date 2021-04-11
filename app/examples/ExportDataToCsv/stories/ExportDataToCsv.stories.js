@@ -7,7 +7,7 @@ import React from 'react';
 import ExportDataToCsv from '../index';
 
 export default {
-  title: 'Components/ExportDataToCsv',
+  title: 'Examples/ExportDataToCsv',
   component: ExportDataToCsv,
 };
 const Template = args => <ExportDataToCsv {...args} />;

@@ -7,7 +7,7 @@ import React from 'react';
 import NumeralConversion from '../index';
 
 export default {
-  title: 'Containers/NumeralConversion',
+  title: 'Examples/NumeralConversion',
   component: NumeralConversion,
 };
 const Template = args => <NumeralConversion {...args} />;
