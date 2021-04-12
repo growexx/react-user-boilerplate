@@ -72,6 +72,7 @@ There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on ho
 4.  Run `npm run setup` in order to install dependencies and clean the git repo.<br />
     _At this point you can run `npm start` to see the example app at `http://localhost:3000`._
 5.  Run `npm run clean` to delete the example app.
+6.  Add config.js file in app folder and place values in it according to `config.js.template` file.
 
 Now you're ready to rumble!
 

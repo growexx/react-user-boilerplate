@@ -13,6 +13,7 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
+import Profile from 'containers/Profile/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
@@ -23,6 +24,7 @@ import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
+import ChangePassword from 'containers/ChangePassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
@@ -87,6 +89,12 @@ class App extends React.Component {
             path={ROUTES.NUMERAL_CONVERTER}
             component={NumeralConversion}
           />
+          <PrivateRoute
+            path={ROUTES.CHANGE_PASSWORD}
+            component={ChangePassword}
+          />
+          <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+
           <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
           <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
           <Route
