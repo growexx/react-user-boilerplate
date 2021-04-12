@@ -14,13 +14,13 @@ import { Provider } from 'react-redux';
 import history from 'utils/history';
 import { ConnectedRouter } from 'connected-react-router';
 import SampleForm from '../index';
-import * as actions from '../actions';
 import configureStore from '../../../configureStore';
 let store;
 const props = {
   pristine: true,
   reset: true,
   submitting: true,
+  handleSubmit: jest.fn(),
 };
 const componentWrapper = () =>
   render(
@@ -43,12 +43,11 @@ describe('<SampleForm />', () => {
     expect(firstChild).toMatchSnapshot();
   });
   it('Should click submit button', () => {
-    const spiedFn = jest.spyOn(actions, 'submitData');
     props.pristine = false;
     const { getByText } = componentWrapper();
     const button = getByText('Submit');
     fireEvent.click(button);
-    expect(spiedFn).toBeCalled();
+    expect(props.handleSubmit).toBeCalled();
   });
   it('Should change form fields', () => {
     const eventObject = {

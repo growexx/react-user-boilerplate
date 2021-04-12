@@ -6,9 +6,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { createStructuredSelector } from 'reselect';
 import { Field, reduxForm } from 'redux-form';
+import { compose } from 'redux';
 import * as formValidations from 'utils/formValidations';
 import { Form, Radio, Button, Select } from 'antd';
 import useInjectSaga from 'utils/injectSaga';
@@ -21,24 +23,22 @@ import {
   ASelect,
   ATextarea,
 } from 'utils/Fields';
+import makeSelectSampleForm from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import * as actions from './actions';
-import { selectSampleFormDomain } from './selectors';
 const FormItem = Form.Item;
 
 const FORM_KEY = 'sampleForm';
 const { Option } = Select;
 
 export const SampleForm = props => {
-  useInjectReducer({
-    key: FORM_KEY,
-    reducer,
-  });
-  useInjectSaga({ key: FORM_KEY, saga });
-  const dispatch = useDispatch();
-  useSelector(state => selectSampleFormDomain(state), shallowEqual);
-  const { pristine, reset, submitting } = props;
+  const handleFormSubmit = () => {
+    const { submitData } = props;
+    submitData();
+  };
+
+  const { handleSubmit, pristine, reset, submitting, updateField } = props;
 
   return (
     <div>
@@ -46,15 +46,13 @@ export const SampleForm = props => {
         <title>SampleForm</title>
         <meta name="description" content="Description of SampleForm" />
       </Helmet>
-      <Form onSubmit={dispatch(actions.submitData())}>
+      <Form onSubmit={handleSubmit(handleFormSubmit)}>
         <Field
           label="First Name"
           name="firstName"
           component={AInput}
           placeholder="First Name"
-          onChange={e =>
-            dispatch(actions.updateField(e.target.name, e.target.value))
-          }
+          onChange={e => updateField(e.target.name, e.target.value)}
           hasFeedback
         />
 
@@ -63,9 +61,7 @@ export const SampleForm = props => {
           name="lastName"
           component={AInput}
           placeholder="Last Name"
-          onChange={e =>
-            dispatch(actions.updateField(e.target.name, e.target.value))
-          }
+          onChange={e => updateField(e.target.name, e.target.value)}
         />
 
         <Field
@@ -74,9 +70,7 @@ export const SampleForm = props => {
           component={AInput}
           type="email"
           placeholder="Email"
-          onChange={e =>
-            dispatch(actions.updateField(e.target.name, e.target.value))
-          }
+          onChange={e => updateField(e.target.name, e.target.value)}
         />
 
         <Field label="Sex" name="sex" component={ARadioGroup} value="male">
@@ -88,7 +82,7 @@ export const SampleForm = props => {
           label="Favorite Color"
           name="favoriteColor"
           component={ASelect}
-          onChange={e => dispatch(actions.updateField('favoriteColor', e))}
+          onChange={e => updateField('favoriteColor', e)}
         >
           <Option value="ff0000">Red</Option>
           <Option value="00ff00">Green</Option>
@@ -101,9 +95,7 @@ export const SampleForm = props => {
           id="employed"
           component={ACheckbox}
           type="checkbox"
-          onChange={e =>
-            dispatch(actions.updateField('employed', e.target.checked))
-          }
+          onChange={e => updateField('employed', e.target.checked)}
         />
 
         <Field
@@ -113,7 +105,7 @@ export const SampleForm = props => {
           placeholder={['From', 'To']}
           hasFeedback
           onFocus={e => e.preventDefault()}
-          onChange={e => dispatch(actions.updateField('rangepicker', e))}
+          onChange={e => updateField('rangepicker', e)}
           onBlur={e => e.preventDefault()}
         />
 
@@ -122,41 +114,75 @@ export const SampleForm = props => {
           label="Notes"
           name="notes"
           component={ATextarea}
-          onChange={e => dispatch(actions.updateField('Notes', e.target.value))}
+          onChange={e => updateField('Notes', e.target.value)}
         />
 
         <FormItem>
-          <Button
-            type="primary"
-            disabled={pristine || submitting}
-            htmlType="submit"
-            style={{ marginRight: '10px' }}
-            onClick={() => dispatch(actions.submitData())}
-          >
-            Submit
-          </Button>
+          <center>
+            <Button
+              type="primary"
+              disabled={pristine || submitting}
+              htmlType="submit"
+              style={{ marginRight: '10px' }}
+              onClick={handleSubmit(handleFormSubmit)}
+            >
+              Submit
+            </Button>
 
-          <Button disabled={pristine || submitting} onClick={reset}>
-            Clear Values
-          </Button>
+            <Button disabled={pristine || submitting} onClick={reset}>
+              Clear Values
+            </Button>
+          </center>
         </FormItem>
       </Form>
     </div>
   );
 };
+
 SampleForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  updateField: PropTypes.func.isRequired,
+  submitData: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
   reset: PropTypes.func,
   submitting: PropTypes.bool,
 };
 
-export default reduxForm({
-  form: FORM_KEY,
-  fields: ['firstName', 'email', 'rangePicker', 'employed', 'lastName'],
-  validate: formValidations.createValidator({
-    firstName: [formValidations.required],
-    lastName: [formValidations.required],
-    email: [formValidations.required, formValidations.validEmail],
+const withReducer = useInjectReducer({
+  key: FORM_KEY,
+  reducer,
+});
+
+const withSaga = useInjectSaga({ key: FORM_KEY, saga });
+
+const mapStateToProps = createStructuredSelector({
+  sampleForm: makeSelectSampleForm(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateField: (key, value) => dispatch(actions.updateField(key, value)),
+    submitData: () => dispatch(actions.submitData()),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+  reduxForm({
+    form: FORM_KEY,
+    fields: ['firstName', 'email', 'rangePicker', 'employed', 'lastName'],
+    validate: formValidations.createValidator({
+      firstName: [formValidations.required],
+      lastName: [formValidations.required],
+      email: [formValidations.required, formValidations.validEmail],
+    }),
+    touchOnChange: true,
   }),
-  touchOnChange: true,
-})(SampleForm);
+)(SampleForm);
