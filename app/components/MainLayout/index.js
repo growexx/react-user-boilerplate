@@ -8,49 +8,55 @@
 import React from 'react';
 import { Layout, Spin } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-import { makeSelectAppLoading } from 'containers/App/selectors';
+import { useSelector, shallowEqual } from 'react-redux';
 import App from 'containers/App';
 import Footer from 'components/Footer';
 import AppHeader from 'components/Header';
 import SideBar from 'components/SideBar';
+import { selectGlobal } from 'containers/App/selectors';
 import Emitter from 'utils/events';
 import { userExists, getUserData } from 'utils/Helper';
 import { EMITTER_EVENTS } from 'utils/constants';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
 const { Header, Content } = Layout;
 
-const MainLayout = props => {
+const MainLayout = () => {
+  const globalState = useSelector(state => selectGlobal(state), shallowEqual);
   const [state, setState] = React.useState({
     collapsed: true,
+    eventEmitted: false,
   });
 
   const toggle = () => {
     const { collapsed } = state;
     setState({
+      ...state,
       collapsed: !collapsed,
     });
   };
 
   React.useEffect(() => {
     Emitter.on(EMITTER_EVENTS.LOG_IN, () => {
-      this.forceUpdate();
+      setState({
+        ...state,
+        eventEmitted: true,
+      });
     });
     Emitter.on(EMITTER_EVENTS.LOG_OUT, () => {
-      this.forceUpdate();
+      setState({
+        ...state,
+        eventEmitted: true,
+      });
     });
     return () => {
       Emitter.off(EMITTER_EVENTS.LOG_IN);
       Emitter.off(EMITTER_EVENTS.LOG_OUT);
     };
-  }, []);
+  }, [state.eventEmitted]);
 
   if (userExists()) {
     return (
-      <Spin spinning={props.appLoading} size="default">
+      <Spin spinning={globalState.appLoading} size="default">
         <StyledMainLayout>
           <Layout>
             <Layout>
@@ -100,14 +106,4 @@ const MainLayout = props => {
   return <App />;
 };
 
-MainLayout.propTypes = {
-  appLoading: PropTypes.bool,
-};
-
-const mapStateToProps = createStructuredSelector({
-  appLoading: makeSelectAppLoading(),
-});
-
-const withConnect = connect(mapStateToProps);
-
-export default compose(withConnect)(MainLayout);
+export default MainLayout;

@@ -20,227 +20,226 @@ import { options } from './helper';
 import messages from './messages';
 import RichTextEditor from '../../components/RichTextEditor';
 
-class ProfileForm extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      aboutContent: EditorState.createEmpty(),
-      experienceContent: EditorState.createEmpty(),
-      educationContent: EditorState.createEmpty(),
-      licensesAndCertificationsContent: EditorState.createEmpty(),
-      editAbout: false,
-      editExperience: false,
-      editEducation: false,
-      editLicensesAndCertifications: false,
-    };
-  }
+const ProfileForm = () => {
+  const [state, setState] = React.useState({
+    aboutContent: EditorState.createEmpty(),
+    experienceContent: EditorState.createEmpty(),
+    educationContent: EditorState.createEmpty(),
+    licensesAndCertificationsContent: EditorState.createEmpty(),
+    editAbout: false,
+    editExperience: false,
+    editEducation: false,
+    editLicensesAndCertifications: false,
+  });
 
-  isEditModeOn = state => this.state[state] === true;
+  const isEditModeOn = value => state[value] === true;
 
-  isContentEdited = state =>
-    state.getCurrentContent().getPlainText('\u0001').length > 0
-      ? stateToHTML(state.getCurrentContent(), options)
+  const isContentEdited = value =>
+    value.getCurrentContent().getPlainText('\u0001').length > 0
+      ? stateToHTML(value.getCurrentContent(), options)
       : PROFILE_PLACEHOLDER;
 
-  render() {
-    const {
-      aboutContent,
-      educationContent,
-      experienceContent,
-      licensesAndCertificationsContent,
-    } = this.state;
-    return (
-      <div>
-        <Helmet>
-          <title>ProfileForm</title>
-          <meta name="description" content="Description of ProfileForm" />
-        </Helmet>
-        <p className="u-mb-1">
-          <FormattedHTMLMessage {...messages.name} />
-        </p>
-        <p className="u-mb-1">
-          <FormattedHTMLMessage {...messages.designation} />
-        </p>
-        <p className="u-mb-5">
-          <FormattedHTMLMessage {...messages.location} />
-        </p>
-        <Card
-          hoverable
-          type="inner"
-          title="About"
-          extra={
-            <CardExtraContainer>
-              {this.isEditModeOn('editAbout') ? (
-                <Button
-                  data-testid={DATA_TEST_IDS.ABOUT_SAVE}
-                  onClick={() => {
-                    this.setState({ editAbout: false });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.save} />
-                </Button>
-              ) : (
-                <Button
-                  data-testid={DATA_TEST_IDS.ABOUT_EDIT}
-                  onClick={() => {
-                    this.setState({ editAbout: true });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.edit} />
-                </Button>
-              )}
-            </CardExtraContainer>
-          }
-        >
-          {this.isEditModeOn('editAbout') ? (
-            <RichTextEditor
-              testId={DATA_TEST_IDS.ABOUT_EDITOR}
-              value={aboutContent}
-              onChange={value => {
-                this.setState({
-                  aboutContent: value,
-                });
-              }}
-            />
-          ) : (
-            ReactHtmlParser(`${this.isContentEdited(aboutContent)}`)
-          )}
-        </Card>
-        <br />
-        <Card
-          hoverable
-          type="inner"
-          title="Experience"
-          extra={
-            <CardExtraContainer>
-              {this.isEditModeOn('editExperience') ? (
-                <Button
-                  data-testid={DATA_TEST_IDS.EXPERIENCE_SAVE}
-                  onClick={() => {
-                    this.setState({ editExperience: false });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.save} />
-                </Button>
-              ) : (
-                <Button
-                  data-testid={DATA_TEST_IDS.EXPERIENCE_EDIT}
-                  onClick={() => {
-                    this.setState({ editExperience: true });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.edit} />
-                </Button>
-              )}
-            </CardExtraContainer>
-          }
-        >
-          {this.isEditModeOn('editExperience') ? (
-            <RichTextEditor
-              value={experienceContent}
-              onChange={value => {
-                this.setState({
-                  experienceContent: value,
-                });
-              }}
-            />
-          ) : (
-            ReactHtmlParser(`${this.isContentEdited(experienceContent)}`)
-          )}
-        </Card>
-        <br />
-        <Card
-          hoverable
-          type="inner"
-          title="Education"
-          extra={
-            <CardExtraContainer>
-              {this.isEditModeOn('editEducation') ? (
-                <Button
-                  data-testid={DATA_TEST_IDS.EDUCATION_SAVE}
-                  onClick={() => {
-                    this.setState({ editEducation: false });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.save} />
-                </Button>
-              ) : (
-                <Button
-                  data-testid={DATA_TEST_IDS.EDUCATION_EDIT}
-                  onClick={() => {
-                    this.setState({ editEducation: true });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.edit} />
-                </Button>
-              )}
-            </CardExtraContainer>
-          }
-        >
-          {this.isEditModeOn('editEducation') ? (
-            <RichTextEditor
-              value={educationContent}
-              onChange={value => {
-                this.setState({
-                  educationContent: value,
-                });
-              }}
-            />
-          ) : (
-            ReactHtmlParser(`${this.isContentEdited(educationContent)}`)
-          )}
-        </Card>
-        <br />
-        <Card
-          hoverable
-          type="inner"
-          title="Licenses and Certificates"
-          extra={
-            <CardExtraContainer>
-              {this.isEditModeOn('editLicensesAndCertifications') ? (
-                <Button
-                  data-testid={DATA_TEST_IDS.LICENSEANDCERTIFICATION_SAVE}
-                  onClick={() => {
-                    this.setState({ editLicensesAndCertifications: false });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.save} />
-                </Button>
-              ) : (
-                <Button
-                  data-testid={DATA_TEST_IDS.LICENSEANDCERTIFICATION_EDIT}
-                  onClick={() => {
-                    this.setState({ editLicensesAndCertifications: true });
-                  }}
-                >
-                  <FormattedHTMLMessage {...messages.edit} />
-                </Button>
-              )}
-            </CardExtraContainer>
-          }
-        >
-          {this.isEditModeOn('editLicensesAndCertifications') ? (
-            <RichTextEditor
-              value={licensesAndCertificationsContent}
-              onChange={value => {
-                this.setState({
-                  licensesAndCertificationsContent: value,
-                });
-              }}
-            />
-          ) : (
-            ReactHtmlParser(
-              `${this.isContentEdited(licensesAndCertificationsContent)}`,
-            )
-          )}
-        </Card>
-        <br />
-        <Card hoverable type="inner" title="Upload Resume">
-          <FileUpload />
-        </Card>
-      </div>
-    );
-  }
-}
+  const {
+    aboutContent,
+    educationContent,
+    experienceContent,
+    licensesAndCertificationsContent,
+  } = state;
+  return (
+    <div>
+      <Helmet>
+        <title>ProfileForm</title>
+        <meta name="description" content="Description of ProfileForm" />
+      </Helmet>
+      <p className="u-mb-1">
+        <FormattedHTMLMessage {...messages.name} />
+      </p>
+      <p className="u-mb-1">
+        <FormattedHTMLMessage {...messages.designation} />
+      </p>
+      <p className="u-mb-5">
+        <FormattedHTMLMessage {...messages.location} />
+      </p>
+      <Card
+        hoverable
+        type="inner"
+        title="About"
+        extra={
+          <CardExtraContainer>
+            {isEditModeOn('editAbout') ? (
+              <Button
+                data-testid={DATA_TEST_IDS.ABOUT_SAVE}
+                onClick={() => {
+                  setState({ ...state, editAbout: false });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.save} />
+              </Button>
+            ) : (
+              <Button
+                data-testid={DATA_TEST_IDS.ABOUT_EDIT}
+                onClick={() => {
+                  setState({ ...state, editAbout: true });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.edit} />
+              </Button>
+            )}
+          </CardExtraContainer>
+        }
+      >
+        {isEditModeOn('editAbout') ? (
+          <RichTextEditor
+            testId={DATA_TEST_IDS.ABOUT_EDITOR}
+            value={aboutContent}
+            onChange={value => {
+              setState({
+                ...state,
+                aboutContent: value,
+              });
+            }}
+          />
+        ) : (
+          ReactHtmlParser(`${isContentEdited(aboutContent)}`)
+        )}
+      </Card>
+      <br />
+      <Card
+        hoverable
+        type="inner"
+        title="Experience"
+        extra={
+          <CardExtraContainer>
+            {isEditModeOn('editExperience') ? (
+              <Button
+                data-testid={DATA_TEST_IDS.EXPERIENCE_SAVE}
+                onClick={() => {
+                  setState({ ...state, editExperience: false });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.save} />
+              </Button>
+            ) : (
+              <Button
+                data-testid={DATA_TEST_IDS.EXPERIENCE_EDIT}
+                onClick={() => {
+                  setState({ ...state, editExperience: true });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.edit} />
+              </Button>
+            )}
+          </CardExtraContainer>
+        }
+      >
+        {isEditModeOn('editExperience') ? (
+          <RichTextEditor
+            value={experienceContent}
+            onChange={value => {
+              setState({
+                ...state,
+                experienceContent: value,
+              });
+            }}
+          />
+        ) : (
+          ReactHtmlParser(`${isContentEdited(experienceContent)}`)
+        )}
+      </Card>
+      <br />
+      <Card
+        hoverable
+        type="inner"
+        title="Education"
+        extra={
+          <CardExtraContainer>
+            {isEditModeOn('editEducation') ? (
+              <Button
+                data-testid={DATA_TEST_IDS.EDUCATION_SAVE}
+                onClick={() => {
+                  setState({ ...state, editEducation: false });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.save} />
+              </Button>
+            ) : (
+              <Button
+                data-testid={DATA_TEST_IDS.EDUCATION_EDIT}
+                onClick={() => {
+                  setState({ ...state, editEducation: true });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.edit} />
+              </Button>
+            )}
+          </CardExtraContainer>
+        }
+      >
+        {isEditModeOn('editEducation') ? (
+          <RichTextEditor
+            value={educationContent}
+            onChange={value => {
+              setState({
+                ...state,
+                educationContent: value,
+              });
+            }}
+          />
+        ) : (
+          ReactHtmlParser(`${isContentEdited(educationContent)}`)
+        )}
+      </Card>
+      <br />
+      <Card
+        hoverable
+        type="inner"
+        title="Licenses and Certificates"
+        extra={
+          <CardExtraContainer>
+            {isEditModeOn('editLicensesAndCertifications') ? (
+              <Button
+                data-testid={DATA_TEST_IDS.LICENSEANDCERTIFICATION_SAVE}
+                onClick={() => {
+                  setState({ ...state, editLicensesAndCertifications: false });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.save} />
+              </Button>
+            ) : (
+              <Button
+                data-testid={DATA_TEST_IDS.LICENSEANDCERTIFICATION_EDIT}
+                onClick={() => {
+                  setState({ ...state, editLicensesAndCertifications: true });
+                }}
+              >
+                <FormattedHTMLMessage {...messages.edit} />
+              </Button>
+            )}
+          </CardExtraContainer>
+        }
+      >
+        {isEditModeOn('editLicensesAndCertifications') ? (
+          <RichTextEditor
+            value={licensesAndCertificationsContent}
+            onChange={value => {
+              setState({
+                ...state,
+                licensesAndCertificationsContent: value,
+              });
+            }}
+          />
+        ) : (
+          ReactHtmlParser(
+            `${isContentEdited(licensesAndCertificationsContent)}`,
+          )
+        )}
+      </Card>
+      <br />
+      <Card hoverable type="inner" title="Upload Resume">
+        <FileUpload />
+      </Card>
+    </div>
+  );
+};
 
 export default ProfileForm;

@@ -4,7 +4,7 @@
  *
  */
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Form, Button } from 'antd';
@@ -29,82 +29,74 @@ import { FORM_KEY, passwordsMustMatch } from './constants';
 import { fireSubmit, updateField as updateAction } from './actions';
 
 const FormItem = Form.Item;
+const ChangePassword = props => {
+  const {
+    invalid,
+    loading,
+    currentPassword,
+    newPassword,
+    confirmNewPassword,
+    pristine,
+    reset,
+    submitting,
+    updateField,
+    submitData,
+  } = props;
+  return (
+    <div>
+      <Helmet>
+        <title>ChangePassword</title>
+        <meta name="description" content="Description of ChangePassword" />
+      </Helmet>
+      <Form
+        onFinish={() => {
+          submitData();
+          reset();
+        }}
+      >
+        <Field
+          label="Current Password"
+          name="currentPassword"
+          component={APassword}
+          placeholder="Current Password"
+          onChange={updateField}
+          hasFeedback
+          value={currentPassword}
+        />
 
-export class ChangePassword extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+        <Field
+          label="New Password"
+          name="newPassword"
+          component={APassword}
+          placeholder="New Password"
+          onChange={updateField}
+          value={newPassword}
+        />
 
-  render() {
-    const {
-      invalid,
-      loading,
-      currentPassword,
-      newPassword,
-      confirmNewPassword,
-      pristine,
-      reset,
-      submitting,
-      updateField,
-      submitData,
-    } = this.props;
-    return (
-      <div>
-        <Helmet>
-          <title>ChangePassword</title>
-          <meta name="description" content="Description of ChangePassword" />
-        </Helmet>
-        <Form
-          onFinish={() => {
-            submitData();
-            reset();
-          }}
-        >
-          <Field
-            label="Current Password"
-            name="currentPassword"
-            component={APassword}
-            placeholder="Current Password"
-            onChange={updateField}
-            hasFeedback
-            value={currentPassword}
-          />
-
-          <Field
-            label="New Password"
-            name="newPassword"
-            component={APassword}
-            placeholder="New Password"
-            onChange={updateField}
-            value={newPassword}
-          />
-
-          <Field
-            label="Confirm Password"
-            name="confirmNewPassword"
-            component={APassword}
-            placeholder="Confirm Password"
-            onChange={updateField}
-            value={confirmNewPassword}
-          />
-          <FormItem>
-            <center>
-              <Button
-                loading={loading}
-                type="primary"
-                disabled={pristine || submitting || invalid}
-                htmlType="submit"
-              >
-                Submit
-              </Button>
-            </center>
-          </FormItem>
-        </Form>
-      </div>
-    );
-  }
-}
+        <Field
+          label="Confirm Password"
+          name="confirmNewPassword"
+          component={APassword}
+          placeholder="Confirm Password"
+          onChange={updateField}
+          value={confirmNewPassword}
+        />
+        <FormItem>
+          <center>
+            <Button
+              loading={loading}
+              type="primary"
+              disabled={pristine || submitting || invalid}
+              htmlType="submit"
+            >
+              Submit
+            </Button>
+          </center>
+        </FormItem>
+      </Form>
+    </div>
+  );
+};
 
 ChangePassword.propTypes = {
   updateField: PropTypes.func.isRequired,
