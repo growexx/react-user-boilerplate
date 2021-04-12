@@ -13,6 +13,11 @@ export const MenuItems = [
     icon: <UserOutlined />,
   },
   {
+    to: ROUTES.CHANGE_PASSWORD,
+    tabName: 'Change Password',
+    icon: <UserOutlined />,
+  },
+  {
     to: ROUTES.LOGOUT,
     tabName: 'Logout',
     icon: <LockOutlined />,

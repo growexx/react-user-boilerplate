@@ -130,19 +130,21 @@ export class SampleForm extends PureComponent {
           />
 
           <FormItem>
-            <Button
-              type="primary"
-              disabled={pristine || submitting}
-              htmlType="submit"
-              style={{ marginRight: '10px' }}
-              onClick={handleSubmit(this.handleFormSubmit)}
-            >
-              Submit
-            </Button>
+            <center>
+              <Button
+                type="primary"
+                disabled={pristine || submitting}
+                htmlType="submit"
+                style={{ marginRight: '10px' }}
+                onClick={handleSubmit(this.handleFormSubmit)}
+              >
+                Submit
+              </Button>
 
-            <Button disabled={pristine || submitting} onClick={reset}>
-              Clear Values
-            </Button>
+              <Button disabled={pristine || submitting} onClick={reset}>
+                Clear Values
+              </Button>
+            </center>
           </FormItem>
         </Form>
       </div>
