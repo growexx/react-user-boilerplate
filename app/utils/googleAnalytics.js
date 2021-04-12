@@ -12,9 +12,7 @@ export const initGA = () => {
 
 /**
  * recordPageView - record pages visited.
- * @param {string} category
- * @param {string} action
- * @param {string} label
+ * @param {string} location
  */
 export const recordPageViewGA = location => {
   ReactGA.pageview(location);

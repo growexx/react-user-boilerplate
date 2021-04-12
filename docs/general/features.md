@@ -41,7 +41,7 @@ Following are the features included in the boilerplate
 |                         | storybook support where you can get visual      |
 |                         | idea of how component looks.                    |
 | Login and Registration  | Login and registration page redux saga and api  |
-| Change Password         | Form with redux, saga, api code ready.           |
+| Change Password         | Form with redux, saga, api code ready.          |
 | page                    | ready code.                                     |
 | Footer component        | Basic footer implemented.                       |
 | File Upload             | File Upload component.                          |
@@ -68,12 +68,13 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | Font-Awesome demo       | Usage for font-awesome.                         |
 | Loader demo             | Infinite, Load More, Pagination Demo.           |
-| Export CSV              | Table Data Export to csv                        |
+| Export CSV              | Table Data Export to csv.                       |
 | Numeral Conversion      | Numeral conversion library examples.            |
 | Redux-form with saga    | redux-form with all form fields.                |
 | Image Upload            | Profile image upload demo.                      |
 | File Upload             | Image Upload component demo.                    |
 | Rich Text Editor        | Rich text editor demo.                          |
+| Google Analytics events | Sidebar clicks capturing GA demo.               |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
