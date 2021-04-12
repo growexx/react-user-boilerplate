@@ -23,91 +23,82 @@ import { EMITTER_EVENTS } from 'utils/constants';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
 const { Header, Content } = Layout;
 
-class MainLayout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapsed: true,
-    };
-  }
+const MainLayout = props => {
+  const [state, setState] = React.useState({
+    collapsed: true,
+  });
 
-  toggle = () => {
-    const { collapsed } = this.state;
-    this.setState({
+  const toggle = () => {
+    const { collapsed } = state;
+    setState({
       collapsed: !collapsed,
     });
   };
 
-  componentDidMount() {
+  React.useEffect(() => {
     Emitter.on(EMITTER_EVENTS.LOG_IN, () => {
       this.forceUpdate();
     });
     Emitter.on(EMITTER_EVENTS.LOG_OUT, () => {
       this.forceUpdate();
     });
-  }
+    return () => {
+      Emitter.off(EMITTER_EVENTS.LOG_IN);
+      Emitter.off(EMITTER_EVENTS.LOG_OUT);
+    };
+  }, []);
 
-  componentWillUnmount() {
-    Emitter.off(EMITTER_EVENTS.LOG_IN);
-    Emitter.off(EMITTER_EVENTS.LOG_OUT);
-  }
-
-  render() {
-    if (userExists()) {
-      return (
-        <Spin spinning={this.props.appLoading} size="default">
-          <StyledMainLayout>
+  if (userExists()) {
+    return (
+      <Spin spinning={props.appLoading} size="default">
+        <StyledMainLayout>
+          <Layout>
             <Layout>
-              <Layout>
-                <SideBar
-                  collapsed={this.state.collapsed}
-                  user={getUserData()}
-                />
+              <SideBar collapsed={state.collapsed} user={getUserData()} />
+              <Layout className="site-layout">
+                <Header className="headerLayout">
+                  <ToggleBreadCrumb>
+                    <span
+                      className="sideBarTrigger"
+                      onClick={toggle}
+                      data-testid="ToggleIcon"
+                      onKeyDown={toggle}
+                      role="button"
+                      tabIndex={0}
+                      aria-label="Navigation Toggle"
+                    >
+                      {state.collapsed ? (
+                        <MenuUnfoldOutlined />
+                      ) : (
+                        <MenuFoldOutlined />
+                      )}
+                    </span>
+                  </ToggleBreadCrumb>
+                  <AppHeader />
+                </Header>
+                <Content
+                  className="site-layout-background"
+                  style={{
+                    margin: '24px 16px',
+                    padding: 24,
+                    minHeight: 280,
+                  }}
+                >
+                  <App />
+                </Content>
                 <Layout className="site-layout">
-                  <Header className="headerLayout">
-                    <ToggleBreadCrumb>
-                      <span
-                        className="sideBarTrigger"
-                        onClick={this.toggle}
-                        data-testid="ToggleIcon"
-                        onKeyDown={this.toggle}
-                        role="button"
-                        tabIndex={0}
-                        aria-label="Navigation Toggle"
-                      >
-                        {this.state.collapsed ? (
-                          <MenuUnfoldOutlined />
-                        ) : (
-                          <MenuFoldOutlined />
-                        )}
-                      </span>
-                    </ToggleBreadCrumb>
-                    <AppHeader />
-                  </Header>
-                  <Content
-                    className="site-layout-background"
-                    style={{
-                      margin: '24px 16px',
-                      padding: 24,
-                      minHeight: 280,
-                    }}
-                  >
-                    <App />
-                  </Content>
-                  <Layout className="site-layout">
-                    <Footer />
-                  </Layout>
+                  <Footer />
                 </Layout>
               </Layout>
             </Layout>
-          </StyledMainLayout>
-        </Spin>
-      );
-    }
-
-    return <App />;
+          </Layout>
+        </StyledMainLayout>
+      </Spin>
+    );
   }
-}
+
+  return <App />;
+};
 
 MainLayout.propTypes = {
   appLoading: PropTypes.bool,
