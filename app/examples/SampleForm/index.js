@@ -4,13 +4,11 @@
  *
  */
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 import { Field, reduxForm } from 'redux-form';
-import { compose } from 'redux';
 import * as formValidations from 'utils/formValidations';
 import { Form, Radio, Button, Select } from 'antd';
 import useInjectSaga from 'utils/injectSaga';
@@ -23,177 +21,142 @@ import {
   ASelect,
   ATextarea,
 } from 'utils/Fields';
-import makeSelectSampleForm from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import * as actions from './actions';
+import { selectSampleFormDomain } from './selectors';
 const FormItem = Form.Item;
 
 const FORM_KEY = 'sampleForm';
 const { Option } = Select;
 
-export class SampleForm extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+export const SampleForm = props => {
+  useInjectReducer({
+    key: FORM_KEY,
+    reducer,
+  });
+  useInjectSaga({ key: FORM_KEY, saga });
+  const dispatch = useDispatch();
+  useSelector(state => selectSampleFormDomain(state), shallowEqual);
+  const { pristine, reset, submitting } = props;
 
-  handleFormSubmit = () => {
-    const { submitData } = this.props;
-    submitData();
-  };
+  return (
+    <div>
+      <Helmet>
+        <title>SampleForm</title>
+        <meta name="description" content="Description of SampleForm" />
+      </Helmet>
+      <Form onSubmit={dispatch(actions.submitData())}>
+        <Field
+          label="First Name"
+          name="firstName"
+          component={AInput}
+          placeholder="First Name"
+          onChange={e =>
+            dispatch(actions.updateField(e.target.name, e.target.value))
+          }
+          hasFeedback
+        />
 
-  render() {
-    const {
-      handleSubmit,
-      pristine,
-      reset,
-      submitting,
-      updateField,
-    } = this.props;
+        <Field
+          label="Last Name"
+          name="lastName"
+          component={AInput}
+          placeholder="Last Name"
+          onChange={e =>
+            dispatch(actions.updateField(e.target.name, e.target.value))
+          }
+        />
 
-    return (
-      <div>
-        <Helmet>
-          <title>SampleForm</title>
-          <meta name="description" content="Description of SampleForm" />
-        </Helmet>
-        <Form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <Field
-            label="First Name"
-            name="firstName"
-            component={AInput}
-            placeholder="First Name"
-            onChange={e => updateField(e.target.name, e.target.value)}
-            hasFeedback
-          />
+        <Field
+          label="Email"
+          name="email"
+          component={AInput}
+          type="email"
+          placeholder="Email"
+          onChange={e =>
+            dispatch(actions.updateField(e.target.name, e.target.value))
+          }
+        />
 
-          <Field
-            label="Last Name"
-            name="lastName"
-            component={AInput}
-            placeholder="Last Name"
-            onChange={e => updateField(e.target.name, e.target.value)}
-          />
+        <Field label="Sex" name="sex" component={ARadioGroup} value="male">
+          <Radio value="male">Male</Radio>
+          <Radio value="female">Female</Radio>
+        </Field>
 
-          <Field
-            label="Email"
-            name="email"
-            component={AInput}
-            type="email"
-            placeholder="Email"
-            onChange={e => updateField(e.target.name, e.target.value)}
-          />
+        <Field
+          label="Favorite Color"
+          name="favoriteColor"
+          component={ASelect}
+          onChange={e => dispatch(actions.updateField('favoriteColor', e))}
+        >
+          <Option value="ff0000">Red</Option>
+          <Option value="00ff00">Green</Option>
+          <Option value="0000ff">Blue</Option>
+        </Field>
 
-          <Field label="Sex" name="sex" component={ARadioGroup} value="male">
-            <Radio value="male">Male</Radio>
-            <Radio value="female">Female</Radio>
-          </Field>
+        <Field
+          label="Employed"
+          name="employed"
+          id="employed"
+          component={ACheckbox}
+          type="checkbox"
+          onChange={e =>
+            dispatch(actions.updateField('employed', e.target.checked))
+          }
+        />
 
-          <Field
-            label="Favorite Color"
-            name="favoriteColor"
-            component={ASelect}
-            onChange={e => updateField('favoriteColor', e)}
+        <Field
+          label="Filter dates"
+          name="rangepicker"
+          component={ARangePicker}
+          placeholder={['From', 'To']}
+          hasFeedback
+          onFocus={e => e.preventDefault()}
+          onChange={e => dispatch(actions.updateField('rangepicker', e))}
+          onBlur={e => e.preventDefault()}
+        />
+
+        <Field
+          data-testid="Notes"
+          label="Notes"
+          name="notes"
+          component={ATextarea}
+          onChange={e => dispatch(actions.updateField('Notes', e.target.value))}
+        />
+
+        <FormItem>
+          <Button
+            type="primary"
+            disabled={pristine || submitting}
+            htmlType="submit"
+            style={{ marginRight: '10px' }}
+            onClick={() => dispatch(actions.submitData())}
           >
-            <Option value="ff0000">Red</Option>
-            <Option value="00ff00">Green</Option>
-            <Option value="0000ff">Blue</Option>
-          </Field>
+            Submit
+          </Button>
 
-          <Field
-            label="Employed"
-            name="employed"
-            id="employed"
-            component={ACheckbox}
-            type="checkbox"
-            onChange={e => updateField('employed', e.target.checked)}
-          />
-
-          <Field
-            label="Filter dates"
-            name="rangepicker"
-            component={ARangePicker}
-            placeholder={['From', 'To']}
-            hasFeedback
-            onFocus={e => e.preventDefault()}
-            onChange={e => updateField('rangepicker', e)}
-            onBlur={e => e.preventDefault()}
-          />
-
-          <Field
-            data-testid="Notes"
-            label="Notes"
-            name="notes"
-            component={ATextarea}
-            onChange={e => updateField('Notes', e.target.value)}
-          />
-
-          <FormItem>
-            <Button
-              type="primary"
-              disabled={pristine || submitting}
-              htmlType="submit"
-              style={{ marginRight: '10px' }}
-              onClick={handleSubmit(this.handleFormSubmit)}
-            >
-              Submit
-            </Button>
-
-            <Button disabled={pristine || submitting} onClick={reset}>
-              Clear Values
-            </Button>
-          </FormItem>
-        </Form>
-      </div>
-    );
-  }
-}
-
+          <Button disabled={pristine || submitting} onClick={reset}>
+            Clear Values
+          </Button>
+        </FormItem>
+      </Form>
+    </div>
+  );
+};
 SampleForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  updateField: PropTypes.func.isRequired,
-  submitData: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
   reset: PropTypes.func,
   submitting: PropTypes.bool,
 };
 
-const withReducer = useInjectReducer({
-  key: FORM_KEY,
-  reducer,
-});
-
-const withSaga = useInjectSaga({ key: FORM_KEY, saga });
-
-const mapStateToProps = createStructuredSelector({
-  sampleForm: makeSelectSampleForm(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    updateField: (key, value) => dispatch(actions.updateField(key, value)),
-    submitData: () => dispatch(actions.submitData()),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-  reduxForm({
-    form: FORM_KEY,
-    fields: ['firstName', 'email', 'rangePicker', 'employed', 'lastName'],
-    validate: formValidations.createValidator({
-      firstName: [formValidations.required],
-      lastName: [formValidations.required],
-      email: [formValidations.required, formValidations.validEmail],
-    }),
-    touchOnChange: true,
+export default reduxForm({
+  form: FORM_KEY,
+  fields: ['firstName', 'email', 'rangePicker', 'employed', 'lastName'],
+  validate: formValidations.createValidator({
+    firstName: [formValidations.required],
+    lastName: [formValidations.required],
+    email: [formValidations.required, formValidations.validEmail],
   }),
-)(SampleForm);
+  touchOnChange: true,
+})(SampleForm);

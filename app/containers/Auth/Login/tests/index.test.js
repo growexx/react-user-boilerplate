@@ -7,13 +7,13 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
-import { Provider } from 'react-redux';
+import * as ReactRedux from 'react-redux';
 import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
-import { Login, mapDispatchToProps } from '../index';
+import { Login } from '../index';
 import Lodable from '../Loadable';
 import configureStore from '../../../../configureStore';
 let store;
@@ -22,13 +22,13 @@ const props = {
 };
 const componentWrapper = Component =>
   render(
-    <Provider store={store}>
+    <ReactRedux.Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
           <Component {...props} />
         </ConnectedRouter>
       </IntlProvider>
-    </Provider>,
+    </ReactRedux.Provider>,
   );
 describe('<Login />', () => {
   beforeAll(() => {
@@ -41,30 +41,25 @@ describe('<Login />', () => {
     } = componentWrapper(Login);
     expect(firstChild).toMatchSnapshot();
   });
-  it('mapDispatch to props', () => {
-    const mockFn = jest.fn();
-    const eventObject = {
-      target: {
-        value: 'test',
-      },
-      preventDefault: jest.fn(),
-    };
-    const returnValue = mapDispatchToProps(mockFn);
-    returnValue.onChangeEmail(eventObject);
-    returnValue.onChangePassword(eventObject);
-    returnValue.onSignIn(eventObject);
-    const eventObjectWithoutPreventDefault = {
-      target: {
-        value: 'test',
-      },
-    };
-    returnValue.onSignIn(eventObjectWithoutPreventDefault);
-    expect(mockFn).toBeCalled();
-  });
   it('Should render and match the snapshot Loadable', () => {
     const {
       container: { firstChild },
     } = componentWrapper(Lodable);
     expect(firstChild).toMatchSnapshot();
+  });
+  it('Should dispatch events', () => {
+    const spiedDispatch = jest.spyOn(ReactRedux, 'useDispatch');
+    const { getByPlaceholderText } = componentWrapper(Login);
+    fireEvent.change(getByPlaceholderText('Email'), {
+      target: {
+        value: 'it@growexx.com',
+      },
+    });
+    fireEvent.change(getByPlaceholderText('Password'), {
+      target: {
+        value: 'it@growexx.com',
+      },
+    });
+    expect(spiedDispatch).toBeCalled();
   });
 });
