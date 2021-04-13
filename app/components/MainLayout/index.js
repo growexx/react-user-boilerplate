@@ -42,7 +42,7 @@ const MainLayout = () => {
     return () => {
       Emitter.off(EMITTER_EVENTS.LOG_IN);
     };
-  }, [state.eventEmitted]);
+  }, []);
 
   if (userExists()) {
     return (

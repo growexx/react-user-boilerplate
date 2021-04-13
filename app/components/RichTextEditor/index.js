@@ -12,12 +12,6 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { StyledEditor } from './StyledEditor';
 
 const RichTextEditor = props => {
-  // constructor(props) {
-  //   super(props);
-  //   this.setEditor = editor => {
-  //     this.editor = editor;
-  //   };
-  // }
   const setEditor = React.useRef(null);
   return (
     <StyledEditor>
