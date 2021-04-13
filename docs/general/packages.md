@@ -10,7 +10,7 @@ Following are the packages used in the boilerplate
 | chalk                   | Library to style terminal string                |
 | compression             | Library to compress the response bodies         |
 | connected-react-router  | Library to synchronize router with redux-store  |
-| cross-env               | Utility to write env variables                  |
+| dotenv-webpack          | Utility to write env variables                  |
 | eventemitter3           | EventEmitter library                            |
 | express                 | Router library for nodejs                       |
 | history                 | Library to manage session history               |
