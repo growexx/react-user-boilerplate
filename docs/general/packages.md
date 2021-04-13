@@ -57,3 +57,11 @@ Following are the packages used in the boilerplate
 | react-draft-wysiwyg     | Rich text editor for draft js to use in react   |
 | draft-js-export-html    | Library to convert draft js data to html        |
 | react-html-parser       | React HTML Parser for parsing html              |
+| @apollo/client          | Graphql client for react                        |
+| apollo-link-context     | Use to set context for apollo                   |
+| apollo-link-error       | Use to set error links for apollo               |
+| apollo-link-context     | Use creating apollo link for apollo             |
+| graphql                 | Implementation of graphql                       |
+| graphql-tag             | Template literal  parses GraphQL query string   |
+| subscriptions-          |                                                 |
+| transport-ws            | Graphql websocket server and client helper      |
