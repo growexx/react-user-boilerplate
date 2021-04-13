@@ -20,7 +20,7 @@ export const ROUTES = {
 };
 
 // API-ROUTES
-export const API_URL = 'https://b0257f3aa104.ngrok.io';
+export const { API_URL } = process.env;
 export const AUTH = 'auth';
 export const API_ENDPOINTS = {
   LOGIN: `${API_URL}/${AUTH}/signin`,
