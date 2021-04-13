@@ -47,11 +47,11 @@
 </dd>
 <dt>Google Analytics</dt>
   <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
-  Support for Google Analytics can be found in `feature/18 analytics tools` branch.
+  Support for Google Analytics can be found in <b>feature/18-Analytics-Tools</b> branch.
   </dd>
 <dt>Hooks Support</dt>
   <dd>Boilerplate supports hooks and all current examples are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
-  Support for Hooks can be found in `feature/12-Hooks-Support` branch.
+  Support for Hooks can be found in <b>feature/12-Hooks-Support</b> branch.
   </dd>
 </dl>
 
