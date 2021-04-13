@@ -22,8 +22,6 @@ import {
   RESTRICTED_ROUTES,
 } from 'containers/constants';
 
-// component name as ga label
-export const GA_LABEL_SIDEBAR = 'SideBar';
 export const MenuItems = [
   {
     to: ROUTES.HOME,

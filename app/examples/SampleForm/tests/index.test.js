@@ -74,36 +74,11 @@ describe('<SampleForm />', () => {
       },
     });
     fireEvent.click(getById(container, 'employed'), eventObject);
-    fireEvent.mouseDown(getByRole('combobox'));
-    fireEvent.change(getByRole('combobox'), {
-      target: {
-        value: 'ff0000',
-      },
-    });
-    // .ant-select-item-option-content
-    fireEvent.click(
-      document.querySelectorAll('.ant-select-item-option-content')[0],
-    );
+    fireEvent.click(getByRole('combobox'));
     fireEvent.change(getByTestId('Notes'), eventObject);
+    fireEvent.click(getByPlaceholderText('From'));
     fireEvent.focus(getByPlaceholderText('From'), eventObject);
     fireEvent.blur(getByPlaceholderText('From'), eventObject);
-    // onChange from
-    fireEvent.mouseDown(getByPlaceholderText('From'));
-    fireEvent.change(getByPlaceholderText('From'), {
-      target: {
-        value: '2020-10-12',
-      },
-    });
-    fireEvent.click(document.querySelectorAll('.ant-picker-cell-selected')[0]);
-    // onChange To
-    const to = getByPlaceholderText('To');
-    fireEvent.mouseDown(to);
-    fireEvent.change(to, {
-      target: {
-        value: '2021-10-28',
-      },
-    });
-    fireEvent.click(document.querySelectorAll('.ant-picker-cell-selected')[0]);
     expect(getByPlaceholderText('First Name')).toBeTruthy();
   });
 });

@@ -7,4 +7,3 @@ export const EMITTER_EVENTS = {
   LOG_IN: 'USER_LOGGED_IN',
   LOG_OUT: 'USER_LOGGED_OUT',
 };
-export const GA_CATEGORY_MENU_CLICKS = 'Menu_Clicks';
