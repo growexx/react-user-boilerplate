@@ -24,13 +24,11 @@ const MainLayout = () => {
   const globalState = useSelector(state => selectGlobal(state), shallowEqual);
   const [state, setState] = React.useState({
     collapsed: true,
-    eventEmitted: false,
   });
 
   const toggle = () => {
     const { collapsed } = state;
     setState({
-      ...state,
       collapsed: !collapsed,
     });
   };
@@ -38,19 +36,11 @@ const MainLayout = () => {
   React.useEffect(() => {
     Emitter.on(EMITTER_EVENTS.LOG_IN, () => {
       setState({
-        ...state,
-        eventEmitted: true,
-      });
-    });
-    Emitter.on(EMITTER_EVENTS.LOG_OUT, () => {
-      setState({
-        ...state,
-        eventEmitted: true,
+        collapsed: state.collapsed,
       });
     });
     return () => {
       Emitter.off(EMITTER_EVENTS.LOG_IN);
-      Emitter.off(EMITTER_EVENTS.LOG_OUT);
     };
   }, [state.eventEmitted]);
 
