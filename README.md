@@ -44,9 +44,15 @@
   <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>.
 
   For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
-
-
 </dd>
+<dt>Google Analytics</dt>
+  <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
+  Support for Google Analytics can be found in `feature/18 analytics tools` branch.
+  </dd>
+<dt>Hooks Support</dt>
+  <dd>Boilerplate supports hooks and all current examples are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
+  Support for Hooks can be found in `feature/12-Hooks-Support` branch.
+  </dd>
 </dl>
 
 But wait... there's more!
