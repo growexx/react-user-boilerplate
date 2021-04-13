@@ -15,5 +15,3 @@
     1. Category: Type of clicks.
     2. Action: Action performed by user.
     3. Label: Component from which action got fired.
-
-

@@ -22,7 +22,8 @@ Following are the features included in the boilerplate
 | Font-Awesome            | Inbuilt support for font-awesome                |
 | Role Management         | Role management implemented.                    |
 | App level loader        | Global loader based on app states.              |
-| Analytics Tool          | Google analytics tool integrated                |
+| Analytics Tool          | Google analytics tool integrated.               |
+| Hooks Support           | Hooks support provided for the boilerplate.     |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -85,3 +86,7 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | Sonar standards         | All code is written according to standards of   |
 |                         | sonar.                                          |
+
+> Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
+> Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools**
+
