@@ -8,11 +8,24 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Table } from 'antd';
-import { useQuery } from '@apollo/client';
+import { useQuery /* useMutation, useLazyQuery */ } from '@apollo/client';
+import { GET_RATES /* PUT_RATES */ } from 'graphql/Rates/rates';
 import { TABLE_COLUMNS } from './constants';
-import { GET_RATES } from '../../graphql/getRates.query';
 const GraphQLDemo = () => {
+  /**
+   *  useMutation declaration
+   *  const [putRates, { data }] = useMutation(PUT_RATES);
+   */
+
   const getDataSource = () => {
+    // query demo
+    // useQuery is called as soon as the component renders.
+    // To differ this mechanism useLazyQuery is used.
+    // const [loadRates, { called, loading, data }] = useLazyQuery(
+    //   GET_RATES,
+    //  }
+    // );
+    // call loadRates whenever needed
     const { loading, error, data } = useQuery(GET_RATES);
     const dataArray =
       data &&
@@ -28,7 +41,6 @@ const GraphQLDemo = () => {
       data: data && dataArray.slice(0, 20),
     };
   };
-
   return (
     <div>
       <Helmet>
@@ -42,6 +54,10 @@ const GraphQLDemo = () => {
         dataSource={getDataSource().data}
         loading={getDataSource().loading}
       />
+      {/* 
+        calling the function returned by useMutation. add the variables to pass.
+        putRates({ variables: { type: input.value } })
+      */}
     </div>
   );
 };

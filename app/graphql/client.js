@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { FormattedMessage } from 'react-intl';
 import get from 'lodash/get';
 import { notification } from 'antd';
+import StorageService from 'utils/StorageService';
 import { createHttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { setContext } from 'apollo-link-context';
@@ -64,9 +65,7 @@ export const errorLink = onError(error => {
   if (error.graphQLErrors && error.graphQLErrors.length) {
     const errorData = extractMessage(get(error, 'graphQLErrors[0].extensions'));
     if (errorData.statusCode === 401) {
-      window.localStorage.removeItem('token');
-      window.localStorage.removeItem('accout');
-      window.localStorage.removeItem('permission');
+      StorageService.clear();
       // For public urls, do not refresh the page and just show toast
       if (!['/pin', '/'].includes(window.location.pathname)) {
         window.location.reload('/');
