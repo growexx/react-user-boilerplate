@@ -13,3 +13,6 @@ npm-debug.log
 
 storybook-static
 .scannerwork
+
+#env file
+.env
