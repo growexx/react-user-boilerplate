@@ -17,6 +17,7 @@ export const ROUTES = {
   NUMERAL_CONVERTER: '/number-converter-demo',
   SAMPLE_FORM: '/sample-form',
   CHANGE_PASSWORD: '/change-password',
+  GRAPHQL_DEMO: '/graphql-demo',
 };
 
 // API-ROUTES

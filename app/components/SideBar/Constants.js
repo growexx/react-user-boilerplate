@@ -13,6 +13,7 @@ import {
   NumberOutlined,
   FormOutlined,
   LockOutlined,
+  TrophyOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -63,6 +64,11 @@ export const MenuItems = [
     to: ROUTES.TEST_ADMIN_PAGE,
     tabName: 'Admin Page',
     icon: <LockOutlined />,
+  },
+  {
+    to: ROUTES.GRAPHQL_DEMO,
+    tabName: 'Graphql Demo',
+    icon: <TrophyOutlined />,
   },
 ];
 
