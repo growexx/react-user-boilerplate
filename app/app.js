@@ -11,6 +11,7 @@ import '@babel/polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloProvider } from '@apollo/client/react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
@@ -39,6 +40,9 @@ import configureStore from './configureStore';
 // Import i18n messages
 import { translationMessages } from './i18n';
 
+// graphql client
+import client from './graphql/client';
+
 // Make font awesome library to be used across project
 library.add(fab, far, fas);
 
@@ -58,13 +62,15 @@ const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
   ReactDOM.render(
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <MainLayout />
-        </ConnectedRouter>
-      </LanguageProvider>
-    </Provider>,
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <MainLayout />
+          </ConnectedRouter>
+        </LanguageProvider>
+      </Provider>
+    </ApolloProvider>,
     MOUNT_NODE,
   );
 };
