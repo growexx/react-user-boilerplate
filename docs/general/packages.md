@@ -51,6 +51,7 @@ Following are the packages used in the boilerplate
 | json2csv                | Library to convert json to csv                  |
 | react-infinite-scroller | Library for infinite scrolling                  |
 | less-vars-to-js         | Library to use less variables into js files     |
+| react-ga                | Library to apply google analytics in react app. |
 | antd-img-crop           | Library to crop images while upload by antd     |
 | draft-js                | Rich text editor framework                      |
 | react-draft-wysiwyg     | Rich text editor for draft js to use in react   |

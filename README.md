@@ -44,9 +44,15 @@
   <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>.
 
   For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
-
-
 </dd>
+<dt>Google Analytics</dt>
+  <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
+  Support for Google Analytics can be found in <b>feature/18-Analytics-Tools</b> branch.
+  </dd>
+<dt>Hooks Support</dt>
+  <dd>Boilerplate supports hooks and all current examples are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
+  Support for Hooks can be found in <b>feature/12-Hooks-Support</b> branch.
+  </dd>
 </dl>
 
 But wait... there's more!
@@ -78,12 +84,12 @@ Now you're ready to rumble!
 ## Documentation
 - [**Features**](docs/general/features.md): Detail list of features available in the boilerplate.
 - [**The Hitchhiker's Guide to `react-boilerplate`**](docs/general/introduction.md): An introduction for newcomers to this boilerplate.
-- [Overview](docs/general): A short overview of the included tools
+- [**Overview**](docs/general): A short overview of the included tools
 - [**Commands**](docs/general/commands.md): Getting the most out of this boilerplate
-- [Testing](docs/testing): How to work with the built-in test harness
-- [Styling](docs/css): How to work with the CSS tooling
+- [**Testing**](docs/testing): How to work with the built-in test harness
+- [**Styling**](docs/css): How to work with the CSS tooling
 - [**Packages**](docs/general/packages.md): Open Source Packages used in the project.
-- [Your app](docs/js): Supercharging your app with Routing, Redux, simple
+- [**Your app**](docs/js): Supercharging your app with Routing, Redux, simple
   asynchronicity helpers, etc.
 - [**Troubleshooting**](docs/general/gotchas.md): Solutions to common problems faced by developers.
 

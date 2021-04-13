@@ -14,6 +14,6 @@ export default defineMessages({
   },
   copyRightSubMessage: {
     id: `${scope}.copyRightSubMessage.message`,
-    defaultMessage: `Get started with your react application in minutes.`,
+    defaultMessage: `Get started with your next react application in seconds.`,
   },
 });
