@@ -454,25 +454,27 @@ exports[`<SampleForm /> Should render and match the snapshot 1`] = `
           <div
             class="ant-form-item-control-input-content"
           >
-            <button
-              class="ant-btn ant-btn-primary"
-              disabled=""
-              style="margin-right: 10px;"
-              type="submit"
-            >
-              <span>
-                Submit
-              </span>
-            </button>
-            <button
-              class="ant-btn"
-              disabled=""
-              type="button"
-            >
-              <span>
-                Clear Values
-              </span>
-            </button>
+            <center>
+              <button
+                class="ant-btn ant-btn-primary"
+                disabled=""
+                style="margin-right: 10px;"
+                type="submit"
+              >
+                <span>
+                  Submit
+                </span>
+              </button>
+              <button
+                class="ant-btn"
+                disabled=""
+                type="button"
+              >
+                <span>
+                  Clear Values
+                </span>
+              </button>
+            </center>
           </div>
         </div>
       </div>

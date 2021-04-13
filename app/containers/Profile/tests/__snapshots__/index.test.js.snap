@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Profile /> Should render and match the snapshot 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="StyledProfile-ye6z70-0 bwLVOd"
+      >
+        <div>
+          <p
+            class="u-mb-1"
+          >
+            <span>
+              John Doe
+            </span>
+          </p>
+          <p
+            class="u-mb-1"
+          >
+            <span>
+              Software Engineer at GrowExx
+            </span>
+          </p>
+          <p
+            class="u-mb-5"
+          >
+            <span>
+              Ahmedabad, Gujarat
+            </span>
+          </p>
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  About
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <div
+                    class="StyledProfile__CardExtraContainer-ye6z70-1 dsSHpZ"
+                  >
+                    <button
+                      class="ant-btn"
+                      data-testid="About_Edit"
+                      type="button"
+                    >
+                      <span>
+                        Edit
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+            </div>
+          </div>
+          <br />
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  Experience
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <div
+                    class="StyledProfile__CardExtraContainer-ye6z70-1 dsSHpZ"
+                  >
+                    <button
+                      class="ant-btn"
+                      data-testid="Experience_Edit"
+                      type="button"
+                    >
+                      <span>
+                        Edit
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+            </div>
+          </div>
+          <br />
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  Education
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <div
+                    class="StyledProfile__CardExtraContainer-ye6z70-1 dsSHpZ"
+                  >
+                    <button
+                      class="ant-btn"
+                      data-testid="Education_Edit"
+                      type="button"
+                    >
+                      <span>
+                        Edit
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+            </div>
+          </div>
+          <br />
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  Licenses and Certificates
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <div
+                    class="StyledProfile__CardExtraContainer-ye6z70-1 dsSHpZ"
+                  >
+                    <button
+                      class="ant-btn"
+                      data-testid="LicensesAndCertifications_edit"
+                      type="button"
+                    >
+                      <span>
+                        Edit
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+            </div>
+          </div>
+          <br />
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  Upload Resume
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

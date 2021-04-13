@@ -46,6 +46,7 @@ const makeField = Component => ({
 };
 
 export const AInput = makeField(Input);
+export const APassword = makeField(Input.Password);
 export const ARadioGroup = makeField(RadioGroup);
 export const ASelect = makeField(Select);
 export const ACheckbox = makeField(Checkbox);
