@@ -87,6 +87,6 @@ Following are the features included in the boilerplate
 | Sonar standards         | All code is written according to standards of   |
 |                         | sonar.                                          |
 
-> Hooks Support can be found in branch:  **feature/12-Hooks-Support**
+> Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
 > Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools**
 
