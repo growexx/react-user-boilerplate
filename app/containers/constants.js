@@ -20,7 +20,7 @@ export const ROUTES = {
 };
 
 // API-ROUTES
-export const API_URL = 'https://b0257f3aa104.ngrok.io';
+export const { API_URL } = process.env;
 export const AUTH = 'auth';
 export const API_ENDPOINTS = {
   LOGIN: `${API_URL}/${AUTH}/signin`,
@@ -28,6 +28,7 @@ export const API_ENDPOINTS = {
   LIST_AVATAR:
     'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   EXPORT_CSV: '',
+  IMAGE_UPLOAD: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
 };
 
 // Table Pagination default

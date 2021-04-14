@@ -12,10 +12,11 @@ import { FormattedHTMLMessage } from 'react-intl';
 import ReactHtmlParser from 'react-html-parser';
 import { Helmet } from 'react-helmet';
 import { Card, Button } from 'antd';
-import { convertToHTML } from 'draft-convert';
+import { stateToHTML } from 'draft-js-export-html';
 import FileUpload from 'components/FileUpload/Loadable';
 import { CardExtraContainer } from './StyledProfile';
 import { DATA_TEST_IDS, PROFILE_PLACEHOLDER } from './constants';
+import { options } from './helper';
 import messages from './messages';
 import RichTextEditor from '../../components/RichTextEditor';
 
@@ -38,7 +39,7 @@ class ProfileForm extends React.PureComponent {
 
   isContentEdited = state =>
     state.getCurrentContent().getPlainText('\u0001').length > 0
-      ? convertToHTML(state.getCurrentContent())
+      ? stateToHTML(state.getCurrentContent(), options)
       : PROFILE_PLACEHOLDER;
 
   render() {
