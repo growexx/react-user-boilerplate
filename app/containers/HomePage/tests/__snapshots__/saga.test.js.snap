@@ -19,6 +19,10 @@ Object {
   "payload": Object {
     "args": Array [
       "https://api.github.com/users/mxstbr/repos?type=all&sort=updated",
+      Object {
+        "headers": Object {},
+        "method": "GET",
+      },
     ],
     "context": null,
     "fn": [Function],
@@ -46,6 +50,10 @@ Object {
   "payload": Object {
     "args": Array [
       "https://api.github.com/users/mxstbr/repos?type=all&sort=updated",
+      Object {
+        "headers": Object {},
+        "method": "GET",
+      },
     ],
     "context": null,
     "fn": [Function],
