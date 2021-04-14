@@ -17,6 +17,7 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
 import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
+import ReactFinalForm from 'examples/ReactFinalForm/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
 import Loader from 'examples/ListLoader/Loadable';
@@ -57,6 +58,10 @@ export default function App() {
         <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
+        <PrivateRoute
+          path={ROUTES.REACT_FINAL_FORM}
+          component={ReactFinalForm}
+        />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}

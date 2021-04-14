@@ -62,6 +62,11 @@ export const MenuItems = [
     tabName: 'Admin Page',
     icon: <LockOutlined />,
   },
+  {
+    to: ROUTES.REACT_FINAL_FORM,
+    tabName: 'React-Final-Form',
+    icon: <FormOutlined />,
+  },
 ];
 
 /**
