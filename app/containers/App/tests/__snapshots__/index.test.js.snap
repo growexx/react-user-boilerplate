@@ -71,6 +71,10 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <PrivateRoute
       component={[Function]}
+      path="/react-final-form"
+    />
+    <PrivateRoute
+      component={[Function]}
       path="/export-data"
     />
     <PrivateRoute
