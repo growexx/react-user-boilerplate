@@ -22,6 +22,7 @@ import Logout from 'containers/Auth/Logout/Loadable';
 import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
+import GraphQLDemo from 'examples/GraphQLDemo/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
@@ -58,6 +59,7 @@ export default function App() {
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
+        <PrivateRoute path={ROUTES.GRAPHQL_DEMO} component={GraphQLDemo} />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
