@@ -21,7 +21,12 @@ Following are the features included in the boilerplate
 | Pre-Commit              | Restriction for commits                         |
 | Font-Awesome            | Inbuilt support for font-awesome                |
 | Role Management         | Role management implemented.                    |
-| App level loader        | Global loader based on app states               |
+| App level loader        | Global loader based on app states.              |
+| Analytics Tool          | Google analytics tool integrated.               |
+| Hooks Support           | Hooks support provided for the boilerplate.     |
+| Graphql Support         | Graphql support provided for the boilerplate.   |
+| React-Final-Form        | React-Final-Form support added.                 |
+| Redux-Form              | Redux-Form support added.                       |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -40,6 +45,7 @@ Following are the features included in the boilerplate
 |                         | storybook support where you can get visual      |
 |                         | idea of how component looks.                    |
 | Login and Registration  | Login and registration page redux saga and api  |
+| Change Password         | Change Password with api code.                  |
 | page                    | ready code.                                     |
 | Footer component        | Basic footer implemented.                       |
 | File Upload             | File Upload component.                          |
@@ -50,7 +56,7 @@ Following are the features included in the boilerplate
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
 | Export Data as CSV      | Export data as csv ( client and backend side )  |                         | Numeral Conversion      | Numeral js library added for all numeric actions|   
-| Localstorage util        | Util to add, delete and get items from         |
+| Localstorage util       | Util to add, delete and get items from          |
 |                         | localstorage.                                   |
 | Event Emitter           | Util to on and off emitter events.              |
 | Form Validations        | Redux form fields with validations              |
@@ -58,6 +64,7 @@ Following are the features included in the boilerplate
 | Inject saga             | Inject saga in redux form.                      |
 | Loadable                | Load the component asynchronously.              |
 | Request                 | fetch request helper function.                  |
+| Google Analytics        | Analytics helper util.                          |
 | UserExists              | tells if user is logged in or logged out.       |
 | FontFaces               | Add font faces with this function.              |
 |                         |                                                 |
@@ -65,12 +72,15 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | Font-Awesome demo       | Usage for font-awesome.                         |
 | Loader demo             | Infinite, Load More, Pagination Demo.           |
-| Export CSV              | Table Data Export to csv                        |
+| Export CSV              | Table Data Export to csv.                       |
 | Numeral Conversion      | Numeral conversion library examples.            |
 | Redux-form with saga    | redux-form with all form fields.                |
 | Image Upload            | Profile image upload demo.                      |
 | File Upload             | Image Upload component demo.                    |
 | Rich Text Editor        | Rich text editor demo.                          |
+| Google Analytics events | Sidebar clicks capturing GA demo.               |
+| Apollo Hooks demo       | Basic demo for apollo hooks.                    |
+| React-Final-Form        | Basic demo  for React-Final-Form.               |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
@@ -81,3 +91,8 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | Sonar standards         | All code is written according to standards of   |
 |                         | sonar.                                          |
+
+> Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
+> Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
+> Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
+> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** 

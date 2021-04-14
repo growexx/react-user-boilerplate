@@ -10,7 +10,7 @@ Following are the packages used in the boilerplate
 | chalk                   | Library to style terminal string                |
 | compression             | Library to compress the response bodies         |
 | connected-react-router  | Library to synchronize router with redux-store  |
-| cross-env               | Utility to write env variables                  |
+| dotenv-webpack          | Utility to write env variables                  |
 | eventemitter3           | EventEmitter library                            |
 | express                 | Router library for nodejs                       |
 | history                 | Library to manage session history               |
@@ -27,7 +27,7 @@ Following are the packages used in the boilerplate
 | react-helmet            | Library to handle document Head changes         |
 | react-intl              | Internationalization and localization for react |
 | react-redux             | State bindings for react                        |
-| react-form              | Form Control with react-redux and saga          |
+| redux-form              | Form Control with react-redux and saga          |
 | reselect                | Selector library for redux                      |
 | sanitize.css            | Library for consistent cross-browser styling    |
 | sha255                  | Library to compute SHA256 of strings or bytes   |
@@ -51,8 +51,18 @@ Following are the packages used in the boilerplate
 | json2csv                | Library to convert json to csv                  |
 | react-infinite-scroller | Library for infinite scrolling                  |
 | less-vars-to-js         | Library to use less variables into js files     |
+| react-ga                | Library to apply google analytics in react app. |
 | antd-img-crop           | Library to crop images while upload by antd     |
 | draft-js                | Rich text editor framework                      |
 | react-draft-wysiwyg     | Rich text editor for draft js to use in react   |
 | draft-js-export-html    | Library to convert draft js data to html        |
 | react-html-parser       | React HTML Parser for parsing html              |
+| @apollo/client          | Graphql client for react                        |
+| apollo-link-context     | Use to set context for apollo                   |
+| apollo-link-error       | Use to set error links for apollo               |
+| apollo-link-context     | Use creating apollo link for apollo             |
+| graphql                 | Implementation of graphql                       |
+| graphql-tag             | Template literal  parses GraphQL query string   |
+| react-final-form        | Form Control without react-redux                |
+| subscriptions-          | Graphql websocket server and client helper      |
+| transport-ws            |                                                 |
