@@ -64,5 +64,5 @@ Following are the packages used in the boilerplate
 | graphql                 | Implementation of graphql                       |
 | graphql-tag             | Template literal  parses GraphQL query string   |
 | react-final-form        | Form Control without react-redux                |
-| subscriptions-          |                                                 |
-| transport-ws            | Graphql websocket server and client helper      |
+| subscriptions-          | Graphql websocket server and client helper      |
+| transport-ws            |                                                 |

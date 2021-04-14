@@ -25,6 +25,8 @@ Following are the features included in the boilerplate
 | Analytics Tool          | Google analytics tool integrated.               |
 | Hooks Support           | Hooks support provided for the boilerplate.     |
 | Graphql Support         | Graphql support provided for the boilerplate.   |
+| React-Final-Form        | React-Final-Form support added.                 |
+| Redux-Form              | Redux-Form support added.                       |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -54,7 +56,7 @@ Following are the features included in the boilerplate
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
 | Export Data as CSV      | Export data as csv ( client and backend side )  |                         | Numeral Conversion      | Numeral js library added for all numeric actions|   
-| Localstorage util        | Util to add, delete and get items from         |
+| Localstorage util       | Util to add, delete and get items from          |
 |                         | localstorage.                                   |
 | Event Emitter           | Util to on and off emitter events.              |
 | Form Validations        | Redux form fields with validations              |
@@ -92,4 +94,5 @@ Following are the features included in the boilerplate
 
 > Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
 > Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
-> Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** 
+> Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
+> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** 

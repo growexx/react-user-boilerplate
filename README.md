@@ -44,24 +44,38 @@
   <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>.
 
   For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
-</dd>
-<dt>Google Analytics</dt>
+  </dd>
+  <dt>Access Control</dt>
+  <dd>Boilerplate supports access control of features out of the box.
+  
+  More about access control can be found [here](docs/general/roleMiddleware.md).
+  </dd>
+  <dt>Redux-Form Support</dt>
+  <dd>Boilerplate supports Redux-Form. It has demo and setup added out of the box for Redux-Form.
+  More about Redux-Form can be found [here](docs/third-party-integrations/redux-form.md).
+  </dd>
+  <dt>Google Analytics</dt>
   <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
+
   Support for Google Analytics can be found in <b>feature/18-Analytics-Tools</b> branch.
 
   More about google analytics can be found [here](docs/general/googleAnalytics.md).
-</dd>
-<dt>Hooks Support</dt>
+  </dd>
+  <dt>Hooks Support</dt>
   <dd>Boilerplate supports hooks and all current examples are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
+
   Support for Hooks can be found in <b>feature/12-Hooks-Support</b> branch.
   </dd>
   <dt>Graphql Support</dt>
   <dd>Boilerplate supports graphql. It has demo and setup added out of the box for graphql. This feature is optional and is based on requirement, so not merged in main branch.
-
-  Support for Hooks can be found in <b>feature/11-GraphQL-Support</b> branch.
+  Support for graphql can be found in <b>feature/11-GraphQL-Support</b> branch.
 
   More about graphql setup can be found [here](docs/general/graphql.md).
+  </dd>
+  <dt>React-Final-Form Support</dt>
+  <dd>Boilerplate supports react-final-form. It has demo and setup added out of the box for react-final-form. This feature is optional and is based on requirement, so not merged in main branch.
 
+  Support for React-Final-Form can be found in <b>feature/React-Final-Form</b> branch.
   </dd>
 </dl>
 
@@ -92,6 +106,7 @@ There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on ho
 Now you're ready to rumble!
 
 ## Documentation
+
 - [**Features**](docs/general/features.md): Detail list of features available in the boilerplate.
 - [**The Hitchhiker's Guide to `react-boilerplate`**](docs/general/introduction.md): An introduction for newcomers to this boilerplate.
 - [**Overview**](docs/general): A short overview of the included tools
