@@ -48,10 +48,20 @@
 <dt>Google Analytics</dt>
   <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
   Support for Google Analytics can be found in <b>feature/18-Analytics-Tools</b> branch.
-  </dd>
+
+  More about google analytics can be found [here](docs/general/googleAnalytics.md).
+</dd>
 <dt>Hooks Support</dt>
   <dd>Boilerplate supports hooks and all current examples are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
   Support for Hooks can be found in <b>feature/12-Hooks-Support</b> branch.
+  </dd>
+  <dt>Graphql Support</dt>
+  <dd>Boilerplate supports graphql. It has demo and setup added out of the box for graphql. This feature is optional and is based on requirement, so not merged in main branch.
+
+  Support for Hooks can be found in <b>feature/11-GraphQL-Support</b> branch.
+
+  More about graphql setup can be found [here](docs/general/graphql.md).
+
   </dd>
 </dl>
 
