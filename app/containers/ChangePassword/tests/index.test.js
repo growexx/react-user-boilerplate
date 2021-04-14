@@ -1,9 +1,6 @@
 /**
  *
  * Tests for ChangePassword
- *
- *
- *
  */
 
 import React from 'react';
@@ -13,7 +10,7 @@ import { Provider } from 'react-redux';
 import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
-import ChangePassword, { mapDispatchToProps } from '../index';
+import ChangePassword from '../index';
 import Lodable from '../Loadable';
 import configureStore from '../../../configureStore';
 let store;
@@ -45,27 +42,6 @@ describe('<ChangePassword />', () => {
       container: { firstChild },
     } = componentWrapper(ChangePassword);
     expect(firstChild).toMatchSnapshot();
-  });
-  it('mapDispatch to props', () => {
-    const mockFn = jest.fn();
-    const returnValue = mapDispatchToProps(mockFn);
-    const eventObject = {
-      target: {
-        target: { name: 'currentPassword', value: 'test' },
-      },
-      preventDefault: jest.fn(),
-    };
-    const returnValueForSubmitData = mapDispatchToProps(mockFn);
-    returnValueForSubmitData.updateField(eventObject);
-    returnValueForSubmitData.submitData(eventObject);
-
-    const eventObjectWithoutPreventDefault = {
-      target: {
-        value: 'test',
-      },
-    };
-    returnValue.submitData(eventObjectWithoutPreventDefault);
-    expect(mockFn).toBeCalled();
   });
   it('Should render and match the snapshot Loadable', () => {
     const {
