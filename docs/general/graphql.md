@@ -6,6 +6,8 @@
 
 3. This branch is compatible with subscription setup of graphql, so to remove the usage of that delete app/graphql/websocket.js file and change link to http link in app/graphql/client.js.
 
-4. Demo for graphql basic query, mutation and subscription is added into the example directory.
+4. Demo for graphql basic query, mutation and subscription is added into the example/GraphQL directory.
 
-5. Test case example is also added. It uses ApiMocks folder.
+5. ChangePassword container contains demo of react final form with graphql. Instead of redux-form react-final-form can be used in such cases.
+
+6. Test case example is also added. It uses ApiMocks folder.

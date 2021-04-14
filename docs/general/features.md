@@ -24,7 +24,7 @@ Following are the features included in the boilerplate
 | App level loader        | Global loader based on app states.              |
 | Analytics Tool          | Google analytics tool integrated.               |
 | Hooks Support           | Hooks support provided for the boilerplate.     |
-| Graphql Support         | Grapql support provided for the boilerplate.    |
+| Graphql Support         | Graphql support provided for the boilerplate.   |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -43,7 +43,7 @@ Following are the features included in the boilerplate
 |                         | storybook support where you can get visual      |
 |                         | idea of how component looks.                    |
 | Login and Registration  | Login and registration page redux saga and api  |
-| Change Password         | Form with redux, saga, api code ready.          |
+| Change Password         | Change Password with api code.                  |
 | page                    | ready code.                                     |
 | Footer component        | Basic footer implemented.                       |
 | File Upload             | File Upload component.                          |
@@ -77,6 +77,8 @@ Following are the features included in the boilerplate
 | File Upload             | Image Upload component demo.                    |
 | Rich Text Editor        | Rich text editor demo.                          |
 | Google Analytics events | Sidebar clicks capturing GA demo.               |
+| Apollo Hooks demo       | Basic demo for apollo hooks.                    |
+| React final form        | Basic demo  for react-final-form.               |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
