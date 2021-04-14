@@ -52,29 +52,31 @@
   </dd>
   <dt>Redux-Form Support</dt>
   <dd>Boilerplate supports Redux-Form. It has demo and setup added out of the box for Redux-Form.
+
   More about Redux-Form can be found [here](docs/third-party-integrations/redux-form.md).
   </dd>
   <dt>Google Analytics</dt>
   <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
-
+  <br/>
   Support for Google Analytics can be found in <b>feature/18-Analytics-Tools</b> branch.
 
   More about google analytics can be found [here](docs/general/googleAnalytics.md).
   </dd>
   <dt>Hooks Support</dt>
-  <dd>Boilerplate supports hooks and all current examples are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
-
+  <dd>Boilerplate supports hooks and all current components are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
+  <br/>
   Support for Hooks can be found in <b>feature/12-Hooks-Support</b> branch.
   </dd>
   <dt>Graphql Support</dt>
   <dd>Boilerplate supports graphql. It has demo and setup added out of the box for graphql. This feature is optional and is based on requirement, so not merged in main branch.
+  <br/>
   Support for graphql can be found in <b>feature/11-GraphQL-Support</b> branch.
 
   More about graphql setup can be found [here](docs/general/graphql.md).
   </dd>
   <dt>React-Final-Form Support</dt>
-  <dd>Boilerplate supports react-final-form. It has demo and setup added out of the box for react-final-form. This feature is optional and is based on requirement, so not merged in main branch.
-
+  <dd>Boilerplate supports React-Final-Form. It has demo and setup added out of the box for React-Final-Form. This feature is optional and is based on requirement, so not merged in main branch.
+  <br/>
   Support for React-Final-Form can be found in <b>feature/React-Final-Form</b> branch.
   </dd>
 </dl>

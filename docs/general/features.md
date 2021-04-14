@@ -80,7 +80,7 @@ Following are the features included in the boilerplate
 | Rich Text Editor        | Rich text editor demo.                          |
 | Google Analytics events | Sidebar clicks capturing GA demo.               |
 | Apollo Hooks demo       | Basic demo for apollo hooks.                    |
-| React final form        | Basic demo  for react-final-form.               |
+| React-Final-Form        | Basic demo  for React-Final-Form.               |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
