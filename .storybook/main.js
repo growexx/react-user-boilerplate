@@ -8,11 +8,11 @@ const themeVariables = lessToJs(
   ),
 );
 module.exports = {
-  "stories": [
+  stories: [
     "../app/**/stories/**/*.stories.mdx",
     "../app/**/stories/**/*.stories.@(js|jsx|ts|tsx)"
   ],
-  "addons": [
+  addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
   ],
