@@ -17,7 +17,6 @@ import SampleForm from '../index';
 import configureStore from '../../../configureStore';
 let store;
 const props = {
-  handleSubmit: jest.fn(),
   pristine: true,
   reset: true,
   submitting: true,
@@ -42,13 +41,6 @@ describe('<SampleForm />', () => {
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
   });
-  it('Should click submit button', () => {
-    props.pristine = false;
-    const { getByText } = componentWrapper();
-    const button = getByText('Submit');
-    fireEvent.click(button);
-    expect(props.handleSubmit).toBeCalled();
-  });
   it('Should change form fields', () => {
     const eventObject = {
       preventDefault: jest.fn(),
@@ -63,22 +55,50 @@ describe('<SampleForm />', () => {
       getByTestId,
       getByRole,
       container,
+      getByText,
     } = componentWrapper();
     const getById = queryByAttribute.bind(null, 'id');
     fireEvent.change(getByPlaceholderText('First Name'), eventObject);
     fireEvent.change(getByPlaceholderText('Last Name'), eventObject);
     fireEvent.change(getByPlaceholderText('Email'), {
       target: {
-        value: 'TestEmail',
+        value: 'test@growexx.com',
         name: 'email',
       },
     });
     fireEvent.click(getById(container, 'employed'), eventObject);
-    fireEvent.click(getByRole('combobox'));
+    fireEvent.mouseDown(getByRole('combobox'));
+    fireEvent.change(getByRole('combobox'), {
+      target: {
+        value: 'ff0000',
+      },
+    });
+    // .ant-select-item-option-content
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
     fireEvent.change(getByTestId('Notes'), eventObject);
-    fireEvent.click(getByPlaceholderText('From'));
     fireEvent.focus(getByPlaceholderText('From'), eventObject);
     fireEvent.blur(getByPlaceholderText('From'), eventObject);
+    // onChange from
+    fireEvent.mouseDown(getByPlaceholderText('From'));
+    fireEvent.change(getByPlaceholderText('From'), {
+      target: {
+        value: '2020-10-12',
+      },
+    });
+    fireEvent.click(document.querySelectorAll('.ant-picker-cell-selected')[0]);
+    // onChange To
+    const to = getByPlaceholderText('To');
+    fireEvent.mouseDown(to);
+    fireEvent.change(to, {
+      target: {
+        value: '2021-10-28',
+      },
+    });
+    fireEvent.click(document.querySelectorAll('.ant-picker-cell-selected')[0]);
+    const button = getByText('Submit');
+    fireEvent.click(button);
     expect(getByPlaceholderText('First Name')).toBeTruthy();
   });
 });

@@ -433,7 +433,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                   </span>
                   <section>
                     <span>
-                      Get started with your react application in minutes.
+                      Get started with your next react application in seconds.
                     </span>
                   </section>
                 </section>

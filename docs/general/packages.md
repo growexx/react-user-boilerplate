@@ -27,7 +27,7 @@ Following are the packages used in the boilerplate
 | react-helmet            | Library to handle document Head changes         |
 | react-intl              | Internationalization and localization for react |
 | react-redux             | State bindings for react                        |
-| react-form              | Form Control with react-redux and saga          |
+| redux-form              | Form Control with react-redux and saga          |
 | reselect                | Selector library for redux                      |
 | sanitize.css            | Library for consistent cross-browser styling    |
 | sha255                  | Library to compute SHA256 of strings or bytes   |
@@ -57,3 +57,12 @@ Following are the packages used in the boilerplate
 | react-draft-wysiwyg     | Rich text editor for draft js to use in react   |
 | draft-js-export-html    | Library to convert draft js data to html        |
 | react-html-parser       | React HTML Parser for parsing html              |
+| @apollo/client          | Graphql client for react                        |
+| apollo-link-context     | Use to set context for apollo                   |
+| apollo-link-error       | Use to set error links for apollo               |
+| apollo-link-context     | Use creating apollo link for apollo             |
+| graphql                 | Implementation of graphql                       |
+| graphql-tag             | Template literal  parses GraphQL query string   |
+| react-final-form        | Form Control without react-redux                |
+| subscriptions-          | Graphql websocket server and client helper      |
+| transport-ws            |                                                 |
