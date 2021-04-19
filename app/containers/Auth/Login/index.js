@@ -31,7 +31,14 @@ import { StyledAuthContainer } from '../StyledAuthContainer';
 import AuthSideContainer from '../index';
 import { AUTH_TYPE } from '../constants';
 import { makeSelectSuccess } from './selectors';
-import { changeEmail, changePassword, fireLogin } from './actions';
+import {
+  changeEmail,
+  changePassword,
+  fireFacebookLogin,
+  fireGoogleLogin,
+  fireLogin,
+  fireMicrosoftLogin,
+} from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -50,6 +57,9 @@ export function Login({
   error,
   onChangeEmail,
   onChangePassword,
+  onGoogleSignIn,
+  onFacebookSignIn,
+  onMicrosoftSignIn,
 }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
@@ -67,9 +77,9 @@ export function Login({
           </p>
           <div className="LoginSubContainer">
             <div className="socialIcons">
-              <FacebookFilled />
-              <GoogleOutlined />
-              <WindowsFilled />
+              <FacebookFilled onClick={onFacebookSignIn} />
+              <GoogleOutlined onClick={onGoogleSignIn} />
+              <WindowsFilled onClick={onMicrosoftSignIn} />
             </div>
             <p className="emailLogin">
               <FormattedMessage {...messages.emailLogin} />
@@ -139,6 +149,9 @@ Login.propTypes = {
   password: PropTypes.string,
   onChangePassword: PropTypes.func,
   onChangeEmail: PropTypes.func,
+  onGoogleSignIn: PropTypes.func,
+  onFacebookSignIn: PropTypes.func,
+  onMicrosoftSignIn: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -156,6 +169,15 @@ export function mapDispatchToProps(dispatch) {
     onSignIn: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(fireLogin());
+    },
+    onGoogleSignIn: () => {
+      dispatch(fireGoogleLogin());
+    },
+    onFacebookSignIn: () => {
+      dispatch(fireFacebookLogin());
+    },
+    onMicrosoftSignIn: () => {
+      dispatch(fireMicrosoftLogin());
     },
   };
 }

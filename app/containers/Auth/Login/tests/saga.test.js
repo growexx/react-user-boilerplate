@@ -1,10 +1,22 @@
-/* eslint-disable space-before-function-paren */
 import { runSaga } from 'redux-saga';
 import { takeLatest } from 'redux-saga/effects';
 import configureStore from 'redux-mock-store';
 import { LOGIN } from '../constants';
-import setSaga, { getSignIn as setSagaFunction } from '../saga';
+import setSaga, {
+  getSignIn as setSagaFunction,
+  getFacebookSignIn,
+  getGoogleSignIn,
+  getMicrosoftSignIn,
+} from '../saga';
 jest.mock('utils/request');
+jest.mock('utils/firebase', () => ({
+  signInWithGoogle: jest.fn(),
+  signInWithFacebook: jest.fn(),
+  signInWithMicrosoft: jest.fn(),
+  auth: {
+    onAuthStateChanged: jest.fn(),
+  },
+}));
 const initialState = {
   login: {
     email: 'test',
@@ -34,6 +46,9 @@ export async function recordSaga(saga) {
 describe('Testing getSignIn', () => {
   test('Demo Mode On', async () => {
     await recordSaga(setSagaFunction);
+    await recordSaga(getFacebookSignIn);
+    await recordSaga(getGoogleSignIn);
+    await recordSaga(getMicrosoftSignIn);
     expect(recordSaga(setSagaFunction)).toBeTruthy();
   });
 });

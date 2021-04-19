@@ -47,6 +47,24 @@ describe('Actions Testing', () => {
     };
     expect(actions.fireLogin()).toEqual(expectedAction);
   });
+  it('should create an action to fire google login', () => {
+    const expectedAction = {
+      type: types.GOOGLE_LOGIN,
+    };
+    expect(actions.fireGoogleLogin()).toEqual(expectedAction);
+  });
+  it('should create an action to fire facebook login', () => {
+    const expectedAction = {
+      type: types.FACEBOOK_LOGIN,
+    };
+    expect(actions.fireFacebookLogin()).toEqual(expectedAction);
+  });
+  it('should create an action to fire microsoft login', () => {
+    const expectedAction = {
+      type: types.MICROSOFT_LOGIN,
+    };
+    expect(actions.fireMicrosoftLogin()).toEqual(expectedAction);
+  });
   it('should create an action to change reset', () => {
     const expectedAction = {
       type: types.RESET,
