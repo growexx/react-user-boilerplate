@@ -74,7 +74,7 @@ describe('<ChangePassword />', () => {
     expect(firstChild).toMatchSnapshot();
   });
   it('Should Click Button', () => {
-    const { container, getByPlaceholderText, debug } = componentWrapper(
+    const { container, getByPlaceholderText } = componentWrapper(
       ChangePassword,
     );
     fireEvent.change(getByPlaceholderText('Current Password'), {
@@ -94,7 +94,6 @@ describe('<ChangePassword />', () => {
     fireEvent.click(button, {
       preventDefault,
     });
-    debug();
     expect(button).toBeTruthy();
   });
 });

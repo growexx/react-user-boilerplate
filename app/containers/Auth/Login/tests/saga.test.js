@@ -9,14 +9,6 @@ import setSaga, {
   getMicrosoftSignIn,
 } from '../saga';
 jest.mock('utils/request');
-jest.mock('utils/firebase', () => ({
-  signInWithGoogle: jest.fn(),
-  signInWithFacebook: jest.fn(),
-  signInWithMicrosoft: jest.fn(),
-  auth: {
-    onAuthStateChanged: jest.fn(),
-  },
-}));
 const initialState = {
   login: {
     email: 'test',

@@ -16,14 +16,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Login, mapDispatchToProps } from '../index';
 import Lodable from '../Loadable';
 import configureStore from '../../../../configureStore';
-jest.mock('utils/firebase', () => ({
-  signInWithGoogle: jest.fn(),
-  signInWithFacebook: jest.fn(),
-  signInWithMicrosoft: jest.fn(),
-  auth: {
-    onAuthStateChanged: jest.fn(),
-  },
-}));
 let store;
 const props = {
   error: true,
