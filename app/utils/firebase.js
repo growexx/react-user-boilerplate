@@ -14,27 +14,37 @@ const googleProvider = new firebase.auth.GoogleAuthProvider();
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 export const signInWithGoogle = () => {
-  auth
-    .signInWithPopup(googleProvider)
-    .then(res => {
-      // eslint-disable-next-line no-console
-      console.log(res.user);
-    })
-    .catch(error => {
-      // eslint-disable-next-line no-console
-      console.log(error.message);
-    });
+  try {
+    auth
+      .signInWithPopup(googleProvider)
+      .then(res => {
+        // eslint-disable-next-line no-console
+        console.log(res.user);
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.message);
+      });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+  }
 };
 
 export const signInWithFacebook = () => {
-  auth
-    .signInWithPopup(facebookProvider)
-    .then(res => {
-      // eslint-disable-next-line no-console
-      console.log(res.user);
-    })
-    .catch(error => {
-      // eslint-disable-next-line no-console
-      console.log(error.message);
-    });
+  try {
+    auth
+      .signInWithPopup(facebookProvider)
+      .then(res => {
+        // eslint-disable-next-line no-console
+        console.log(res.user);
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.message);
+      });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+  }
 };

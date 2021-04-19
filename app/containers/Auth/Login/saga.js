@@ -14,7 +14,7 @@ import { API_ENDPOINTS } from '../constants';
 
 */
 import Emitter from 'utils/events';
-import { signInWithGoogle, signInWithFacebook } from 'utils/firebase';
+// import { signInWithGoogle, signInWithFacebook } from 'utils/firebase';
 import { ROUTES } from '../../constants';
 import {
   /* loginInError */ changeLoading,
@@ -84,7 +84,6 @@ export function* getSignIn() {
  * user login request/response handler with google
  */
 export function* getGoogleSignIn() {
-  signInWithGoogle();
   /**
    * Remove following code, It's only for demo purpose
    */
@@ -97,6 +96,7 @@ export function* getGoogleSignIn() {
   Emitter.emit(EMITTER_EVENTS.LOG_IN);
   // ----------------Demo--------------------  });
   /**
+   * signInWithGoogle();
    * SUCCESS AND FAILURE CHANGES IN FOLLOWING FUNCTION
    * auth.onAuthStateChanged(function*() {});
    */
@@ -105,7 +105,6 @@ export function* getGoogleSignIn() {
  * user login request/response handler with facebook
  */
 export function* getFacebookSignIn() {
-  signInWithFacebook();
   /**
    * Remove following code, It's only for demo purpose
    */
@@ -118,6 +117,7 @@ export function* getFacebookSignIn() {
   Emitter.emit(EMITTER_EVENTS.LOG_IN);
   // ----------------Demo--------------------  });
   /**
+   * signInWithFacebook();
    * SUCCESS AND FAILURE CHANGES IN FOLLOWING FUNCTION
    * auth.onAuthStateChanged(function*() {});
    */
