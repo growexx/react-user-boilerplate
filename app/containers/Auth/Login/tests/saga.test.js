@@ -6,7 +6,6 @@ import setSaga, {
   getSignIn as setSagaFunction,
   getFacebookSignIn,
   getGoogleSignIn,
-  getMicrosoftSignIn,
 } from '../saga';
 jest.mock('utils/request');
 const initialState = {
@@ -40,7 +39,6 @@ describe('Testing getSignIn', () => {
     await recordSaga(setSagaFunction);
     await recordSaga(getFacebookSignIn);
     await recordSaga(getGoogleSignIn);
-    await recordSaga(getMicrosoftSignIn);
     expect(recordSaga(setSagaFunction)).toBeTruthy();
   });
 });

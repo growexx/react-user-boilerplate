@@ -55,7 +55,6 @@ describe('<Login />', () => {
     returnValue.onSignIn(eventObject);
     returnValue.onGoogleSignIn();
     returnValue.onFacebookSignIn();
-    returnValue.onMicrosoftSignIn();
     const eventObjectWithoutPreventDefault = {
       target: {
         value: 'test',

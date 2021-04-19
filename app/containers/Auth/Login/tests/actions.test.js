@@ -59,12 +59,6 @@ describe('Actions Testing', () => {
     };
     expect(actions.fireFacebookLogin()).toEqual(expectedAction);
   });
-  it('should create an action to fire microsoft login', () => {
-    const expectedAction = {
-      type: types.MICROSOFT_LOGIN,
-    };
-    expect(actions.fireMicrosoftLogin()).toEqual(expectedAction);
-  });
   it('should create an action to change reset', () => {
     const expectedAction = {
       type: types.RESET,

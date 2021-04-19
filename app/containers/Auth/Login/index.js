@@ -37,7 +37,6 @@ import {
   fireFacebookLogin,
   fireGoogleLogin,
   fireLogin,
-  fireMicrosoftLogin,
 } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -59,7 +58,6 @@ export function Login({
   onChangePassword,
   onGoogleSignIn,
   onFacebookSignIn,
-  onMicrosoftSignIn,
 }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
@@ -79,7 +77,7 @@ export function Login({
             <div className="socialIcons">
               <FacebookFilled onClick={onFacebookSignIn} />
               <GoogleOutlined onClick={onGoogleSignIn} />
-              <WindowsFilled onClick={onMicrosoftSignIn} />
+              <WindowsFilled />
             </div>
             <p className="emailLogin">
               <FormattedMessage {...messages.emailLogin} />
@@ -151,7 +149,6 @@ Login.propTypes = {
   onChangeEmail: PropTypes.func,
   onGoogleSignIn: PropTypes.func,
   onFacebookSignIn: PropTypes.func,
-  onMicrosoftSignIn: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -175,9 +172,6 @@ export function mapDispatchToProps(dispatch) {
     },
     onFacebookSignIn: () => {
       dispatch(fireFacebookLogin());
-    },
-    onMicrosoftSignIn: () => {
-      dispatch(fireMicrosoftLogin());
     },
   };
 }
