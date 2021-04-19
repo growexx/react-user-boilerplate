@@ -44,8 +44,8 @@
     "test:watch": "jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -s ./app/images -p 6006",
+    "build-storybook": "build-storybook -s ./app/images"
   },
   "browserslist": [
     "last 2 versions",
@@ -131,10 +131,10 @@
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.0",
     "storybook-addon-react-docgen": "^1.2.42",
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/react": "^6.1.21",
+    "@storybook/addon-actions": "^6.2.8",
+    "@storybook/addon-essentials": "^6.2.8",
+    "@storybook/addon-links": "^6.2.8",
+    "@storybook/react": "^6.2.8",
     "@testing-library/dom": "^7.30.3",
     "@testing-library/user-event": "^13.1.1",
     "add-asset-html-webpack-plugin": "3.1.3",
