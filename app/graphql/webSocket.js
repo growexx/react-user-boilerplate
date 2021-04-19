@@ -4,7 +4,8 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { link } from './httpLink';
 
 const wsLink = new WebSocketLink({
-  uri: process.env.REACT_APP_WS_ENDPOINT,
+  uri:
+    process.env.REACT_APP_WS_ENDPOINT /** ws://48p1r2roz4.sse.codesandbox.io */,
   options: {
     reconnect: true,
     // authentication

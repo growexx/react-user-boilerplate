@@ -111,7 +111,9 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+  uri:
+    process.env
+      .REACT_APP_GRAPHQL_ENDPOINT /** https://48p1r2roz4.sse.codesandbox.io */,
 });
 
 export const link = errorLink.concat(authLink.concat(httpLink));
