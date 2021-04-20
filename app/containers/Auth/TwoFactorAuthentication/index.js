@@ -8,17 +8,20 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import OtpComponent from 'components/OtpComponent';
 import makeSelectTwoFactorAuthentication from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-// import messages from './messages';
+import { StyledTwoFactorAuthentication } from './StyledTwoFactorAuthentication';
+import messages from './messages';
+import AuthSideContainer from '../index';
+import { AUTH_TYPE } from '../constants';
+import { StyledAuthContainer } from '../StyledAuthContainer';
 
 export function TwoFactorAuthentication() {
   useInjectReducer({ key: 'twoFactorAuthentication', reducer });
@@ -33,7 +36,15 @@ export function TwoFactorAuthentication() {
           content="Description of TwoFactorAuthentication"
         />
       </Helmet>
-      <OtpComponent />
+      <StyledAuthContainer>
+        <AuthSideContainer authType={AUTH_TYPE[0]} />
+        <StyledTwoFactorAuthentication>
+          <p className="twoFactorAuthenticationTitle">
+            <FormattedMessage {...messages.twoFactorAuthenticationTitle} />
+          </p>
+          <OtpComponent />
+        </StyledTwoFactorAuthentication>
+      </StyledAuthContainer>
     </div>
   );
 }
