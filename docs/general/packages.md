@@ -66,3 +66,4 @@ Following are the packages used in the boilerplate
 | react-final-form        | Form Control without react-redux                |
 | subscriptions-          | Graphql websocket server and client helper      |
 | transport-ws            |                                                 |
+| firebase                | For Firebase services                           |

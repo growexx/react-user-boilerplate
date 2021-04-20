@@ -1,6 +1,6 @@
 ### Google Analytics
 
-1. Google analytics is implemented out of box in the boilerplate. To start using the feature, add `REACT_APP_GA_TAG_ID` field in the config.js file located in the app folder (app/config.js) and add tag id of the google analytics account. 
+1. Google analytics is implemented out of box in the boilerplate. To start using the feature, add `REACT_APP_GA_TAG_ID` field in the env file and add tag id of the google analytics account. 
 
 2. To integrate google analytics with react app, `react-ga` npm package is used.
 

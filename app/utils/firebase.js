@@ -1,4 +1,6 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+// auth import from firebase
+import 'firebase/auth';
 
 // initializing firebase app
 firebase.initializeApp({
@@ -9,10 +11,17 @@ firebase.initializeApp({
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
+/**
+ * auth constant for social login
+ */
 export const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
+/**
+ * Sign In With Google
+ * @returns
+ */
 export const signInWithGoogle = () => {
   try {
     auth
@@ -31,6 +40,10 @@ export const signInWithGoogle = () => {
   }
 };
 
+/**
+ * Sign In With Facebook
+ * @returns
+ */
 export const signInWithFacebook = () => {
   try {
     auth

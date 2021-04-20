@@ -27,6 +27,7 @@ Following are the features included in the boilerplate
 | Graphql Support         | Graphql support provided for the boilerplate.   |
 | React-Final-Form        | React-Final-Form support added.                 |
 | Redux-Form              | Redux-Form support added.                       |
+| Social login            | boilerplate supports social login using firebase|
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
