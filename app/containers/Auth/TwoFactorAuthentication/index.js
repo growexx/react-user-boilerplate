@@ -19,11 +19,11 @@ import reducer from './reducer';
 import saga from './saga';
 import { StyledTwoFactorAuthentication } from './StyledTwoFactorAuthentication';
 import messages from './messages';
-import { FORM_KEY } from './constants';
+import { FORM_KEY, OTP_LENGTH } from './constants';
 import AuthSideContainer from '../index';
 import { AUTH_TYPE } from '../constants';
 import { StyledAuthContainer } from '../StyledAuthContainer';
-import { changeValue } from './actions';
+import { changeValue, fireSubmit } from './actions';
 
 export function TwoFactorAuthentication(props) {
   useInjectReducer({ key: FORM_KEY, reducer });
@@ -44,7 +44,11 @@ export function TwoFactorAuthentication(props) {
           <p className="twoFactorAuthenticationTitle">
             <FormattedMessage {...messages.twoFactorAuthenticationTitle} />
           </p>
-          <OtpComponent value={value} onChange={onChangeValue} />
+          <OtpComponent
+            value={value}
+            onChange={onChangeValue}
+            numInputs={OTP_LENGTH}
+          />
         </StyledTwoFactorAuthentication>
       </StyledAuthContainer>
     </div>
@@ -60,9 +64,14 @@ const mapStateToProps = createStructuredSelector({
   value: makeSelectValue(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
-    onChangeValue: value => dispatch(changeValue(value)),
+    onChangeValue: value => {
+      dispatch(changeValue(value));
+      if (value.length === OTP_LENGTH) {
+        dispatch(fireSubmit());
+      }
+    },
   };
 }
 
