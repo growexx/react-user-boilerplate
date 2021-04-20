@@ -27,6 +27,7 @@ Following are the features included in the boilerplate
 | Graphql Support         | Graphql support provided for the boilerplate.   |
 | React-Final-Form        | React-Final-Form support added.                 |
 | Redux-Form              | Redux-Form support added.                       |
+| Social login            | boilerplate supports social login using firebase|
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -96,3 +97,4 @@ Following are the features included in the boilerplate
 > Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
 > Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
 > React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** 
+> Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** 

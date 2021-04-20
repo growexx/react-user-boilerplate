@@ -8,11 +8,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Input, Button } from 'antd';
-import {
-  FacebookFilled,
-  GoogleOutlined,
-  WindowsFilled,
-} from '@ant-design/icons';
 import messages from './messages';
 import { StyledRegistration } from './StyledRegistration';
 import AuthSideContainer from '../index';
@@ -32,11 +27,6 @@ export function Registration() {
           <FormattedMessage {...messages.createAccount} />
         </p>
         <div className="registrationSubContainer">
-          <div className="socialIcons">
-            <FacebookFilled />
-            <GoogleOutlined />
-            <WindowsFilled />
-          </div>
           <p className="emailRegistration">
             <FormattedMessage {...messages.emailRegistration} />
           </p>
