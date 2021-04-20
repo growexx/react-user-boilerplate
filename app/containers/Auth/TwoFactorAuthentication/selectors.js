@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { FORM_KEY } from './constants';
 import { initialState } from './reducer';
 
 /**
@@ -6,21 +7,12 @@ import { initialState } from './reducer';
  */
 
 const selectTwoFactorAuthenticationDomain = state =>
-  state.twoFactorAuthentication || initialState;
+  state[FORM_KEY] || initialState;
 
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by TwoFactorAuthentication
- */
-
-const makeSelectTwoFactorAuthentication = () =>
+const makeSelectValue = () =>
   createSelector(
     selectTwoFactorAuthenticationDomain,
-    substate => substate,
+    substate => substate.value,
   );
 
-export default makeSelectTwoFactorAuthentication;
-export { selectTwoFactorAuthenticationDomain };
+export { makeSelectValue, selectTwoFactorAuthenticationDomain };

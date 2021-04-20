@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -14,19 +14,21 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import OtpComponent from 'components/OtpComponent';
-import makeSelectTwoFactorAuthentication from './selectors';
+import { makeSelectValue } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { StyledTwoFactorAuthentication } from './StyledTwoFactorAuthentication';
 import messages from './messages';
+import { FORM_KEY } from './constants';
 import AuthSideContainer from '../index';
 import { AUTH_TYPE } from '../constants';
 import { StyledAuthContainer } from '../StyledAuthContainer';
+import { changeValue } from './actions';
 
-export function TwoFactorAuthentication() {
-  useInjectReducer({ key: 'twoFactorAuthentication', reducer });
-  useInjectSaga({ key: 'twoFactorAuthentication', saga });
-
+export function TwoFactorAuthentication(props) {
+  useInjectReducer({ key: FORM_KEY, reducer });
+  useInjectSaga({ key: FORM_KEY, saga });
+  const { value, onChangeValue } = props;
   return (
     <div>
       <Helmet>
@@ -42,7 +44,7 @@ export function TwoFactorAuthentication() {
           <p className="twoFactorAuthenticationTitle">
             <FormattedMessage {...messages.twoFactorAuthenticationTitle} />
           </p>
-          <OtpComponent />
+          <OtpComponent value={value} onChange={onChangeValue} />
         </StyledTwoFactorAuthentication>
       </StyledAuthContainer>
     </div>
@@ -50,16 +52,17 @@ export function TwoFactorAuthentication() {
 }
 
 TwoFactorAuthentication.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChangeValue: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  twoFactorAuthentication: makeSelectTwoFactorAuthentication(),
+  value: makeSelectValue(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onChangeValue: value => dispatch(changeValue(value)),
   };
 }
 

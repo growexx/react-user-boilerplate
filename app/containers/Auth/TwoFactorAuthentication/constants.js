@@ -4,4 +4,5 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/TwoFactorAuthentication/DEFAULT_ACTION';
+export const VALUE = 'app/TwoFactorAuthentication/VALUE';
+export const FORM_KEY = 'twoFactorAuthentication';

@@ -4,10 +4,11 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { VALUE } from './constants';
 
-export function defaultAction() {
+export function changeValue(value) {
   return {
-    type: DEFAULT_ACTION,
+    type: VALUE,
+    value,
   };
 }
