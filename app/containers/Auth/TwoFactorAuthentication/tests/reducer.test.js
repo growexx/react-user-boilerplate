@@ -1,34 +1,22 @@
-// import produce from 'immer';
-import twoFactorAuthenticationReducer from '../reducer';
-// import { someAction } from '../actions';
-
-/* eslint-disable default-case, no-param-reassign */
-describe('twoFactorAuthenticationReducer', () => {
-  let state;
-  beforeEach(() => {
-    state = {
-      // default state params here
-    };
+import * as types from '../constants';
+import reducer, { initialState } from '../reducer';
+const getFormJsStateInstance = config =>
+  Object.assign(
+    {
+      value: '',
+    },
+    config,
+  );
+describe('two factor authentication reducer', () => {
+  it('should return the initial state', () => {
+    expect(reducer(undefined, {})).toEqual(initialState);
   });
-
-  it('returns the initial state', () => {
-    const expectedResult = state;
-    expect(twoFactorAuthenticationReducer(undefined, {})).toEqual(
-      expectedResult,
-    );
+  it('should handle CHANGE_VALUE', () => {
+    expect(
+      reducer(initialState, {
+        type: types.CHANGE_VALUE,
+        value: types.TEST_OTP_VALUE,
+      }),
+    ).toEqual(getFormJsStateInstance({ value: types.TEST_OTP_VALUE }));
   });
-
-  /**
-   * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
-   */
 });

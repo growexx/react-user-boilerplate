@@ -6,7 +6,7 @@
  *
  */
 import produce from 'immer';
-import { VALUE } from './constants';
+import { CHANGE_VALUE } from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -17,7 +17,7 @@ export const initialState = {
 const twoFactorAuthenticationReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case VALUE:
+      case CHANGE_VALUE:
         draft.value = action.value;
         break;
       default:

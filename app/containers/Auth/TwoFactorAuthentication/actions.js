@@ -4,11 +4,11 @@
  *
  */
 
-import { VALUE } from './constants';
+import { CHANGE_VALUE } from './constants';
 
 export function changeValue(value) {
   return {
-    type: VALUE,
+    type: CHANGE_VALUE,
     value,
   };
 }

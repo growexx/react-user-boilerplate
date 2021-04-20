@@ -1,13 +1,14 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { changeValue } from '../actions';
+import { TEST_OTP_VALUE, CHANGE_VALUE } from '../constants';
 
 describe('TwoFactorAuthentication actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+  describe('changeValue Action', () => {
+    it('has a type of VALUE', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: CHANGE_VALUE,
+        value: TEST_OTP_VALUE,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(changeValue(TEST_OTP_VALUE)).toEqual(expected);
     });
   });
 });
