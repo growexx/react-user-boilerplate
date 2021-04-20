@@ -67,3 +67,4 @@ Following are the packages used in the boilerplate
 | subscriptions-          | Graphql websocket server and client helper      |
 | transport-ws            |                                                 |
 | firebase                | For Firebase services                           |
+| dotenv                  | loads environment modules to process.env        |

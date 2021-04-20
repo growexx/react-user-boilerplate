@@ -23,21 +23,16 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
  * @returns
  */
 export const signInWithGoogle = () => {
-  try {
-    auth
-      .signInWithPopup(googleProvider)
-      .then(res => {
-        // eslint-disable-next-line no-console
-        console.log(res.user);
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log(error.message);
-      });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-  }
+  auth
+    .signInWithPopup(googleProvider)
+    .then(res => {
+      // eslint-disable-next-line no-console
+      console.log(res.user);
+    })
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.log(error.message);
+    });
 };
 
 /**
@@ -45,19 +40,14 @@ export const signInWithGoogle = () => {
  * @returns
  */
 export const signInWithFacebook = () => {
-  try {
-    auth
-      .signInWithPopup(facebookProvider)
-      .then(res => {
-        // eslint-disable-next-line no-console
-        console.log(res.user);
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log(error.message);
-      });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-  }
+  auth
+    .signInWithPopup(facebookProvider)
+    .then(res => {
+      // eslint-disable-next-line no-console
+      console.log(res.user);
+    })
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.log(error.message);
+    });
 };
