@@ -18,15 +18,12 @@ import Lodable from '../Loadable';
 import { TEST_OTP_VALUE, TEST_OTP_VALUE_WITHOUT_LENGTH } from '../constants';
 import configureStore from '../../../../configureStore';
 let store;
-const props = {
-  error: true,
-};
 const componentWrapper = Component =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <Component {...props} />
+          <Component />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
