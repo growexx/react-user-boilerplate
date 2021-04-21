@@ -25,6 +25,7 @@ const MainLayout = () => {
   const [state, setState] = React.useState({
     collapsed: true,
   });
+  const [, forceUpdate] = React.useState({}); // To disable submit button at the beginning.
 
   const toggle = () => {
     const { collapsed } = state;
@@ -35,9 +36,10 @@ const MainLayout = () => {
 
   React.useEffect(() => {
     Emitter.on(EMITTER_EVENTS.LOG_IN, () => {
-      setState({
-        collapsed: state.collapsed,
-      });
+      forceUpdate({});
+    });
+    Emitter.on(EMITTER_EVENTS.LOG_OUT, () => {
+      forceUpdate({});
     });
     return () => {
       Emitter.off(EMITTER_EVENTS.LOG_IN);
