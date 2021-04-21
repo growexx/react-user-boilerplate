@@ -26,25 +26,25 @@ export const StyledForgotPassword = styled.div`
     font-size: @font-size-lg+26;
     color: @primary-color;
   }
-  button:hover {
+  button:focus {
     background: @primary-color;
     border: 2px solid @white;
     color: @white;
   }
   button {
     color: @white;
+    background: @primary-color;
+    border: 2px solid @white;
+    border-radius: 50px;
+    text-align: center;
     text-align: center;
     font-size: @font-size-base+1;
     font-weight: @font-weight-medium;
     height: @height-lg;
     width: 160px;
     margin-top: 31px;
-    background: @primary-color;
-    border: 2px solid @white;
-    border-radius: 50px;
-    text-align: center;
   }
-  button:focus {
+  button:hover {
     background: @primary-color;
     border: 2px solid @white;
     color: @white;
