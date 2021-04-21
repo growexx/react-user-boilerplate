@@ -25,7 +25,7 @@ const MainLayout = () => {
   const [state, setState] = React.useState({
     collapsed: true,
   });
-  const [, forceUpdate] = React.useState({}); // To disable submit button at the beginning.
+  const [, forceUpdate] = React.useState({});
 
   const toggle = () => {
     const { collapsed } = state;
