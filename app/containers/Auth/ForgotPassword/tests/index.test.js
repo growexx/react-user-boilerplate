@@ -42,11 +42,6 @@ describe('<ForgotPassword />', () => {
     request.mockClear();
   });
 
-  it('Expect to not log errors in console', () => {
-    const { getByText } = componentWrapper();
-    expect(getByText('')).toBeTruthy();
-  });
-
   it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
