@@ -79,6 +79,20 @@
   <br/>
   Support for React-Final-Form can be found in <b>feature/React-Final-Form</b> branch.
   </dd>
+  <dt>Social Login with firebase</dt>
+  <dd>Boilerplate supports social login using firebase. It has demo and setup added out of the box for firebase and it's authentication functions. This feature is optional and is based on requirement, so not merged in main branch.
+  <br/>
+  Support for firebase authentication can be found in <b>feature/social-login</b> branch.
+
+  More about firebase setup can be found [here](docs/general/firebase.md).
+  </dd>
+  <dt>Two Factor Authentication</dt>
+  <dd>Boilerplate supports two factor authentication. It has demo and setup added out of the box for two factor authentication. This feature is optional and is based on requirement, so not merged in main branch.
+  <br/>
+  Support for two factor authentication can be found in <b>feature/two-factor-authentication</b> branch.
+
+  More about firebase setup can be found [here](docs/general/twoFactorAuthentication.md).
+  </dd>
 </dl>
 
 But wait... there's more!
@@ -99,11 +113,12 @@ There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on ho
 ## Quick start
 
 1.  Make sure that you have Node.js v8.15.1 and npm v5 or above installed.
-2.  Clone this repo using `git clone --depth=1 https://github.com/react-boilerplate/react-boilerplate.git <YOUR_PROJECT_NAME>`
+2.  Clone this repo using `git clone https://github.com/growexx/react-user-boilerplate.git`
 3.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.<br />
 4.  Run `npm run setup` in order to install dependencies and clean the git repo.<br />
     _At this point you can run `npm start` to see the example app at `http://localhost:3000`._
 5.  Run `npm run clean` to delete the example app.
+6.  Add env file into the project's main directory. Values for env file can be found [here](docs/general/env.md). 
 
 Now you're ready to rumble!
 
