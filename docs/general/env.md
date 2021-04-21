@@ -1,8 +1,18 @@
+# development mode
 NODE_ENV <br/>
+# API Endpoint
 API_URL   <br/>
+
+# Google Analytics
 REACT_APP_GA_TAG_ID   <br/>
+
+# GraphQL Endpoint
 REACT_APP_GRAPHQL_ENDPOINT <br/>
+
+# GraphQL Subscription Endpoint
 REACT_APP_WS_ENDPOINT <br/>
+
+# Firebase 
 REACT_APP_FIREBASE_API_KEY <br/>
 REACT_APP_FIREBASE_AUTH_DOMAIN <br/>
 REACT_APP_FIREBASE_PROJECT_ID <br/>

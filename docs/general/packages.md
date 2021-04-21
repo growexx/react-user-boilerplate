@@ -67,4 +67,5 @@ Following are the packages used in the boilerplate
 | subscriptions-          | Graphql websocket server and client helper      |
 | transport-ws            |                                                 |
 | firebase                | For Firebase services                           |
-| dotenv                  | loads environment modules to process.env        |
+| dotenv                  | Loads environment modules to process.env        |
+| react-otp-input         | Input for otp.                                  |
