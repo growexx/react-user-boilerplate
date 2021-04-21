@@ -80,10 +80,18 @@
   Support for React-Final-Form can be found in <b>feature/React-Final-Form</b> branch.
   </dd>
   <dt>Social Login with firebase</dt>
-  <dd>Boilerplate supports social login using firebase. It has demo and setup added out of the box for firebase and it's authentication functions. 
+  <dd>Boilerplate supports social login using firebase. It has demo and setup added out of the box for firebase and it's authentication functions. This feature is optional and is based on requirement, so not merged in main branch.
   <br/>
+  Support for firebase authentication can be found in <b>feature/social-login</b> branch.
 
   More about firebase setup can be found [here](docs/general/firebase.md).
+  </dd>
+  <dt>Two Factor Authentication</dt>
+  <dd>Boilerplate supports two factor authentication. It has demo and setup added out of the box for two factor authentication. This feature is optional and is based on requirement, so not merged in main branch.
+  <br/>
+  Support for two factor authentication can be found in <b>feature/two-factor-authentication</b> branch.
+
+  More about firebase setup can be found [here](docs/general/twoFactorAuthentication.md).
   </dd>
 </dl>
 

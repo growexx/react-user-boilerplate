@@ -27,7 +27,9 @@ Following are the features included in the boilerplate
 | Graphql Support         | Graphql support provided for the boilerplate.   |
 | React-Final-Form        | React-Final-Form support added.                 |
 | Redux-Form              | Redux-Form support added.                       |
-| Social login            | boilerplate supports social login using firebase|
+| Social login            | Boilerplate supports social login using firebase|
+| Two Factor              | Two Factor authentication with otp.             |
+| Authentication          |                                                 |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -42,7 +44,7 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | **Components**          |                                                 |
 |                         |                                                 |
-| Base Layout Integrated  | Base layout with routes, header and sidebar     |                         | Storybook support       | Every component made in boilerplate has         |
+| Base Layout Integrated  | Base layout with routes, header and sidebar     |                       | Storybook support       | Every component made in boilerplate has         |
 |                         | storybook support where you can get visual      |
 |                         | idea of how component looks.                    |
 | Login and Registration  | Login and registration page redux saga and api  |
@@ -51,12 +53,14 @@ Following are the features included in the boilerplate
 | Footer component        | Basic footer implemented.                       |
 | File Upload             | File Upload component.                          |
 | Image Upload            | Image editor before upload.                     |
+| OTPComponent            | Component to capture OTP.                       |
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
 |                         |                                                 |
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
-| Export Data as CSV      | Export data as csv ( client and backend side )  |                         | Numeral Conversion      | Numeral js library added for all numeric actions|   
+| Export Data as CSV      | Export data as csv ( client and backend side )  |         
+| Numeral Conversion      | Numeral js library added for all numeric actions|   
 | Localstorage util       | Util to add, delete and get items from          |
 |                         | localstorage.                                   |
 | Event Emitter           | Util to on and off emitter events.              |
@@ -68,6 +72,7 @@ Following are the features included in the boilerplate
 | Google Analytics        | Analytics helper util.                          |
 | UserExists              | tells if user is logged in or logged out.       |
 | FontFaces               | Add font faces with this function.              |
+| Firebase                | Setup and util functions for firebase           |
 |                         |                                                 |
 | **Examples**            |                                                 |
 |                         |                                                 |
@@ -82,6 +87,9 @@ Following are the features included in the boilerplate
 | Google Analytics events | Sidebar clicks capturing GA demo.               |
 | Apollo Hooks demo       | Basic demo for apollo hooks.                    |
 | React-Final-Form        | Basic demo  for React-Final-Form.               |
+| Social Login demo       | Basic demo  for google and facebook login.      |
+| Two Factor              | Basic demo  for OtpComponent and two factor     |
+| Authentication          | authentication.                                 |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
@@ -96,4 +104,6 @@ Following are the features included in the boilerplate
 > Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
 > Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
 > Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
-> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** 
+> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** <br/>
+> Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** <br/>
+> Two factor authentication support for boilerplate can be found in branch:  **feature/two-factor-authentication** 
