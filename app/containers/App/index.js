@@ -18,6 +18,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
 import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
+import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
 import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
@@ -75,6 +76,11 @@ export default function App() {
         />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
+        <AuthRoute
+          exact
+          path={ROUTES.FORGOT_PASSWORD}
+          component={ForgotPassword}
+        />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>

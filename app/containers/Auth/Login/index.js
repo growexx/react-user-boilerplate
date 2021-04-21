@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Form, Input, Button, notification } from 'antd';
 import {
@@ -18,13 +19,14 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
 import messages from './messages';
 import { StyledLogin } from './StyledLogin';
-import { StyledAuthContainer } from '../StyledAuthContainer';
-import AuthSideContainer from '../index';
-import { AUTH_TYPE } from '../constants';
 import { changeEmail, changePassword, fireLogin } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import { selectLogin } from './selectors';
+import { StyledAuthContainer } from '../StyledAuthContainer';
+import AuthSideContainer from '../index';
+import { AUTH_TYPE } from '../constants';
+import { ROUTES } from '../../constants';
 
 const key = 'login';
 
@@ -107,6 +109,9 @@ export function Login() {
               </Button>
             </Form.Item>
           </div>
+          <Link to={ROUTES.FORGOT_PASSWORD}>
+            <FormattedMessage {...messages.forgotPassword} />
+          </Link>
         </StyledLogin>
         {stateToProps.error === true && showNotification()}
       </StyledAuthContainer>
