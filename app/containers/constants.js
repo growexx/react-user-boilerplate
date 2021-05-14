@@ -17,6 +17,7 @@ export const ROUTES = {
   NUMERAL_CONVERTER: '/number-converter-demo',
   SAMPLE_FORM: '/sample-form',
   CHANGE_PASSWORD: '/change-password',
+  FORGOT_PASSWORD: '/forgot-password',
 };
 
 // API-ROUTES
@@ -29,6 +30,7 @@ export const API_ENDPOINTS = {
     'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
   EXPORT_CSV: '',
   IMAGE_UPLOAD: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  FORGOT_PASSWORD: `${API_URL}/${AUTH}/forgetpassword`,
 };
 
 // Table Pagination default
