@@ -24,6 +24,7 @@ import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
+import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
@@ -75,6 +76,11 @@ export default function App() {
         />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
+        <AuthRoute
+          exact
+          path={ROUTES.FORGOT_PASSWORD}
+          component={ForgotPassword}
+        />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
