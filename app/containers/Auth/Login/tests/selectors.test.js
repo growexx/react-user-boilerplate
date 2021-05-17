@@ -6,7 +6,7 @@ import {
   makeSelectSuccess,
   makeSelectError,
 } from '../selectors';
-describe('Selectors Testing', () => {
+describe('Login Selectors Testing', () => {
   it('Testing selectLogin', () => {
     const mockState = {
       login: {

@@ -130,7 +130,8 @@ module.exports = require('./webpack.base.babel')({
           sizes: [16, 32, 192, 512],
         },
         {
-          src: path.resolve('app/images/apple-touch-icon.png'),
+          src: path.resolve('app/images/favicons/apple-touch-icon.png'),
+          sizes: [120, 152, 167, 180],
           ios: true,
         },
       ],
