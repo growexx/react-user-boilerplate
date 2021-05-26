@@ -21,6 +21,7 @@ import Emitter from 'utils/events';
 import { userExists, getUserData } from 'utils/Helper';
 import { EMITTER_EVENTS } from 'utils/constants';
 import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
+
 const { Header, Content } = Layout;
 
 class MainLayout extends React.Component {
@@ -56,7 +57,14 @@ class MainLayout extends React.Component {
     if (userExists()) {
       return (
         <Spin spinning={this.props.appLoading} size="default">
-          <StyledMainLayout>
+          <StyledMainLayout
+            data-environment={
+              process.env.NODE_ENV !== 'production'
+                ? process.env.NODE_ENV
+                : null
+            }
+            className="main-layout"
+          >
             <Layout>
               <Layout>
                 <SideBar

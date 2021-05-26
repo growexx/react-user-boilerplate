@@ -56,6 +56,32 @@ export const StyledMainLayout = styled.div`
     padding: 0;
     background-color: @white;
   }
+  &[data-environment] {
+    &:before {
+      content: attr(data-environment);
+      background: #ff8c1e;
+      height: 25px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 200;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    > .ant-layout {
+      position: relative;
+      top: 25px;
+    }
+  }
+
+  &[data-environment='development'] {
+    &:before {
+      background: #b6c5cd;
+    }
+  }
 `;
 
 export const ToggleBreadCrumb = styled.div`
