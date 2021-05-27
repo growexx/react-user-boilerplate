@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Check component:<ConnectedJiraList /> is rendering properly Should render and match the snapshot 1`] = `
+exports[`Check component:<Users /> is rendering properly Should render and match the snapshot 1`] = `
 <div>
   <div
     class="ant-page-header styled__PageHeaderWrapper-sc-1d9g05f-2 bmbGQz ant-page-header-ghost"

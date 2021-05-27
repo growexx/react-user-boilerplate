@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { fireEvent, render, waitForElement, wait } from 'react-testing-library';
+import { fireEvent, render, waitForElement } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { browserHistory } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -34,31 +34,31 @@ const props = {
 
 const fieldUpdateViaPlaceHolder = [
   {
-    key: 'First Name',
+    key: 'john.doe@growexx.com',
+    value: USER_DATA.EMAIL,
+  },
+  {
+    key: 'John',
     value: USER_DATA.NAME,
   },
   {
-    key: 'Last Name',
-    value: USER_DATA.URL,
-  },
-  {
-    key: 'Email',
-    value: USER_DATA.EMAIL,
+    key: 'Doe',
+    value: USER_DATA.NAME,
   },
 ];
 
-const componentWrapper = () =>
+const componentWrapper = updatedProps =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <Users {...props} />
+          <Users {...props} {...updatedProps} />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
   );
 
-describe('Check component:<ConnectedJiraList /> is rendering properly', () => {
+describe('Check component:<Users /> is rendering properly', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
@@ -111,9 +111,21 @@ describe('Check component:<ConnectedJiraList /> is rendering properly', () => {
     // Check Elements are showing
     expect(getByText('OK', { trim: true })).toBeTruthy();
   });
+
+  it('Click Delete: Show Confirmation Modal and click confirm', async () => {
+    const { getByTestId, getByText } = componentWrapper();
+    await waitForElement(() => getByText('Active'));
+
+    // Click Delete Button
+    fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON));
+
+    // Check Elements are showing
+    expect(getByText('OK', { trim: true })).toBeTruthy();
+    fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON_CONFIRMED));
+  });
 });
 
-describe.skip('Check listing of users is rendering properly', () => {
+describe('Check listing of users is rendering properly', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
@@ -128,37 +140,76 @@ describe.skip('Check listing of users is rendering properly', () => {
 
   it('No Records found for users', async () => {
     request.mockImplementation(() => Promise.resolve(responseWithZeroList()));
-    const { getByText } = componentWrapper();
+    const { getByText } = componentWrapper({ demo: false });
     await waitForElement(() => getByText('No Data'));
     expect(getByText('No Data')).toBeTruthy();
   });
 
   it('Users Listing with few records should be shown', async () => {
     request.mockImplementation(() => Promise.resolve(responseWithList()));
-    const { getByText } = componentWrapper();
-    await waitForElement(() => getByText('No Data'));
+    const { getByText } = componentWrapper({ demo: false });
+    await waitForElement(() => getByText('Active'));
 
-    expect(getByText(USER_DATA.EMAIL)).toBeTruthy();
+    expect(getByText('Active')).toBeTruthy();
   });
 
   it('Users Listing with pagination', async () => {
     request.mockImplementation(() => Promise.resolve(responseWithList()));
-    const { getByText, getByTitle } = componentWrapper();
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
+    const { getByText, getByTitle } = componentWrapper({ demo: false });
+    await waitForElement(() => getByText('Active'));
 
-    expect(getByText(USER_DATA.EMAIL)).toBeTruthy();
+    expect(getByText('Active')).toBeTruthy();
     fireEvent.click(getByTitle('2'));
   });
 
   it('Failed Users Listing api', async () => {
     request.mockImplementationOnce(() => Promise.reject(failedResponse));
-    const { getByText } = componentWrapper();
+    const { getByText } = componentWrapper({ demo: false });
     await waitForElement(() => getByText('No Data'));
     expect(getByText('No Data')).toBeTruthy();
   });
+
+  it('Toggle User Status', async () => {
+    request.mockImplementation(() => Promise.resolve(responseWithList()));
+
+    const { getByTestId, getByText } = componentWrapper({
+      demo: false,
+    });
+    // Wait till data shows
+    await waitForElement(() => getByText('Active'));
+
+    // Fire Event
+    fireEvent.click(getByTestId(TEST_IDS.STATUS_TOGGLE));
+  });
+
+  it('Toggle User Status Local', async () => {
+    request.mockImplementation(() => Promise.resolve(responseWithList()));
+
+    const { getByTestId, getByText } = componentWrapper({
+      demo: true,
+    });
+    // Wait till data shows
+    await waitForElement(() => getByText('Active'));
+
+    // Fire Event
+    fireEvent.click(getByTestId(TEST_IDS.STATUS_TOGGLE));
+  });
+
+  it('Toggle User Status Local', async () => {
+    request.mockImplementation(() => Promise.resolve(failedResponse()));
+
+    const { getByTestId, getByText } = componentWrapper({
+      demo: true,
+    });
+    // Wait till data shows
+    await waitForElement(() => getByText('Active'));
+
+    // Fire Event
+    fireEvent.click(getByTestId(TEST_IDS.STATUS_TOGGLE));
+  });
 });
 
-describe.skip('New Users', () => {
+describe('New Users', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
@@ -174,7 +225,9 @@ describe.skip('New Users', () => {
   it('Add new users with success', () => {
     request.mockImplementation(() => Promise.resolve(addNewUserSuccess()));
 
-    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper();
+    const { getByTestId, getByPlaceholderText, getByText } = componentWrapper({
+      demo: false,
+    });
     // Fire Event
     fireEvent.click(getByTestId(TEST_IDS.ADD_USER));
 
@@ -184,28 +237,45 @@ describe.skip('New Users', () => {
         target: { value: d.value },
       });
     });
-
     // Check Elements are showing
     expect(getByText('Add User')).toBeTruthy();
-    fireEvent.click(getByText('Add User'));
+    fireEvent.click(getByText('Add'));
+  });
+
+  it('Add new users with success', () => {
+    const { getByTestId, getByPlaceholderText, getByText } = componentWrapper({
+      demo: true,
+    });
+    // Fire Event
+    fireEvent.click(getByTestId(TEST_IDS.ADD_USER));
+
+    // Update Fields
+    fieldUpdateViaPlaceHolder.forEach(d => {
+      fireEvent.change(getByPlaceholderText(d.key), {
+        target: { value: d.value },
+      });
+    });
+    // Check Elements are showing
+    expect(getByText('Add User')).toBeTruthy();
+    fireEvent.click(getByText('Add'));
   });
 
   it('Add new user with cancel option', () => {
     request.mockImplementation(() => Promise.resolve(addNewUserSuccess()));
 
-    const { getByTestId, getByText } = componentWrapper();
+    const { getByTestId } = componentWrapper({ demo: false });
     // Fire Event
     fireEvent.click(getByTestId(TEST_IDS.ADD_USER));
 
-    // Check Elements are showing
-    expect(getByText('Add User')).toBeTruthy();
     fireEvent.click(getByTestId(TEST_IDS.USER_MODAL_CANCEL));
   });
 
-  it('Add new jira with failure', () => {
+  it('Add new user with failure', () => {
     request.mockImplementation(() => Promise.reject(addNewUserFailure()));
 
-    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper();
+    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper({
+      demo: false,
+    });
     // Fire Event
     fireEvent.click(getByTestId(TEST_IDS.ADD_USER));
 
@@ -218,11 +288,11 @@ describe.skip('New Users', () => {
 
     // Check Elements are showing
     expect(getByText('Add User')).toBeTruthy();
-    fireEvent.click(getByText('Add User'));
+    fireEvent.click(getByTestId(TEST_IDS.USER_MODAL_OK));
   });
 });
 
-describe.skip('Update User', () => {
+describe('Update User', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
@@ -235,68 +305,88 @@ describe.skip('Update User', () => {
     request.mockClear();
   });
 
-  it('Update jira with success', async () => {
-    request
-      .mockImplementationOnce(() => Promise.resolve(responseWithList()))
-      .mockImplementationOnce(() => Promise.resolve(addNewUserSuccess()));
+  it('Update user with success', async () => {
+    request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
 
-    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper();
+    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper({
+      demo: false,
+    });
     expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
+    await waitForElement(() => getByText('Active'));
 
     // Fire Event
     fireEvent.click(getByTestId(TEST_IDS.EDIT_BUTTON));
 
     // Update Fields
-    fieldUpdateViaPlaceHolder
-      .filter(item => item.key !== 'JIRA url')
-      .forEach(d => {
-        fireEvent.change(getByPlaceholderText(d.key), {
-          target: { value: d.value },
-        });
+    fieldUpdateViaPlaceHolder.forEach(d => {
+      fireEvent.change(getByPlaceholderText(d.key), {
+        target: { value: d.value },
       });
+    });
 
     // Check Elements are showing
     expect(getByText('Update')).toBeTruthy();
     fireEvent.click(getByTestId(TEST_IDS.ADD_USER));
-    expect(request).toHaveBeenCalledTimes(2);
   });
 
-  it('Update jira with cancel', async () => {
+  it('Update user with success', async () => {
     request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
 
-    const { getByTestId, getByText } = componentWrapper();
+    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper({
+      demo: true,
+    });
+    await waitForElement(() => getByText('Active'));
+
+    // Fire Event
+    fireEvent.click(getByTestId(TEST_IDS.EDIT_BUTTON));
+
+    // Update Fields
+    fieldUpdateViaPlaceHolder.forEach(d => {
+      fireEvent.change(getByPlaceholderText(d.key), {
+        target: { value: d.value },
+      });
+    });
+
+    // Check Elements are showing
+    expect(getByText('Update')).toBeTruthy();
+    fireEvent.click(getByText('Update'));
+  });
+
+  it('Update user with cancel', async () => {
+    request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
+
+    const { getByTestId, getByText } = componentWrapper({ demo: false });
     expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
+    await waitForElement(() => getByText('Active'));
 
     // Fire Event
     fireEvent.click(getByTestId(TEST_IDS.EDIT_BUTTON));
 
     // Check Elements are showing
     expect(getByText('Update')).toBeTruthy();
-    fireEvent.click(getByTestId(TEST_IDS.CONNECT_JIRA_CANCEL_BUTTON));
+    fireEvent.click(getByTestId(TEST_IDS.USER_MODAL_CANCEL));
   });
 
-  it('Jira Update failure', async () => {
+  it('User Update failure', async () => {
     request
       .mockImplementationOnce(() => Promise.resolve(responseWithList()))
       .mockImplementationOnce(() => Promise.resolve(addNewUserFailure()));
 
-    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper();
+    const { getByTestId, getByText, getByPlaceholderText } = componentWrapper({
+      demo: false,
+    });
     expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
+    await waitForElement(() => getByText('Active') || getByText('Suspended'));
 
     // Fire Event
     fireEvent.click(getByTestId(TEST_IDS.EDIT_BUTTON));
 
     // Update Fields
-    fieldUpdateViaPlaceHolder
-      .filter(item => item.key !== 'JIRA url')
-      .forEach(d => {
-        fireEvent.change(getByPlaceholderText(d.key), {
-          target: { value: d.value },
-        });
+    fieldUpdateViaPlaceHolder.forEach(d => {
+      fireEvent.change(getByPlaceholderText(d.key), {
+        target: { value: d.value },
       });
+    });
 
     // Check Elements are showing
     expect(getByText('Update')).toBeTruthy();
@@ -304,117 +394,54 @@ describe.skip('Update User', () => {
   });
 });
 
-describe.skip('Individual record actions', () => {
+describe('Search & Sorting user list', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
 
   beforeEach(() => {
-    request.mockImplementation(() => Promise.resolve(responseWithZeroList()));
+    request.mockImplementation(() => Promise.resolve(responseWithList()));
   });
 
   afterEach(() => {
     request.mockClear();
   });
 
-  it('Click: Sync Logs should show modal', async () => {
+  it('Search user with success', async () => {
     request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
 
-    const { getByTestId, getByText } = componentWrapper();
-    expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
+    const { getByText } = componentWrapper({
+      demo: false,
+    });
 
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.SYNC_INDIVIDUAL_BUTTON));
-
-    // Check Elements are showing
-    expect(getByText('Period')).toBeTruthy();
+    // Update Fields
+    fireEvent.click(getByText('Name'));
   });
 
-  it('Click: Delete Jira should show confirmation popup', async () => {
-    request
-      .mockImplementationOnce(() => Promise.resolve(responseWithList()))
-      .mockImplementationOnce(() => Promise.resolve({ status: 1 }));
-
-    const { getByTestId, getByText } = componentWrapper();
-    await wait(() => expect(request).toHaveBeenCalledTimes(1));
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON));
-
-    // Check Elements are showing
-    expect(getByText('Are you sure you want to Delete?')).toBeTruthy();
-    fireEvent.click(getByTestId(TEST_IDS.POPUP_OK_BUTTON));
-  });
-
-  it('Click: Disable Jira should show confirmation popup', async () => {
-    request.mockImplementationOnce(() =>
-      Promise.resolve(responseWithList({ isActive: true })),
-    );
-
-    const { getByTestId, getByText } = componentWrapper();
-    expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
-
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.DISABLE_BUTTON));
-
-    // Check Elements are showing
-    expect(getByText('Are you sure you want to Disable?')).toBeTruthy();
-  });
-
-  it('Click: Activate Jira should show confirmation popup and confirm should update status', async () => {
-    request
-      .mockImplementationOnce(() =>
-        Promise.resolve(responseWithList({ isActive: false })),
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({ status: 1, message: 'Updated' }),
-      );
-
-    const { getByTestId, getByText } = componentWrapper();
-    expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.DISABLE_BUTTON));
-    fireEvent.click(getByTestId(TEST_IDS.POPUP_OK_BUTTON));
-  });
-
-  it('Click: Activate Jira should show confirmation popup and confirm should failed api', async () => {
-    request
-      .mockImplementationOnce(() =>
-        Promise.resolve(responseWithList({ isActive: false })),
-      )
-      .mockImplementationOnce(() =>
-        Promise.reject(new Error('Something went wrong')),
-      );
-
-    const { getByTestId, getByText } = componentWrapper();
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.DISABLE_BUTTON));
-    fireEvent.click(getByTestId(TEST_IDS.POPUP_OK_BUTTON));
-  });
-
-  it('Click: Activate Jira should show confirmation popup and then cancel popup', async () => {
-    request.mockImplementationOnce(() =>
-      Promise.resolve(responseWithList({ isActive: false })),
-    );
-
-    const { getByTestId, getByText } = componentWrapper();
-    expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.DISABLE_BUTTON));
-    fireEvent.click(getByTestId(TEST_IDS.POPUP_CANCEL_BUTTON));
-  });
-
-  it('Click: Sync Logs should show modal and cancel modal', async () => {
+  it('Search user with success', async () => {
     request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
-    const { getByTestId, getByText } = componentWrapper();
-    expect(request).toHaveBeenCalledTimes(1);
-    await waitForElement(() => getByText(USER_DATA.EMAIL));
-    // Fire Event
-    fireEvent.click(getByTestId(TEST_IDS.SYNC_INDIVIDUAL_BUTTON));
-    fireEvent.click(getByTestId(TEST_IDS.SYNC_CANCEL_BUTTON));
+
+    const { getByPlaceholderText } = componentWrapper({
+      demo: false,
+    });
+
+    // Update Fields
+    fireEvent.change(getByPlaceholderText('Search User'), {
+      target: { value: 'john' },
+    });
+  });
+
+  it('Search user with success', async () => {
+    const { getByPlaceholderText } = componentWrapper({});
+
+    // Update Fields
+    fireEvent.change(getByPlaceholderText('Search User'), {
+      target: { value: 'a' },
+    });
+
+    // Update Fields
+    fireEvent.change(getByPlaceholderText('Search User'), {
+      target: { value: '' },
+    });
   });
 });

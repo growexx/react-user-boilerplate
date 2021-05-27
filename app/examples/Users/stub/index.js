@@ -513,24 +513,19 @@ let USERS = [
 });
 
 const getSortedUsers = (sortType, sortKey, allUsers) => {
-  if (sortType) {
-    let updatedSortKey = sortKey;
-    if (sortKey === 'name') {
-      updatedSortKey = 'firstName';
-    }
-    return allUsers.sort((user1, user2) => {
-      if (updatedSortKey === 'id') {
-        return sortType === 1
-          ? user1[updatedSortKey] - user2[updatedSortKey]
-          : user2[updatedSortKey] - user1[updatedSortKey];
-      }
+  const updatedSortKey = sortKey;
 
+  return allUsers.sort((user1, user2) => {
+    if (updatedSortKey === 'id') {
       return sortType === 1
-        ? user1[updatedSortKey].localeCompare(user2[updatedSortKey])
-        : user2[updatedSortKey].localeCompare(user1[updatedSortKey]);
-    });
-  }
-  return allUsers;
+        ? user1[updatedSortKey] - user2[updatedSortKey]
+        : user2[updatedSortKey] - user1[updatedSortKey];
+    }
+
+    return sortType === 1
+      ? user1[updatedSortKey].localeCompare(user2[updatedSortKey])
+      : user2[updatedSortKey].localeCompare(user1[updatedSortKey]);
+  });
 };
 
 export const getUsersAPIMock = ({
@@ -608,7 +603,7 @@ export const updateUserAPIMock = (payload, newRecord) => {
   }
   return Promise.resolve({
     status: 1,
-    message: newRecord ? 'Created' : 'Updated',
+    message: 'Success',
   });
 };
 
@@ -629,14 +624,14 @@ export const responseWithZeroList = () => ({
   status: 1,
 });
 
-export const responseWithList = () => ({
+export const responseWithList = ({ status } = {}) => ({
   data: USERS.splice(0, DEFAULT_LIMIT),
   pagination: {
     pageSize: DEFAULT_LIMIT,
     current: DEFAULT_PAGE,
-    total: 0,
+    total: USERS.length,
   },
-  status: 1,
+  status: status || 1,
 });
 
 export const failedResponse = {
@@ -647,13 +642,7 @@ export const failedResponse = {
 
 // Add | Edit
 export const addNewUserFailure = () => ({
-  response: {
-    json: () =>
-      Promise.resolve({
-        message: 'Something went wrong',
-        status: 0,
-      }),
-  },
+  response: {},
 });
 
 export const addNewUserSuccess = () => ({
