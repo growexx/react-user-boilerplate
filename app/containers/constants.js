@@ -86,14 +86,14 @@ export const SORTING = {
  * @param {string} order  ['ascend','descend']
  * @returns
  */
-export const GET_SORT_ORDER = (order, defaultSort = SORTING.DESC) => {
+export const GET_SORT_ORDER = order => {
   switch (order) {
     case 'ascend':
       return SORTING.ASC;
     case 'descend':
       return SORTING.DESC;
     default:
-      return defaultSort;
+      return SORTING.DESC;
   }
 };
 

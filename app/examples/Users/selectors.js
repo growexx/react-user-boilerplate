@@ -1,12 +1,11 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
 import { USERS_KEY } from './constants';
 
 /**
  * Direct selector to the user
  */
 
-const selectUser = state => (state && state[USERS_KEY]) || initialState;
+const selectUser = state => state && state[USERS_KEY];
 
 /**
  * Default selector used by user
