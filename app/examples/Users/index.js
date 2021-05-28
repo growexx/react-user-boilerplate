@@ -397,7 +397,7 @@ export class Users extends Component {
   onTableOptionChange = (pagination, _filters, sorter) => {
     this.loadUserDetails({
       pagination,
-      sortType: GET_SORT_ORDER(sorter.order, SORTING.ASC),
+      sortType: GET_SORT_ORDER(sorter.order),
       sortKey: sorter.columnKey,
     });
   };
