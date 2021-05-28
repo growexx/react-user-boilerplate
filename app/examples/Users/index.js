@@ -107,8 +107,8 @@ export class Users extends Component {
       },
       {
         title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'firstName',
+        key: 'firstName',
         width: '20%',
         sorter: true,
         sortDirections: ['descend', 'ascend', 'descend'],

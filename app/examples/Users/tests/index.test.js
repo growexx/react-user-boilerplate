@@ -444,4 +444,16 @@ describe('Search & Sorting user list', () => {
       target: { value: '' },
     });
   });
+
+  it('Sorting', async () => {
+    const { getByText } = componentWrapper({});
+
+    // Update Fields
+    fireEvent.click(getByText('Name'));
+    fireEvent.click(getByText('Name'));
+    fireEvent.click(getByText('Name'));
+    fireEvent.click(getByText('User Id'));
+    fireEvent.click(getByText('User Id'));
+    fireEvent.click(getByText('User Id'));
+  });
 });
