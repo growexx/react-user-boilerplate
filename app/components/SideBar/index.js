@@ -8,6 +8,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { ROUTES } from 'containers/constants';
+import { showLogoInSideBar } from 'components/constants';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
 import { GET_FILTERED_MENU_ITEM } from './Constants';
@@ -21,15 +22,17 @@ const SideBar = props => (
     collapsed={props.collapsed}
     id="components-layout-demo-custom-trigger"
   >
-    <div className="logo">
-      <Link to={ROUTES.HOME}>
-        {!props.collapsed ? (
-          <img src={GrowExxLogo} alt="logo" />
-        ) : (
-          <img src={GrowExxTriangleLogo} alt="logo" />
-        )}
-      </Link>
-    </div>
+    {showLogoInSideBar(props.layoutVariant) ? (
+      <div className="logo">
+        <Link to={ROUTES.HOME}>
+          {!props.collapsed ? (
+            <img src={GrowExxLogo} alt="logo" />
+          ) : (
+            <img src={GrowExxTriangleLogo} alt="logo" />
+          )}
+        </Link>
+      </div>
+    ) : null}
     <Menu
       theme="dark"
       mode="inline"
@@ -51,4 +54,5 @@ SideBar.propTypes = {
   collapsed: PropTypes.bool,
   user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   location: PropTypes.object.isRequired,
+  layoutVariant: PropTypes.number,
 };

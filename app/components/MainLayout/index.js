@@ -6,29 +6,31 @@
  */
 
 import React from 'react';
-import { Layout, Spin } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectAppLoading } from 'containers/App/selectors';
 import App from 'containers/App';
-import Footer from 'components/Footer';
-import AppHeader from 'components/Header';
-import SideBar from 'components/SideBar';
 import Emitter from 'utils/events';
-import { userExists, getUserData } from 'utils/Helper';
+import { userExists } from 'utils/Helper';
 import { EMITTER_EVENTS } from 'utils/constants';
-import { StyledMainLayout, ToggleBreadCrumb } from './StyledMainLayout';
-
-const { Header, Content } = Layout;
+import { LAYOUT_CONFIG } from '../constants';
+import { StyledMainLayout } from './StyledMainLayout';
+import Layouts from './Layout';
 
 class MainLayout extends React.Component {
   constructor(props) {
     super(props);
+    const urlParams = new URLSearchParams(props.location.search);
+    const layoutVariant = urlParams.get('layout')
+      ? +urlParams.get('layout')
+      : 1;
     this.state = {
-      collapsed: true,
+      collapsed: ![LAYOUT_CONFIG.VERTICAL_OPTION_2].includes(layoutVariant),
+      layoutVariant,
     };
   }
 
@@ -54,9 +56,12 @@ class MainLayout extends React.Component {
   }
 
   render() {
+    const { appLoading } = this.props;
+    const { layoutVariant, collapsed } = this.state;
+
     if (userExists()) {
       return (
-        <Spin spinning={this.props.appLoading} size="default">
+        <Spin spinning={appLoading} size="default">
           <StyledMainLayout
             data-environment={
               process.env.NODE_ENV !== 'production'
@@ -65,49 +70,11 @@ class MainLayout extends React.Component {
             }
             className="main-layout"
           >
-            <Layout>
-              <Layout>
-                <SideBar
-                  collapsed={this.state.collapsed}
-                  user={getUserData()}
-                />
-                <Layout className="site-layout">
-                  <Header className="headerLayout">
-                    <ToggleBreadCrumb>
-                      <span
-                        className="sideBarTrigger"
-                        onClick={this.toggle}
-                        data-testid="ToggleIcon"
-                        onKeyDown={this.toggle}
-                        role="button"
-                        tabIndex={0}
-                        aria-label="Navigation Toggle"
-                      >
-                        {this.state.collapsed ? (
-                          <MenuUnfoldOutlined />
-                        ) : (
-                          <MenuFoldOutlined />
-                        )}
-                      </span>
-                    </ToggleBreadCrumb>
-                    <AppHeader />
-                  </Header>
-                  <Content
-                    className="site-layout-background"
-                    style={{
-                      margin: '24px 16px',
-                      padding: 24,
-                      minHeight: 280,
-                    }}
-                  >
-                    <App />
-                  </Content>
-                  <Layout className="site-layout">
-                    <Footer />
-                  </Layout>
-                </Layout>
-              </Layout>
-            </Layout>
+            <Layouts
+              collapsed={collapsed}
+              layoutVariant={layoutVariant}
+              toggle={this.toggle}
+            />
           </StyledMainLayout>
         </Spin>
       );
@@ -119,6 +86,7 @@ class MainLayout extends React.Component {
 
 MainLayout.propTypes = {
   appLoading: PropTypes.bool,
+  location: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -127,4 +95,4 @@ const mapStateToProps = createStructuredSelector({
 
 const withConnect = connect(mapStateToProps);
 
-export default compose(withConnect)(MainLayout);
+export default compose(withConnect)(withRouter(MainLayout));

@@ -10,8 +10,8 @@ import { MenuItems } from './Constants';
 import { StyledAppHeader, AvatarWrapper } from './StyledAppHeader';
 import Avatar from '../Avatar';
 
-const Header = () => (
-  <StyledAppHeader>
+const Header = props => (
+  <StyledAppHeader {...props}>
     <AvatarWrapper>
       <Notification />
       <Avatar menu={MenuItems} />
