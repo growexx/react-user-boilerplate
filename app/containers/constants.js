@@ -12,6 +12,7 @@ export const ROUTES = {
   LOGOUT: '/logout',
   LOADER: '/loader',
   EXPORT_DATA: '/export-data',
+  USERS: '/users',
   TEST_ADMIN_PAGE: '/admin',
   UNAUTHORIZED: '/403',
   NUMERAL_CONVERTER: '/number-converter-demo',
@@ -31,6 +32,7 @@ export const API_ENDPOINTS = {
   EXPORT_CSV: '',
   IMAGE_UPLOAD: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
   FORGOT_PASSWORD: `${API_URL}/${AUTH}/forgetpassword`,
+  USERS: `${API_URL}/users`,
 };
 
 // Table Pagination default
@@ -70,3 +72,36 @@ export const ROLE_BASED_SIDEBAR_MENU = {
   [ROLES.USER]: [],
   [ROLES.ADMIN]: [ROUTES.TEST_ADMIN_PAGE],
 };
+
+export const DEFAULT_PAGE_NO = 1;
+export const DEFAULT_SIZE = 10;
+export const SORTING = {
+  ASC: 1,
+  DESC: -1,
+  ascend: 1,
+  descend: -1,
+};
+/**
+ *
+ * @param {string} order  ['ascend','descend']
+ * @returns
+ */
+export const GET_SORT_ORDER = order => {
+  switch (order) {
+    case 'ascend':
+      return SORTING.ASC;
+    case 'descend':
+      return SORTING.DESC;
+    default:
+      return SORTING.DESC;
+  }
+};
+
+export const GET_DEFAULT_PAGINATION = () => ({
+  pageSize: DEFAULT_SIZE,
+  current: DEFAULT_PAGE_NO,
+  total: 0,
+});
+
+export const GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
+export const FULL_GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD hh:mm a';
