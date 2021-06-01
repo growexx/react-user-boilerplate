@@ -43,48 +43,8 @@ const HeaderMenuItem = styled(Menu.Item)`
 class Layouts extends React.PureComponent {
   render() {
     const { layoutVariant, collapsed, toggle } = this.props;
+    // eslint-disable-next-line default-case
     switch (layoutVariant) {
-      case 1:
-        return (
-          <Layout>
-            <SideBar
-              collapsed={collapsed}
-              user={getUserData()}
-              layoutVariant={layoutVariant}
-            />
-            <Layout className="site-layout">
-              <Header className="headerLayout">
-                <ToggleBreadCrumb>
-                  <span
-                    className="sideBarTrigger"
-                    onClick={toggle}
-                    data-testid="ToggleIcon"
-                    onKeyDown={toggle}
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Navigation Toggle"
-                  >
-                    {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                  </span>
-                </ToggleBreadCrumb>
-                <AppHeader />
-              </Header>
-              <Content
-                className="site-layout-background"
-                style={{
-                  margin: '24px 16px',
-                  padding: 24,
-                  minHeight: 280,
-                }}
-              >
-                <App />
-              </Content>
-              <Layout className="site-layout">
-                <Footer />
-              </Layout>
-            </Layout>
-          </Layout>
-        );
       case 2:
         return (
           <Layout>
@@ -159,7 +119,46 @@ class Layouts extends React.PureComponent {
           </Layout>
         );
       default:
-        return <div>No Layouts</div>;
+        return (
+          <Layout>
+            <SideBar
+              collapsed={collapsed}
+              user={getUserData()}
+              layoutVariant={layoutVariant}
+            />
+            <Layout className="site-layout">
+              <Header className="headerLayout">
+                <ToggleBreadCrumb>
+                  <span
+                    className="sideBarTrigger"
+                    onClick={toggle}
+                    data-testid="ToggleIcon"
+                    onKeyDown={toggle}
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Navigation Toggle"
+                  >
+                    {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                  </span>
+                </ToggleBreadCrumb>
+                <AppHeader />
+              </Header>
+              <Content
+                className="site-layout-background"
+                style={{
+                  margin: '24px 16px',
+                  padding: 24,
+                  minHeight: 280,
+                }}
+              >
+                <App />
+              </Content>
+              <Layout className="site-layout">
+                <Footer />
+              </Layout>
+            </Layout>
+          </Layout>
+        );
     }
   }
 }

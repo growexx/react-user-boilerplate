@@ -15,38 +15,39 @@ import { GET_FILTERED_MENU_ITEM } from './Constants';
 
 const { Sider } = Layout;
 
-const SideBar = props => (
-  <Sider
-    trigger={null}
-    collapsible
-    collapsed={props.collapsed}
-    id="components-layout-demo-custom-trigger"
-  >
-    {showLogoInSideBar(props.layoutVariant) ? (
-      <div className="logo">
-        <Link to={ROUTES.HOME}>
-          {!props.collapsed ? (
-            <img src={GrowExxLogo} alt="logo" />
-          ) : (
-            <img src={GrowExxTriangleLogo} alt="logo" />
-          )}
-        </Link>
-      </div>
-    ) : null}
-    <Menu
-      theme="dark"
-      mode="inline"
-      defaultSelectedKeys={[props.location.pathname]}
-      selectedKeys={[props.location.pathname]}
+const SideBar = props => {
+  const Logo = !props.collapsed ? (
+    <img src={GrowExxLogo} alt="logo" />
+  ) : (
+    <img src={GrowExxTriangleLogo} alt="logo" />
+  );
+  return (
+    <Sider
+      trigger={null}
+      collapsible
+      collapsed={props.collapsed}
+      id="components-layout-demo-custom-trigger"
     >
-      {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
-        <Menu.Item key={menu.to} icon={menu.icon}>
-          <Link to={menu.to}>{menu.tabName}</Link>
-        </Menu.Item>
-      ))}
-    </Menu>
-  </Sider>
-);
+      {showLogoInSideBar(props.layoutVariant) ? (
+        <div className="logo">
+          <Link to={ROUTES.HOME}>{Logo}</Link>
+        </div>
+      ) : null}
+      <Menu
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={[props.location.pathname]}
+        selectedKeys={[props.location.pathname]}
+      >
+        {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
+          <Menu.Item key={menu.to} icon={menu.icon}>
+            <Link to={menu.to}>{menu.tabName}</Link>
+          </Menu.Item>
+        ))}
+      </Menu>
+    </Sider>
+  );
+};
 
 export default withRouter(SideBar);
 

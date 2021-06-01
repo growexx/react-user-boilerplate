@@ -27,7 +27,7 @@ class MainLayout extends React.Component {
     const urlParams = new URLSearchParams(props.location.search);
     const layoutVariant = urlParams.get('layout')
       ? +urlParams.get('layout')
-      : 1;
+      : props.defaultLayout;
     this.state = {
       collapsed: ![LAYOUT_CONFIG.VERTICAL_OPTION_2].includes(layoutVariant),
       layoutVariant,
@@ -87,6 +87,11 @@ class MainLayout extends React.Component {
 MainLayout.propTypes = {
   appLoading: PropTypes.bool,
   location: PropTypes.object,
+  defaultLayout: PropTypes.number,
+};
+
+MainLayout.defaultProps = {
+  defaultLayout: 1,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -182,6 +182,20 @@ describe('Check listing of users is rendering properly', () => {
     fireEvent.click(getByTestId(TEST_IDS.STATUS_TOGGLE));
   });
 
+  it('Click Delete: Show Confirmation Modal and click confirm', async () => {
+    request.mockImplementation(() => Promise.resolve(failedResponse()));
+
+    const { getByTestId, getByText } = componentWrapper();
+    await waitForElement(() => getByText('Active'));
+
+    // Click Delete Button
+    fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON));
+
+    // Check Elements are showing
+    expect(getByText('OK', { trim: true })).toBeTruthy();
+    fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON_CONFIRMED));
+  });
+
   it('Toggle User Status Local', async () => {
     request.mockImplementation(() => Promise.resolve(responseWithList()));
 

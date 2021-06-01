@@ -4,8 +4,14 @@ export const StyledAppHeader = styled.div`
   display: flex;
   flex: 1;
   line-height: 0;
-  background-color: ${props => (props.menuBackground ? '#190426' : null)};
-  color: ${props => (props.menuBackground ? 'white' : null)};
+`;
+
+export const StyledAppHeaderColored = styled.div`
+  display: flex;
+  flex: 1;
+  line-height: 0;
+  background-color: #190426;
+  color: white;
 `;
 
 export const AvatarWrapper = styled.div`
