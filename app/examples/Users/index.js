@@ -238,6 +238,12 @@ export class Users extends Component {
     });
   };
 
+  showError(error) {
+    error.response
+      .json()
+      .then(err => notification.error({ message: err.message }));
+  }
+
   /**
    * Handles Popup Ok Action
    * Used for Delete, Toggle Status
@@ -273,9 +279,7 @@ export class Users extends Component {
               this.loadUserDetails();
             })
             .catch(error => {
-              error.response
-                .json()
-                .then(err => notification.error({ message: err.message }));
+              this.showError(error);
               resetAction();
             });
         } else {
@@ -295,9 +299,7 @@ export class Users extends Component {
               this.loadUserDetails();
             })
             .catch(error => {
-              error.response
-                .json()
-                .then(err => notification.error({ message: err.message }));
+              this.showError(error);
               resetAction();
             });
         }
@@ -501,9 +503,7 @@ export class Users extends Component {
             reset();
           })
           .catch(error => {
-            error.response
-              .json()
-              .then(err => notification.error({ message: err.message }));
+            this.showError(error);
             this.setState({
               isListLoading: false,
             });
@@ -544,7 +544,7 @@ export class Users extends Component {
 
     return (
       <Modal
-        title="Edit User"
+        title={userId ? 'Edit User' : 'Add User'}
         visible={showUserModal}
         onOk={handleSubmit(this.updateUser)}
         confirmLoading={isListLoading}

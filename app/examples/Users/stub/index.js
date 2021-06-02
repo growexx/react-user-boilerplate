@@ -514,23 +514,26 @@ let USERS = [
 
 const getSortedUsers = (sortType, sortKey, allUsers) => {
   const updatedSortKey = sortKey;
+  try {
+    return allUsers.sort((user1, user2) => {
+      if (updatedSortKey === 'id') {
+        return sortType === 1
+          ? user1[updatedSortKey] - user2[updatedSortKey]
+          : user2[updatedSortKey] - user1[updatedSortKey];
+      }
 
-  return allUsers.sort((user1, user2) => {
-    if (updatedSortKey === 'id') {
       return sortType === 1
-        ? user1[updatedSortKey] - user2[updatedSortKey]
-        : user2[updatedSortKey] - user1[updatedSortKey];
-    }
-
-    return sortType === 1
-      ? user1[updatedSortKey].localeCompare(user2[updatedSortKey])
-      : user2[updatedSortKey].localeCompare(user1[updatedSortKey]);
-  });
+        ? user1[updatedSortKey].localeCompare(user2[updatedSortKey])
+        : user2[updatedSortKey].localeCompare(user1[updatedSortKey]);
+    });
+  } catch (error) {
+    return allUsers;
+  }
 };
 
 export const getUsersAPIMock = ({
-  limit,
-  skip,
+  limit = DEFAULT_LIMIT,
+  skip = DEFAULT_PAGE,
   sortType,
   sortKey,
   search,
@@ -541,7 +544,7 @@ export const getUsersAPIMock = ({
   let allUsers = USERS;
   allUsers = getSortedUsers(sortType, sortKey, allUsers);
 
-  const contains = (parentObject, key, term = '') =>
+  const contains = (parentObject, key, term) =>
     parentObject[key].toLocaleLowerCase().includes(term.toLocaleLowerCase());
 
   if (search) {

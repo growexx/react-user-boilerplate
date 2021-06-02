@@ -3,6 +3,7 @@ import {
   VALIDATION_MESSAGES,
   validEmail,
   validUrl,
+  createValidator,
 } from 'utils/formValidations';
 const formValueTestingScenarios = {
   UNDEFINED: undefined,
@@ -88,5 +89,33 @@ describe('required', () => {
     expect(
       required(formValueTestingScenarios.VALID_REQUIRED_VALUE_TRIM_ABLE),
     ).toBe('');
+  });
+});
+
+describe('createValidator function test', () => {
+  test('required with undefined value', () => {
+    const validationFunction = createValidator({
+      email: [required, validEmail],
+    });
+
+    expect(validationFunction({}, {}).email).toBe(VALIDATION_MESSAGES.REQUIRED);
+
+    expect(
+      validationFunction(
+        { email: formValueTestingScenarios.VALIDATOR_FALSE_URL },
+        {},
+      ).email,
+    ).toBe(VALIDATION_MESSAGES.EMAIL);
+
+    expect(validationFunction(undefined, {}).email).toBe(
+      VALIDATION_MESSAGES.REQUIRED,
+    );
+
+    expect(
+      validationFunction(
+        { email: formValueTestingScenarios.VALIDATOR_TRUE_EMAIL },
+        {},
+      ).email,
+    ).toBe(undefined);
   });
 });

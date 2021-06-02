@@ -33,16 +33,6 @@ export function FontAwesomeDemo() {
         <meta name="description" content="Description of FontAwesomeDemo" />
       </Helmet>
       <Container>
-        {/* Light: */}
-        <Item>
-          <FontAwesomeIcon icon={['fal', 'coffee']} />
-        </Item>
-
-        {/* Regular: */}
-        <Item>
-          <FontAwesomeIcon icon={['far', 'coffee']} />
-        </Item>
-
         {/* Solid */}
         <Item>
           <FontAwesomeIcon icon={['fas', 'coffee']} />
