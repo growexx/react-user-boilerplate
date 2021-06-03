@@ -23,6 +23,7 @@ import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import Users from 'examples/Users/Loadable';
+import Charts from 'examples/Charts/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
@@ -61,6 +62,7 @@ export default function App() {
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
         <PrivateRoute path={ROUTES.USERS} component={Users} />
+        <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
