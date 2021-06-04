@@ -28,6 +28,11 @@ export const MenuItems = [
     icon: <UserOutlined />,
   },
   {
+    to: ROUTES.USERS,
+    tabName: 'User Management',
+    icon: <UserOutlined />,
+  },
+  {
     to: ROUTES.FEATURES,
     tabName: 'Features',
     icon: <CheckCircleOutlined />,
