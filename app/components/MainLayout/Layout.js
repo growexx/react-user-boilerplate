@@ -86,7 +86,7 @@ class Layouts extends React.PureComponent {
             <Header className="headerLayout">
               <LogoContainer className="logo">
                 <Link to={ROUTES.HOME}>
-                  {<img src={GrowExxLogo} alt="logo" />}
+                  <img src={GrowExxLogo} alt="logo" />
                 </Link>
               </LogoContainer>
               <HeaderMenu

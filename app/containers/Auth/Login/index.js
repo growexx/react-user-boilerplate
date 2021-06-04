@@ -25,10 +25,11 @@ import {
   makeSelectLoading,
   makeSelectError,
   makeSelectPassword,
+  makeSelectSuccess,
 } from 'containers/Auth/Login/selectors';
 import messages from './messages';
 import { StyledLogin } from './StyledLogin';
-import { makeSelectSuccess } from './selectors';
+
 import {
   changeEmail,
   changePassword,
