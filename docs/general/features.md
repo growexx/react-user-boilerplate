@@ -41,6 +41,7 @@ Following are the features included in the boilerplate
 |                         | of ant design library variables.                |
 | Less support            | Boilerplate supports less files                 |
 | Styled components       | Boilerplate supports style components out of box|
+| Different Layouts       | Show different layout configured by antD (Just add ?layout=1 in the url and it'll switch to that layout, Currently 3 layouts are added. you can try 1(Vertical), 2(Vertical) and 3 (Horizontal)|
 |                         |                                                 |
 | **Components**          |                                                 |
 |                         |                                                 |
@@ -89,6 +90,7 @@ Following are the features included in the boilerplate
 | React-Final-Form        | Basic demo  for React-Final-Form.               |
 | Social Login demo       | Basic demo  for google and facebook login.      |
 | Two Factor              | Basic demo  for OtpComponent and two factor     |
+| User Management              | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
 | Authentication          | authentication.                                 |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |

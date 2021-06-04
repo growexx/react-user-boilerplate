@@ -5,6 +5,15 @@ export const StyledAppHeader = styled.div`
   flex: 1;
   line-height: 0;
 `;
+
+export const StyledAppHeaderColored = styled.div`
+  display: flex;
+  flex: 1;
+  line-height: 0;
+  background-color: #190426;
+  color: white;
+`;
+
 export const AvatarWrapper = styled.div`
   margin-left: auto;
   margin-right: 16px;
