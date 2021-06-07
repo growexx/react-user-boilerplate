@@ -29,7 +29,7 @@ const componentWrapper = updatedProps =>
     </Provider>,
   );
 
-describe('Check component:<Users /> is rendering properly', () => {
+describe('Check component:<Charts /> is rendering properly', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
     jest.useFakeTimers();
