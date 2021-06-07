@@ -13,6 +13,7 @@ export const ROUTES = {
   LOADER: '/loader',
   EXPORT_DATA: '/export-data',
   USERS: '/users',
+  CHARTS: '/charts',
   TEST_ADMIN_PAGE: '/admin',
   UNAUTHORIZED: '/403',
   NUMERAL_CONVERTER: '/number-converter-demo',

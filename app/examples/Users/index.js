@@ -194,6 +194,9 @@ export class Users extends Component {
                 loading: isPopUpLoading,
                 'data-testid': TEST_IDS.DELETE_BUTTON_CONFIRMED,
               }}
+              cancelButtonProps={{
+                'data-testid': TEST_IDS.DELETE_CONFIRMATION_CANCEL,
+              }}
               onCancel={this.handlePopupCancel}
             >
               <Button
@@ -414,7 +417,7 @@ export class Users extends Component {
     );
   };
 
-  onStatusSelectChange = (status = '') => {
+  onStatusSelectChange = status => {
     this.loadUserDetails({ status });
   };
 

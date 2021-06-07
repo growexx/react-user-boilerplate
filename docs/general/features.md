@@ -90,8 +90,9 @@ Following are the features included in the boilerplate
 | React-Final-Form        | Basic demo  for React-Final-Form.               |
 | Social Login demo       | Basic demo  for google and facebook login.      |
 | Two Factor              | Basic demo  for OtpComponent and two factor     |
-| User Management              | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
+| User Management         | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
 | Authentication          | authentication.                                 |
+| Admin Charts            | Charts Pages with statistics and Filters        |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
