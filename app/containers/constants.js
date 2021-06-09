@@ -19,6 +19,7 @@ export const ROUTES = {
   NUMERAL_CONVERTER: '/number-converter-demo',
   SAMPLE_FORM: '/sample-form',
   CHANGE_PASSWORD: '/change-password',
+  TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
 };
 
