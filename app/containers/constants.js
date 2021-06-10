@@ -13,11 +13,13 @@ export const ROUTES = {
   LOADER: '/loader',
   EXPORT_DATA: '/export-data',
   USERS: '/users',
+  CHARTS: '/charts',
   TEST_ADMIN_PAGE: '/admin',
   UNAUTHORIZED: '/403',
   NUMERAL_CONVERTER: '/number-converter-demo',
   SAMPLE_FORM: '/sample-form',
   CHANGE_PASSWORD: '/change-password',
+  TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
 };
 

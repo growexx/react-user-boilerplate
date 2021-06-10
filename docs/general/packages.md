@@ -69,3 +69,4 @@ Following are the packages used in the boilerplate
 | firebase                | For Firebase services                           |
 | dotenv                  | Loads environment modules to process.env        |
 | react-otp-input         | Input for otp.                                  |
+| recharts         | Charts                                  |

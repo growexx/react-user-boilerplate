@@ -79,6 +79,10 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <PrivateRoute
       component={[Function]}
+      path="/charts"
+    />
+    <PrivateRoute
+      component={[Function]}
       path="/change-password"
     />
     <withRouter(RoleMiddleWare)
@@ -98,6 +102,11 @@ exports[`<App /> should render and match the snapshot 1`] = `
       component={[Function]}
       exact={true}
       path="/login"
+    />
+    <AuthRoute
+      component={[Function]}
+      exact={true}
+      path="/two-factor-authentication"
     />
     <AuthRoute
       component={[Function]}

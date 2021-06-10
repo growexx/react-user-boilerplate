@@ -5,6 +5,7 @@
 import { /* call, select */ put, takeLatest } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 /* import sha256 from 'sha256'; 
+import Emitter from 'utils/events';
 import request from 'utils/request';
 import {
   makeSelectEmail,
@@ -16,11 +17,7 @@ import { API_ENDPOINTS } from '../constants';
 import Emitter from 'utils/events';
 // import { signInWithGoogle, signInWithFacebook } from 'utils/firebase';
 import { ROUTES } from '../../constants';
-import {
-  /* loginInError */ changeLoading,
-  logInSuccess,
-  resetState,
-} from './actions';
+import { changeLoading, logInSuccess, resetState } from './actions';
 import { LOGIN, GOOGLE_LOGIN, FACEBOOK_LOGIN } from './constants';
 import StorageService from '../../../utils/StorageService';
 import {
@@ -45,6 +42,11 @@ export function* getSignIn() {
   yield put(push(ROUTES.HOME));
   Emitter.emit(EMITTER_EVENTS.LOG_IN);
   // ----------------Demo--------------------
+
+  /** if two factor is configured */
+  // yield put(push(ROUTES.TWO_FACTOR_AUTHENTICATION));
+  /** if two factor is configured */
+
   /**
    * LOGIN API INTEGRATION CODE
   const emailId = yield select(makeSelectEmail());
@@ -66,7 +68,7 @@ export function* getSignIn() {
       StorageService.set(USER_DATA_KEY, log.data);
       yield put(changeLoading(false));
       yield put(resetState());
-      yield put(push(ROUTES.HOME));
+      yield put(push(ROUTES.TWO_FACTOR_AUTHENTICATION));
       Emitter.emit(EMITTER_EVENTS.LOG_IN);
     } else {
       yield put(resetState());

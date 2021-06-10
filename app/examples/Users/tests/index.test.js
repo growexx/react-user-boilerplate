@@ -158,6 +158,9 @@ describe('Check listing of users is rendering properly', () => {
     const { getByText, getByTitle } = componentWrapper({ demo: false });
     await waitForElement(() => getByText('Active'));
 
+    // Expand Data
+    fireEvent.click(document.querySelectorAll('.ant-table-row-expand-icon')[0]);
+
     expect(getByText('Active')).toBeTruthy();
     fireEvent.click(getByTitle('2'));
   });
@@ -194,6 +197,20 @@ describe('Check listing of users is rendering properly', () => {
     // Check Elements are showing
     expect(getByText('OK', { trim: true })).toBeTruthy();
     fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON_CONFIRMED));
+  });
+
+  it('Click Delete: Show Confirmation Modal and click confirm', async () => {
+    request.mockImplementation(() => Promise.resolve(failedResponse()));
+
+    const { getByTestId, getByText } = componentWrapper();
+    await waitForElement(() => getByText('Active'));
+
+    // Click Delete Button
+    fireEvent.click(getByTestId(TEST_IDS.DELETE_BUTTON));
+
+    // Check Elements are showing
+    expect(getByText('OK', { trim: true })).toBeTruthy();
+    fireEvent.click(getByTestId(TEST_IDS.DELETE_CONFIRMATION_CANCEL));
   });
 
   it('Toggle User Status Local', async () => {
@@ -408,6 +425,45 @@ describe('Update User', () => {
   });
 });
 
+describe('Status Filter', () => {
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
+  });
+
+  beforeEach(() => {
+    request.mockImplementation(() => Promise.resolve(responseWithList()));
+  });
+
+  afterEach(() => {
+    request.mockClear();
+  });
+
+  it('Status Filter', async () => {
+    request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
+
+    const { getByText, getByRole } = componentWrapper({
+      demo: false,
+    });
+    await waitForElement(() => getByRole('combobox'));
+
+    fireEvent.mouseDown(getByRole('combobox'));
+    fireEvent.change(getByRole('combobox'), {
+      target: {
+        value: 'Active',
+      },
+    });
+    // .ant-select-item-option-content
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    fireEvent.blur(getByRole('combobox'));
+    fireEvent.focus(getByRole('combobox'));
+
+    // Update Fields
+    fireEvent.click(getByText('Name'));
+  });
+});
+
 describe('Search & Sorting user list', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
@@ -421,7 +477,7 @@ describe('Search & Sorting user list', () => {
     request.mockClear();
   });
 
-  it('Search user with success', async () => {
+  it('Sorting user with success', async () => {
     request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
 
     const { getByText } = componentWrapper({
@@ -435,14 +491,14 @@ describe('Search & Sorting user list', () => {
   it('Search user with success', async () => {
     request.mockImplementationOnce(() => Promise.resolve(responseWithList()));
 
-    const { getByPlaceholderText } = componentWrapper({
+    componentWrapper({
       demo: false,
     });
 
-    // Update Fields
-    fireEvent.change(getByPlaceholderText('Search User'), {
-      target: { value: 'john' },
-    });
+    document.querySelectorAll('.ant-input-affix-wrapper')[0].children[0].value =
+      'Hello';
+
+    fireEvent.click(document.querySelectorAll('.ant-input-search-button')[0]);
   });
 
   it('Search user with success', async () => {
