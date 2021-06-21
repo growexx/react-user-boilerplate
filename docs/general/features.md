@@ -106,4 +106,3 @@ Following are the features included in the boilerplate
 > Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
 > React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** <br/>
 > Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** <br/>
-> Two factor authentication support for boilerplate can be found in branch:  **feature/two-factor-authentication** 
