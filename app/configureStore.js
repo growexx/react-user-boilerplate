@@ -5,8 +5,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
+import * as Sentry from '@sentry/react';
 import createReducer from './reducers';
 
+const sentryReduxEnhancer = Sentry.createReduxEnhancer({});
 export default function configureStore(initialState = {}, history) {
   let composeEnhancers = compose;
   const reduxSagaMonitorOptions = {};
@@ -34,7 +36,7 @@ export default function configureStore(initialState = {}, history) {
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
-  const enhancers = [applyMiddleware(...middlewares)];
+  const enhancers = [applyMiddleware(...middlewares), sentryReduxEnhancer];
 
   const store = createStore(
     createReducer(),

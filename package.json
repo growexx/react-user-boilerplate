@@ -73,6 +73,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@sentry/react": "^6.7.2",
+    "@sentry/tracing": "^6.7.2",
     "antd": "^4.14.0",
     "antd-img-crop": "3.14.1",
     "babel-plugin-styless": "^1.4.25",
