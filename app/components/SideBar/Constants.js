@@ -14,6 +14,7 @@ import {
   FormOutlined,
   LockOutlined,
   PieChartOutlined,
+  MessageOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -72,6 +73,11 @@ export const MenuItems = [
     to: ROUTES.CHARTS,
     tabName: 'Charts',
     icon: <PieChartOutlined />,
+  },
+  {
+    to: ROUTES.MULTI_TAB_SUPPORT,
+    tabName: 'Multi Tab Communication',
+    icon: <MessageOutlined />,
   },
 ];
 

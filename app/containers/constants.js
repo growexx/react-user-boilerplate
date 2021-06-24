@@ -21,6 +21,7 @@ export const ROUTES = {
   CHANGE_PASSWORD: '/change-password',
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
+  MULTI_TAB_SUPPORT: '/multi-tab-support',
 };
 
 // API-ROUTES
@@ -106,4 +107,5 @@ export const GET_DEFAULT_PAGINATION = () => ({
 });
 
 export const GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
-export const FULL_GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD hh:mm a';
+export const FULL_GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss a';
+export const CHANNEL_NAME = 'DATA_CHANNEL_NAME';
