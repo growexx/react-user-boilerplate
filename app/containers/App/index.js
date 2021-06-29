@@ -7,7 +7,7 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
@@ -35,6 +35,7 @@ import RoleMiddleWare from './RoleMiddleWare';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../constants';
+import { manageSession } from '../../utils/Helper';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -43,6 +44,13 @@ const AppWrapper = styled.div`
 `;
 
 export default function App() {
+  useEffect(() => {
+    window.addEventListener('storage', manageSession, []);
+    return () => {
+      window.removeEventListener('storage', window);
+    };
+  }, []);
+
   return (
     <AppWrapper data-testid="AppRoutes">
       <Helmet
@@ -54,6 +62,7 @@ export default function App() {
           <link {...favIcon} key={index} />
         ))}
       </Helmet>
+
       <Switch>
         <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />

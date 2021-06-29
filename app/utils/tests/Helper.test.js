@@ -1,4 +1,4 @@
-import { getUserData, logout, userExists } from 'utils/Helper';
+import { getUserData, logout, userExists, manageSession } from 'utils/Helper';
 import { TOKEN_KEY, USER_DATA_KEY } from '../constants';
 
 import StorageService from '../StorageService';
@@ -28,5 +28,28 @@ describe('Helper', () => {
     StorageService.set(TOKEN_KEY, 'tokenvalue');
     logout();
     expect(userExists()).toBe(false);
+  });
+  test('manageSession on logout', () => {
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: jest.fn(() => null),
+        setItem: jest.fn(() => null),
+      },
+      writable: true,
+    });
+    manageSession();
+    expect(localStorage.setItem).toHaveBeenCalled();
+  });
+  test('manageSession on login', () => {
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: jest.fn(() => null),
+        setItem: jest.fn(() => null),
+      },
+      writable: true,
+    });
+    localStorage.userData = true;
+    manageSession();
+    expect(localStorage.setItem).toHaveBeenCalled();
   });
 });
