@@ -59,3 +59,4 @@ Following are the packages used in the boilerplate
 | dotenv                  | Loads environment modules to process.env        |
 | react-otp-input         | Input for otp.                                  |
 | recharts                | Charts                                          |
+| react-final-form        | Form Control without react-redux                |
