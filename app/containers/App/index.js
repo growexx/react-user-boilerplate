@@ -19,12 +19,16 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
 import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
+import TwoFactorAuthentication from 'containers/Auth/TwoFactorAuthentication/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
 import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
+import Users from 'examples/Users/Loadable';
+import Charts from 'examples/Charts/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
+import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
@@ -97,6 +101,20 @@ class App extends React.Component {
 
           <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
           <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
+          <AuthRoute
+            exact
+            path={ROUTES.TWO_FACTOR_AUTHENTICATION}
+            component={TwoFactorAuthentication}
+          />
+          <PrivateRoute path={ROUTES.USERS} component={Users} />
+
+          <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
+          <AuthRoute
+            exact
+            path={ROUTES.FORGOT_PASSWORD}
+            component={ForgotPassword}
+          />
+
           <Route
             exact
             path={ROUTES.UNAUTHORIZED}

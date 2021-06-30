@@ -5,7 +5,7 @@ exports[`<Header /> should render a div 1`] = `
   class="StyledAppHeader-sc-305pn5-0 enPSEw"
 >
   <div
-    class="StyledAppHeader__AvatarWrapper-sc-305pn5-1 eoEGdb"
+    class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 khWwDg"
   >
     <div
       class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
@@ -68,4 +68,16 @@ exports[`<Header /> should render a div 1`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`<Header /> should render a div with props 1`] = `
+<div
+  class="StyledAppHeader-sc-305pn5-0 enPSEw"
+/>
+`;
+
+exports[`<Header /> should render a div with props 2`] = `
+<div
+  class="StyledAppHeader-sc-305pn5-0 enPSEw"
+/>
 `;

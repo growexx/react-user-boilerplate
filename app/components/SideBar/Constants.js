@@ -13,6 +13,7 @@ import {
   NumberOutlined,
   FormOutlined,
   LockOutlined,
+  PieChartOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -27,6 +28,11 @@ export const MenuItems = [
   {
     to: ROUTES.HOME,
     tabName: 'Home',
+    icon: <UserOutlined />,
+  },
+  {
+    to: ROUTES.USERS,
+    tabName: 'User Management',
     icon: <UserOutlined />,
   },
   {
@@ -63,6 +69,11 @@ export const MenuItems = [
     to: ROUTES.TEST_ADMIN_PAGE,
     tabName: 'Admin Page',
     icon: <LockOutlined />,
+  },
+  {
+    to: ROUTES.CHARTS,
+    tabName: 'Charts',
+    icon: <PieChartOutlined />,
   },
 ];
 

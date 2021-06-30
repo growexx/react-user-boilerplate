@@ -10,52 +10,56 @@ import PropTypes from 'prop-types';
 import { ROUTES } from 'containers/constants';
 import { eventGA } from 'utils/googleAnalytics';
 import { GA_CATEGORY_MENU_CLICKS } from 'utils/constants';
+import { showLogoInSideBar } from 'components/constants';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
 import { GA_LABEL_SIDEBAR, GET_FILTERED_MENU_ITEM } from './Constants';
 
 const { Sider } = Layout;
 
-const SideBar = props => (
-  <Sider
-    trigger={null}
-    collapsible
-    collapsed={props.collapsed}
-    id="components-layout-demo-custom-trigger"
-  >
-    <div className="logo">
-      <Link to={ROUTES.HOME}>
-        {!props.collapsed ? (
-          <img src={GrowExxLogo} alt="logo" />
-        ) : (
-          <img src={GrowExxTriangleLogo} alt="logo" />
-        )}
-      </Link>
-    </div>
-    <Menu
-      theme="dark"
-      mode="inline"
-      defaultSelectedKeys={[props.location.pathname]}
-      selectedKeys={[props.location.pathname]}
+const SideBar = props => {
+  const Logo = !props.collapsed ? (
+    <img src={GrowExxLogo} alt="logo" />
+  ) : (
+    <img src={GrowExxTriangleLogo} alt="logo" />
+  );
+  return (
+    <Sider
+      trigger={null}
+      collapsible
+      collapsed={props.collapsed}
+      id="components-layout-demo-custom-trigger"
     >
-      {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
-        <Menu.Item
-          key={menu.to}
-          icon={menu.icon}
-          onClick={() => {
-            eventGA(
-              GA_CATEGORY_MENU_CLICKS,
-              `${menu.to} clicked from sidebar`,
-              GA_LABEL_SIDEBAR,
-            );
-          }}
-        >
-          <Link to={menu.to}>{menu.tabName}</Link>
-        </Menu.Item>
-      ))}
-    </Menu>
-  </Sider>
-);
+      {showLogoInSideBar(props.layoutVariant) ? (
+        <div className="logo">
+          <Link to={ROUTES.HOME}>{Logo}</Link>
+        </div>
+      ) : null}
+      <Menu
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={[props.location.pathname]}
+        selectedKeys={[props.location.pathname]}
+      >
+        {GET_FILTERED_MENU_ITEM(props.user && props.user.role).map(menu => (
+          <Menu.Item
+            key={menu.to}
+            icon={menu.icon}
+            onClick={() => {
+              eventGA(
+                GA_CATEGORY_MENU_CLICKS,
+                `${menu.to} clicked from sidebar`,
+                GA_LABEL_SIDEBAR,
+              );
+            }}
+          >
+            <Link to={menu.to}>{menu.tabName}</Link>
+          </Menu.Item>
+        ))}
+      </Menu>
+    </Sider>
+  );
+};
 
 export default withRouter(SideBar);
 
@@ -63,4 +67,5 @@ SideBar.propTypes = {
   collapsed: PropTypes.bool,
   user: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   location: PropTypes.object.isRequired,
+  layoutVariant: PropTypes.number,
 };
