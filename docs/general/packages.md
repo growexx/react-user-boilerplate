@@ -59,3 +59,11 @@ Following are the packages used in the boilerplate
 | dotenv                  | Loads environment modules to process.env        |
 | react-otp-input         | Input for otp.                                  |
 | recharts                | Charts                                          |
+| @apollo/client          | Graphql client for react                        |
+| apollo-link-context     | Use to set context for apollo                   |
+| apollo-link-error       | Use to set error links for apollo               |
+| apollo-link-context     | Use creating apollo link for apollo             |
+| graphql                 | Implementation of graphql                       |
+| graphql-tag             | Template literal  parses GraphQL query string   |
+| subscriptions-          | Graphql websocket server and client helper      |
+| transport-ws            |                                                 |
