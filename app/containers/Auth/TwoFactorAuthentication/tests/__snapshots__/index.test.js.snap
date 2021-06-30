@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TwoFactorAuthentication /> Should render and match the snapshot 1`] = `
+<div>
+  <div
+    class="StyledAuthContainer-tf5ue0-0 cCdhDo"
+  >
+    <div
+      class="sideContainer"
+    >
+      <div
+        class="loginContainer"
+      >
+        <div
+          class="registrationSideContainer"
+        >
+          <p
+            class="title"
+          >
+            <span>
+              New Here!
+            </span>
+          </p>
+          <p
+            class="subTitle"
+          >
+            <span>
+              To join us, please sign up with your personal info
+            </span>
+          </p>
+          <a
+            href="/register"
+          >
+            <button
+              class="ant-btn"
+              type="button"
+            >
+              <span>
+                SIGN UP
+              </span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="StyledTwoFactorAuthentication-xs6qze-0 efqtix"
+    >
+      <p
+        class="twoFactorAuthenticationTitle"
+      >
+        <span>
+          Two Factor Authentication
+        </span>
+      </p>
+      <div
+        class="StyledOtpComponent-q540lc-0 edafRV"
+      >
+        <div
+          class="otpComponentContainerStyle"
+          style="display: flex;"
+        >
+          <div
+            style="display: flex; align-items: center;"
+          >
+            <input
+              aria-label="Please enter verification code. Digit 1"
+              autocomplete="off"
+              class="otpComponentInputStyle otpComponentFocusStyle"
+              maxlength="1"
+              placeholder="0"
+              style="width: 1em; text-align: center;"
+              type="tel"
+              value=""
+            />
+            <span>
+              -
+            </span>
+          </div>
+          <div
+            style="display: flex; align-items: center;"
+          >
+            <input
+              aria-label="Digit 2"
+              autocomplete="off"
+              class="otpComponentInputStyle"
+              maxlength="1"
+              placeholder="0"
+              style="width: 1em; text-align: center;"
+              type="tel"
+              value=""
+            />
+            <span>
+              -
+            </span>
+          </div>
+          <div
+            style="display: flex; align-items: center;"
+          >
+            <input
+              aria-label="Digit 3"
+              autocomplete="off"
+              class="otpComponentInputStyle"
+              maxlength="1"
+              placeholder="0"
+              style="width: 1em; text-align: center;"
+              type="tel"
+              value=""
+            />
+            <span>
+              -
+            </span>
+          </div>
+          <div
+            style="display: flex; align-items: center;"
+          >
+            <input
+              aria-label="Digit 4"
+              autocomplete="off"
+              class="otpComponentInputStyle"
+              maxlength="1"
+              placeholder="0"
+              style="width: 1em; text-align: center;"
+              type="tel"
+              value=""
+            />
+            <span>
+              -
+            </span>
+          </div>
+          <div
+            style="display: flex; align-items: center;"
+          >
+            <input
+              aria-label="Digit 5"
+              autocomplete="off"
+              class="otpComponentInputStyle"
+              maxlength="1"
+              placeholder="0"
+              style="width: 1em; text-align: center;"
+              type="tel"
+              value=""
+            />
+            <span>
+              -
+            </span>
+          </div>
+          <div
+            style="display: flex; align-items: center;"
+          >
+            <input
+              aria-label="Digit 6"
+              autocomplete="off"
+              class="otpComponentInputStyle"
+              maxlength="1"
+              placeholder="0"
+              style="width: 1em; text-align: center;"
+              type="tel"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TwoFactorAuthentication /> Should render and match the snapshot Loadable 1`] = `null`;

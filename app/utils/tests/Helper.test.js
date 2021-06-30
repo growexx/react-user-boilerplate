@@ -1,6 +1,6 @@
-import { getUserData } from 'utils/Helper';
+import { getUserData, logout, userExists } from 'utils/Helper';
 import { TOKEN_KEY, USER_DATA_KEY } from '../constants';
-import { logout, userExists } from '../Helper';
+
 import StorageService from '../StorageService';
 
 describe('Helper', () => {

@@ -75,7 +75,11 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <PrivateRoute
       component={[Function]}
-      path="/graphql-demo"
+      path="/users"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/charts"
     />
     <PrivateRoute
       component={[Function]}
@@ -102,7 +106,17 @@ exports[`<App /> should render and match the snapshot 1`] = `
     <AuthRoute
       component={[Function]}
       exact={true}
+      path="/two-factor-authentication"
+    />
+    <AuthRoute
+      component={[Function]}
+      exact={true}
       path="/register"
+    />
+    <AuthRoute
+      component={[Function]}
+      exact={true}
+      path="/forgot-password"
     />
     <Route
       component={[Function]}

@@ -10,7 +10,8 @@ const isEmpty = value =>
 const join = rules => (value, data, props) =>
   rules
     .map(rule => rule(value, data, props))
-    .filter(error => !!error)[0]; /* first error */
+    /* first error */
+    .filter(error => !!error)[0];
 
 /**
  * Email validation
