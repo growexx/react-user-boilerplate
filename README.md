@@ -87,11 +87,9 @@
   More about firebase setup can be found [here](docs/general/firebase.md).
   </dd>
   <dt>Two Factor Authentication</dt>
-  <dd>Boilerplate supports two factor authentication. It has demo and setup added out of the box for two factor authentication. This feature is optional and is based on requirement, so not merged in main branch.
-  <br/>
-  Support for two factor authentication can be found in <b>feature/two-factor-authentication</b> branch.
-
-  More about firebase setup can be found [here](docs/general/twoFactorAuthentication.md).
+  <dd>Boilerplate supports two factor authentication. It has demo and setup added out of the box for two factor authentication.
+  
+  More about two factor authentication setup can be found [here](docs/general/twoFactorAuthentication.md).
   </dd>
 </dl>
 
