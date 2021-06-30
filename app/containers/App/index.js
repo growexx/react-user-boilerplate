@@ -19,12 +19,16 @@ import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
 import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import ReactFinalForm from 'examples/ReactFinalForm/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
+import TwoFactorAuthentication from 'containers/Auth/TwoFactorAuthentication/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
 import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
+import Users from 'examples/Users/Loadable';
+import Charts from 'examples/Charts/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
+import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
@@ -63,6 +67,8 @@ export default function App() {
           component={ReactFinalForm}
         />
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
+        <PrivateRoute path={ROUTES.USERS} component={Users} />
+        <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
@@ -79,7 +85,17 @@ export default function App() {
           component={NumeralConversion}
         />
         <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
+        <AuthRoute
+          exact
+          path={ROUTES.TWO_FACTOR_AUTHENTICATION}
+          component={TwoFactorAuthentication}
+        />
         <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
+        <AuthRoute
+          exact
+          path={ROUTES.FORGOT_PASSWORD}
+          component={ForgotPassword}
+        />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>

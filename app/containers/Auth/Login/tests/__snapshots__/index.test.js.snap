@@ -233,6 +233,13 @@ exports[`<Login /> Should render and match the snapshot 1`] = `
           </div>
         </div>
       </div>
+      <a
+        href="/forgot-password"
+      >
+        <span>
+          Forgot Password ?
+        </span>
+      </a>
     </div>
   </div>
 </form>

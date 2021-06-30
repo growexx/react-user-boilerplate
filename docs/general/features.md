@@ -27,6 +27,9 @@ Following are the features included in the boilerplate
 | Graphql Support         | Graphql support provided for the boilerplate.   |
 | React-Final-Form        | React-Final-Form support added.                 |
 | Redux-Form              | Redux-Form support added.                       |
+| Social login            | Boilerplate supports social login using firebase|
+| Two Factor              | Two Factor authentication with otp.             |
+| Authentication          |                                                 |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -38,10 +41,11 @@ Following are the features included in the boilerplate
 |                         | of ant design library variables.                |
 | Less support            | Boilerplate supports less files                 |
 | Styled components       | Boilerplate supports style components out of box|
+| Different Layouts       | Show different layout configured by antD (Just add ?layout=1 in the url and it'll switch to that layout, Currently 3 layouts are added. you can try 1(Vertical), 2(Vertical) and 3 (Horizontal)|
 |                         |                                                 |
 | **Components**          |                                                 |
 |                         |                                                 |
-| Base Layout Integrated  | Base layout with routes, header and sidebar     |                         | Storybook support       | Every component made in boilerplate has         |
+| Base Layout Integrated  | Base layout with routes, header and sidebar     |                       | Storybook support       | Every component made in boilerplate has         |
 |                         | storybook support where you can get visual      |
 |                         | idea of how component looks.                    |
 | Login and Registration  | Login and registration page redux saga and api  |
@@ -50,12 +54,14 @@ Following are the features included in the boilerplate
 | Footer component        | Basic footer implemented.                       |
 | File Upload             | File Upload component.                          |
 | Image Upload            | Image editor before upload.                     |
+| OTPComponent            | Component to capture OTP.                       |
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
 |                         |                                                 |
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
-| Export Data as CSV      | Export data as csv ( client and backend side )  |                         | Numeral Conversion      | Numeral js library added for all numeric actions|   
+| Export Data as CSV      | Export data as csv ( client and backend side )  |         
+| Numeral Conversion      | Numeral js library added for all numeric actions|   
 | Localstorage util       | Util to add, delete and get items from          |
 |                         | localstorage.                                   |
 | Event Emitter           | Util to on and off emitter events.              |
@@ -67,6 +73,7 @@ Following are the features included in the boilerplate
 | Google Analytics        | Analytics helper util.                          |
 | UserExists              | tells if user is logged in or logged out.       |
 | FontFaces               | Add font faces with this function.              |
+| Firebase                | Setup and util functions for firebase           |
 |                         |                                                 |
 | **Examples**            |                                                 |
 |                         |                                                 |
@@ -81,6 +88,11 @@ Following are the features included in the boilerplate
 | Google Analytics events | Sidebar clicks capturing GA demo.               |
 | Apollo Hooks demo       | Basic demo for apollo hooks.                    |
 | React-Final-Form        | Basic demo  for React-Final-Form.               |
+| Social Login demo       | Basic demo  for google and facebook login.      |
+| Two Factor              | Basic demo  for OtpComponent and two factor     |
+| User Management         | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
+| Authentication          | authentication.                                 |
+| Admin Charts            | Charts Pages with statistics and Filters        |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
@@ -91,8 +103,12 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | Sonar standards         | All code is written according to standards of   |
 |                         | sonar.                                          |
-
+| **Performance Monitoring & Error Tracking**        |                                                 |
+|                         |                                                 |
+| Sentry         | Sentry has been used for any code errors or performance related issue   |
 > Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
 > Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
 > Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
-> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** 
+> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** <br/>
+> Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** <br/>
+> Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>

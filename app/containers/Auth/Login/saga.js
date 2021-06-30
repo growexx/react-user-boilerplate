@@ -5,45 +5,34 @@
 import { /* call, select */ put, takeLatest } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 /* import sha256 from 'sha256'; 
+import Emitter from 'utils/events';
 import request from 'utils/request';
 import {
   makeSelectEmail,
   makeSelectPassword,
 } from 'containers/Auth/Login/selectors';
-import { API_ENDPOINTS } from '../constants';
-
-*/
-import Emitter from 'utils/events';
-import { ROUTES } from '../../constants';
 import {
-  /* loginInError */ changeLoading,
+  loginInError, changeLoading,
   logInSuccess,
   resetState,
 } from './actions';
-import { LOGIN } from './constants';
-import StorageService from '../../../utils/StorageService';
+import { API_ENDPOINTS } from '../constants';
 import {
   TOKEN_KEY,
   EMITTER_EVENTS,
   USER_DATA_KEY,
 } from '../../../utils/constants';
-import { loginSuccessResponse } from './stub/login.stub';
+import StorageService from '../../../utils/StorageService';
+*/
+
+import { LOGIN } from './constants';
+import { ROUTES } from '../../constants';
 
 /**
  * user login request/response handler
  */
 export function* getSignIn() {
-  /**
-   * Remove following code, It's only for demo purpose
-   */
-  yield put(logInSuccess(loginSuccessResponse.message));
-  StorageService.set(TOKEN_KEY, loginSuccessResponse.data.token);
-  StorageService.set(USER_DATA_KEY, loginSuccessResponse.data);
-  yield put(changeLoading(false));
-  yield put(resetState());
-  yield put(push(ROUTES.HOME));
-  Emitter.emit(EMITTER_EVENTS.LOG_IN);
-  // ----------------Demo--------------------
+  yield put(push(ROUTES.TWO_FACTOR_AUTHENTICATION));
 
   /**
    * LOGIN API INTEGRATION CODE
@@ -66,7 +55,7 @@ export function* getSignIn() {
       StorageService.set(USER_DATA_KEY, log.data);
       yield put(changeLoading(false));
       yield put(resetState());
-      yield put(push(ROUTES.HOME));
+      yield put(push(ROUTES.TWO_FACTOR_AUTHENTICATION));
       Emitter.emit(EMITTER_EVENTS.LOG_IN);
     } else {
       yield put(resetState());
