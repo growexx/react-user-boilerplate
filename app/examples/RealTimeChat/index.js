@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable no-unused-vars */
 /**
  *
  * RealTimeChat
@@ -11,14 +13,17 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectRealTimeChat from './selectors';
 import reducer from './reducer';
 import messages from './messages';
+import ChatRoom from './ChatRoom';
+import ChatList from './ChatList';
+import { StyledRealTimeChat } from './StyledRealTimeChat';
+import { REDUCER_KEY } from './constants';
 
 export function RealTimeChat() {
-  useInjectReducer({ key: 'RealTimeChat', reducer });
+  useInjectReducer({ key: REDUCER_KEY, reducer });
 
   return (
     <div>
@@ -26,7 +31,10 @@ export function RealTimeChat() {
         <title>RealTimeChat</title>
         <meta name="description" content="Description of RealTimeChat" />
       </Helmet>
-      <FormattedMessage {...messages.header} />
+      <StyledRealTimeChat>
+        <ChatList />
+        <ChatRoom />
+      </StyledRealTimeChat>
     </div>
   );
 }

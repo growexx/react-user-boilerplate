@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect';
+import { REDUCER_KEY } from './constants';
 import { initialState } from './reducer';
 
 /**
  * Direct selector to the RealTimeChat state domain
  */
 
-const selectRealTimeChatDomain = state => state.RealTimeChat || initialState;
+const selectRealTimeChatDomain = state => state[REDUCER_KEY] || initialState;
 
 /**
  * Other specific selectors
