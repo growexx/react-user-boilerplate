@@ -1,7 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyledChatList } from './StyledChatList';
+import {
+  StyledChatList,
+  SingleChatContainer,
+  ChatListContainer,
+} from './StyledChatList';
+import { getMockChatList } from './stub';
 
 class ChatList extends Component {
   constructor(props) {
@@ -12,10 +17,41 @@ class ChatList extends Component {
     };
   }
 
-  componentDidMount() {}
+  /**
+   * getChatList - get chats from firebase
+   */
+  getChatList = () => {
+    getMockChatList().then(res => {
+      this.setState({
+        chatList: res.data,
+      });
+    });
+  };
+
+  componentDidMount() {
+    this.getChatList();
+  }
+
+  renderSingleChat = chat => (
+    <SingleChatContainer>{chat.userName}</SingleChatContainer>
+  );
+
+  /**
+   * renderAllChats
+   * @returns list of chats
+   */
+  renderAllChats = () => {
+    const { chatList } = this.state;
+    return (
+      <ChatListContainer>
+        {chatList.map(singleChat => this.renderSingleChat(singleChat))}
+      </ChatListContainer>
+    );
+  };
 
   render() {
-    return <StyledChatList>Chat List.................</StyledChatList>;
+    console.log(this.state.chatList, this.renderAllChats());
+    return <StyledChatList>{this.renderAllChats()}</StyledChatList>;
   }
 }
 
