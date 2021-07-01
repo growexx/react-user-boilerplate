@@ -86,6 +86,7 @@
     "draft-js-export-html": "^1.4.1",
     "eventemitter3": "^4.0.7",
     "express": "4.16.4",
+    "firebase": "^8.6.8",
     "fontfaceobserver": "2.1.0",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",

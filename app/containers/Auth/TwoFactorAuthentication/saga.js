@@ -5,9 +5,10 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import Emitter from 'utils/events';
+import { db } from 'utils/firebase';
 import { loginSuccessResponse } from 'containers/Auth/Login/stub/login.stub';
 import { SUBMIT } from './constants';
-import { ROUTES } from '../../constants';
+import { FIRESTORE_COLLECTIONS, ROUTES } from '../../constants';
 import StorageService from '../../../utils/StorageService';
 import {
   TOKEN_KEY,
@@ -29,6 +30,26 @@ export function* getSignIn() {
   Emitter.emit(EMITTER_EVENTS.LOG_IN);
   yield put(changeValue(''));
   // ----------------Demo--------------------
+
+  // check value in database, if no data found then to add to firestore
+  const collectionRef = db.collection(FIRESTORE_COLLECTIONS.PROFILE);
+  const docRef = collectionRef.doc(loginSuccessResponse.data.email);
+
+  docRef
+    .get()
+    .then(doc => {
+      if (doc.exists) {
+        console.log('Document data:', doc.data());
+      } else {
+        collectionRef.doc(loginSuccessResponse.data.email).set({
+          email: loginSuccessResponse.data.email,
+          lastSeen: new Date(),
+        });
+      }
+    })
+    .catch(error => {
+      console.log('Error getting document:', error);
+    });
 }
 
 /**

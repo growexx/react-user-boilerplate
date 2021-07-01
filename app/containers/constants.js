@@ -108,3 +108,8 @@ export const GET_DEFAULT_PAGINATION = () => ({
 
 export const GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
 export const FULL_GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD hh:mm a';
+
+export const FIRESTORE_COLLECTIONS = {
+  PROFILE: 'Profile',
+  CHAT_WINDOW: 'Chat_Window',
+};
