@@ -1,0 +1,25 @@
+import { createSelector } from 'reselect';
+import { initialState } from './reducer';
+
+/**
+ * Direct selector to the RealTimeChat state domain
+ */
+
+const selectRealTimeChatDomain = state => state.RealTimeChat || initialState;
+
+/**
+ * Other specific selectors
+ */
+
+/**
+ * Default selector used by RealTimeChat
+ */
+
+const makeSelectRealTimeChat = () =>
+  createSelector(
+    selectRealTimeChatDomain,
+    substate => substate,
+  );
+
+export default makeSelectRealTimeChat;
+export { selectRealTimeChatDomain };

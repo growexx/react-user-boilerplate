@@ -14,6 +14,7 @@ import {
   FormOutlined,
   LockOutlined,
   PieChartOutlined,
+  WechatOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -72,6 +73,11 @@ export const MenuItems = [
     to: ROUTES.CHARTS,
     tabName: 'Charts',
     icon: <PieChartOutlined />,
+  },
+  {
+    to: ROUTES.REAL_TIME_CHAT,
+    tabName: 'Real Time Chat',
+    icon: <WechatOutlined />,
   },
 ];
 

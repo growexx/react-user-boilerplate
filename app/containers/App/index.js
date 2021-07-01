@@ -29,6 +29,7 @@ import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
+import RealTimeChat from 'examples/RealTimeChat/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import RoleMiddleWare from './RoleMiddleWare';
@@ -92,6 +93,7 @@ export default function App() {
           component={ForgotPassword}
         />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
+        <Route exact path={ROUTES.REAL_TIME_CHAT} component={RealTimeChat} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
