@@ -1,12 +1,12 @@
 /**
  * fires two factor authentication
  */
-
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, select } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import Emitter from 'utils/events';
-import { db } from 'utils/firebase';
 import { loginSuccessResponse } from 'containers/Auth/Login/stub/login.stub';
+import { makeSelectEmail } from 'containers/Auth/Login/selectors';
+
 import { SUBMIT } from './constants';
 import { FIRESTORE_COLLECTIONS, ROUTES } from '../../constants';
 import StorageService from '../../../utils/StorageService';
@@ -16,40 +16,67 @@ import {
   USER_DATA_KEY,
 } from '../../../utils/constants';
 import { changeValue } from './actions';
+import {
+  getFireStoreDocumentData,
+  setFirestoreDocumentData,
+} from '../../../utils/firebase';
+
+/**
+ * verifyUserInFireStore
+ * @param {string} emailId
+ */
+const verifyUserInFireStore = emailId => {
+  // see if data exits
+  getFireStoreDocumentData(FIRESTORE_COLLECTIONS.PROFILE, emailId)
+    .then(doc => {
+      const payload = {
+        email: emailId,
+        lastSeen: new Date(),
+      };
+      if (!doc.exists) {
+        // set the data
+        setFirestoreDocumentData(
+          FIRESTORE_COLLECTIONS.PROFILE,
+          emailId,
+          payload,
+        )
+          .then(() => {
+            // eslint-disable-next-line no-console
+            console.log('Document successfully written!');
+          })
+          .catch(error => {
+            // eslint-disable-next-line no-console
+            console.error('Error writing document: ', error);
+          });
+      }
+    })
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.log('Error getting document:', error);
+    });
+};
 
 /**
  * user login request/response handler
  */
 export function* getSignIn() {
+  const emailId = yield select(makeSelectEmail());
+
   /**
    * Remove following code, It's only for demo purpose
    */
   StorageService.set(TOKEN_KEY, loginSuccessResponse.data.token);
-  StorageService.set(USER_DATA_KEY, loginSuccessResponse.data);
+  StorageService.set(USER_DATA_KEY, {
+    ...loginSuccessResponse.data,
+    email: emailId,
+  });
   yield put(push(ROUTES.HOME));
   Emitter.emit(EMITTER_EVENTS.LOG_IN);
   yield put(changeValue(''));
   // ----------------Demo--------------------
 
   // check value in database, if no data found then to add to firestore
-  const collectionRef = db.collection(FIRESTORE_COLLECTIONS.PROFILE);
-  const docRef = collectionRef.doc(loginSuccessResponse.data.email);
-
-  docRef
-    .get()
-    .then(doc => {
-      if (doc.exists) {
-        console.log('Document data:', doc.data());
-      } else {
-        collectionRef.doc(loginSuccessResponse.data.email).set({
-          email: loginSuccessResponse.data.email,
-          lastSeen: new Date(),
-        });
-      }
-    })
-    .catch(error => {
-      console.log('Error getting document:', error);
-    });
+  verifyUserInFireStore(emailId);
 }
 
 /**

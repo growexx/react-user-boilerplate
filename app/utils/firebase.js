@@ -12,5 +12,53 @@ firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
 
-// connecting to firestore
+/**
+ * db - firebase firestore connection reference
+ */
 export const db = firebase.firestore();
+
+/**
+ * getFireStoreCollectionReference
+ * @param {String} collectionName
+ * @returns collection reference
+ */
+export const getFireStoreCollectionReference = collectionName =>
+  db.collection(collectionName);
+
+/**
+ * getFireStoreDocumentReference
+ * @param {String} collectionName
+ * @param {String} documentName
+ * @returns document reference
+ */
+export const getFireStoreDocumentReference = (collectionName, documentName) =>
+  db.collection(collectionName).doc(documentName);
+
+/**
+ * getFireStoreDocumentData
+ * @param {String} collectionName
+ * @param {String} documentName
+ * @returns document data
+ */
+export const getFireStoreDocumentData = (collectionName, documentName) =>
+  db
+    .collection(collectionName)
+    .doc(documentName)
+    .get();
+
+/**
+ * setFirestoreDocumentData
+ * @param {String} collectionName
+ * @param {String} documentName
+ * @param {Object} payload
+ * @returns
+ */
+export const setFirestoreDocumentData = (
+  collectionName,
+  documentName,
+  payload,
+) =>
+  db
+    .collection(collectionName)
+    .doc(documentName)
+    .set(payload);
