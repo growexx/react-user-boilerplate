@@ -28,4 +28,21 @@ export const StyledChatRoom = styled.div`
       margin-bottom: 2px !important;
     }
   }
+  .messageContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    .messageSent {
+      margin-right: 10px;
+      background-color: @messageSent;
+      padding: 10px;
+      margin-left: auto;
+    }
+    .messageReceived {
+      margin-left: 10px;
+      margin-right: auto;
+      background-color: @messageReceived;
+      padding: 10px;
+    }
+  }
 `;
