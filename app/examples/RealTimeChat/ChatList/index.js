@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
+import { List, message, Avatar, Skeleton } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 import {
   StyledChatList,
@@ -14,6 +17,8 @@ class ChatList extends Component {
     this.state = {
       // eslint-disable-next-line react/no-unused-state
       chatList: [],
+      loading: false,
+      hasMore: true,
     };
   }
 
@@ -21,9 +26,10 @@ class ChatList extends Component {
    * getChatList - get chats from firebase
    */
   getChatList = () => {
+    const { chatList } = this.state;
     getMockChatList().then(res => {
       this.setState({
-        chatList: res.data,
+        chatList: chatList.concat(res.data),
       });
     });
   };
@@ -32,25 +38,54 @@ class ChatList extends Component {
     this.getChatList();
   }
 
-  renderSingleChat = chat => (
-    <SingleChatContainer>{chat.userName}</SingleChatContainer>
-  );
+  handleInfiniteOnLoad = () => {
+    const { chatList } = this.state;
+    this.setState({
+      loading: true,
+      chatList: chatList.concat(
+        [...new Array(3)].map(() => ({ loading: true, ...chatList[0] })),
+      ),
+    });
+  };
 
   /**
    * renderAllChats
    * @returns list of chats
    */
   renderAllChats = () => {
-    const { chatList } = this.state;
+    const { chatList, loading, hasMore } = this.state;
     return (
       <ChatListContainer>
-        {chatList.map(singleChat => this.renderSingleChat(singleChat))}
+        <div className="demo-infinite-container">
+          <InfiniteScroll
+            initialLoad={false}
+            pageStart={0}
+            loadMore={this.handleInfiniteOnLoad}
+            hasMore={!loading && hasMore}
+          >
+            <List
+              dataSource={chatList}
+              renderItem={item => (
+                <List.Item key={item.id}>
+                  <Skeleton avatar title={false} loading={item.loading} active>
+                    <SingleChatContainer>
+                      <List.Item.Meta
+                        avatar={<Avatar icon={<UserOutlined />} />}
+                        title={item.userName}
+                        description={item.latestMessage}
+                      />
+                    </SingleChatContainer>
+                  </Skeleton>
+                </List.Item>
+              )}
+            />
+          </InfiniteScroll>
+        </div>
       </ChatListContainer>
     );
   };
 
   render() {
-    console.log(this.state.chatList, this.renderAllChats());
     return <StyledChatList>{this.renderAllChats()}</StyledChatList>;
   }
 }

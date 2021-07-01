@@ -6,4 +6,5 @@ export const StyledRealTimeChat = styled.div`
   flex: 1;
   flex-direction: row;
   height: 100vh;
+  border: 1px solid @border-color-base;
 `;
