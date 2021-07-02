@@ -28,12 +28,56 @@ class ChatRoom extends Component {
     };
   }
 
-  componentDidMount() {
+  /**
+   * fetchPersonData
+   * @param {object} person
+   * @returns value from reference
+   */
+  fetchPersonData = async person => {
+    const returnData = await getDataFromReference(person)
+      .then(data => data.data())
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Error getting documents: ', error);
+      });
+    return returnData;
+  };
+
+  /**
+   * setUserRefsAndValues
+   * @param {object} data
+   */
+  setUserRefsAndValues = async data => {
+    const { joined } = data;
+    const {
+      storeData: { receiverUserRefs, receiverUserValues },
+      updateAction,
+    } = this.props;
+
+    for (let index = 0; index < joined.length; index++) {
+      const userValue = await this.fetchPersonData(joined[index]);
+      if (userValue.email === getUserData().email) {
+        updateAction('currentUserValue', userValue);
+      } else {
+        const newRefs = receiverUserRefs.concat(joined[index]);
+        const newValues = receiverUserValues.concat(userValue);
+        updateAction('receiverUserRefs', newRefs);
+        updateAction('receiverUserValues', newValues);
+      }
+    }
+  };
+
+  /**
+   * setCurrentChatWindow - initialize current chat window
+   */
+  setCurrentChatWindow = () => {
     const {
       storeData: { selectedChatWindow },
       onChangeAppLoading,
     } = this.props;
+
     onChangeAppLoading(true);
+
     getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
       .where('joined', 'array-contains-any', selectedChatWindow)
       .get()
@@ -62,44 +106,13 @@ class ChatRoom extends Component {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
       });
+  };
+
+  componentDidMount() {
+    this.setCurrentChatWindow();
   }
 
-  setUserRefsAndValues = async data => {
-    const { joined } = data;
-    const {
-      storeData: { receiverUserRefs, receiverUserValues },
-      updateAction,
-    } = this.props;
-
-    for (let index = 0; index < joined.length; index++) {
-      const userValue = await this.fetchPersonData(joined[index]);
-      if (userValue.email === getUserData().email) {
-        updateAction('currentUserValue', userValue);
-      } else {
-        const newRefs = receiverUserRefs.concat(joined[index]);
-        const newValues = receiverUserValues.concat(userValue);
-        updateAction('receiverUserRefs', newRefs);
-        updateAction('receiverUserValues', newValues);
-      }
-    }
-  };
-
   handleFormSubmit = () => {};
-
-  /**
-   * fetchPersonData
-   * @param {object} person
-   * @returns value from reference
-   */
-  fetchPersonData = async person => {
-    const returnData = await getDataFromReference(person)
-      .then(data => data.data())
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log('Error getting documents: ', error);
-      });
-    return returnData;
-  };
 
   /**
    * renderSingleMessage
