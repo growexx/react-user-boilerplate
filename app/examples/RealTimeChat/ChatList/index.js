@@ -112,16 +112,34 @@ class ChatList extends Component {
    * @returns name and email of the chat members
    */
   getPersonData = async item => {
-    let returnData = {};
-    for (let index = 0; index < item.joined.length; index++) {
-      returnData = await this.fetchPersonData(item.joined[index]);
-      if (returnData) {
-        break;
+    let returnData = {
+      apiUserName: '',
+      apiEmail: '',
+    };
+    const chatSize = item.joined.length;
+    for (let index = 0; index < chatSize; index++) {
+      const apiData = await this.fetchPersonData(item.joined[index]);
+      if (apiData) {
+        if (chatSize === 2) {
+          returnData = apiData;
+          break;
+        } else if (returnData.apiUserName) {
+          returnData.apiUserName = `${returnData.apiUserName},${
+            apiData.apiUserName
+          }`;
+          returnData.apiEmail = `${returnData.apiEmail},${apiData.apiEmail}`;
+        } else {
+          returnData = apiData;
+        }
       }
     }
     return returnData;
   };
 
+  /**
+   * handleChatListItem - to open chat window
+   * @param {object} event
+   */
   handleChatListItem = event => {
     const { updateAction } = this.props;
     const { email } = event;
