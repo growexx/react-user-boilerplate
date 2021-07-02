@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable no-unused-vars */
 /**
  *
  * RealTimeChat
@@ -9,39 +7,41 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Input, AutoComplete } from 'antd';
+import { AutoComplete } from 'antd';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
-import makeSelectRealTimeChat from './selectors';
-import reducer from './reducer';
-import messages from './messages';
-import ChatRoom from './ChatRoom';
-import ChatList from './ChatList';
-import { ChatContainer, StyledRealTimeChat } from './StyledRealTimeChat';
-import { REDUCER_KEY } from './constants';
-import { updateField } from './actions';
 import {
   getFireStoreCollectionReference,
   getFireStoreDocumentReference,
-} from '../../utils/firebase';
-import { FIRESTORE_COLLECTIONS } from '../../containers/constants';
+} from 'utils/firebase';
+import { FIRESTORE_COLLECTIONS } from 'containers/constants';
+import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
+import reducer from 'examples/RealTimeChat/reducer';
+import ChatRoom from 'examples/RealTimeChat/ChatRoom';
+import ChatList from 'examples/RealTimeChat/ChatList';
+import {
+  ChatContainer,
+  StyledRealTimeChat,
+} from 'examples/RealTimeChat/StyledRealTimeChat';
+import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
+import { updateField } from 'examples/RealTimeChat/actions';
+
 export class RealTimeChat extends React.Component {
   onSelect = value => {
-    const { updateAction } = this.props;
-    const currentUserDocReference = getFireStoreDocumentReference(
-      FIRESTORE_COLLECTIONS.PROFILE,
-      getUserData().email,
-    );
+    const {
+      updateAction,
+      storeData: { currentUserRef },
+    } = this.props;
+
     const selectedUserDocReference = getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.PROFILE,
       value,
     );
     updateAction('selectedChatWindow', [
-      currentUserDocReference,
+      currentUserRef,
       selectedUserDocReference,
     ]);
   };

@@ -4,25 +4,24 @@ import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
 import { List, Avatar, Skeleton, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import InfiniteScroll from 'react-infinite-scroller';
 import {
   getFireStoreCollectionReference,
-  getFireStoreDocumentReference,
+  getDataFromReference,
 } from 'utils/firebase';
+import { updateField } from 'examples/RealTimeChat/actions';
+import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
-import PropTypes from 'prop-types';
 import { loadApp } from 'containers/App/actions';
 import {
   StyledChatList,
   SingleChatContainer,
   ChatListContainer,
-} from './StyledChatList';
-import makeSelectRealTimeChat from '../selectors';
-import { updateField } from '../actions';
-import { getDataFromReference } from '../../../utils/firebase';
+} from 'examples/RealTimeChat/ChatList/StyledChatList';
 
 class ChatList extends Component {
   constructor(props) {
@@ -35,16 +34,12 @@ class ChatList extends Component {
   }
 
   componentDidMount() {
-    const { onChangeAppLoading } = this.props;
+    const { onChangeAppLoading, storeData } = this.props;
 
     onChangeAppLoading(true);
     // get list of chats
-    const getDocReference = getFireStoreDocumentReference(
-      FIRESTORE_COLLECTIONS.PROFILE,
-      getUserData().email,
-    );
     getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
-      .where('joined', 'array-contains', getDocReference)
+      .where('joined', 'array-contains', storeData.currentUserRef)
       .get()
       .then(async querySnapshot => {
         const result = [];
@@ -198,13 +193,10 @@ class ChatList extends Component {
   }
 }
 
-ChatList.propTypes = {};
-
 ChatList.propTypes = {
   onChangeAppLoading: PropTypes.func,
-  // eslint-disable-next-line react/no-unused-prop-types
-  storeData: PropTypes.object,
   updateAction: PropTypes.func,
+  storeData: PropTypes.object,
 };
 
 export function mapDispatchToProps(dispatch) {

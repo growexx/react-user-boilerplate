@@ -4,10 +4,16 @@
  *
  */
 import produce from 'immer';
+import { getFireStoreDocumentReference } from 'utils/firebase';
+import { getUserData } from 'utils/Helper';
+import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { UPDATE_FIELD } from './constants';
 
 export const initialState = {
-  searchKeyword: '',
+  currentUserRef: getFireStoreDocumentReference(
+    FIRESTORE_COLLECTIONS.PROFILE,
+    getUserData().email,
+  ),
   searchResults: [],
   loading: false,
   selectedChatWindow: '',
