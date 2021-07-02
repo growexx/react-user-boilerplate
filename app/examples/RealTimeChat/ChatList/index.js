@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
@@ -19,7 +20,6 @@ import {
   SingleChatContainer,
   ChatListContainer,
 } from './StyledChatList';
-import { getMockChatList } from './stub';
 import makeSelectRealTimeChat from '../selectors';
 import { updateField } from '../actions';
 import { getDataFromReference } from '../../../utils/firebase';
@@ -28,7 +28,6 @@ class ChatList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       chatList: [],
       loading: false,
       hasMore: false,
@@ -36,7 +35,7 @@ class ChatList extends Component {
   }
 
   componentDidMount() {
-    const { updateAction, onChangeAppLoading } = this.props;
+    const { onChangeAppLoading } = this.props;
 
     onChangeAppLoading(true);
     // get list of chats
@@ -50,14 +49,12 @@ class ChatList extends Component {
       .then(async querySnapshot => {
         const result = [];
         const { docs } = querySnapshot;
-        // eslint-disable-next-line no-plusplus
         for (let i = 0; i <= docs.length; i++) {
           let name;
           let email;
           const data = docs[i] && docs[i].data();
           if (data) {
-            // eslint-disable-next-line no-await-in-loop
-            await this.fetchPersonName(data).then(value => {
+            await this.getPersonData(data).then(value => {
               const { apiUserName, apiEmail } = value;
               name = apiUserName;
               email = apiEmail;
@@ -80,47 +77,50 @@ class ChatList extends Component {
       });
   }
 
-  /**
-   * getChatList - get chats from firebase
-   */
-  getChatList = () => {
-    const { chatList } = this.state;
-    getMockChatList().then(res => {
-      this.setState({
-        chatList: chatList.concat(res.data),
-      });
-    });
-  };
-
   handleInfiniteOnLoad = () => {
     /**
      * TODO: INFINITE LOADING PENDING
      */
   };
 
-  fetchPersonName = async item =>
-    getDataFromReference(item.joined[0])
+  /**
+   * fetchPersonData
+   * @param {*} person
+   * @returns person data if found
+   */
+  fetchPersonData = async person => {
+    const returnData = await getDataFromReference(person)
       .then(data => {
-        if (data.data().email === getUserData().email) {
-          getDataFromReference(item.joined[1])
-            .then(subData => ({
-              apiUserName: subData.data().userName,
-              apiEmail: subData.data().email,
-            }))
-            .catch(error => {
-              // eslint-disable-next-line no-console
-              console.log('Error getting documents: ', error);
-            });
+        if (data.data().email !== getUserData().email) {
+          return {
+            apiUserName: data.data().userName,
+            apiEmail: data.data().email,
+          };
         }
-        return {
-          apiUserName: data.data().userName,
-          apiEmail: data.data().email,
-        };
+        return undefined;
       })
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
       });
+    return returnData;
+  };
+
+  /**
+   * getPersonData - iterates through joined members in chat and gives the name
+   * @param {object} item - chat item
+   * @returns name and email of the chat members
+   */
+  getPersonData = async item => {
+    let returnData = {};
+    for (let index = 0; index < item.joined.length; index++) {
+      returnData = await this.fetchPersonData(item.joined[index]);
+      if (returnData) {
+        break;
+      }
+    }
+    return returnData;
+  };
 
   handleChatListItem = event => {
     const { updateAction } = this.props;
@@ -153,7 +153,7 @@ class ChatList extends Component {
                       type="button"
                       onClick={() => this.handleChatListItem(item)}
                     >
-                      More
+                      Chat
                     </Button>,
                   ]}
                 >
