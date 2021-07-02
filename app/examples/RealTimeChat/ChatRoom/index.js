@@ -1,6 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 /* eslint-disable react/no-unused-state */
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
@@ -10,9 +10,9 @@ import { UserOutlined } from '@ant-design/icons';
 import { Form, Input, Avatar } from 'antd';
 import {
   getFireStoreCollectionReference,
-  getFireStoreDocumentReference,
   getDataFromReference,
 } from 'utils/firebase';
+import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
@@ -23,7 +23,6 @@ class ChatRoom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       currentWindow: {},
       userChats: [],
     };
@@ -39,7 +38,6 @@ class ChatRoom extends Component {
       .where('joined', 'array-contains-any', selectedChatWindow)
       .get()
       .then(async querySnapshot => {
-        const result = [];
         const { docs } = querySnapshot;
         if (docs) {
           if (docs.length === 0) {
@@ -51,6 +49,7 @@ class ChatRoom extends Component {
               currentWindow: docs[0].data(),
               userChats: docs[0].data().chats,
             });
+            await this.setUserRefsAndValues(docs[0].data());
           } else {
             // get the exact window
             // eslint-disable-next-line no-console
@@ -65,8 +64,49 @@ class ChatRoom extends Component {
       });
   }
 
+  setUserRefsAndValues = async data => {
+    const { joined } = data;
+    const {
+      storeData: { receiverUserRefs, receiverUserValues },
+      updateAction,
+    } = this.props;
+
+    for (let index = 0; index < joined.length; index++) {
+      const userValue = await this.fetchPersonData(joined[index]);
+      if (userValue.email === getUserData().email) {
+        updateAction('currentUserValue', userValue);
+      } else {
+        const newRefs = receiverUserRefs.concat(joined[index]);
+        const newValues = receiverUserValues.concat(userValue);
+        updateAction('receiverUserRefs', newRefs);
+        updateAction('receiverUserValues', newValues);
+      }
+    }
+  };
+
   handleFormSubmit = () => {};
 
+  /**
+   * fetchPersonData
+   * @param {object} person
+   * @returns value from reference
+   */
+  fetchPersonData = async person => {
+    const returnData = await getDataFromReference(person)
+      .then(data => data.data())
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Error getting documents: ', error);
+      });
+    return returnData;
+  };
+
+  /**
+   * renderSingleMessage
+   * @param {object} message
+   * @param {number} index
+   * @returns message UI
+   */
   renderSingleMessage = (message, index) => {
     const {
       storeData: { currentUserRef },
@@ -74,7 +114,9 @@ class ChatRoom extends Component {
     return (
       <p
         className={
-          message.from === currentUserRef ? `messageSent` : `messageSent`
+          message.from.id === currentUserRef.id
+            ? `messageSent`
+            : `messageReceived`
         }
         key={`${index}_${message}`}
       >
@@ -83,6 +125,10 @@ class ChatRoom extends Component {
     );
   };
 
+  /**
+   * renderMessages
+   * @returns each single message
+   */
   renderMessages = () => {
     const { userChats } = this.state;
     return userChats.map(this.renderSingleMessage);
