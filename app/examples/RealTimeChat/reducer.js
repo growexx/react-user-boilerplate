@@ -10,7 +10,7 @@ export const initialState = {
   searchKeyword: '',
   searchResults: [],
   loading: false,
-  selectedChatEmail: '',
+  selectedChatWindow: '',
 };
 
 /* eslint-disable default-case, no-param-reassign */

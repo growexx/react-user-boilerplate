@@ -142,8 +142,8 @@ class ChatList extends Component {
    */
   handleChatListItem = event => {
     const { updateAction } = this.props;
-    const { email } = event;
-    updateAction('selectedChatEmail', email);
+    const { joined } = event;
+    updateAction('selectedChatWindow', joined);
   };
 
   /**

@@ -32,7 +32,18 @@ import { FIRESTORE_COLLECTIONS } from '../../containers/constants';
 export class RealTimeChat extends React.Component {
   onSelect = value => {
     const { updateAction } = this.props;
-    updateAction('selectedChatEmail', value);
+    const currentUserDocReference = getFireStoreDocumentReference(
+      FIRESTORE_COLLECTIONS.PROFILE,
+      getUserData().email,
+    );
+    const selectedUserDocReference = getFireStoreDocumentReference(
+      FIRESTORE_COLLECTIONS.PROFILE,
+      value,
+    );
+    updateAction('selectedChatWindow', [
+      currentUserDocReference,
+      selectedUserDocReference,
+    ]);
   };
 
   componentDidMount() {
@@ -57,7 +68,7 @@ export class RealTimeChat extends React.Component {
 
   render() {
     const {
-      storeData: { searchResults, selectedChatEmail },
+      storeData: { searchResults, selectedChatWindow },
     } = this.props;
     return (
       <div>
@@ -80,7 +91,9 @@ export class RealTimeChat extends React.Component {
           </div>
           <ChatContainer>
             <ChatList />
-            {selectedChatEmail && selectedChatEmail.length > 0 && <ChatRoom />}
+            {selectedChatWindow && selectedChatWindow.length > 0 && (
+              <ChatRoom />
+            )}
           </ChatContainer>
         </StyledRealTimeChat>
       </div>
