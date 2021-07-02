@@ -62,3 +62,10 @@ export const setFirestoreDocumentData = (
     .collection(collectionName)
     .doc(documentName)
     .set(payload);
+
+/**
+ * getDataFromReference
+ * @param {firebase reference} reference
+ * @returns document that reference is pointing
+ */
+export const getDataFromReference = reference => reference.get();

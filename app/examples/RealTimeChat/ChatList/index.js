@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { List, message, Avatar, Skeleton } from 'antd';
+import { List, Avatar, Skeleton, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import InfiniteScroll from 'react-infinite-scroller';
 import {
@@ -22,6 +22,7 @@ import {
 import { getMockChatList } from './stub';
 import makeSelectRealTimeChat from '../selectors';
 import { updateField } from '../actions';
+import { getDataFromReference } from '../../../utils/firebase';
 
 class ChatList extends Component {
   constructor(props) {
@@ -46,14 +47,30 @@ class ChatList extends Component {
     getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
       .where('joined', 'array-contains', getDocReference)
       .get()
-      .then(querySnapshot => {
+      .then(async querySnapshot => {
         const result = [];
-        querySnapshot.forEach(doc => {
-          result.push(doc.data());
-        });
+        const { docs } = querySnapshot;
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i <= docs.length; i++) {
+          let name;
+          let email;
+          const data = docs[i] && docs[i].data();
+          if (data) {
+            // eslint-disable-next-line no-await-in-loop
+            await this.fetchPersonName(data).then(value => {
+              const { apiUserName, apiEmail } = value;
+              name = apiUserName;
+              email = apiEmail;
+            });
+            result.push({
+              ...data,
+              name,
+              email,
+            });
+          }
+        }
         this.setState({
-          loading: true,
-          chatList: result,
+          chatList: [...result],
         });
         onChangeAppLoading(false);
       })
@@ -75,18 +92,40 @@ class ChatList extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   this.getChatList();
-  // }
-
   handleInfiniteOnLoad = () => {
-    const { chatList } = this.state;
-    this.setState({
-      loading: true,
-      chatList: chatList.concat(
-        [...new Array(3)].map(() => ({ loading: true, ...chatList[0] })),
-      ),
-    });
+    /**
+     * TODO: INFINITE LOADING PENDING
+     */
+  };
+
+  fetchPersonName = async item =>
+    getDataFromReference(item.joined[0])
+      .then(data => {
+        if (data.data().email === getUserData().email) {
+          getDataFromReference(item.joined[1])
+            .then(subData => ({
+              apiUserName: subData.data().userName,
+              apiEmail: subData.data().email,
+            }))
+            .catch(error => {
+              // eslint-disable-next-line no-console
+              console.log('Error getting documents: ', error);
+            });
+        }
+        return {
+          apiUserName: data.data().userName,
+          apiEmail: data.data().email,
+        };
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Error getting documents: ', error);
+      });
+
+  handleChatListItem = event => {
+    const { updateAction } = this.props;
+    const { email } = event;
+    updateAction('selectedChatEmail', email);
   };
 
   /**
@@ -107,13 +146,23 @@ class ChatList extends Component {
             <List
               dataSource={chatList}
               renderItem={item => (
-                <List.Item key={item.id}>
+                <List.Item
+                  key={item.id}
+                  actions={[
+                    <Button
+                      type="button"
+                      onClick={() => this.handleChatListItem(item)}
+                    >
+                      More
+                    </Button>,
+                  ]}
+                >
                   <Skeleton avatar title={false} loading={item.loading} active>
                     <SingleChatContainer>
                       <List.Item.Meta
                         avatar={<Avatar icon={<UserOutlined />} />}
-                        title={item.email}
-                        description={item.latestMessage}
+                        title={item.name}
+                        description={item.chats[item.chats.length - 1].message}
                       />
                     </SingleChatContainer>
                   </Skeleton>
