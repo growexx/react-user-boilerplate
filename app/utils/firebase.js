@@ -18,6 +18,11 @@ firebase.initializeApp({
 export const db = firebase.firestore();
 
 /**
+ * fireStoreFieldValue - firebase firestore field value
+ */
+export const fireStoreFieldValue = firebase.firestore.FieldValue;
+
+/**
  * getFireStoreCollectionReference
  * @param {String} collectionName
  * @returns collection reference
@@ -57,11 +62,12 @@ export const setFirestoreDocumentData = (
   collectionName,
   documentName,
   payload,
+  options,
 ) =>
   db
     .collection(collectionName)
     .doc(documentName)
-    .set(payload);
+    .set(payload, options);
 
 /**
  * getDataFromReference

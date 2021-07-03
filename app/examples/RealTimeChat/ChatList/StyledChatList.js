@@ -5,7 +5,7 @@ export const StyledChatList = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   height: 100vh;
-  flex-grow: 1;
+  flex: 1;
 `;
 
 export const ChatListContainer = styled.div`
@@ -28,5 +28,10 @@ export const SingleChatContainer = styled.div`
   p {
     margin-left: 20px;
     margin-bottom: 0px;
+  }
+  .ant-list-item-meta-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;

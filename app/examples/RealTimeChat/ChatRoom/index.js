@@ -1,13 +1,12 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
-/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { UserOutlined } from '@ant-design/icons';
-import { Form, Input, Avatar } from 'antd';
+import { Form, Input, Avatar, Button } from 'antd';
 import {
   getFireStoreCollectionReference,
   getDataFromReference,
@@ -18,15 +17,32 @@ import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
+import {
+  getFireStoreDocumentReference,
+  setFirestoreDocumentData,
+} from '../../../utils/firebase';
 
 class ChatRoom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentWindow: {},
       userChats: [],
+      messageToSend: '',
     };
+    this.unSubscribeToWindow = null;
+    this.currentChatWindow = null;
   }
+
+  subscribeToWindow = chatWindow => {
+    this.unSubscribeToWindow = getFireStoreDocumentReference(
+      FIRESTORE_COLLECTIONS.CHAT_WINDOW,
+      chatWindow,
+    ).onSnapshot(doc => {
+      this.setState({
+        userChats: doc.data().chats,
+      });
+    });
+  };
 
   /**
    * fetchPersonData
@@ -89,11 +105,12 @@ class ChatRoom extends Component {
             // eslint-disable-next-line no-console
             console.log('length 0', docs.length);
           } else if (docs.length === 1) {
+            [this.currentChatWindow] = docs;
             this.setState({
-              currentWindow: docs[0].data(),
               userChats: docs[0].data().chats,
             });
             await this.setUserRefsAndValues(docs[0].data());
+            this.subscribeToWindow(docs[0].id);
           } else {
             // get the exact window
             // eslint-disable-next-line no-console
@@ -112,7 +129,43 @@ class ChatRoom extends Component {
     this.setCurrentChatWindow();
   }
 
-  handleFormSubmit = () => {};
+  /**
+   * handleSend - new message
+   */
+  handleSend = () => {
+    const { userChats, messageToSend } = this.state;
+    if (messageToSend.length > 0) {
+      const {
+        storeData: { currentUserRef },
+      } = this.props;
+      const message = {
+        message: messageToSend.trim(),
+        type: 'text',
+        createdAt: new Date(),
+        from: currentUserRef,
+        seen: [currentUserRef],
+        delivered: [currentUserRef],
+      };
+
+      const payload = {
+        chats: [...userChats, message],
+      };
+      setFirestoreDocumentData(
+        FIRESTORE_COLLECTIONS.CHAT_WINDOW,
+        this.currentChatWindow.id,
+        payload,
+        { merge: true },
+      )
+        .then(() => {})
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.error('Error writing document: ', error);
+        });
+      this.setState({
+        messageToSend: '',
+      });
+    }
+  };
 
   /**
    * renderSingleMessage
@@ -147,18 +200,36 @@ class ChatRoom extends Component {
     return userChats.map(this.renderSingleMessage);
   };
 
+  componentWillUnmount() {
+    this.unSubscribeToWindow();
+  }
+
   render() {
+    const { messageToSend } = this.state;
     return (
       <StyledChatRoom>
-        <div className="chatRoomHeader">
-          <p>Name of User</p>
-          <Avatar icon={<UserOutlined />} />
-        </div>
-        <div className="messageContainer">{this.renderMessages()}</div>
-        <div className="messageInput">
-          <Form.Item hasFeedback>
-            <Input placeholder="Enter Your Message" />
-          </Form.Item>
+        <div className="chatRoomContainer">
+          <div className="chatRoomHeader">
+            <p>Name of User</p>
+            <Avatar icon={<UserOutlined />} />
+          </div>
+          <div className="messageContainer">{this.renderMessages()}</div>
+          <Form className="messageInput">
+            <Form.Item hasFeedback>
+              <Input
+                placeholder="Enter Your Message"
+                value={messageToSend}
+                onChange={e => this.setState({ messageToSend: e.target.value })}
+              />
+            </Form.Item>
+            <Button
+              htmlType="submit"
+              type="primary"
+              onClick={() => this.handleSend()}
+            >
+              Send
+            </Button>
+          </Form>
         </div>
       </StyledChatRoom>
     );

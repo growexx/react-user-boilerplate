@@ -6,6 +6,9 @@ export const StyledChatRoom = styled.div`
   flex-direction: column;
   height: 100vh;
   flex: 1;
+  .chatRoomContainer {
+    overflow: auto;
+  }
   .chatRoomHeader {
     background: @primary-color;
     color: @white;
@@ -23,26 +26,33 @@ export const StyledChatRoom = styled.div`
     }
   }
   .messageInput {
-    margin-top: auto;
+    display: flex;
+    margin: auto 5px 5px 5px;
+
     .ant-form-item {
+      flex: 1;
       margin-bottom: 2px !important;
+      margin-right: 10px !important;
     }
   }
   .messageContainer {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
+    margin: 10px 5px 0 5px;
+    p {
+      padding: 10px;
+      overflow: auto;
+      height: auto;
+    }
     .messageSent {
       margin-right: 10px;
       background-color: @messageSent;
-      padding: 10px;
       margin-left: auto;
     }
     .messageReceived {
       margin-left: 10px;
       margin-right: auto;
       background-color: @messageReceived;
-      padding: 10px;
     }
   }
 `;
