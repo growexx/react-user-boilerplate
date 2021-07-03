@@ -65,22 +65,21 @@ class ChatRoom extends Component {
    */
   setUserRefsAndValues = async data => {
     const { joined } = data;
-    const {
-      storeData: { receiverUserRefs, receiverUserValues },
-      updateAction,
-    } = this.props;
+    const { updateAction } = this.props;
 
+    const newRefs = [];
+    const newValues = [];
     for (let index = 0; index < joined.length; index++) {
       const userValue = await this.fetchPersonData(joined[index]);
       if (userValue.email === getUserData().email) {
         updateAction('currentUserValue', userValue);
       } else {
-        const newRefs = receiverUserRefs.concat(joined[index]);
-        const newValues = receiverUserValues.concat(userValue);
-        updateAction('receiverUserRefs', newRefs);
-        updateAction('receiverUserValues', newValues);
+        newRefs.push(joined[index]);
+        newValues.push(userValue);
       }
     }
+    updateAction('receiverUserRefs', newRefs);
+    updateAction('receiverUserValues', newValues);
   };
 
   /**
@@ -122,6 +121,7 @@ class ChatRoom extends Component {
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
+        onChangeAppLoading(false);
       });
   };
 
@@ -200,6 +200,29 @@ class ChatRoom extends Component {
     return userChats.map(this.renderSingleMessage);
   };
 
+  getChatWindowName = () => {
+    const {
+      storeData: { receiverUserValues },
+    } = this.props;
+    let chatWindowName = '';
+    if (receiverUserValues) {
+      if (receiverUserValues.length === 1) {
+        chatWindowName = receiverUserValues[0].userName;
+      } else {
+        for (let index = 0; index < receiverUserValues.length; index++) {
+          if (chatWindowName) {
+            chatWindowName = `${chatWindowName},${
+              receiverUserValues[index].userName
+            }`;
+          } else {
+            chatWindowName = `${receiverUserValues[index].userName}`;
+          }
+        }
+      }
+    }
+    return chatWindowName;
+  };
+
   componentWillUnmount() {
     this.unSubscribeToWindow();
   }
@@ -210,7 +233,7 @@ class ChatRoom extends Component {
       <StyledChatRoom>
         <div className="chatRoomContainer">
           <div className="chatRoomHeader">
-            <p>Name of User</p>
+            <p>{this.getChatWindowName()}</p>
             <Avatar icon={<UserOutlined />} />
           </div>
           <div className="messageContainer">{this.renderMessages()}</div>

@@ -69,6 +69,7 @@ class ChatList extends Component {
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
+        onChangeAppLoading(false);
       });
   }
 
