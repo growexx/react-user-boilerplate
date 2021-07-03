@@ -31,6 +31,15 @@ export const getFireStoreCollectionReference = collectionName =>
   db.collection(collectionName);
 
 /**
+ * addFirestoreDocumentData
+ * @param {String} collectionName
+ * @param {Object} documentData
+ * @returns add document reference
+ */
+export const addFirestoreDocumentData = (collectionName, documentData) =>
+  db.collection(collectionName).add(documentData);
+
+/**
  * getFireStoreDocumentReference
  * @param {String} collectionName
  * @param {String} documentName
@@ -38,6 +47,13 @@ export const getFireStoreCollectionReference = collectionName =>
  */
 export const getFireStoreDocumentReference = (collectionName, documentName) =>
   db.collection(collectionName).doc(documentName);
+
+/**
+ * getDataFromReference
+ * @param {firebase reference} reference
+ * @returns document that reference is pointing
+ */
+export const getDataFromReference = reference => reference.get();
 
 /**
  * getFireStoreDocumentData
@@ -68,10 +84,3 @@ export const setFirestoreDocumentData = (
     .collection(collectionName)
     .doc(documentName)
     .set(payload, options);
-
-/**
- * getDataFromReference
- * @param {firebase reference} reference
- * @returns document that reference is pointing
- */
-export const getDataFromReference = reference => reference.get();

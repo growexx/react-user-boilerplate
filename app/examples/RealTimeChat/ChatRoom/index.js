@@ -5,8 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { UserOutlined } from '@ant-design/icons';
-import { Form, Input, Avatar, Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
+import { Form, Input, Button } from 'antd';
 import {
   getFireStoreCollectionReference,
   getDataFromReference,
@@ -18,6 +18,7 @@ import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
 import {
+  addFirestoreDocumentData,
   getFireStoreDocumentReference,
   setFirestoreDocumentData,
 } from '../../../utils/firebase';
@@ -33,7 +34,41 @@ class ChatRoom extends Component {
     this.currentChatWindow = null;
   }
 
-  subscribeToWindow = chatWindow => {
+  /**
+   * createNewChatWindow - if window does not exits it creates one
+   */
+  createNewChatWindow = async () => {
+    const {
+      storeData: { selectedChatWindow, currentUserRef },
+    } = this.props;
+    const payload = {
+      chats: [],
+      createdAt: new Date(),
+      createdBy: currentUserRef,
+      joined: selectedChatWindow,
+    };
+    await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, payload)
+      .then(async docRef => {
+        this.currentChatWindow = docRef;
+        this.setState({
+          userChats: docRef.data().chats,
+        });
+        await this.setUserRefsAndValues(docRef.data());
+        await this.subscribeToWindow(docRef.id);
+        // eslint-disable-next-line no-console
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error('Error adding document: ', error);
+      });
+  };
+
+  /**
+   * subscribeToWindow - listen to updates in chat
+   * @param {firebase chat window reference} chatWindow
+   */
+  subscribeToWindow = async chatWindow => {
     this.unSubscribeToWindow = getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
       chatWindow,
@@ -103,13 +138,14 @@ class ChatRoom extends Component {
             // create new chat window
             // eslint-disable-next-line no-console
             console.log('length 0', docs.length);
+            await this.createNewChatWindow();
           } else if (docs.length === 1) {
             [this.currentChatWindow] = docs;
             this.setState({
               userChats: docs[0].data().chats,
             });
             await this.setUserRefsAndValues(docs[0].data());
-            this.subscribeToWindow(docs[0].id);
+            await this.subscribeToWindow(docs[0].id);
           } else {
             // get the exact window
             // eslint-disable-next-line no-console
@@ -197,9 +233,16 @@ class ChatRoom extends Component {
    */
   renderMessages = () => {
     const { userChats } = this.state;
-    return userChats.map(this.renderSingleMessage);
+    if (userChats.length > 0) {
+      return userChats.map(this.renderSingleMessage);
+    }
+    return <></>;
   };
 
+  /**
+   * getChatWindowName
+   * @returns window name filtered by joined members
+   */
   getChatWindowName = () => {
     const {
       storeData: { receiverUserValues },
@@ -223,6 +266,11 @@ class ChatRoom extends Component {
     return chatWindowName;
   };
 
+  closeChatWindow = () => {
+    const { updateAction } = this.props;
+    updateAction('selectedChatWindow', '');
+  };
+
   componentWillUnmount() {
     this.unSubscribeToWindow();
   }
@@ -234,7 +282,7 @@ class ChatRoom extends Component {
         <div className="chatRoomContainer">
           <div className="chatRoomHeader">
             <p>{this.getChatWindowName()}</p>
-            <Avatar icon={<UserOutlined />} />
+            <CloseOutlined onClick={() => this.closeChatWindow()} />
           </div>
           <div className="messageContainer">{this.renderMessages()}</div>
           <Form className="messageInput">

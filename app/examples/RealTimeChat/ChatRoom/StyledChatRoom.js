@@ -13,16 +13,16 @@ export const StyledChatRoom = styled.div`
     background: @primary-color;
     color: @white;
     font-weight: bold;
-    height: 10%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
-    img {
-      border-radius: 50%;
-      height: 50px;
-      width: 50px;
-      background: @white;
+    p {
+      margin-bottom: 0;
+    }
+    svg {
+      cursor: pointer;
     }
   }
   .messageInput {
