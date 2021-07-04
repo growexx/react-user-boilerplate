@@ -9,6 +9,8 @@ export const StyledChatRoom = styled.div`
   .chatRoomContainer {
     overflow: auto;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .chatRoomHeader {
     background: @primary-color;

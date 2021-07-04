@@ -31,17 +31,21 @@ class ChatList extends Component {
       loading: false,
       hasMore: false,
     };
+    this.unSubscribeChatList = null;
   }
 
-  componentDidMount() {
+  /**
+   * subscribeToChatList - real time updates for chat list
+   */
+  subscribeToChatList = () => {
     const { onChangeAppLoading, storeData } = this.props;
-
     onChangeAppLoading(true);
-    // get list of chats
-    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
+
+    this.unsubscribeChatList = getFireStoreCollectionReference(
+      FIRESTORE_COLLECTIONS.CHAT_WINDOW,
+    )
       .where('joined', 'array-contains', storeData.currentUserRef)
-      .get()
-      .then(async querySnapshot => {
+      .onSnapshot(async querySnapshot => {
         const result = [];
         const { docs } = querySnapshot;
         for (let i = 0; i <= docs.length; i++) {
@@ -65,12 +69,16 @@ class ChatList extends Component {
           chatList: [...result],
         });
         onChangeAppLoading(false);
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log('Error getting documents: ', error);
-        onChangeAppLoading(false);
       });
+  };
+
+  componentDidMount() {
+    // get list of chats
+    this.subscribeToChatList();
+  }
+
+  componentWillUnmount() {
+    this.unSubscribeChatList();
   }
 
   handleInfiniteOnLoad = () => {
