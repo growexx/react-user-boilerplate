@@ -12,11 +12,11 @@ import {
   getFireStoreCollectionReference,
   getDataFromReference,
 } from 'utils/firebase';
-import { updateField } from 'examples/RealTimeChat/actions';
-import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
+import { updateField } from 'examples/RealTimeChat/actions';
+import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import {
   StyledChatList,
   SingleChatContainer,
@@ -31,7 +31,7 @@ class ChatList extends Component {
       loading: false,
       hasMore: false,
     };
-    this.unSubscribeChatList = null;
+    this.unSubscribeToChatList = null;
   }
 
   /**
@@ -41,35 +41,42 @@ class ChatList extends Component {
     const { onChangeAppLoading, storeData } = this.props;
     onChangeAppLoading(true);
 
-    this.unsubscribeChatList = getFireStoreCollectionReference(
+    this.unSubscribeToChatList = getFireStoreCollectionReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
       .where('joined', 'array-contains', storeData.currentUserRef)
-      .onSnapshot(async querySnapshot => {
-        const result = [];
-        const { docs } = querySnapshot;
-        for (let i = 0; i <= docs.length; i++) {
-          let name;
-          let email;
-          const data = docs[i] && docs[i].data();
-          if (data) {
-            await this.getPersonData(data).then(value => {
-              const { apiUserName, apiEmail } = value;
-              name = apiUserName;
-              email = apiEmail;
-            });
-            result.push({
-              ...data,
-              name,
-              email,
-            });
+      .onSnapshot(
+        async querySnapshot => {
+          const result = [];
+          const { docs } = querySnapshot;
+          for (let i = 0; i <= docs.length; i++) {
+            let name;
+            let email;
+            const data = docs[i] && docs[i].data();
+            if (data) {
+              await this.getPersonData(data).then(value => {
+                const { apiUserName, apiEmail } = value;
+                name = apiUserName;
+                email = apiEmail;
+              });
+              result.push({
+                ...data,
+                name,
+                email,
+              });
+            }
           }
-        }
-        this.setState({
-          chatList: [...result],
-        });
-        onChangeAppLoading(false);
-      });
+          this.setState({
+            chatList: [...result],
+          });
+          onChangeAppLoading(false);
+        },
+        error => {
+          // eslint-disable-next-line no-console
+          console.log('Error getting documents: ', error);
+          onChangeAppLoading(false);
+        },
+      );
   };
 
   componentDidMount() {
@@ -78,7 +85,7 @@ class ChatList extends Component {
   }
 
   componentWillUnmount() {
-    this.unSubscribeChatList();
+    this.unSubscribeToChatList();
   }
 
   handleInfiniteOnLoad = () => {
@@ -93,6 +100,7 @@ class ChatList extends Component {
    * @returns person data if found
    */
   fetchPersonData = async person => {
+    const { onChangeAppLoading } = this.props;
     const returnData = await getDataFromReference(person)
       .then(data => {
         if (data.data().email !== getUserData().email) {
@@ -106,6 +114,7 @@ class ChatList extends Component {
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
+        onChangeAppLoading(false);
       });
     return returnData;
   };
