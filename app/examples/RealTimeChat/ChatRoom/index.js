@@ -33,6 +33,18 @@ class ChatRoom extends Component {
   }
 
   /**
+   * setInitialChats
+   * @param {String}} uniqueId
+   * @param {Object} data
+   */
+  setInitialChats = (uniqueId, data) => {
+    this.currentChatWindow = uniqueId;
+    this.setState({
+      userChats: data.chats,
+    });
+  };
+
+  /**
    * createNewChatWindow - if window does not exits it creates one
    */
   createNewChatWindow = async uniqueId => {
@@ -52,11 +64,8 @@ class ChatRoom extends Component {
       payload,
       {},
     )
-      .then(async docRef => {
-        this.currentChatWindow = docRef;
-        this.setState({
-          userChats: payload.chats,
-        });
+      .then(async () => {
+        this.setInitialChats(uniqueId, payload);
         await this.setUserRefsAndValues(payload);
         await this.subscribeToWindow(uniqueId);
         // eslint-disable-next-line no-console
@@ -137,10 +146,7 @@ class ChatRoom extends Component {
     getFireStoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, uniqueId)
       .then(async doc => {
         if (doc.exists) {
-          this.currentChatWindow = doc;
-          this.setState({
-            userChats: doc.data().chats,
-          });
+          this.setInitialChats(uniqueId, doc.data());
           await this.setUserRefsAndValues(doc.data());
           await this.subscribeToWindow(doc.id);
           onChangeAppLoading(false);
@@ -184,7 +190,7 @@ class ChatRoom extends Component {
       };
       setFirestoreDocumentData(
         FIRESTORE_COLLECTIONS.CHAT_WINDOW,
-        this.currentChatWindow.id,
+        this.currentChatWindow,
         payload,
         { merge: true },
       )
@@ -281,22 +287,26 @@ class ChatRoom extends Component {
             <CloseOutlined onClick={() => this.closeChatWindow()} />
           </div>
           <div className="messageContainer">{this.renderMessages()}</div>
-          <Form className="messageInput">
-            <Form.Item hasFeedback>
-              <Input
-                placeholder="Enter Your Message"
-                value={messageToSend}
-                onChange={e => this.setState({ messageToSend: e.target.value })}
-              />
-            </Form.Item>
-            <Button
-              htmlType="submit"
-              type="primary"
-              onClick={() => this.handleSend()}
-            >
-              Send
-            </Button>
-          </Form>
+          <div className="sendMessageContainer">
+            <Form className="messageInput">
+              <Form.Item hasFeedback>
+                <Input
+                  placeholder="Enter Your Message"
+                  value={messageToSend}
+                  onChange={e =>
+                    this.setState({ messageToSend: e.target.value })
+                  }
+                />
+              </Form.Item>
+              <Button
+                htmlType="submit"
+                type="primary"
+                onClick={() => this.handleSend()}
+              >
+                Send
+              </Button>
+            </Form>
+          </div>
         </div>
       </StyledChatRoom>
     );

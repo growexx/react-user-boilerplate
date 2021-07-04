@@ -93,7 +93,11 @@ export default function App() {
           component={ForgotPassword}
         />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
-        <Route exact path={ROUTES.REAL_TIME_CHAT} component={RealTimeChat} />
+        <PrivateRoute
+          exact
+          path={ROUTES.REAL_TIME_CHAT}
+          component={RealTimeChat}
+        />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

@@ -32,6 +32,7 @@ const verifyUserInFireStore = emailId => {
       const payload = {
         email: emailId,
         lastSeen: new Date(),
+        userName: emailId.split('@').shift(),
       };
       if (!doc.exists) {
         // set the data

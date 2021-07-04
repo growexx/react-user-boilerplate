@@ -8,6 +8,7 @@ export const StyledChatRoom = styled.div`
   flex: 1;
   .chatRoomContainer {
     overflow: auto;
+    height: 100%;
   }
   .chatRoomHeader {
     background: @primary-color;
@@ -24,6 +25,9 @@ export const StyledChatRoom = styled.div`
     svg {
       cursor: pointer;
     }
+  }
+  .sendMessageContainer {
+    margin-top: auto;
   }
   .messageInput {
     display: flex;
@@ -43,6 +47,7 @@ export const StyledChatRoom = styled.div`
       padding: 10px;
       overflow: auto;
       height: auto;
+      width: 50%;
     }
     .messageSent {
       margin-right: 10px;
