@@ -8,8 +8,10 @@ import PropTypes from 'prop-types';
 import { CloseOutlined } from '@ant-design/icons';
 import { Form, Input, Button } from 'antd';
 import {
-  getFireStoreCollectionReference,
   getDataFromReference,
+  getFireStoreDocumentData,
+  getFireStoreDocumentReference,
+  setFirestoreDocumentData,
 } from 'utils/firebase';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
@@ -17,11 +19,7 @@ import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
-import {
-  addFirestoreDocumentData,
-  getFireStoreDocumentReference,
-  setFirestoreDocumentData,
-} from '../../../utils/firebase';
+import { getUniqueId } from './helper';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -37,9 +35,10 @@ class ChatRoom extends Component {
   /**
    * createNewChatWindow - if window does not exits it creates one
    */
-  createNewChatWindow = async () => {
+  createNewChatWindow = async uniqueId => {
     const {
       storeData: { selectedChatWindow, currentUserRef },
+      onChangeAppLoading,
     } = this.props;
     const payload = {
       chats: [],
@@ -47,20 +46,26 @@ class ChatRoom extends Component {
       createdBy: currentUserRef,
       joined: selectedChatWindow,
     };
-    await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, payload)
+    await setFirestoreDocumentData(
+      FIRESTORE_COLLECTIONS.CHAT_WINDOW,
+      uniqueId,
+      payload,
+      {},
+    )
       .then(async docRef => {
         this.currentChatWindow = docRef;
         this.setState({
-          userChats: docRef.data().chats,
+          userChats: payload.chats,
         });
-        await this.setUserRefsAndValues(docRef.data());
-        await this.subscribeToWindow(docRef.id);
+        await this.setUserRefsAndValues(payload);
+        await this.subscribeToWindow(uniqueId);
         // eslint-disable-next-line no-console
-        console.log('Document written with ID: ', docRef.id);
+        console.log('Document written with ID: ', uniqueId);
       })
       .catch(error => {
         // eslint-disable-next-line no-console
         console.error('Error adding document: ', error);
+        onChangeAppLoading(false);
       });
   };
 
@@ -85,11 +90,13 @@ class ChatRoom extends Component {
    * @returns value from reference
    */
   fetchPersonData = async person => {
+    const { onChangeAppLoading } = this.props;
     const returnData = await getDataFromReference(person)
       .then(data => data.data())
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
+        onChangeAppLoading(false);
       });
     return returnData;
   };
@@ -120,39 +127,28 @@ class ChatRoom extends Component {
   /**
    * setCurrentChatWindow - initialize current chat window
    */
-  setCurrentChatWindow = () => {
+  setCurrentChatWindow = async () => {
     const {
       storeData: { selectedChatWindow },
       onChangeAppLoading,
     } = this.props;
-
+    const uniqueId = getUniqueId(selectedChatWindow);
     onChangeAppLoading(true);
-
-    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
-      .where('joined', 'array-contains-any', selectedChatWindow)
-      .get()
-      .then(async querySnapshot => {
-        const { docs } = querySnapshot;
-        if (docs) {
-          if (docs.length === 0) {
-            // create new chat window
-            // eslint-disable-next-line no-console
-            console.log('length 0', docs.length);
-            await this.createNewChatWindow();
-          } else if (docs.length === 1) {
-            [this.currentChatWindow] = docs;
-            this.setState({
-              userChats: docs[0].data().chats,
-            });
-            await this.setUserRefsAndValues(docs[0].data());
-            await this.subscribeToWindow(docs[0].id);
-          } else {
-            // get the exact window
-            // eslint-disable-next-line no-console
-            console.log('length more than 1', docs.length);
-          }
+    getFireStoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, uniqueId)
+      .then(async doc => {
+        if (doc.exists) {
+          this.currentChatWindow = doc;
+          this.setState({
+            userChats: doc.data().chats,
+          });
+          await this.setUserRefsAndValues(doc.data());
+          await this.subscribeToWindow(doc.id);
+          onChangeAppLoading(false);
+        } else {
+          // doc.data() will be undefined in this case
+          await this.createNewChatWindow(uniqueId);
+          onChangeAppLoading(false);
         }
-        onChangeAppLoading(false);
       })
       .catch(error => {
         // eslint-disable-next-line no-console

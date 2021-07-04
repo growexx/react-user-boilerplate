@@ -143,6 +143,18 @@ class ChatList extends Component {
   };
 
   /**
+   * getLastMessage
+   * @param {*} item
+   * @returns last message
+   */
+  getLastMessage = item => {
+    if (item.chat && item.chat.length > 0) {
+      return item.chats[item.chats.length - 1].message;
+    }
+    return '';
+  };
+
+  /**
    * renderAllChats
    * @returns list of chats
    */
@@ -176,7 +188,7 @@ class ChatList extends Component {
                       <List.Item.Meta
                         avatar={<Avatar icon={<UserOutlined />} />}
                         title={item.name}
-                        description={item.chats[item.chats.length - 1].message}
+                        description={this.getLastMessage(item)}
                       />
                     </SingleChatContainer>
                   </Skeleton>
