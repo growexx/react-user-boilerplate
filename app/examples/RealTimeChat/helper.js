@@ -9,3 +9,14 @@ export const getUniqueId = joinedArray => {
   const sortedParticipants = getReferenceIds(joinedArray).sort();
   return sortedParticipants.join('');
 };
+
+/**
+ * resetChatWindow - reset chat window related state
+ * @param {*} updateAction
+ */
+export const resetChatWindow = updateAction => {
+  updateAction('receiverUserRefs', []);
+  updateAction('receiverUserValues', []);
+  updateAction('searchResults', '');
+  updateAction('selectedChatWindow', '');
+};

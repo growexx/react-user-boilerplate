@@ -22,6 +22,7 @@ import {
   SingleChatContainer,
   ChatListContainer,
 } from 'examples/RealTimeChat/ChatList/StyledChatList';
+import { resetChatWindow } from 'examples/RealTimeChat/helper';
 
 class ChatList extends Component {
   constructor(props) {
@@ -156,6 +157,7 @@ class ChatList extends Component {
   handleChatListItem = event => {
     const { updateAction } = this.props;
     const { joined } = event;
+    resetChatWindow(updateAction);
     updateAction('selectedChatWindow', joined);
   };
 

@@ -19,7 +19,7 @@ import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
-import { getUniqueId } from 'examples/RealTimeChat/helper';
+import { getUniqueId, resetChatWindow } from 'examples/RealTimeChat/helper';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -270,7 +270,7 @@ class ChatRoom extends Component {
 
   closeChatWindow = () => {
     const { updateAction } = this.props;
-    updateAction('selectedChatWindow', '');
+    resetChatWindow(updateAction);
   };
 
   componentWillUnmount() {
