@@ -1,32 +1,22 @@
-// import produce from 'immer';
-import RealTimeChatReducer from '../reducer';
-// import { someAction } from '../actions';
+import { UPDATE_FIELD } from 'examples/RealTimeChat/constants';
+import RealTimeChatReducer, {
+  initialState,
+} from 'examples/RealTimeChat/reducer';
 
-/* eslint-disable default-case, no-param-reassign */
 describe('RealTimeChatReducer', () => {
-  let state;
-  beforeEach(() => {
-    state = {
-      // default state params here
-    };
-  });
-
   it('returns the initial state', () => {
-    const expectedResult = state;
+    const expectedResult = initialState;
     expect(RealTimeChatReducer(undefined, {})).toEqual(expectedResult);
   });
-
-  /**
-   * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
-   */
+  it('returns the UPDATE_FIELD state', () => {
+    const payload = {
+      test: 'test',
+    };
+    expect(
+      RealTimeChatReducer(
+        {},
+        { type: UPDATE_FIELD, payload: 'test', key: 'test' },
+      ),
+    ).toEqual(payload);
+  });
 });

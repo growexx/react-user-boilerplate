@@ -1,6 +1,6 @@
 /**
  *
- * Tests for RealTimeChat
+ * Tests for ChatList
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -14,7 +14,7 @@ import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import configureStore from 'configureStore';
-import RealTimeChat from 'examples/RealTimeChat/index';
+import ChatList from 'examples/RealTimeChat/index';
 jest.mock('utils/Helper', () => ({
   getUserData: jest.fn().mockReturnValue({
     email: 'johnDoe@growexx.com',
@@ -26,13 +26,13 @@ const componentWrapper = () =>
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <RealTimeChat />
+          <ChatList />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
   );
 
-describe('<RealTimeChat />', () => {
+describe('<ChatList />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });

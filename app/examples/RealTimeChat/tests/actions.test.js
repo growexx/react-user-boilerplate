@@ -1,13 +1,15 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { updateField } from '../actions';
+import { UPDATE_FIELD } from '../constants';
 
 describe('RealTimeChat actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION,
-      };
-      expect(defaultAction()).toEqual(expected);
-    });
+  it('has a type of UPDATE_FIELD', () => {
+    const key = 'testField';
+    const payload = 'testValue';
+    const expected = {
+      type: UPDATE_FIELD,
+      key,
+      payload,
+    };
+    expect(updateField(key, payload)).toEqual(expected);
   });
 });
