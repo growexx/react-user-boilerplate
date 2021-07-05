@@ -21,6 +21,7 @@ export const ROUTES = {
   CHANGE_PASSWORD: '/change-password',
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
+  PAYMENT: '/payment',
 };
 
 // API-ROUTES
