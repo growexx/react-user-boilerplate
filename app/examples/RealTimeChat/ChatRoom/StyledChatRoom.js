@@ -16,7 +16,7 @@ export const StyledChatRoom = styled.div`
     background: @primary-color;
     color: @white;
     font-weight: bold;
-    height: 60px;
+    min-height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;

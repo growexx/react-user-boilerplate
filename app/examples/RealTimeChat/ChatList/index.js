@@ -167,7 +167,7 @@ class ChatList extends Component {
    * @returns last message
    */
   getLastMessage = item => {
-    if (item.chat && item.chat.length > 0) {
+    if (item.chats && item.chats.length > 0) {
       return item.chats[item.chats.length - 1].message;
     }
     return '';
