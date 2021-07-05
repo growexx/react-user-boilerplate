@@ -23,6 +23,7 @@ import {
   ChatListContainer,
 } from 'examples/RealTimeChat/ChatList/StyledChatList';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
+import { TEST_IDS } from 'examples/RealTimeChat/stub';
 
 class ChatList extends Component {
   constructor(props) {
@@ -196,6 +197,7 @@ class ChatList extends Component {
                   actions={[
                     <Button
                       type="button"
+                      data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
                       onClick={() => this.handleChatListItem(item)}
                     >
                       Chat

@@ -15,3 +15,19 @@ export const getMockChatList = () => {
     status: 1,
   });
 };
+const personOne = {
+  id: '1',
+};
+const personTwo = {
+  id: '2',
+};
+export const chatWindowStub = {
+  chats: [],
+  createdAt: new Date(),
+  createdBy: '',
+  joined: [personOne, personTwo],
+};
+
+export const TEST_IDS = {
+  OPEN_CHAT_WINDOW: 'OPEN_CHAT_WINDOW',
+};
