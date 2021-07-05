@@ -1,20 +1,15 @@
-import ProfileImageMock from 'images/Growexx-Triangle.svg';
-export const getMockChatList = () => {
+export const getSuccessMockSearchResults = () => {
   const data = [];
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 10; i++) {
     data.push({
-      profilePic: ProfileImageMock,
-      userName: `John_Doe_${i}`,
-      latestMessage: 'How was your day ?',
+      data: () => ({ email: `johndoe_${i}@gmail.com` }),
     });
   }
 
-  return Promise.resolve({
-    data,
-    status: 1,
-  });
+  return Promise.resolve(data);
 };
+export const getFailureMockSearchResults = () => Promise.reject(new Error());
 const personOne = {
   id: '1',
 };

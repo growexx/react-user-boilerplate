@@ -17,6 +17,5 @@ export const getUniqueId = joinedArray => {
 export const resetChatWindow = updateAction => {
   updateAction('receiverUserRefs', []);
   updateAction('receiverUserValues', []);
-  updateAction('searchResults', '');
   updateAction('selectedChatWindow', '');
 };

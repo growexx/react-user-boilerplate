@@ -125,7 +125,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  90,798,870
+                  08,419,591
                 </span>
                 
               </span>
@@ -159,7 +159,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  90,798,870
+                  8,419,591
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -196,7 +196,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  90,798,870
+                  8,419,591
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
