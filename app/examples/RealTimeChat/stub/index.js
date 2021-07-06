@@ -4,11 +4,29 @@ const personOne = {
 const personTwo = {
   id: '2',
 };
+const personThree = {
+  id: '2',
+};
 export const chatWindowStub = {
-  chats: [],
+  chats: [
+    {
+      message: 'Hi',
+      type: 'text',
+      createdAt: new Date(),
+      from: personOne,
+      seen: [personOne],
+      delivered: [personTwo],
+    },
+  ],
   createdAt: new Date(),
   createdBy: '',
   joined: [personOne, personTwo],
+};
+export const groupChatWindowStub = {
+  chats: [],
+  createdAt: new Date(),
+  createdBy: '',
+  joined: [personOne, personTwo, personThree],
 };
 export const getSuccessMockSearchResults = () => {
   const data = [];
@@ -28,15 +46,22 @@ export const getSuccessMockChatList = () => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 10; i++) {
     docs.push({
-      data: () => chatWindowStub,
+      data: () => (i % 2 === 0 ? chatWindowStub : groupChatWindowStub),
     });
   }
 
   return { docs };
 };
-export const getFailureMockChatList = () => Promise.reject(new Error());
+export const getFailureMockChatList = () => {};
 
-export const getSuccessDataFromReference = () => {
+export const getSuccessDataFromReferenceSameEmail = () => {
+  const data = {
+    data: () => ({ email: `johndoe_0@gmail.com`, userName: `johndoe_1` }),
+  };
+
+  return Promise.resolve(data);
+};
+export const getSuccessDataFromReferenceDiffEmail = () => {
   const data = {
     data: () => ({ email: `johndoe_1@gmail.com`, userName: `johndoe_1` }),
   };
@@ -47,4 +72,5 @@ export const getFailureDataFromReference = () => Promise.reject(new Error());
 
 export const TEST_IDS = {
   OPEN_CHAT_WINDOW: 'OPEN_CHAT_WINDOW',
+  SEND_MESSAGE: 'SEND_MESSAGE',
 };
