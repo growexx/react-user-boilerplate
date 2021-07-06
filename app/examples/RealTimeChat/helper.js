@@ -12,7 +12,7 @@ export const getUniqueId = joinedArray => {
 
 /**
  * resetChatWindow - reset chat window related state
- * @param {*} updateAction
+ * @param {Function} updateAction
  */
 export const resetChatWindow = updateAction => {
   updateAction('receiverUserRefs', []);
