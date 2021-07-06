@@ -20,6 +20,7 @@ import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
 import { getUniqueId, resetChatWindow } from 'examples/RealTimeChat/helper';
+import { TEST_IDS } from 'examples/RealTimeChat/stub';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -148,7 +149,7 @@ class ChatRoom extends Component {
         if (doc.exists) {
           this.setInitialChats(uniqueId, doc.data());
           await this.setUserRefsAndValues(doc.data());
-          await this.subscribeToWindow(doc.id);
+          await this.subscribeToWindow(uniqueId);
           onChangeAppLoading(false);
         } else {
           // doc.data() will be undefined in this case
@@ -301,6 +302,7 @@ class ChatRoom extends Component {
               <Button
                 htmlType="submit"
                 type="primary"
+                data-testid={TEST_IDS.SEND_MESSAGE}
                 onClick={() => this.handleSend()}
               >
                 Send

@@ -39,7 +39,6 @@ export const getSuccessMockSearchResults = () => {
 
   return Promise.resolve(data);
 };
-export const getFailureMockSearchResults = () => Promise.reject(new Error());
 
 export const getSuccessMockChatList = () => {
   const docs = [];
@@ -68,7 +67,15 @@ export const getSuccessDataFromReferenceDiffEmail = () => {
 
   return Promise.resolve(data);
 };
-export const getFailureDataFromReference = () => Promise.reject(new Error());
+
+export const getSuccessChatWindowData = chatWindowType => {
+  const response = {
+    exists: chatWindowType === 'old',
+    data: () => chatWindowStub,
+  };
+  return Promise.resolve(response);
+};
+export const getFailureResponse = () => Promise.reject(new Error());
 
 export const TEST_IDS = {
   OPEN_CHAT_WINDOW: 'OPEN_CHAT_WINDOW',

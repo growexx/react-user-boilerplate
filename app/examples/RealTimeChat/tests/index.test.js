@@ -19,16 +19,18 @@ import RealTimeChat from 'examples/RealTimeChat/index';
 import {
   getFireStoreCollectionReference,
   getDataFromReference,
+  getFireStoreDocumentReference,
+  getFireStoreDocumentData,
 } from 'utils/firebase';
 import {
   chatWindowStub,
   getSuccessMockSearchResults,
-  getFailureMockSearchResults,
   getSuccessMockChatList,
   getSuccessDataFromReferenceSameEmail,
   getSuccessDataFromReferenceDiffEmail,
-  getFailureDataFromReference,
   getFailureMockChatList,
+  getFailureResponse,
+  getSuccessChatWindowData,
   TEST_IDS,
 } from 'examples/RealTimeChat/stub';
 jest.mock('utils/firebase');
@@ -51,7 +53,7 @@ const mockGetFireStoreCollectionReference = async responseType => {
         .mockImplementationOnce(() =>
           responseType === 'success'
             ? getSuccessMockSearchResults()
-            : getFailureMockSearchResults(),
+            : getFailureResponse(),
         ),
     })),
   }));
@@ -69,21 +71,32 @@ const mockGetDataFromReference = async (responseType, emailType) => {
       );
     }
   } else {
-    getDataFromReference.mockImplementation(() =>
-      getFailureDataFromReference(),
+    getDataFromReference.mockImplementation(() => getFailureResponse());
+  }
+};
+
+export const mockGetFireStoreDocumentReference = async () => {
+  getFireStoreDocumentReference.mockImplementation(
+    () => chatWindowStub.joined[0],
+  );
+};
+
+const mockGetFireStoreDocumentData = async responseType => {
+  if (responseType === 'success') {
+    getFireStoreDocumentData.mockImplementationOnce(() =>
+      getSuccessChatWindowData('old'),
     );
+  } else {
+    getFireStoreDocumentData.mockImplementation(() => getFailureResponse());
   }
 };
 let store;
-const props = {
-  selectedChatWindow: chatWindowStub.joined,
-};
 const componentWrapper = () =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <RealTimeChat {...props} />
+          <RealTimeChat />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
@@ -104,9 +117,10 @@ describe('<RealTimeChat />', () => {
     } = componentWrapper();
     expect(firstChild).toMatchSnapshot();
   });
-  it.only('Should select the value from dropdown', async () => {
+  it('Should select the value from dropdown', async () => {
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'different');
+    mockGetFireStoreDocumentReference();
     const { getByRole, getByText } = componentWrapper();
     fireEvent.mouseDown(getByRole('combobox'));
     fireEvent.change(getByRole('combobox'), {
@@ -141,9 +155,11 @@ describe('<RealTimeChat />', () => {
     await waitForElement(() => getByText(''));
     expect(queryByText('johndoe_1')).not.toBeInTheDocument();
   });
-  it('Should fetch the click on chat button', async () => {
+  it('Should click on chat button', async () => {
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'different');
+    mockGetFireStoreDocumentReference();
+    mockGetFireStoreDocumentData('success');
     const { getByText, getByTestId } = componentWrapper();
     await waitForElement(() => getByText('johndoe_1'));
     fireEvent.click(getByTestId(TEST_IDS.OPEN_CHAT_WINDOW));

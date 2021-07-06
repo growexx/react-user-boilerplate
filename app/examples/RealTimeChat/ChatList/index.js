@@ -90,11 +90,10 @@ class ChatList extends Component {
     this.unSubscribeToChatList();
   }
 
-  handleInfiniteOnLoad = () => {
-    /**
-     * TODO: INFINITE LOADING PENDING
-     */
-  };
+  /**
+   * TODO: INFINITE LOADING PENDING
+   * handleInfiniteOnLoad = () => {};
+   */
 
   /**
    * fetchPersonData
