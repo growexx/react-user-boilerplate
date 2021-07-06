@@ -89,4 +89,6 @@ export const getFailureResponse = () => Promise.reject(new Error());
 export const TEST_IDS = {
   OPEN_CHAT_WINDOW: 'OPEN_CHAT_WINDOW',
   SEND_MESSAGE: 'SEND_MESSAGE',
+  CLOSE_ICON: 'CLOSE_ICON',
+  MESSAGE_INPUT: 'MESSAGE_INPUT',
 };

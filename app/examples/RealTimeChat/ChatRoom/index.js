@@ -295,7 +295,10 @@ class ChatRoom extends Component {
         <div className="chatRoomContainer">
           <div className="chatRoomHeader">
             <p>{this.getChatWindowName()}</p>
-            <CloseOutlined onClick={() => this.closeChatWindow()} />
+            <CloseOutlined
+              data-testid={TEST_IDS.CLOSE_ICON}
+              onClick={() => this.closeChatWindow()}
+            />
           </div>
           <div className="messageContainer">{this.renderMessages()}</div>
           <div className="sendMessageContainer">
@@ -304,6 +307,7 @@ class ChatRoom extends Component {
                 <Input
                   placeholder="Enter Your Message"
                   value={messageToSend}
+                  data-testid={TEST_IDS.MESSAGE_INPUT}
                   onChange={e =>
                     this.setState({ messageToSend: e.target.value })
                   }
