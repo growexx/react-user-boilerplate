@@ -7,10 +7,12 @@ export const StyledChatRoom = styled.div`
   height: 100vh;
   flex: 1;
   .chatRoomContainer {
+    background-image: ${props => `url(${props.backgroundImage})`};
     overflow: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
+    object-fit: cover;
   }
   .chatRoomHeader {
     background: @primary-color;
@@ -48,8 +50,11 @@ export const StyledChatRoom = styled.div`
     p {
       padding: 10px;
       overflow: auto;
-      height: auto;
+      color: @black;
       width: 50%;
+      height: auto;
+      border-radius: 10px;
+      font-size: 14px;
     }
     .messageSent {
       margin-right: 10px;
@@ -60,6 +65,13 @@ export const StyledChatRoom = styled.div`
       margin-left: 10px;
       margin-right: auto;
       background-color: @messageReceived;
+    }
+
+    .messageSentLast {
+      border-radius: 10px 10px 0 10px;
+    }
+    .messageReceivedLast {
+      border-radius: 0 10px 10px 10px;
     }
   }
 `;

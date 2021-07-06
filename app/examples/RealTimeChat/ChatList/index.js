@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { List, Avatar, Skeleton, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, WechatOutlined } from '@ant-design/icons';
 import InfiniteScroll from 'react-infinite-scroller';
 import {
   getFireStoreCollectionReference,
@@ -199,7 +199,7 @@ class ChatList extends Component {
                       data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
                       onClick={() => this.handleChatListItem(item)}
                     >
-                      Chat
+                      <WechatOutlined />
                     </Button>,
                   ]}
                 >

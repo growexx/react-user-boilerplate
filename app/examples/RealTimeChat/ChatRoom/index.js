@@ -21,6 +21,7 @@ import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
 import { getUniqueId, resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS } from 'examples/RealTimeChat/stub';
+import chatImage from 'images/chat_image.jpg';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -206,6 +207,13 @@ class ChatRoom extends Component {
     }
   };
 
+  getClassNames = isCurrentUser => {
+    if (isCurrentUser) {
+      return `messageSent messageSentLast`;
+    }
+    return `messageReceived messageReceivedLast`;
+  };
+
   /**
    * renderSingleMessage
    * @param {object} message
@@ -216,15 +224,10 @@ class ChatRoom extends Component {
     const {
       storeData: { currentUserRef },
     } = this.props;
+    const isCurrentUser = message.from.id === currentUserRef.id;
+    const classNames = this.getClassNames(isCurrentUser, index);
     return (
-      <p
-        className={
-          message.from.id === currentUserRef.id
-            ? `messageSent`
-            : `messageReceived`
-        }
-        key={`${index}_${message}`}
-      >
+      <p className={classNames} key={`${index}_${message}`}>
         {message.message}
       </p>
     );
@@ -281,7 +284,7 @@ class ChatRoom extends Component {
   render() {
     const { messageToSend } = this.state;
     return (
-      <StyledChatRoom>
+      <StyledChatRoom backgroundImage={chatImage}>
         <div className="chatRoomContainer">
           <div className="chatRoomHeader">
             <p>{this.getChatWindowName()}</p>

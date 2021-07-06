@@ -13,6 +13,11 @@ export const ChatListContainer = styled.div`
   .demo-infinite-container {
     border-radius: 4px;
     border-bottom: 1px solid @border-color-base;
+    button {
+      border: none;
+      color: @primary-color;
+      box-shadow: none;
+    }
   }
 `;
 
