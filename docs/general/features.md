@@ -93,6 +93,7 @@ Following are the features included in the boilerplate
 | User Management         | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
 | Authentication          | authentication.                                 |
 | Admin Charts            | Charts Pages with statistics and Filters        |
+| Real-Time-Chat          | Real time chat with firebase                    |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
