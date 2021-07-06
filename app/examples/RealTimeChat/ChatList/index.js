@@ -87,7 +87,14 @@ class ChatList extends Component {
   }
 
   componentWillUnmount() {
-    this.unSubscribeToChatList();
+    const { updateAction } = this.props;
+    if (
+      this.unSubscribeToChatList !== null &&
+      this.unSubscribeToChatList instanceof Function
+    ) {
+      this.unSubscribeToChatList();
+      resetChatWindow(updateAction);
+    }
   }
 
   /**

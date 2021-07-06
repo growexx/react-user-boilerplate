@@ -4,16 +4,10 @@
  *
  */
 import produce from 'immer';
-import { getFireStoreDocumentReference } from 'utils/firebase';
-import { getUserData } from 'utils/Helper';
-import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { UPDATE_FIELD } from './constants';
 
 export const initialState = {
-  currentUserRef: getFireStoreDocumentReference(
-    FIRESTORE_COLLECTIONS.PROFILE,
-    getUserData().email,
-  ),
+  currentUserRef: '',
   receiverUserRefs: [],
   receiverUserValues: [],
   currentUserValue: {},

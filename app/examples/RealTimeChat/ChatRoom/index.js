@@ -278,7 +278,14 @@ class ChatRoom extends Component {
   };
 
   componentWillUnmount() {
-    this.unSubscribeToWindow();
+    const { updateAction } = this.props;
+    if (
+      this.unSubscribeToWindow !== null &&
+      this.unSubscribeToWindow instanceof Function
+    ) {
+      this.unSubscribeToWindow();
+      resetChatWindow(updateAction);
+    }
   }
 
   render() {

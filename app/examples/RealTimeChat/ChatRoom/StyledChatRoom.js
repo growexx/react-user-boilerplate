@@ -12,7 +12,7 @@ export const StyledChatRoom = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    object-fit: cover;
+    background-size: cover;
   }
   .chatRoomHeader {
     background: @primary-color;
