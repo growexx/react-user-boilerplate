@@ -31,6 +31,7 @@ import {
   getFailureMockChatList,
   getFailureResponse,
   getSuccessChatWindowData,
+  getSuccessChatsSubscription,
   TEST_IDS,
   personOne,
 } from 'examples/RealTimeChat/stub';
@@ -78,15 +79,21 @@ const mockGetDataFromReference = async (responseType, emailType) => {
 };
 
 export const mockGetFireStoreDocumentReference = async () => {
-  getFireStoreDocumentReference.mockImplementation(
-    () => chatWindowStub.joined[0],
-  );
+  getFireStoreDocumentReference
+    .mockImplementationOnce(() => chatWindowStub.joined[0])
+    .mockImplementationOnce(() => chatWindowStub.joined[1])
+    .mockImplementationOnce(() => chatWindowStub.joined[1])
+    .mockImplementationOnce(() => ({
+      onSnapshot: jest.fn(async snapshotCallbackFunction => {
+        snapshotCallbackFunction(getSuccessChatsSubscription());
+      }),
+    }));
 };
 
-const mockGetFireStoreDocumentData = async responseType => {
+const mockGetFireStoreDocumentData = async (responseType, chatWindowType) => {
   if (responseType === 'success') {
     getFireStoreDocumentData.mockImplementationOnce(() =>
-      getSuccessChatWindowData('old'),
+      getSuccessChatWindowData(chatWindowType),
     );
   } else {
     getFireStoreDocumentData.mockImplementation(() => getFailureResponse());
@@ -124,6 +131,7 @@ describe('<RealTimeChat />', () => {
     getFireStoreCollectionReference.mockReset();
   });
   it('Should render and match the snapshot', () => {
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('error');
     mockGetDataFromReference('success', 'different');
     const {
@@ -132,10 +140,12 @@ describe('<RealTimeChat />', () => {
     expect(firstChild).toMatchSnapshot();
   });
   it('Should select the value from dropdown', async () => {
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'different');
-    mockGetFireStoreDocumentReference();
+    mockGetFireStoreDocumentData('success', 'new');
     const { getByRole, getByText } = componentWrapper();
+    await waitForElement(() => getByRole('combobox'));
     fireEvent.mouseDown(getByRole('combobox'));
     fireEvent.change(getByRole('combobox'), {
       target: {
@@ -149,31 +159,38 @@ describe('<RealTimeChat />', () => {
     expect(getByText('johndoe_9@gmail.com')).toBeInTheDocument();
   });
   it('Should fetch the chat list and set the state values', async () => {
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'different');
+    mockGetFireStoreDocumentData('success', 'new');
     const { getByText } = componentWrapper();
     await waitForElement(() => getByText('johndoe_1'));
     expect(getByText('johndoe_1')).toBeInTheDocument();
   });
   it('Should fetch the chat list and not contain the loggedIn email address', async () => {
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'same');
+    mockGetFireStoreDocumentData('success', 'new');
     const { getByText, queryByText } = componentWrapper();
     await waitForElement(() => getByText(''));
     expect(queryByText('johndoe_1')).not.toBeInTheDocument();
   });
   it('Should fetch the chat list with failure cases', async () => {
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('failure');
+    mockGetFireStoreDocumentData('success', 'new');
     const { queryByText, getByText } = componentWrapper();
     await waitForElement(() => getByText(''));
     expect(queryByText('johndoe_1')).not.toBeInTheDocument();
   });
   it('Should click on chat button', async () => {
     mockGetFireStoreDocumentReference();
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'different');
-    mockGetFireStoreDocumentData('success');
+    mockGetFireStoreDocumentData('success', 'old');
     const { getByText, getByTestId } = componentWrapper();
     await waitForElement(() => getByText('johndoe_1'));
     fireEvent.click(getByTestId(TEST_IDS.OPEN_CHAT_WINDOW));

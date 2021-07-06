@@ -75,6 +75,15 @@ export const getSuccessChatWindowData = chatWindowType => {
   };
   return Promise.resolve(response);
 };
+
+export const getSuccessChatsSubscription = () => {
+  const returnData = {
+    chats: chatWindowStub.chats,
+  };
+  return {
+    data: () => returnData,
+  };
+};
 export const getFailureResponse = () => Promise.reject(new Error());
 
 export const TEST_IDS = {
