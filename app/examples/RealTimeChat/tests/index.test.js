@@ -32,7 +32,9 @@ import {
   getFailureResponse,
   getSuccessChatWindowData,
   TEST_IDS,
+  personOne,
 } from 'examples/RealTimeChat/stub';
+
 jest.mock('utils/firebase');
 jest.mock('utils/Helper', () => ({
   getUserData: jest.fn().mockReturnValue({
@@ -91,12 +93,24 @@ const mockGetFireStoreDocumentData = async responseType => {
   }
 };
 let store;
+const props = {
+  storeData: {
+    currentUserRef: personOne,
+    receiverUserRefs: [],
+    receiverUserValues: [],
+    currentUserValue: {},
+    searchResults: [],
+    loading: false,
+    selectedChatWindow: '',
+  },
+  updateAction: jest.fn(),
+};
 const componentWrapper = () =>
   render(
     <Provider store={store}>
       <IntlProvider locale="en">
         <ConnectedRouter history={history}>
-          <RealTimeChat />
+          <RealTimeChat {...props} />
         </ConnectedRouter>
       </IntlProvider>
     </Provider>,
@@ -156,9 +170,9 @@ describe('<RealTimeChat />', () => {
     expect(queryByText('johndoe_1')).not.toBeInTheDocument();
   });
   it('Should click on chat button', async () => {
+    mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'different');
-    mockGetFireStoreDocumentReference();
     mockGetFireStoreDocumentData('success');
     const { getByText, getByTestId } = componentWrapper();
     await waitForElement(() => getByText('johndoe_1'));

@@ -1,4 +1,4 @@
-const personOne = {
+export const personOne = {
   id: '1',
 };
 const personTwo = {
