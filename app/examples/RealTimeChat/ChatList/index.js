@@ -47,8 +47,6 @@ class ChatList extends Component {
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
       .where('joined', 'array-contains', storeData.currentUserRef)
-      .orderBy('chats')
-      .orderBy('createdAt')
       .onSnapshot(
         async querySnapshot => {
           const result = [];
