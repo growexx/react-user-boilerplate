@@ -26,4 +26,9 @@ export const ChatContainer = styled.div`
     justify-content: center;
     align-items: center;
   }
+  .displayNone {
+    @media only screen and (max-width: 767px) {
+      display: none;
+    }
+  }
 `;

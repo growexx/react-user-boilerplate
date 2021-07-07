@@ -67,6 +67,8 @@ export class RealTimeChat extends React.Component {
     const {
       storeData: { selectedChatWindow, chatList },
     } = this.props;
+    const isChatWindowOpen =
+      selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <div>
         <Helmet>
@@ -78,10 +80,10 @@ export class RealTimeChat extends React.Component {
             {chatList.length === 0 && <SearchUser />}
             <ChatContainer>
               <ChatList />
-              {selectedChatWindow && selectedChatWindow.length > 0 ? (
+              {isChatWindowOpen ? (
                 <ChatRoom />
               ) : (
-                <div className="noChats">
+                <div className="noChats displayNone">
                   <Result
                     icon={<WechatOutlined />}
                     title={chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER}

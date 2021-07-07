@@ -182,16 +182,26 @@ class ChatList extends Component {
   renderAllChats = () => {
     const { loading, hasMore } = this.state;
     const {
-      storeData: { chatList },
+      storeData: { chatList, selectedChatWindow },
     } = this.props;
+    const isChatWindowOpen =
+      selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <ChatListContainer>
-        <div className="searchBar">
+        <div
+          className={`searchBar ${
+            isChatWindowOpen ? 'displayNone' : 'chatWindowClosed'
+          }`}
+        >
           <center>
             <SearchUser />
           </center>
         </div>
-        <div className="demo-infinite-container">
+        <div
+          className={`demo-infinite-container ${
+            isChatWindowOpen ? 'displayNone' : 'chatWindowClosed'
+          }`}
+        >
           <InfiniteScroll
             initialLoad={false}
             pageStart={0}

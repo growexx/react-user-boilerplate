@@ -9,7 +9,7 @@ export const StyledChatRoom = styled.div`
   overflow: hidden;
   .chatRoomContainer {
     overflow: auto;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 140px);
   }
   .ant-card-head {
     background: @primary-color !important;
