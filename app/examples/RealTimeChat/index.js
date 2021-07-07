@@ -38,6 +38,7 @@ export class RealTimeChat extends React.Component {
     super(props);
     this.state = {
       isFirstTimeRendered: false,
+      error: false,
     };
   }
 
@@ -62,13 +63,29 @@ export class RealTimeChat extends React.Component {
     });
   }
 
+  componentDidCatch() {
+    this.setState({
+      error: true,
+    });
+  }
+
   render() {
-    const { isFirstTimeRendered } = this.state;
+    const { isFirstTimeRendered, error } = this.state;
     const {
       storeData: { selectedChatWindow, chatList },
     } = this.props;
     const isChatWindowOpen =
       selectedChatWindow && selectedChatWindow.length > 0;
+    if (error) {
+      return (
+        <Result
+          type="error"
+          title="Some Error Occurred"
+          subTitle="Please try refreshing the page or wait for some time"
+        />
+      );
+    }
+
     return (
       <div>
         <Helmet>
