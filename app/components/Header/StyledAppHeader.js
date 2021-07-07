@@ -21,8 +21,4 @@ export const AvatarWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  .anticon-bell {
-    font-size: 18px;
-    padding-right: 20px;
-  }
 `;
