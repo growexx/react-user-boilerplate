@@ -239,13 +239,16 @@ class ChatList extends Component {
 
   render() {
     const {
-      storeData: { chatList },
+      storeData: { chatList, selectedChatWindow },
     } = this.props;
     const areChatsPresent = chatList.length > 0;
-
+    const isChatWindowOpen =
+      selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <StyledChatList
-        className={`${areChatsPresent ? 'chatWindowClosed' : ''}`}
+        className={`${
+          areChatsPresent && !isChatWindowOpen ? 'chatWindowClosed' : ''
+        }`}
       >
         {areChatsPresent && this.renderAllChats()}
       </StyledChatList>
