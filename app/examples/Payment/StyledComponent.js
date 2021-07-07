@@ -23,4 +23,28 @@ export const StyledCardWrapper = styled.div`
   .pay_btn {
     margin-top: 1.5rem;
   }
+  .paytm_logo {
+    height: 100px;
+  }
+  .suceess-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & .sub {
+      padding: 1rem 0px;
+    }
+    & h1 {
+      color: #52c41a;
+      padding-left: 1rem;
+    }
+  }
+  .success-icon-container {
+    display: flex;
+    justify-content: center;
+  }
+  .success-icon {
+    font-size: 3rem;
+  }
 `;

@@ -9,6 +9,7 @@ const defaultPaymentValue = {
 function LinkedPaymentOption(props) {
   const [payemntValue, setPaymentValue] = useState({
     paypal: defaultPaymentValue,
+    paytm: defaultPaymentValue,
   });
   const onPaypalInputChange = e => {
     setPaymentValue({
@@ -19,10 +20,20 @@ function LinkedPaymentOption(props) {
       },
     });
   };
-
+  const onPaytmInputChange = e => {
+    setPaymentValue({
+      ...payemntValue,
+      paytm: {
+        ...payemntValue.paytm,
+        input: e.target.value,
+      },
+    });
+  };
   const onPaypalLinkClick = () => {};
-
+  const onPaytmLinkClick = () => {};
   const onPaypalContinueClick = () => {};
+
+  const onPaytmContinueClick = () => {};
 
   const { type } = props;
   switch (type) {
@@ -38,7 +49,16 @@ function LinkedPaymentOption(props) {
         />
       );
     case 'Paytm':
-      return null;
+      return (
+        <CommonPaymentInput
+          inputPlaceholder="Enter Paytm Linked No."
+          onInputChange={onPaytmInputChange}
+          onLinkClick={onPaytmLinkClick}
+          onContinueClick={onPaytmContinueClick}
+          continueBtnDisable={payemntValue.paytm.btnDisable}
+          inputValue={payemntValue.paytm.input}
+        />
+      );
     case 'Net_Banking':
       return null;
 
