@@ -5,7 +5,7 @@ const personTwo = {
   id: '2',
 };
 const personThree = {
-  id: '2',
+  id: '3',
 };
 export const chatWindowStub = {
   chats: [
@@ -68,10 +68,11 @@ export const getSuccessDataFromReferenceDiffEmail = () => {
   return Promise.resolve(data);
 };
 
-export const getSuccessChatWindowData = chatWindowType => {
+export const getSuccessChatWindowData = (chatWindowType, chatParticipants) => {
   const response = {
     exists: chatWindowType === 'old',
-    data: () => chatWindowStub,
+    data: () =>
+      chatParticipants === 'group' ? groupChatWindowStub : chatWindowStub,
   };
   return Promise.resolve(response);
 };
