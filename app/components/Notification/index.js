@@ -30,14 +30,20 @@ const Notification = () => {
   return (
     <NotificationWrapper>
       <div className="u-mr-3 u-d-inline-block">
-        <Button onClick={onClickHandler} type="text">
+        <Button
+          onClick={onClickHandler}
+          type="text"
+          data-testid="badge-notification"
+        >
           <Badge count={count} size="small">
             <ShoppingCartOutlined className="u-font-size-lg" />
           </Badge>
         </Button>
       </div>
       <BellOutlined />
-      <CartDrawer visible={visible} setVisible={setVisible} />
+      <div data-testid="badge-cart-drawer" data-visible={visible}>
+        <CartDrawer visible={visible} setVisible={setVisible} />
+      </div>
     </NotificationWrapper>
   );
 };

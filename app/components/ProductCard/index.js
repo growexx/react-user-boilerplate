@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Avatar,
@@ -17,19 +17,25 @@ import {
   MinusOutlined,
 } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+import { addToCart } from '../../examples/Products/utils';
 
 const { Meta } = Card;
 const { Text, Title } = Typography;
 
-const ProductCard = ({ data, onClick }) => {
-  const { id, title, description, imageUrl, price, qty } = data || {};
+const ProductCard = ({ data }) => {
+  const { id, title, description, imageUrl, price = 0, qty = 0 } = data || {};
   const [counter, setCounter] = useState(qty);
   const incrementCounter = () => setCounter(counter + 1);
-  let decrementCounter = () => setCounter(counter - 1);
+  const decrementCounter = () => setCounter(counter - 1);
 
-  if (counter <= 1) {
-    decrementCounter = () => setCounter(1);
-  }
+  const onClick = product => {
+    addToCart(product);
+  };
+  useEffect(() => {
+    if (counter <= 1) {
+      setCounter(1);
+    }
+  }, [counter]);
 
   return (
     <Card
@@ -50,6 +56,7 @@ const ProductCard = ({ data, onClick }) => {
           block
           size="large"
           type="primary"
+          data-testid="cart-add"
           onClick={() =>
             onClick({ ...data, qty: counter, price: counter * data.price })
           }
@@ -88,6 +95,7 @@ const ProductCard = ({ data, onClick }) => {
                 icon={<MinusOutlined />}
                 onClick={decrementCounter}
                 className="lh-6"
+                data-testid="decrement"
               />
               <Input
                 value={counter}
@@ -100,6 +108,7 @@ const ProductCard = ({ data, onClick }) => {
                 size="small"
                 icon={<PlusOutlined />}
                 className="lh-6"
+                data-testid="increment"
               />
             </div>
           </div>
@@ -120,6 +129,5 @@ const ProductCard = ({ data, onClick }) => {
 };
 ProductCard.propTypes = {
   data: PropTypes.object,
-  onClick: PropTypes.func,
 };
 export default ProductCard;

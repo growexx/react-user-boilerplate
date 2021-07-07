@@ -29,7 +29,6 @@ const CartDrawer = ({ visible, setVisible }) => {
     });
   }, []);
   const onDeleteClick = id => {
-    // deleteFromCart(id);
     const filterProductsData = productsData.filter(
       product => product.id !== id,
     );
@@ -53,6 +52,7 @@ const CartDrawer = ({ visible, setVisible }) => {
       onClose={onCloseHandler}
       visible={visible}
       width="320"
+      data-testid="drawer"
     >
       <List
         itemLayout="vertical"
@@ -82,7 +82,11 @@ const CartDrawer = ({ visible, setVisible }) => {
               </Col>
               <Col span={4} className="u-mt-2" />
               <Col span={20} className="u-mt-2">
-                <Button size="small" onClick={() => onDeleteClick(product.id)}>
+                <Button
+                  size="small"
+                  onClick={() => onDeleteClick(product.id)}
+                  data-testid="product-delete"
+                >
                   Delete
                 </Button>
               </Col>
