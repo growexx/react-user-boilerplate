@@ -231,7 +231,12 @@ class ChatList extends Component {
   };
 
   render() {
-    return <StyledChatList>{this.renderAllChats()}</StyledChatList>;
+    const { chatList } = this.state;
+    return (
+      <StyledChatList>
+        {chatList.length > 0 && this.renderAllChats()}
+      </StyledChatList>
+    );
   }
 }
 
