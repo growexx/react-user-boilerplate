@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { CloseOutlined } from '@ant-design/icons';
-import { Form, Input, Button } from 'antd';
+import { Card, Form, Input, Button } from 'antd';
 import {
   getDataFromReference,
   getFireStoreDocumentData,
@@ -292,39 +292,49 @@ class ChatRoom extends Component {
     const { messageToSend } = this.state;
     return (
       <StyledChatRoom backgroundImage={chatImage}>
-        <div className="chatRoomContainer">
-          <div className="chatRoomHeader">
-            <p>{this.getChatWindowName()}</p>
-            <CloseOutlined
-              data-testid={TEST_IDS.CLOSE_ICON}
-              onClick={() => this.closeChatWindow()}
-            />
+        <Card
+          type="inner"
+          title={
+            <div className="chatRoomHeader">
+              <p>{this.getChatWindowName()}</p>
+              <CloseOutlined
+                data-testid={TEST_IDS.CLOSE_ICON}
+                onClick={() => this.closeChatWindow()}
+              />
+            </div>
+          }
+          actions={[
+            <div className="sendMessageContainer">
+              <Form className="messageInput">
+                <Form.Item hasFeedback>
+                  <Input
+                    placeholder="Enter Your Message"
+                    value={messageToSend}
+                    data-testid={TEST_IDS.MESSAGE_INPUT}
+                    onChange={e =>
+                      this.setState({ messageToSend: e.target.value })
+                    }
+                  />
+                </Form.Item>
+                <Button
+                  htmlType="submit"
+                  type="primary"
+                  data-testid={TEST_IDS.SEND_MESSAGE}
+                  onClick={() => this.handleSend()}
+                  disabled={!messageToSend}
+                >
+                  Send
+                </Button>
+              </Form>
+            </div>,
+          ]}
+        >
+          <div className="cardContainer">
+            <div className="chatRoomContainer">
+              <div className="messageContainer">{this.renderMessages()}</div>
+            </div>
           </div>
-          <div className="messageContainer">{this.renderMessages()}</div>
-          <div className="sendMessageContainer">
-            <Form className="messageInput">
-              <Form.Item hasFeedback>
-                <Input
-                  placeholder="Enter Your Message"
-                  value={messageToSend}
-                  data-testid={TEST_IDS.MESSAGE_INPUT}
-                  onChange={e =>
-                    this.setState({ messageToSend: e.target.value })
-                  }
-                />
-              </Form.Item>
-              <Button
-                htmlType="submit"
-                type="primary"
-                data-testid={TEST_IDS.SEND_MESSAGE}
-                onClick={() => this.handleSend()}
-                disabled={!messageToSend}
-              >
-                Send
-              </Button>
-            </Form>
-          </div>
-        </div>
+        </Card>
       </StyledChatRoom>
     );
   }

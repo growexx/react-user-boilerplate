@@ -6,16 +6,24 @@ export const StyledChatRoom = styled.div`
   flex-direction: column;
   height: 100vh;
   flex: 1;
+  overflow: hidden;
+  .cardContainer {
+    min-height: 100%;
+    overflow: hidden;
+  }
   .chatRoomContainer {
-    background-image: ${props => `url(${props.backgroundImage})`};
     overflow: auto;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+  }
+  .ant-card-head {
+    background: @primary-color !important;
+  }
+  .ant-card-body {
+    padding: 0 !important;
     background-size: cover;
+    background-image: ${props => `url(${props.backgroundImage})`};
   }
   .chatRoomHeader {
-    background: @primary-color;
     color: @white;
     font-weight: bold;
     min-height: 60px;

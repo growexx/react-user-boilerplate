@@ -7,7 +7,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { AutoComplete } from 'antd';
+import { AutoComplete, Result } from 'antd';
+import { WechatOutlined } from '@ant-design/icons';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -27,7 +28,7 @@ import {
   ChatContainer,
   StyledRealTimeChat,
 } from 'examples/RealTimeChat/StyledRealTimeChat';
-import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
+import { REDUCER_KEY, NO_CHATS_OPEN } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
 
 export class RealTimeChat extends React.Component {
@@ -118,8 +119,12 @@ export class RealTimeChat extends React.Component {
             </div>
             <ChatContainer>
               <ChatList />
-              {selectedChatWindow && selectedChatWindow.length > 0 && (
+              {selectedChatWindow && selectedChatWindow.length > 0 ? (
                 <ChatRoom />
+              ) : (
+                <div className="noChats">
+                  <Result icon={<WechatOutlined />} title={NO_CHATS_OPEN} />
+                </div>
               )}
             </ChatContainer>
           </StyledRealTimeChat>

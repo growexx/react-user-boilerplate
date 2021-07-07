@@ -5,7 +5,7 @@ export const StyledChatList = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   height: 100vh;
-  flex: 1;
+  border-right: 1px solid @border-color-base;
 `;
 
 export const ChatListContainer = styled.div`

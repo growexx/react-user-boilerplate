@@ -20,4 +20,10 @@ export const ChatContainer = styled.div`
   flex-direction: row;
   height: 100vh;
   border: 1px solid @border-color-base;
+  .noChats {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
