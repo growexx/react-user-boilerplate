@@ -318,6 +318,7 @@ class ChatRoom extends Component {
                 type="primary"
                 data-testid={TEST_IDS.SEND_MESSAGE}
                 onClick={() => this.handleSend()}
+                disabled={!messageToSend}
               >
                 Send
               </Button>
