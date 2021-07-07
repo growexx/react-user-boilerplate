@@ -14,10 +14,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
-import {
-  getFireStoreCollectionReference,
-  getFireStoreDocumentReference,
-} from 'utils/firebase';
+import { getFireStoreDocumentReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
@@ -28,7 +25,11 @@ import {
   ChatContainer,
   StyledRealTimeChat,
 } from 'examples/RealTimeChat/StyledRealTimeChat';
-import { REDUCER_KEY, NO_CHATS_OPEN } from 'examples/RealTimeChat/constants';
+import {
+  REDUCER_KEY,
+  NO_CHATS_OPEN,
+  SEARCH_USER,
+} from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
 import SearchUser from 'examples/RealTimeChat/SearchUser';
 
@@ -39,22 +40,6 @@ export class RealTimeChat extends React.Component {
       isFirstTimeRendered: false,
     };
   }
-
-  onSelect = value => {
-    const {
-      updateAction,
-      storeData: { currentUserRef },
-    } = this.props;
-
-    const selectedUserDocReference = getFireStoreDocumentReference(
-      FIRESTORE_COLLECTIONS.PROFILE,
-      value,
-    );
-    updateAction('selectedChatWindow', [
-      currentUserRef,
-      selectedUserDocReference,
-    ]);
-  };
 
   setCurrentUserRef = async () => {
     const { updateAction } = this.props;
@@ -67,24 +52,9 @@ export class RealTimeChat extends React.Component {
   };
 
   async componentDidMount() {
-    const { updateAction, onChangeAppLoading } = this.props;
+    const { onChangeAppLoading } = this.props;
     onChangeAppLoading(true);
     // get users for search
-    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
-      .where('email', '!=', getUserData().email)
-      .get()
-      .then(querySnapshot => {
-        const result = [];
-        querySnapshot.forEach(doc => {
-          result.push({ value: doc.data().email });
-        });
-        updateAction('searchResults', result);
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log('Error getting documents: ', error);
-        onChangeAppLoading(false);
-      });
     await this.setCurrentUserRef();
     onChangeAppLoading(false);
     this.setState({
@@ -95,7 +65,7 @@ export class RealTimeChat extends React.Component {
   render() {
     const { isFirstTimeRendered } = this.state;
     const {
-      storeData: { selectedChatWindow },
+      storeData: { selectedChatWindow, chatList },
     } = this.props;
     return (
       <div>
@@ -105,14 +75,17 @@ export class RealTimeChat extends React.Component {
         </Helmet>
         {isFirstTimeRendered && (
           <StyledRealTimeChat>
-            <SearchUser />
+            {chatList.length === 0 && <SearchUser />}
             <ChatContainer>
               <ChatList />
               {selectedChatWindow && selectedChatWindow.length > 0 ? (
                 <ChatRoom />
               ) : (
                 <div className="noChats">
-                  <Result icon={<WechatOutlined />} title={NO_CHATS_OPEN} />
+                  <Result
+                    icon={<WechatOutlined />}
+                    title={chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER}
+                  />
                 </div>
               )}
             </ChatContainer>

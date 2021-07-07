@@ -14,6 +14,7 @@ export const initialState = {
   searchResults: [],
   loading: false,
   selectedChatWindow: '',
+  chatList: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */

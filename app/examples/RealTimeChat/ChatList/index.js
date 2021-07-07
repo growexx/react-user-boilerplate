@@ -24,12 +24,12 @@ import {
 } from 'examples/RealTimeChat/ChatList/StyledChatList';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS } from 'examples/RealTimeChat/stub';
+import SearchUser from 'examples/RealTimeChat/SearchUser';
 
 class ChatList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatList: [],
       loading: false,
       hasMore: false,
     };
@@ -40,7 +40,7 @@ class ChatList extends Component {
    * subscribeToChatList - real time updates for chat list
    */
   subscribeToChatList = () => {
-    const { onChangeAppLoading, storeData } = this.props;
+    const { onChangeAppLoading, storeData, updateAction } = this.props;
     onChangeAppLoading(true);
 
     this.unSubscribeToChatList = getFireStoreCollectionReference(
@@ -70,9 +70,7 @@ class ChatList extends Component {
               });
             }
           }
-          this.setState({
-            chatList: [...result],
-          });
+          updateAction('chatList', [...result]);
           onChangeAppLoading(false);
         },
         error => {
@@ -182,9 +180,17 @@ class ChatList extends Component {
    * @returns list of chats
    */
   renderAllChats = () => {
-    const { chatList, loading, hasMore } = this.state;
+    const { loading, hasMore } = this.state;
+    const {
+      storeData: { chatList },
+    } = this.props;
     return (
       <ChatListContainer>
+        <div className="searchBar">
+          <center>
+            <SearchUser />
+          </center>
+        </div>
         <div className="demo-infinite-container">
           <InfiniteScroll
             initialLoad={false}
@@ -226,7 +232,9 @@ class ChatList extends Component {
   };
 
   render() {
-    const { chatList } = this.state;
+    const {
+      storeData: { chatList },
+    } = this.props;
     return (
       <StyledChatList>
         {chatList.length > 0 && this.renderAllChats()}

@@ -19,6 +19,13 @@ export const ChatListContainer = styled.div`
       box-shadow: none;
     }
   }
+  .searchBar {
+    margin-top: 10px;
+    .ant-select {
+      width: 80%;
+    }
+    margin-bottom: 0;
+  }
 `;
 
 export const SingleChatContainer = styled.div`
