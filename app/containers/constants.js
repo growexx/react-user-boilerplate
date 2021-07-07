@@ -112,4 +112,5 @@ export const FULL_GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD hh:mm a';
 export const BaseUrlPayment = 'http://localhost:5000';
 export const PAYMENT_INTEGRATION_API = {
   PAY: `${BaseUrlPayment}/pay`,
+  SUCCESS: `${BaseUrlPayment}/success`,
 };
