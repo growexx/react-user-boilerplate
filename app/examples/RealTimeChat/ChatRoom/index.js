@@ -21,7 +21,7 @@ import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
 import { getUniqueId, resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS } from 'examples/RealTimeChat/stub';
-import chatImage from 'images/chat_image.jpg';
+import chatImage from 'images/chat_window.png';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -329,10 +329,8 @@ class ChatRoom extends Component {
             </div>,
           ]}
         >
-          <div className="cardContainer">
-            <div className="chatRoomContainer">
-              <div className="messageContainer">{this.renderMessages()}</div>
-            </div>
+          <div className="chatRoomContainer">
+            <div className="messageContainer">{this.renderMessages()}</div>
           </div>
         </Card>
       </StyledChatRoom>

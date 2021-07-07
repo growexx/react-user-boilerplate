@@ -100,11 +100,6 @@ class ChatList extends Component {
   }
 
   /**
-   * TODO: INFINITE LOADING PENDING
-   * handleInfiniteOnLoad = () => {};
-   */
-
-  /**
    * fetchPersonData
    * @param {*} person
    * @returns person data if found

@@ -7,20 +7,16 @@ export const StyledChatRoom = styled.div`
   height: 100vh;
   flex: 1;
   overflow: hidden;
-  .cardContainer {
-    min-height: 100%;
-    overflow: hidden;
-  }
   .chatRoomContainer {
     overflow: auto;
-    height: 100%;
+    height: calc(100vh - 150px);
   }
   .ant-card-head {
     background: @primary-color !important;
   }
   .ant-card-body {
     padding: 0 !important;
-    background-size: cover;
+    background-repeat: repeat;
     background-image: ${props => `url(${props.backgroundImage})`};
   }
   .chatRoomHeader {
