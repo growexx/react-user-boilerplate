@@ -36,6 +36,7 @@ export const API_ENDPOINTS = {
   IMAGE_UPLOAD: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
   FORGOT_PASSWORD: `${API_URL}/${AUTH}/forgetpassword`,
   USERS: `${API_URL}/users`,
+  IMAGE_SRC: 'https://thispersondoesnotexist.com/image',
 };
 
 // Table Pagination default

@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { List, Avatar, Skeleton, Button } from 'antd';
-import { UserOutlined, WechatOutlined } from '@ant-design/icons';
+import { WechatOutlined } from '@ant-design/icons';
 import InfiniteScroll from 'react-infinite-scroller';
 import {
   getFireStoreCollectionReference,
   getDataFromReference,
 } from 'utils/firebase';
 import { getUserData } from 'utils/Helper';
-import { FIRESTORE_COLLECTIONS } from 'containers/constants';
+import { FIRESTORE_COLLECTIONS, API_ENDPOINTS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import { updateField } from 'examples/RealTimeChat/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
@@ -47,6 +47,8 @@ class ChatList extends Component {
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
       .where('joined', 'array-contains', storeData.currentUserRef)
+      .orderBy('chats')
+      .orderBy('createdAt')
       .onSnapshot(
         async querySnapshot => {
           const result = [];
@@ -213,7 +215,7 @@ class ChatList extends Component {
                   <Skeleton avatar title={false} loading={item.loading} active>
                     <SingleChatContainer>
                       <List.Item.Meta
-                        avatar={<Avatar icon={<UserOutlined />} />}
+                        avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
                         title={item.name}
                         description={this.getLastMessage(item)}
                       />
