@@ -1,15 +1,13 @@
 /**
  *
- * RealTimeChat
+ * SearchUser
  *
  */
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Result } from 'antd';
-import { WechatOutlined } from '@ant-design/icons';
-import { Helmet } from 'react-helmet';
+import { AutoComplete } from 'antd';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
@@ -22,24 +20,10 @@ import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import reducer from 'examples/RealTimeChat/reducer';
-import ChatRoom from 'examples/RealTimeChat/ChatRoom';
-import ChatList from 'examples/RealTimeChat/ChatList';
-import {
-  ChatContainer,
-  StyledRealTimeChat,
-} from 'examples/RealTimeChat/StyledRealTimeChat';
-import { REDUCER_KEY, NO_CHATS_OPEN } from 'examples/RealTimeChat/constants';
+import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
-import SearchUser from 'examples/RealTimeChat/SearchUser';
 
-export class RealTimeChat extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFirstTimeRendered: false,
-    };
-  }
-
+export class SearchUser extends React.Component {
   onSelect = value => {
     const {
       updateAction,
@@ -54,16 +38,6 @@ export class RealTimeChat extends React.Component {
       currentUserRef,
       selectedUserDocReference,
     ]);
-  };
-
-  setCurrentUserRef = async () => {
-    const { updateAction } = this.props;
-
-    const currentUserRef = await getFireStoreDocumentReference(
-      FIRESTORE_COLLECTIONS.PROFILE,
-      getUserData().email,
-    );
-    updateAction('currentUserRef', currentUserRef);
   };
 
   async componentDidMount() {
@@ -85,45 +59,30 @@ export class RealTimeChat extends React.Component {
         console.log('Error getting documents: ', error);
         onChangeAppLoading(false);
       });
-    await this.setCurrentUserRef();
     onChangeAppLoading(false);
-    this.setState({
-      isFirstTimeRendered: true,
-    });
   }
 
   render() {
-    const { isFirstTimeRendered } = this.state;
     const {
-      storeData: { selectedChatWindow },
+      storeData: { searchResults },
     } = this.props;
     return (
-      <div>
-        <Helmet>
-          <title>RealTimeChat</title>
-          <meta name="description" content="Description of RealTimeChat" />
-        </Helmet>
-        {isFirstTimeRendered && (
-          <StyledRealTimeChat>
-            <SearchUser />
-            <ChatContainer>
-              <ChatList />
-              {selectedChatWindow && selectedChatWindow.length > 0 ? (
-                <ChatRoom />
-              ) : (
-                <div className="noChats">
-                  <Result icon={<WechatOutlined />} title={NO_CHATS_OPEN} />
-                </div>
-              )}
-            </ChatContainer>
-          </StyledRealTimeChat>
-        )}
+      <div className="searchContainer">
+        <AutoComplete
+          allowClear
+          options={searchResults}
+          onSelect={this.onSelect}
+          placeholder="Search Users"
+          filterOption={(inputValue, option) =>
+            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+          }
+        />
       </div>
     );
   }
 }
 
-RealTimeChat.propTypes = {
+SearchUser.propTypes = {
   storeData: PropTypes.object,
   updateAction: PropTypes.func,
   onChangeAppLoading: PropTypes.func,
@@ -153,4 +112,4 @@ export default compose(
   withReducer,
   withConnect,
   memo,
-)(RealTimeChat);
+)(SearchUser);
