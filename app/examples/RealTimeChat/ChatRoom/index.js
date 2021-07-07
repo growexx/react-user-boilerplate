@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -32,6 +32,7 @@ class ChatRoom extends Component {
     };
     this.unSubscribeToWindow = null;
     this.currentChatWindow = null;
+    this.messagesEndRef = createRef();
   }
 
   /**
@@ -165,6 +166,14 @@ class ChatRoom extends Component {
       });
   };
 
+  scrollToBottom = () => {
+    if (this.messagesEndRef && this.messagesEndRef.current) {
+      this.messagesEndRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  };
+
   componentDidMount() {
     this.setCurrentChatWindow();
   }
@@ -204,6 +213,7 @@ class ChatRoom extends Component {
       this.setState({
         messageToSend: '',
       });
+      this.scrollToBottom();
     }
   };
 
@@ -239,8 +249,15 @@ class ChatRoom extends Component {
    */
   renderMessages = () => {
     const { userChats } = this.state;
+
     if (userChats.length > 0) {
-      return userChats.map(this.renderSingleMessage);
+      const allMessages = userChats.map(this.renderSingleMessage);
+      return (
+        <div>
+          {allMessages}
+          <div ref={this.messagesEndRef} />
+        </div>
+      );
     }
     return <></>;
   };
