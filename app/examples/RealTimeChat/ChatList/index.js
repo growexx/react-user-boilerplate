@@ -188,18 +188,14 @@ class ChatList extends Component {
       selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <ChatListContainer>
-        <div
-          className={`searchBar ${
-            isChatWindowOpen ? 'displayNone' : 'chatWindowClosed'
-          }`}
-        >
+        <div className={`searchBar ${isChatWindowOpen ? 'displayNone' : ''}`}>
           <center>
             <SearchUser />
           </center>
         </div>
         <div
           className={`demo-infinite-container ${
-            isChatWindowOpen ? 'displayNone' : 'chatWindowClosed'
+            isChatWindowOpen ? 'displayNone' : ''
           }`}
         >
           <InfiniteScroll
@@ -245,9 +241,13 @@ class ChatList extends Component {
     const {
       storeData: { chatList },
     } = this.props;
+    const areChatsPresent = chatList.length > 0;
+
     return (
-      <StyledChatList>
-        {chatList.length > 0 && this.renderAllChats()}
+      <StyledChatList
+        className={`${areChatsPresent ? 'chatWindowClosed' : ''}`}
+      >
+        {areChatsPresent && this.renderAllChats()}
       </StyledChatList>
     );
   }

@@ -8,11 +8,6 @@ export const StyledChatList = styled.div`
   @media only screen and (min-width: 767px) {
     border-right: 1px solid @border-color-base;
   }
-  .chatWindowClosed {
-    @media only screen and (max-width: 767px) {
-      flex: 1;
-    }
-  }
 `;
 
 export const ChatListContainer = styled.div`

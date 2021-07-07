@@ -31,4 +31,9 @@ export const ChatContainer = styled.div`
       display: none;
     }
   }
+  .chatWindowClosed {
+    @media only screen and (max-width: 767px) {
+      flex: 1;
+    }
+  }
 `;

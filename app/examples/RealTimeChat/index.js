@@ -83,7 +83,11 @@ export class RealTimeChat extends React.Component {
               {isChatWindowOpen ? (
                 <ChatRoom />
               ) : (
-                <div className="noChats displayNone">
+                <div
+                  className={`noChats ${
+                    chatList.length > 0 ? 'displayNone' : ''
+                  }`}
+                >
                   <Result
                     icon={<WechatOutlined />}
                     title={chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER}
