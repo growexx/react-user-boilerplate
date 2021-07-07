@@ -91,7 +91,7 @@ class ChatList extends Component {
       this.unSubscribeToChatList instanceof Function
     ) {
       this.unSubscribeToChatList();
-      resetChatWindow(updateAction);
+      resetChatWindow(updateAction, 'chatList');
     }
   }
 
