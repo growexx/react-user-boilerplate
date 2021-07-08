@@ -167,7 +167,11 @@ class ChatRoom extends Component {
   };
 
   scrollToBottom = () => {
-    if (this.messagesEndRef && this.messagesEndRef.current) {
+    if (
+      this.messagesEndRef &&
+      this.messagesEndRef.current &&
+      this.messagesEndRef.current.scrollIntoView
+    ) {
       this.messagesEndRef.current.scrollIntoView({
         behavior: 'smooth',
       });

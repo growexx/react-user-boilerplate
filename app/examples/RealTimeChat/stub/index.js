@@ -55,7 +55,7 @@ export const getFailureMockChatList = () => {};
 
 export const getSuccessDataFromReferenceSameEmail = () => {
   const data = {
-    data: () => ({ email: `johndoe_0@gmail.com`, userName: `johndoe_1` }),
+    data: () => ({ email: `johndoe_11@gmail.com`, userName: `johndoe_11` }),
   };
 
   return Promise.resolve(data);
