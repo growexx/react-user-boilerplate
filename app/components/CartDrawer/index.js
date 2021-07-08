@@ -27,6 +27,9 @@ const CartDrawer = ({ visible, setVisible }) => {
     window.addEventListener('storage', () => {
       setProductsData(JSON.parse(localStorage.getItem('products')) || []);
     });
+    return () => {
+      window.removeEventListener('storage', window);
+    };
   }, []);
   const onDeleteClick = id => {
     const filterProductsData = productsData.filter(

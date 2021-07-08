@@ -22,6 +22,9 @@ const Notification = () => {
     window.addEventListener('storage', () => {
       setCount(JSON.parse(localStorage.getItem('products')).length || []);
     });
+    return () => {
+      window.removeEventListener('storage', window);
+    };
   }, []);
 
   useEffect(() => {

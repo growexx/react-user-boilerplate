@@ -4,21 +4,12 @@ import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { createMemoryHistory } from 'history';
+import products from '../../../examples/Products/stub/product.json';
 
 import Notification from '../index';
 import configureStore from '../../../configureStore';
 
-const dummyData = [
-  {
-    id: 1,
-    title: 'Product1',
-    description: 'Description 1',
-    imageUrl:
-      'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-    price: 100,
-    qty: 1,
-  },
-];
+const dummyData = products.products.slice(0, 2);
 
 describe('<Notification />', () => {
   const history = createMemoryHistory();
