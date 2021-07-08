@@ -15,7 +15,9 @@ import {
   LockOutlined,
   PieChartOutlined,
   BankOutlined,
+  ShoppingOutlined,
 } from '@ant-design/icons';
+
 import {
   ROUTES,
   ROLE_BASED_SIDEBAR_MENU,
@@ -78,6 +80,11 @@ export const MenuItems = [
     to: ROUTES.PAYMENT,
     tabName: 'Payments',
     icon: <BankOutlined />,
+  },
+  {
+    to: ROUTES.PRODUCTS,
+    tabName: 'Products',
+    icon: <ShoppingOutlined />,
   },
 ];
 

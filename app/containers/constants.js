@@ -23,6 +23,7 @@ export const ROUTES = {
   FORGOT_PASSWORD: '/forgot-password',
   PAYMENT: '/payment',
   PAYMENTSUCCESS: '/success',
+  PRODUCTS: '/products',
 };
 
 // API-ROUTES

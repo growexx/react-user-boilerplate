@@ -112,3 +112,12 @@ Following are the features included in the boilerplate
 > React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** <br/>
 > Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** <br/>
 > Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>
+> Add Item in Cart should be reflected in all pages
+ Cart Sidebar For listing currently added items
+  Logged into one tab should update all other tabs **RB-65-Loggedin-one-tab-update-in-another**
+(For Cart Page - 1.app/components/CartDrawer/index.js
+                 2.app/components/Notification/index.js
+                 3.app/components/ProductCard/index.js
+                 4.app/examples/Products/index.js
+                 5.app/examples/Products/utils.js   
+                 **for multitab support used window and localStorage**)
