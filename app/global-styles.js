@@ -517,6 +517,9 @@ margin-left: 30px
 .lh-6 {
   line-height: 6px !important;
 }
+.btn-hover-none:hover {
+  background: none !important;
+}
 `;
 
 export default GlobalStyle;
