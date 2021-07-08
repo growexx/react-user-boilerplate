@@ -7,27 +7,40 @@ import { StyledCardWrapper } from './StyledComponent';
 import { ROUTES, PAYMENT_INTEGRATION_API } from '../../containers/constants';
 
 function PaymentSuccess() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
-  const queryParams = new URLSearchParams(history.location.search);
+  const queryParams =
+    history && history.location
+      ? new URLSearchParams(history.location.search)
+      : '';
 
   useEffect(() => {
-    request(
-      `${PAYMENT_INTEGRATION_API.SUCCESS}?PayerID=${queryParams.get(
-        'PayerID',
-      )}&paymentId=${queryParams.get('paymentId')}`,
-      {
-        method: 'GET',
-      },
-    )
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-      });
+    if (queryParams) {
+      setIsLoading(true);
+      request(
+        `${PAYMENT_INTEGRATION_API.SUCCESS}?PayerID=${queryParams.get(
+          'PayerID',
+        )}&paymentId=${queryParams.get('paymentId')}`,
+        {
+          method: 'GET',
+        },
+      )
+        .then(() => {
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
+    }
   }, []);
 
+  const renderQueryParam = () =>
+    queryParams.get('paymentId') ? (
+      <span>
+        Your payment reference id:{' '}
+        <strong>{queryParams.get('paymentId')}</strong>
+      </span>
+    ) : null;
   return (
     <StyledCardWrapper>
       {isLoading ? (
@@ -42,14 +55,7 @@ function PaymentSuccess() {
               />
               <h1>Payment Succeful!</h1>
             </div>
-            <div>
-              {queryParams.get('paymentId') ? (
-                <span>
-                  Your payment reference id:{' '}
-                  <strong>{queryParams.get('paymentId')}</strong>
-                </span>
-              ) : null}
-            </div>
+            <div>{queryParams ? renderQueryParam() : null}</div>
           </div>
           <Button
             type="primary"

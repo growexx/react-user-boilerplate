@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LinkedPaymentOption/> should render with no props 1`] = `null`;
+
+exports[`<LinkedPaymentOption/> should render with props type paypal 1`] = `
+<div
+  class="ant-card common-payment-main"
+>
+  <div
+    class="ant-card-body"
+  >
+    <div
+      class="payment-main-card"
+    >
+      <span
+        class="ant-input-affix-wrapper"
+      >
+        <input
+          class="ant-input"
+          placeholder="Enter Paypal Linked No."
+          type="text"
+          value=""
+        />
+        <span
+          class="ant-input-suffix"
+        >
+          <button
+            class="ant-btn ant-btn-link"
+            disabled=""
+            type="button"
+          >
+            <span>
+              Link
+            </span>
+          </button>
+        </span>
+      </span>
+      <button
+        class="ant-btn ant-btn-primary continue-btn"
+        disabled=""
+        type="button"
+      >
+        <span>
+          Continue
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<LinkedPaymentOption/> should render with props type paytm 1`] = `
+<div
+  class="ant-card common-payment-main"
+>
+  <div
+    class="ant-card-body"
+  >
+    <div
+      class="payment-main-card"
+    >
+      <span
+        class="ant-input-affix-wrapper"
+      >
+        <input
+          class="ant-input"
+          placeholder="Enter Paytm Linked No."
+          type="text"
+          value=""
+        />
+        <span
+          class="ant-input-suffix"
+        >
+          <button
+            class="ant-btn ant-btn-link"
+            disabled=""
+            type="button"
+          >
+            <span>
+              Link
+            </span>
+          </button>
+        </span>
+      </span>
+      <button
+        class="ant-btn ant-btn-primary continue-btn"
+        disabled=""
+        type="button"
+      >
+        <span>
+          Continue
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

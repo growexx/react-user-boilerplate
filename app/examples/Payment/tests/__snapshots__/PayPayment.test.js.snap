@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PayPayment/> should render with no props 1`] = `null`;
+
+exports[`<PayPayment/> should render with props type paypal 1`] = `
+<div
+  class="logo"
+>
+  <img
+    alt="paypal_logo"
+    src="IMAGE_MOCK"
+  />
+  <div>
+    <button
+      class="ant-btn pay_btn"
+      type="button"
+    >
+      <span>
+        Pay Now ₹ 10
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<PayPayment/> should render with props type paytm 1`] = `
+<div>
+  <img
+    alt="paytm_logo"
+    class="paytm_logo"
+    src="IMAGE_MOCK"
+  />
+  <div>
+    <button
+      class="ant-btn"
+      type="button"
+    >
+      <span>
+        Pay Now ₹ 10
+      </span>
+    </button>
+  </div>
+</div>
+`;
