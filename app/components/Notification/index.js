@@ -5,9 +5,6 @@
  */
 import React from 'react';
 import { BellOutlined } from '@ant-design/icons';
-import { createStructuredSelector } from 'reselect';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Badge } from 'antd';
@@ -16,10 +13,7 @@ import {
   getFireStoreDocumentReference,
 } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS, ROUTES } from 'containers/constants';
-import { loadApp } from 'containers/App/actions';
 import { getUserData } from 'utils/Helper';
-import { updateField } from 'examples/RealTimeChat/actions';
-import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { NotificationWrapper } from './StyledNotification';
 
 class Notification extends React.Component {
@@ -28,19 +22,14 @@ class Notification extends React.Component {
     this.state = {
       newMessage: false,
     };
-    this.unSubscribeToChatList = null;
+    this.unSubscribeToNewMessages = null;
   }
 
   /**
-   * subscribeToChatList - real time updates for chat list
+   * subscribeToNewMessages - real time updates for new message
    */
-  subscribeToChatList = async () => {
-    const {
-      history: {
-        location: { pathname },
-      },
-    } = this.props;
-    this.unSubscribeToChatList = getFireStoreCollectionReference(
+  subscribeToNewMessages = async () => {
+    this.unSubscribeToNewMessages = getFireStoreCollectionReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
       .where(
@@ -53,11 +42,9 @@ class Notification extends React.Component {
       )
       .onSnapshot(
         async () => {
-          if (pathname !== ROUTES.REAL_TIME_CHAT) {
-            this.setState({
-              newMessage: true,
-            });
-          }
+          this.setState({
+            newMessage: true,
+          });
         },
         error => {
           // eslint-disable-next-line no-console
@@ -67,7 +54,7 @@ class Notification extends React.Component {
   };
 
   async componentDidMount() {
-    await this.subscribeToChatList();
+    await this.subscribeToNewMessages();
   }
 
   setFlagToFalse = () => {
@@ -92,10 +79,10 @@ class Notification extends React.Component {
 
   componentWillUnmount() {
     if (
-      this.unSubscribeToChatList !== null &&
-      this.unSubscribeToChatList instanceof Function
+      this.unSubscribeToNewMessages !== null &&
+      typeof this.unSubscribeToNewMessages === 'function'
     ) {
-      this.unSubscribeToChatList();
+      this.unSubscribeToNewMessages();
     }
   }
 
@@ -115,22 +102,4 @@ Notification.propTypes = {
   history: PropTypes.object,
 };
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeAppLoading: loading => dispatch(loadApp(loading)),
-    updateAction: (fieldName, fieldValue) => {
-      dispatch(updateField(fieldName, fieldValue));
-    },
-  };
-}
-
-const mapStateToProps = createStructuredSelector({
-  storeData: makeSelectRealTimeChat(),
-});
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(withConnect)(withRouter(Notification));
+export default withRouter(Notification);

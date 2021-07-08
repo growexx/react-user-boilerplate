@@ -88,7 +88,7 @@ class ChatList extends Component {
     const { updateAction } = this.props;
     if (
       this.unSubscribeToChatList !== null &&
-      this.unSubscribeToChatList instanceof Function
+      typeof this.unSubscribeToChatList === 'function'
     ) {
       this.unSubscribeToChatList();
       resetChatWindow(updateAction, 'chatList');
@@ -173,6 +173,21 @@ class ChatList extends Component {
     return '';
   };
 
+  getActions = (isChatWindowOpen, item) => {
+    if (!isChatWindowOpen) {
+      return (
+        <Button
+          type="link"
+          data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
+          onClick={() => this.handleChatListItem(item)}
+        >
+          <RightCircleOutlined />
+        </Button>
+      );
+    }
+    return <></>;
+  };
+
   /**
    * renderAllChats
    * @returns list of chats
@@ -207,15 +222,7 @@ class ChatList extends Component {
               renderItem={item => (
                 <List.Item
                   key={item.id}
-                  actions={[
-                    <Button
-                      type="link"
-                      data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
-                      onClick={() => this.handleChatListItem(item)}
-                    >
-                      <RightCircleOutlined />
-                    </Button>,
-                  ]}
+                  actions={[this.getActions(isChatWindowOpen, item)]}
                 >
                   <Skeleton avatar title={false} loading={item.loading} active>
                     <SingleChatContainer>

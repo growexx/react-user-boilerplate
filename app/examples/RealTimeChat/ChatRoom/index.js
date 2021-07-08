@@ -298,7 +298,7 @@ class ChatRoom extends Component {
     const { updateAction } = this.props;
     if (
       this.unSubscribeToWindow !== null &&
-      this.unSubscribeToWindow instanceof Function
+      typeof this.unSubscribeToWindow === 'function'
     ) {
       this.unSubscribeToWindow();
       resetChatWindow(updateAction);
