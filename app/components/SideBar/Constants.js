@@ -14,7 +14,7 @@ import {
   FormOutlined,
   LockOutlined,
   PieChartOutlined,
-  ShoppingCartOutlined,
+  ShoppingOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -77,7 +77,7 @@ export const MenuItems = [
   {
     to: ROUTES.PRODUCTS,
     tabName: 'Products',
-    icon: <ShoppingCartOutlined />,
+    icon: <ShoppingOutlined />,
   },
 ];
 

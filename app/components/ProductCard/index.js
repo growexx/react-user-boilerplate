@@ -84,7 +84,7 @@ const ProductCard = ({ data }) => {
 
       <Row>
         <Col span={4} />
-        <Col span={20}>
+        <Col span={24} md={20}>
           <Divider />
           <div className="u-d-flex u-align-items-center u-mt-4 u-justify-content-between">
             <Text type="secondary">Product Quantity:</Text>
@@ -114,7 +114,7 @@ const ProductCard = ({ data }) => {
           </div>
         </Col>
         <Col span={4} className="u-mt-5" />
-        <Col span={20} className="u-mt-5 ">
+        <Col span={24} md={20} className="u-mt-5 ">
           <div className="u-d-flex u-justify-content-between">
             <Text type="secondary">Total:</Text>
             <Title level={5} className="u-d-flex u-align-items-center u-mt-0">
