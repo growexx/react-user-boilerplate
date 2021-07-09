@@ -64,8 +64,11 @@ export class SearchUser extends React.Component {
 
   render() {
     const {
-      storeData: { searchResults },
+      storeData: { searchResults, selectedChatWindow },
     } = this.props;
+    if (selectedChatWindow.length > 0) {
+      return <> </>;
+    }
     return (
       <div className="searchContainer">
         <AutoComplete
