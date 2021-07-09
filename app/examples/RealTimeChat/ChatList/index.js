@@ -7,7 +7,6 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { List, Avatar, Skeleton, Button } from 'antd';
 import { RightCircleOutlined } from '@ant-design/icons';
-import InfiniteScroll from 'react-infinite-scroller';
 import {
   getFireStoreCollectionReference,
   getDataFromReference,
@@ -23,15 +22,14 @@ import {
   ChatListContainer,
 } from 'examples/RealTimeChat/ChatList/StyledChatList';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
-import { TEST_IDS } from 'examples/RealTimeChat/stub';
+import { TEST_IDS, skeletonLoaderStub } from 'examples/RealTimeChat/stub';
 import SearchUser from 'examples/RealTimeChat/SearchUser';
 
 class ChatList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
-      hasMore: false,
+      loading: true,
     };
     this.unSubscribeToChatList = null;
   }
@@ -41,7 +39,10 @@ class ChatList extends Component {
    */
   subscribeToChatList = () => {
     const { onChangeAppLoading, storeData, updateAction } = this.props;
-    onChangeAppLoading(true);
+    // onChangeAppLoading(true);
+    this.setState({
+      loading: true,
+    });
 
     this.unSubscribeToChatList = getFireStoreCollectionReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
@@ -70,11 +71,17 @@ class ChatList extends Component {
           }
           updateAction('chatList', [...result]);
           onChangeAppLoading(false);
+          this.setState({
+            loading: false,
+          });
         },
         error => {
           // eslint-disable-next-line no-console
           console.log('Error getting documents: ', error);
           onChangeAppLoading(false);
+          this.setState({
+            loading: false,
+          });
         },
       );
   };
@@ -116,6 +123,9 @@ class ChatList extends Component {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
         onChangeAppLoading(false);
+        this.setState({
+          loading: false,
+        });
       });
     return returnData;
   };
@@ -174,12 +184,14 @@ class ChatList extends Component {
   };
 
   getActions = (isChatWindowOpen, item) => {
+    const { loading } = this.state;
     if (!isChatWindowOpen) {
       return (
         <Button
           type="link"
           data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
           onClick={() => this.handleChatListItem(item)}
+          disabled={loading}
         >
           <RightCircleOutlined />
         </Button>
@@ -193,10 +205,12 @@ class ChatList extends Component {
    * @returns list of chats
    */
   renderAllChats = () => {
-    const { loading, hasMore } = this.state;
+    const { loading } = this.state;
+    const stubChatList = skeletonLoaderStub();
     const {
       storeData: { chatList, selectedChatWindow },
     } = this.props;
+    const listData = chatList.length > 0 ? chatList : stubChatList;
     const isChatWindowOpen =
       selectedChatWindow && selectedChatWindow.length > 0;
     return (
@@ -211,32 +225,25 @@ class ChatList extends Component {
             isChatWindowOpen ? 'displayNone' : ''
           }`}
         >
-          <InfiniteScroll
-            initialLoad={false}
-            pageStart={0}
-            loadMore={this.handleInfiniteOnLoad}
-            hasMore={!loading && hasMore}
-          >
-            <List
-              dataSource={chatList}
-              renderItem={item => (
-                <List.Item
-                  key={item.id}
-                  actions={[this.getActions(isChatWindowOpen, item)]}
-                >
-                  <Skeleton avatar title={false} loading={item.loading} active>
-                    <SingleChatContainer>
-                      <List.Item.Meta
-                        avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
-                        title={item.name}
-                        description={this.getLastMessage(item)}
-                      />
-                    </SingleChatContainer>
+          <List
+            dataSource={listData}
+            renderItem={item => (
+              <List.Item
+                key={item.id}
+                actions={[this.getActions(isChatWindowOpen, item)]}
+              >
+                <SingleChatContainer>
+                  <Skeleton avatar title={false} loading={loading} active>
+                    <List.Item.Meta
+                      avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
+                      title={item.name}
+                      description={this.getLastMessage(item)}
+                    />
                   </Skeleton>
-                </List.Item>
-              )}
-            />
-          </InfiniteScroll>
+                </SingleChatContainer>
+              </List.Item>
+            )}
+          />
         </div>
       </ChatListContainer>
     );
@@ -255,7 +262,7 @@ class ChatList extends Component {
           areChatsPresent && !isChatWindowOpen ? 'chatWindowClosed' : ''
         }`}
       >
-        {areChatsPresent && this.renderAllChats()}
+        {this.renderAllChats()}
       </StyledChatList>
     );
   }

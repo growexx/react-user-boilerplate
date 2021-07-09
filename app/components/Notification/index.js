@@ -29,7 +29,7 @@ class Notification extends React.Component {
    * subscribeToNewMessages - real time updates for new message
    */
   subscribeToNewMessages = async () => {
-    this.unSubscribeToNewMessages = getFireStoreCollectionReference(
+    this.unSubscribeToNewMessages = await getFireStoreCollectionReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
       .where(
@@ -42,9 +42,16 @@ class Notification extends React.Component {
       )
       .onSnapshot(
         async () => {
-          this.setState({
-            newMessage: true,
-          });
+          const {
+            history: {
+              location: { pathname },
+            },
+          } = this.props;
+          if (pathname !== ROUTES.REAL_TIME_CHAT) {
+            this.setState({
+              newMessage: true,
+            });
+          }
         },
         error => {
           // eslint-disable-next-line no-console

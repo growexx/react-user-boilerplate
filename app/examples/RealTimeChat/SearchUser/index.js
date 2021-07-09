@@ -24,13 +24,13 @@ import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
 
 export class SearchUser extends React.Component {
-  onSelect = value => {
+  onSelect = async value => {
     const {
       updateAction,
       storeData: { currentUserRef },
     } = this.props;
 
-    const selectedUserDocReference = getFireStoreDocumentReference(
+    const selectedUserDocReference = await getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.PROFILE,
       value,
     );

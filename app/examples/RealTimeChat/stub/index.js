@@ -93,3 +93,16 @@ export const TEST_IDS = {
   CLOSE_ICON: 'CLOSE_ICON',
   MESSAGE_INPUT: 'MESSAGE_INPUT',
 };
+
+export const skeletonLoaderStub = () => {
+  const data = [];
+  // eslint-disable-next-line no-plusplus
+  for (let index = 0; index < 7; index++) {
+    data.push({
+      name: 'John',
+      id: index,
+      chats: chatWindowStub.chats,
+    });
+  }
+  return data;
+};

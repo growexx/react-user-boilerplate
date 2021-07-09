@@ -14,11 +14,13 @@ export const ChatListContainer = styled.div`
   overflow: auto;
   .demo-infinite-container {
     border-radius: 4px;
-    border-bottom: 1px solid @border-color-base;
     button {
       border: none;
       color: @primary-color;
       box-shadow: none;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid @border-color-base;
     }
   }
   .searchBar {
