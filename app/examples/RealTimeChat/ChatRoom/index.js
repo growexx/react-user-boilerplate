@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { CloseOutlined } from '@ant-design/icons';
-import { Card, Form, Input, Button } from 'antd';
+import { Card, Form, Input, Button, Skeleton } from 'antd';
 import {
   getDataFromReference,
   getFireStoreDocumentData,
@@ -29,6 +29,7 @@ class ChatRoom extends Component {
     this.state = {
       userChats: [],
       messageToSend: '',
+      loading: true,
     };
     this.unSubscribeToWindow = null;
     this.currentChatWindow = null;
@@ -77,6 +78,9 @@ class ChatRoom extends Component {
       .catch(error => {
         // eslint-disable-next-line no-console
         console.error('Error adding document: ', error);
+        this.setState({
+          loading: false,
+        });
         onChangeAppLoading(false);
       });
   };
@@ -108,6 +112,9 @@ class ChatRoom extends Component {
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
+        this.setState({
+          loading: false,
+        });
         onChangeAppLoading(false);
       });
     return returnData;
@@ -145,23 +152,34 @@ class ChatRoom extends Component {
       onChangeAppLoading,
     } = this.props;
     const uniqueId = getUniqueId(selectedChatWindow);
-    onChangeAppLoading(true);
+    this.setState({
+      loading: true,
+    });
     getFireStoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, uniqueId)
       .then(async doc => {
         if (doc.exists) {
           this.setInitialChats(uniqueId, doc.data());
           await this.setUserRefsAndValues(doc.data());
           await this.subscribeToWindow(uniqueId);
+          this.setState({
+            loading: false,
+          });
           onChangeAppLoading(false);
         } else {
           // doc.data() will be undefined in this case
           await this.createNewChatWindow(uniqueId);
+          this.setState({
+            loading: false,
+          });
           onChangeAppLoading(false);
         }
       })
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
+        this.setState({
+          loading: false,
+        });
         onChangeAppLoading(false);
       });
   };
@@ -235,6 +253,18 @@ class ChatRoom extends Component {
    * @returns message UI
    */
   renderSingleMessage = (message, index) => {
+    const { loading } = this.state;
+
+    if (loading) {
+      return (
+        <p
+          className={index % 2 === 0 ? 'messageSent' : 'messageReceived'}
+          key={`${index}_`}
+        >
+          <Skeleton active loading />
+        </p>
+      );
+    }
     const {
       storeData: { currentUserRef },
     } = this.props;
@@ -252,8 +282,12 @@ class ChatRoom extends Component {
    * @returns each single message
    */
   renderMessages = () => {
-    const { userChats } = this.state;
-
+    const { userChats, loading } = this.state;
+    let array = [];
+    array = Array(10).fill(0);
+    if (loading) {
+      return array.map(this.renderSingleMessage);
+    }
     if (userChats.length > 0) {
       const allMessages = userChats.map(this.renderSingleMessage);
       return (
@@ -310,7 +344,7 @@ class ChatRoom extends Component {
   }
 
   render() {
-    const { messageToSend } = this.state;
+    const { messageToSend, loading } = this.state;
     return (
       <StyledChatRoom backgroundImage={chatImage}>
         <Card
@@ -342,7 +376,7 @@ class ChatRoom extends Component {
                   type="primary"
                   data-testid={TEST_IDS.SEND_MESSAGE}
                   onClick={() => this.handleSend()}
-                  disabled={!messageToSend}
+                  disabled={!messageToSend && loading}
                 >
                   Send
                 </Button>

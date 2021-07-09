@@ -55,7 +55,7 @@ export const StyledChatRoom = styled.div`
       padding: 10px;
       overflow: auto;
       color: @black;
-      width: 50%;
+      width: 30%;
       height: auto;
       border-radius: 10px;
       font-size: 14px;

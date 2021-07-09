@@ -210,15 +210,21 @@ class ChatList extends Component {
     const {
       storeData: { chatList, selectedChatWindow },
     } = this.props;
-    const listData = chatList.length > 0 ? chatList : stubChatList;
+    const areChatsPresent = chatList.length > 0;
+    let listData = areChatsPresent ? chatList : stubChatList;
+    if (!loading && !areChatsPresent) {
+      listData = chatList;
+    }
     const isChatWindowOpen =
       selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <ChatListContainer>
         <div className={`searchBar ${isChatWindowOpen ? 'displayNone' : ''}`}>
-          <center>
-            <SearchUser />
-          </center>
+          {areChatsPresent && (
+            <center>
+              <SearchUser />
+            </center>
+          )}
         </div>
         <div
           className={`demo-infinite-container ${
@@ -249,6 +255,21 @@ class ChatList extends Component {
     );
   };
 
+  /**
+   * conditionalRender
+   * @param {boolean} areChatsPresent
+   */
+  conditionalRender = areChatsPresent => {
+    const { loading } = this.state;
+    if (loading) {
+      return this.renderAllChats();
+    }
+    if (areChatsPresent) {
+      return this.renderAllChats();
+    }
+    return <></>;
+  };
+
   render() {
     const {
       storeData: { chatList, selectedChatWindow },
@@ -262,7 +283,7 @@ class ChatList extends Component {
           areChatsPresent && !isChatWindowOpen ? 'chatWindowClosed' : ''
         }`}
       >
-        {this.renderAllChats()}
+        {this.conditionalRender(areChatsPresent)}
       </StyledChatList>
     );
   }
