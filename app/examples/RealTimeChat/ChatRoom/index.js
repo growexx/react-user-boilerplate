@@ -351,7 +351,13 @@ class ChatRoom extends Component {
           type="inner"
           title={
             <div className="chatRoomHeader">
-              <p>{this.getChatWindowName()}</p>
+              <p>
+                {loading ? (
+                  <Skeleton.Input style={{ width: 100 }} active size="small" />
+                ) : (
+                  this.getChatWindowName()
+                )}
+              </p>
               <CloseOutlined
                 data-testid={TEST_IDS.CLOSE_ICON}
                 onClick={() => this.closeChatWindow()}
@@ -376,7 +382,7 @@ class ChatRoom extends Component {
                   type="primary"
                   data-testid={TEST_IDS.SEND_MESSAGE}
                   onClick={() => this.handleSend()}
-                  disabled={!messageToSend && loading}
+                  disabled={!messageToSend || loading}
                 >
                   Send
                 </Button>
