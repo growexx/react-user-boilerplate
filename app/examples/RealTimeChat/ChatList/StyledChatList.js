@@ -19,9 +19,7 @@ export const ChatListContainer = styled.div`
       color: @primary-color;
       box-shadow: none;
     }
-    &:not(:last-child) {
-      border-bottom: 1px solid @border-color-base;
-    }
+    border-bottom: 1px solid @border-color-base;
   }
   .searchBar {
     margin-top: 10px;

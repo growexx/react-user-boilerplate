@@ -176,6 +176,7 @@ describe('<RealTimeChat />', () => {
       document.querySelectorAll('.ant-select-item-option-content')[0],
     );
     expect(getByText('johndoe_9@gmail.com')).toBeInTheDocument();
+    await waitForElement(() => getByTestId(TEST_IDS.CLOSE_ICON));
     fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
   });
   it('Should select the value from dropdown and chat window fails to open', async () => {
@@ -197,6 +198,7 @@ describe('<RealTimeChat />', () => {
       document.querySelectorAll('.ant-select-item-option-content')[0],
     );
     expect(getByText('johndoe_9@gmail.com')).toBeInTheDocument();
+    await waitForElement(() => getByTestId(TEST_IDS.CLOSE_ICON));
     fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
   });
   it('Should fetch the chat list and set the state values', async () => {
