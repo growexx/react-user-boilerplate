@@ -5,6 +5,7 @@
  */
 
 import React, { memo } from 'react';
+import { Offline, Online } from 'react-detect-offline';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Result } from 'antd';
@@ -29,9 +30,11 @@ import {
   REDUCER_KEY,
   NO_CHATS_OPEN,
   SEARCH_USER,
+  OFFLINE_MAIN_MESSAGE,
 } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
 import SearchUser from 'examples/RealTimeChat/SearchUser';
+import { ERROR_MAIN_MESSAGE, GENERAL_MAIN_MESSAGE } from './constants';
 
 export class RealTimeChat extends React.Component {
   constructor(props) {
@@ -80,8 +83,8 @@ export class RealTimeChat extends React.Component {
       return (
         <Result
           type="error"
-          title="Some Error Occurred"
-          subTitle="Please try refreshing the page or wait for some time"
+          title={ERROR_MAIN_MESSAGE}
+          subTitle={GENERAL_MAIN_MESSAGE}
         />
       );
     }
@@ -92,28 +95,37 @@ export class RealTimeChat extends React.Component {
           <title>RealTimeChat</title>
           <meta name="description" content="Description of RealTimeChat" />
         </Helmet>
-        {isFirstTimeRendered && (
-          <StyledRealTimeChat>
-            {chatList.length === 0 && <SearchUser />}
-            <ChatContainer>
-              <ChatList />
-              {isChatWindowOpen ? (
-                <ChatRoom />
-              ) : (
-                <div
-                  className={`noChats ${
-                    chatList.length > 0 ? 'displayNone' : ''
-                  }`}
-                >
-                  <Result
-                    icon={<WechatOutlined />}
-                    title={chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER}
-                  />
-                </div>
-              )}
-            </ChatContainer>
-          </StyledRealTimeChat>
-        )}
+        <Online>
+          {isFirstTimeRendered && (
+            <StyledRealTimeChat>
+              {chatList.length === 0 && <SearchUser />}
+              <ChatContainer>
+                <ChatList />
+                {isChatWindowOpen ? (
+                  <ChatRoom />
+                ) : (
+                  <div
+                    className={`noChats ${
+                      chatList.length > 0 ? 'displayNone' : ''
+                    }`}
+                  >
+                    <Result
+                      icon={<WechatOutlined />}
+                      title={chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER}
+                    />
+                  </div>
+                )}
+              </ChatContainer>
+            </StyledRealTimeChat>
+          )}
+        </Online>
+        <Offline>
+          <Result
+            type="error"
+            title={OFFLINE_MAIN_MESSAGE}
+            subTitle={GENERAL_MAIN_MESSAGE}
+          />
+        </Offline>
       </div>
     );
   }
