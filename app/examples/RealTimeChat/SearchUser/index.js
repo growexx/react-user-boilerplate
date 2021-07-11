@@ -22,22 +22,32 @@ import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import reducer from 'examples/RealTimeChat/reducer';
 import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
+import { resetChatWindow } from 'examples/RealTimeChat/helper';
+import { isEqual } from 'lodash';
 
 export class SearchUser extends React.Component {
   onSelect = async value => {
     const {
       updateAction,
-      storeData: { currentUserRef },
+      storeData: { currentUserRef, selectedChatWindow },
     } = this.props;
 
+    const isChatWindowOpen = selectedChatWindow.length > 0;
     const selectedUserDocReference = await getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.PROFILE,
       value,
     );
-    updateAction('selectedChatWindow', [
-      currentUserRef,
-      selectedUserDocReference,
-    ]);
+    const newWindowParticipants = [currentUserRef, selectedUserDocReference];
+    if (
+      !isChatWindowOpen ||
+      !isEqual(selectedChatWindow, newWindowParticipants)
+    ) {
+      resetChatWindow(updateAction);
+      updateAction('selectedChatWindow', newWindowParticipants);
+      if (isChatWindowOpen) {
+        updateAction('forceChatWindow', true);
+      }
+    }
   };
 
   async componentDidMount() {
@@ -64,11 +74,8 @@ export class SearchUser extends React.Component {
 
   render() {
     const {
-      storeData: { searchResults, selectedChatWindow },
+      storeData: { searchResults },
     } = this.props;
-    if (selectedChatWindow.length > 0) {
-      return <> </>;
-    }
     return (
       <div className="searchContainer">
         <AutoComplete

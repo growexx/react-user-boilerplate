@@ -15,6 +15,7 @@ export const initialState = {
   loading: false,
   selectedChatWindow: '',
   chatList: [],
+  forceChatWindow: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */

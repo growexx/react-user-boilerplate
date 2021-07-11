@@ -345,6 +345,14 @@ class ChatRoom extends Component {
 
   render() {
     const { messageToSend, loading } = this.state;
+    const {
+      updateAction,
+      storeData: { forceChatWindow },
+    } = this.props;
+    if (forceChatWindow) {
+      updateAction('forceChatWindow', false);
+      this.setCurrentChatWindow();
+    }
     return (
       <StyledChatRoom backgroundImage={chatImage}>
         <Card

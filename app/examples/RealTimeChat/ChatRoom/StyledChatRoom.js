@@ -59,6 +59,9 @@ export const StyledChatRoom = styled.div`
       height: auto;
       border-radius: 10px;
       font-size: 14px;
+      @media only screen and (max-width: 767px) {
+        width: 80%;
+      }
     }
     .messageSent {
       margin-right: 10px;

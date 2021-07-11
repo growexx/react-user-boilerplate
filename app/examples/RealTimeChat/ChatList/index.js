@@ -2,6 +2,7 @@
 /* eslint-disable no-plusplus */
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
+import { isEqual } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
@@ -165,10 +166,18 @@ class ChatList extends Component {
    * @param {object} event
    */
   handleChatListItem = event => {
-    const { updateAction } = this.props;
+    const {
+      updateAction,
+      storeData: { selectedChatWindow },
+    } = this.props;
     const { joined } = event;
-    resetChatWindow(updateAction);
-    updateAction('selectedChatWindow', joined);
+    const isChatWindowOpen = selectedChatWindow.length > 0;
+    if (!isChatWindowOpen || !isEqual(selectedChatWindow, joined)) {
+      updateAction('selectedChatWindow', joined);
+      if (isChatWindowOpen) {
+        updateAction('forceChatWindow', true);
+      }
+    }
   };
 
   /**
@@ -185,19 +194,16 @@ class ChatList extends Component {
 
   getActions = (isChatWindowOpen, item) => {
     const { loading } = this.state;
-    if (!isChatWindowOpen) {
-      return (
-        <Button
-          type="link"
-          data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
-          onClick={() => this.handleChatListItem(item)}
-          disabled={loading}
-        >
-          <RightCircleOutlined />
-        </Button>
-      );
-    }
-    return <></>;
+    return (
+      <Button
+        type="link"
+        data-testid={TEST_IDS.OPEN_CHAT_WINDOW}
+        onClick={() => this.handleChatListItem(item)}
+        disabled={loading}
+      >
+        <RightCircleOutlined />
+      </Button>
+    );
   };
 
   /**
