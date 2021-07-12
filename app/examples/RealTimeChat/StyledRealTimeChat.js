@@ -25,6 +25,9 @@ export const ChatContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width: 767px) {
+      display: none;
+    }
   }
   .displayNone {
     @media only screen and (max-width: 767px) {

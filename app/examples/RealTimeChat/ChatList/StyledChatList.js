@@ -28,6 +28,31 @@ export const ChatListContainer = styled.div`
     }
     margin-bottom: 0;
   }
+  .noChatContainer {
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    height: calc(100vh - 180px);
+    @media only screen and (min-width: 767px) {
+      min-width: 300px;
+      max-width: 300px;
+    }
+  }
+  .emptyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0 !important;
+    p {
+      color: @primary-color !important;
+      font-size: 24px;
+      margin-bottom: 0 !important;
+    }
+  }
+  .borderNone {
+    border-bottom: none;
+  }
 `;
 
 export const SingleChatContainer = styled.div`

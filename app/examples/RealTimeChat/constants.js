@@ -19,3 +19,5 @@ export const GENERAL_MAIN_MESSAGE =
   'Please try refreshing the page or wait for some time';
 
 export const ERROR_MAIN_MESSAGE = 'Some Error Occurred';
+
+export const NO_CHATS = 'No Chats';

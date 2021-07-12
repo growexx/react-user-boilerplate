@@ -33,7 +33,6 @@ import {
   OFFLINE_MAIN_MESSAGE,
 } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
-import SearchUser from 'examples/RealTimeChat/SearchUser';
 import { ERROR_MAIN_MESSAGE, GENERAL_MAIN_MESSAGE } from './constants';
 
 export class RealTimeChat extends React.Component {
@@ -98,17 +97,12 @@ export class RealTimeChat extends React.Component {
         <Online>
           {isFirstTimeRendered && (
             <StyledRealTimeChat>
-              {chatList.length === 0 && <SearchUser />}
               <ChatContainer>
                 <ChatList />
                 {isChatWindowOpen ? (
                   <ChatRoom />
                 ) : (
-                  <div
-                    className={`noChats ${
-                      chatList.length > 0 ? 'displayNone' : ''
-                    }`}
-                  >
+                  <div className="noChats ">
                     <Result
                       icon={<WechatOutlined />}
                       title={chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER}

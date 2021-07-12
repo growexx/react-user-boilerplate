@@ -6,7 +6,7 @@ import { isEqual } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { List, Avatar, Skeleton, Button } from 'antd';
+import { List, Avatar, Skeleton, Button, ConfigProvider, Empty } from 'antd';
 import { RightCircleOutlined } from '@ant-design/icons';
 import {
   getFireStoreCollectionReference,
@@ -24,6 +24,7 @@ import {
 } from 'examples/RealTimeChat/ChatList/StyledChatList';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS, skeletonLoaderStub } from 'examples/RealTimeChat/stub';
+import { NO_CHATS } from 'examples/RealTimeChat/constants';
 import SearchUser from 'examples/RealTimeChat/SearchUser';
 
 class ChatList extends Component {
@@ -207,6 +208,28 @@ class ChatList extends Component {
   };
 
   /**
+   * getEmptyContainer
+   * @returns styled message for no container
+   */
+  getEmptyContainer = () => (
+    <div className="emptyContainer">
+      <p>{NO_CHATS}</p>
+    </div>
+  );
+
+  /**
+   * getEmptyList
+   */
+  getEmptyList = () => (
+    <div className="noChatContainer">
+      <Empty
+        image={Empty.PRESENTED_IMAGE_DEFAULT}
+        description={this.getEmptyContainer()}
+      />
+    </div>
+  );
+
+  /**
    * renderAllChats
    * @returns list of chats
    */
@@ -216,80 +239,65 @@ class ChatList extends Component {
     const {
       storeData: { chatList, selectedChatWindow },
     } = this.props;
-    const areChatsPresent = chatList.length > 0;
-    let listData = areChatsPresent ? chatList : stubChatList;
-    if (!loading && !areChatsPresent) {
+    let listData;
+    if (loading) {
+      listData = stubChatList;
+    } else {
       listData = chatList;
     }
+    const areChatsPresent = !loading && chatList.length > 0;
+
     const isChatWindowOpen =
       selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <ChatListContainer>
         <div className={`searchBar ${isChatWindowOpen ? 'displayNone' : ''}`}>
-          {areChatsPresent && (
-            <center>
-              <SearchUser />
-            </center>
-          )}
+          <center>
+            <SearchUser />
+          </center>
         </div>
         <div
           className={`demo-infinite-container ${
             isChatWindowOpen ? 'displayNone' : ''
-          }`}
+          } ${!areChatsPresent ? 'borderNone' : ''}`}
         >
-          <List
-            dataSource={listData}
-            renderItem={item => (
-              <List.Item
-                key={item.id}
-                actions={[this.getActions(isChatWindowOpen, item)]}
-              >
-                <SingleChatContainer>
-                  <Skeleton avatar title={false} loading={loading} active>
-                    <List.Item.Meta
-                      avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
-                      title={item.name}
-                      description={this.getLastMessage(item)}
-                    />
-                  </Skeleton>
-                </SingleChatContainer>
-              </List.Item>
-            )}
-          />
+          <ConfigProvider renderEmpty={!areChatsPresent && this.getEmptyList}>
+            <List
+              dataSource={listData}
+              renderItem={item => (
+                <List.Item
+                  key={item.id}
+                  actions={[this.getActions(isChatWindowOpen, item)]}
+                >
+                  <SingleChatContainer>
+                    <Skeleton avatar title={false} loading={loading} active>
+                      <List.Item.Meta
+                        avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
+                        title={item.name}
+                        description={this.getLastMessage(item)}
+                      />
+                    </Skeleton>
+                  </SingleChatContainer>
+                </List.Item>
+              )}
+            />
+          </ConfigProvider>
         </div>
       </ChatListContainer>
     );
   };
 
-  /**
-   * conditionalRender
-   * @param {boolean} areChatsPresent
-   */
-  conditionalRender = areChatsPresent => {
-    const { loading } = this.state;
-    if (loading) {
-      return this.renderAllChats();
-    }
-    if (areChatsPresent) {
-      return this.renderAllChats();
-    }
-    return <></>;
-  };
-
   render() {
     const {
-      storeData: { chatList, selectedChatWindow },
+      storeData: { selectedChatWindow },
     } = this.props;
-    const areChatsPresent = chatList.length > 0;
     const isChatWindowOpen =
       selectedChatWindow && selectedChatWindow.length > 0;
     return (
       <StyledChatList
-        className={`${
-          areChatsPresent && !isChatWindowOpen ? 'chatWindowClosed' : ''
-        }`}
+        className={`${!isChatWindowOpen ? 'chatWindowClosed' : ''}`}
       >
-        {this.conditionalRender(areChatsPresent)}
+        {this.renderAllChats()}
       </StyledChatList>
     );
   }
