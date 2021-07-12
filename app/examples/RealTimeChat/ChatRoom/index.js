@@ -60,7 +60,7 @@ class ChatRoom extends Component {
     const payload = {
       chats: [],
       createdAt: new Date(),
-      createdBy: currentUserRef,
+      createdBy: currentUserRef.ref,
       joined: selectedChatWindow,
     };
     await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, payload)
@@ -215,9 +215,9 @@ class ChatRoom extends Component {
         message: messageToSend.trim(),
         type: 'text',
         createdAt: new Date(),
-        from: currentUserRef,
-        seen: [currentUserRef],
-        delivered: [currentUserRef],
+        from: currentUserRef.ref,
+        seen: [currentUserRef.ref],
+        delivered: [currentUserRef.ref],
       };
 
       const payload = {

@@ -11,6 +11,7 @@ import { RightCircleOutlined } from '@ant-design/icons';
 import {
   getFireStoreCollectionReference,
   getDataFromReference,
+  getFireStoreDocumentReference,
 } from 'utils/firebase';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS, API_ENDPOINTS } from 'containers/constants';
@@ -41,7 +42,6 @@ class ChatList extends Component {
    */
   subscribeToChatList = () => {
     const { onChangeAppLoading, storeData, updateAction } = this.props;
-    // onChangeAppLoading(true);
     this.setState({
       loading: true,
     });
@@ -49,7 +49,7 @@ class ChatList extends Component {
     this.unSubscribeToChatList = getFireStoreCollectionReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
-      .where('joined', 'array-contains', storeData.currentUserRef)
+      .where(`joined.${storeData.currentUserRef.id}`, '==', true)
       .onSnapshot(
         async querySnapshot => {
           const result = [];
@@ -111,7 +111,11 @@ class ChatList extends Component {
    */
   fetchPersonData = async person => {
     const { onChangeAppLoading } = this.props;
-    const returnData = await getDataFromReference(person)
+    const docRef = await getFireStoreDocumentReference(
+      FIRESTORE_COLLECTIONS.PROFILE,
+      person,
+    );
+    const returnData = await getDataFromReference(docRef)
       .then(data => {
         if (data.data().email !== getUserData().email) {
           return {
@@ -142,9 +146,10 @@ class ChatList extends Component {
       apiUserName: '',
       apiEmail: '',
     };
-    const chatSize = item.joined.length;
+    const chatParticipants = Object.keys(item.joined);
+    const chatSize = Object.keys(item.joined).length;
     for (let index = 0; index < chatSize; index++) {
-      const apiData = await this.fetchPersonData(item.joined[index]);
+      const apiData = await this.fetchPersonData(chatParticipants[index]);
       if (apiData) {
         if (chatSize === 2) {
           returnData = apiData;

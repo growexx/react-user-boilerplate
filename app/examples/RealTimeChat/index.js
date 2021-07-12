@@ -47,7 +47,7 @@ export class RealTimeChat extends React.Component {
   setCurrentUserRef = async () => {
     const { updateAction } = this.props;
 
-    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+    await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
       .where(`email`, '==', getUserData().email)
       .get()
       .then(async querySnapshot => {
