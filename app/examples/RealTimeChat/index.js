@@ -15,7 +15,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
-import { getFireStoreDocumentReference } from 'utils/firebase';
+import { getFireStoreCollectionReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
@@ -47,11 +47,19 @@ export class RealTimeChat extends React.Component {
   setCurrentUserRef = async () => {
     const { updateAction } = this.props;
 
-    const currentUserRef = await getFireStoreDocumentReference(
-      FIRESTORE_COLLECTIONS.PROFILE,
-      getUserData().email,
-    );
-    updateAction('currentUserRef', currentUserRef);
+    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+      .where(`email`, '==', getUserData().email)
+      .get()
+      .then(async querySnapshot => {
+        const { docs } = querySnapshot;
+        if (docs.length > 0) {
+          updateAction('currentUserRef', docs[0]);
+        }
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Error getting documents: ', error);
+      });
   };
 
   async componentDidMount() {
@@ -77,7 +85,7 @@ export class RealTimeChat extends React.Component {
       storeData: { selectedChatWindow, chatList },
     } = this.props;
     const isChatWindowOpen =
-      selectedChatWindow && selectedChatWindow.length > 0;
+      selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     if (error) {
       return (
         <Result

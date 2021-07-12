@@ -17,30 +17,29 @@ import {
 } from '../../../utils/constants';
 import { changeValue } from './actions';
 import {
-  getFireStoreDocumentData,
-  setFirestoreDocumentData,
+  getFireStoreCollectionReference,
+  addFirestoreDocumentData,
 } from '../../../utils/firebase';
 
 /**
  * verifyUserInFireStore
  * @param {string} emailId
  */
-const verifyUserInFireStore = emailId => {
+const verifyUserInFireStore = async emailId => {
   // see if data exits
-  getFireStoreDocumentData(FIRESTORE_COLLECTIONS.PROFILE, emailId)
-    .then(doc => {
+  await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+    .where(`email`, '==', emailId)
+    .get()
+    .then(async querySnapshot => {
+      const { docs } = querySnapshot;
       const payload = {
         email: emailId,
         lastSeen: new Date(),
         userName: emailId.split('@').shift(),
       };
-      if (!doc.exists) {
+      if (!docs.length > 0) {
         // set the data
-        setFirestoreDocumentData(
-          FIRESTORE_COLLECTIONS.PROFILE,
-          emailId,
-          payload,
-        )
+        await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.PROFILE, payload)
           .then(() => {
             // eslint-disable-next-line no-console
             console.log('Document successfully written!');

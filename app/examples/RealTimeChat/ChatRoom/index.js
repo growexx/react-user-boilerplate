@@ -9,9 +9,10 @@ import { CloseOutlined } from '@ant-design/icons';
 import { Card, Form, Input, Button, Skeleton } from 'antd';
 import {
   getDataFromReference,
-  getFireStoreDocumentData,
+  addFirestoreDocumentData,
   getFireStoreDocumentReference,
   setFirestoreDocumentData,
+  getFireStoreCollectionReference,
 } from 'utils/firebase';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
@@ -19,7 +20,7 @@ import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
-import { getUniqueId, resetChatWindow } from 'examples/RealTimeChat/helper';
+import { resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS } from 'examples/RealTimeChat/stub';
 import chatImage from 'images/chat_window.png';
 
@@ -51,7 +52,7 @@ class ChatRoom extends Component {
   /**
    * createNewChatWindow - if window does not exits it creates one
    */
-  createNewChatWindow = async uniqueId => {
+  createNewChatWindow = async () => {
     const {
       storeData: { selectedChatWindow, currentUserRef },
       onChangeAppLoading,
@@ -62,18 +63,13 @@ class ChatRoom extends Component {
       createdBy: currentUserRef,
       joined: selectedChatWindow,
     };
-    await setFirestoreDocumentData(
-      FIRESTORE_COLLECTIONS.CHAT_WINDOW,
-      uniqueId,
-      payload,
-      {},
-    )
-      .then(async () => {
-        this.setInitialChats(uniqueId, payload);
+    await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, payload)
+      .then(async docRef => {
+        this.setInitialChats(docRef.id, payload);
         await this.setUserRefsAndValues(payload);
-        await this.subscribeToWindow(uniqueId);
+        await this.subscribeToWindow(docRef.id);
         // eslint-disable-next-line no-console
-        console.log('Document written with ID: ', uniqueId);
+        console.log('Document written with ID: ', docRef.id);
       })
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -107,7 +103,11 @@ class ChatRoom extends Component {
    */
   fetchPersonData = async person => {
     const { onChangeAppLoading } = this.props;
-    const returnData = await getDataFromReference(person)
+    const docRef = await getFireStoreDocumentReference(
+      FIRESTORE_COLLECTIONS.PROFILE,
+      person,
+    );
+    const returnData = await getDataFromReference(docRef)
       .then(data => data.data())
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -117,7 +117,7 @@ class ChatRoom extends Component {
         });
         onChangeAppLoading(false);
       });
-    return returnData;
+    return { userData: returnData, reference: docRef };
   };
 
   /**
@@ -127,16 +127,16 @@ class ChatRoom extends Component {
   setUserRefsAndValues = async data => {
     const { joined } = data;
     const { updateAction } = this.props;
-
     const newRefs = [];
     const newValues = [];
-    for (let index = 0; index < joined.length; index++) {
-      const userValue = await this.fetchPersonData(joined[index]);
-      if (userValue.email === getUserData().email) {
-        updateAction('currentUserValue', userValue);
+    const chatParticipants = Object.keys(joined);
+    for (let index = 0; index < chatParticipants.length; index++) {
+      const userValue = await this.fetchPersonData(chatParticipants[index]);
+      if (userValue.userData.email === getUserData().email) {
+        updateAction('currentUserValue', userValue.userData);
       } else {
-        newRefs.push(joined[index]);
-        newValues.push(userValue);
+        newRefs.push(userValue.reference);
+        newValues.push(userValue.userData);
       }
     }
     updateAction('receiverUserRefs', newRefs);
@@ -151,23 +151,25 @@ class ChatRoom extends Component {
       storeData: { selectedChatWindow },
       onChangeAppLoading,
     } = this.props;
-    const uniqueId = getUniqueId(selectedChatWindow);
     this.setState({
       loading: true,
     });
-    getFireStoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, uniqueId)
-      .then(async doc => {
-        if (doc.exists) {
-          this.setInitialChats(uniqueId, doc.data());
-          await this.setUserRefsAndValues(doc.data());
-          await this.subscribeToWindow(uniqueId);
+    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
+      .where(`joined`, '==', selectedChatWindow)
+      .get()
+      .then(async querySnapshot => {
+        const { docs } = querySnapshot;
+
+        if (docs.length > 0) {
+          this.setInitialChats(docs[0].id, docs[0].data());
+          await this.setUserRefsAndValues(docs[0].data());
+          await this.subscribeToWindow(docs[0].id);
           this.setState({
             loading: false,
           });
           onChangeAppLoading(false);
         } else {
-          // doc.data() will be undefined in this case
-          await this.createNewChatWindow(uniqueId);
+          await this.createNewChatWindow();
           this.setState({
             loading: false,
           });

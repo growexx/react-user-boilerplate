@@ -12,10 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
-import {
-  getFireStoreCollectionReference,
-  getFireStoreDocumentReference,
-} from 'utils/firebase';
+import { getFireStoreCollectionReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
@@ -33,21 +30,32 @@ export class SearchUser extends React.Component {
     } = this.props;
 
     const isChatWindowOpen = selectedChatWindow.length > 0;
-    const selectedUserDocReference = await getFireStoreDocumentReference(
-      FIRESTORE_COLLECTIONS.PROFILE,
-      value,
-    );
-    const newWindowParticipants = [currentUserRef, selectedUserDocReference];
-    if (
-      !isChatWindowOpen ||
-      !isEqual(selectedChatWindow, newWindowParticipants)
-    ) {
-      resetChatWindow(updateAction);
-      updateAction('selectedChatWindow', newWindowParticipants);
-      if (isChatWindowOpen) {
-        updateAction('forceChatWindow', true);
-      }
-    }
+    await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+      .where(`email`, '==', value)
+      .get()
+      .then(async querySnapshot => {
+        const { docs } = querySnapshot;
+        if (docs.length > 0) {
+          const newWindowParticipants = {
+            [currentUserRef.id]: true,
+            [docs[0].id]: true,
+          };
+          if (
+            !isChatWindowOpen ||
+            !isEqual(selectedChatWindow, newWindowParticipants)
+          ) {
+            resetChatWindow(updateAction);
+            updateAction('selectedChatWindow', newWindowParticipants);
+            if (isChatWindowOpen) {
+              updateAction('forceChatWindow', true);
+            }
+          }
+        }
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Error getting documents: ', error);
+      });
   };
 
   async componentDidMount() {
