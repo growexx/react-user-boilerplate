@@ -16,15 +16,16 @@ function PaymentSuccess() {
 
   useEffect(() => {
     if (queryParams) {
+      const reqData = {
+        requesterId: queryParams.get('PayerID'),
+        transactionId: queryParams.get('paymentId'),
+        gateway: 'paypal',
+      };
       setIsLoading(true);
-      request(
-        `${PAYMENT_INTEGRATION_API.SUCCESS}?PayerID=${queryParams.get(
-          'PayerID',
-        )}&paymentId=${queryParams.get('paymentId')}`,
-        {
-          method: 'GET',
-        },
-      )
+      request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
+        method: 'POST',
+        body: reqData,
+      })
         .then(() => {
           setIsLoading(false);
         })
@@ -58,9 +59,12 @@ function PaymentSuccess() {
             <div>{queryParams ? renderQueryParam() : null}</div>
           </div>
           <Button
+            data-testid="redirect-btn"
             type="primary"
             onClick={() => {
-              history.replace(ROUTES.HOME);
+              if (history) {
+                history.replace(ROUTES.HOME);
+              }
             }}
           >
             Go To Dashboard

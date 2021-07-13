@@ -30,6 +30,7 @@ Following are the features included in the boilerplate
 | Social login            | Boilerplate supports social login using firebase|
 | Two Factor              | Two Factor authentication with otp.             |
 | Authentication          |                                                 |
+| Payment Integration     | Basic Payment via paypal demo.                  |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |

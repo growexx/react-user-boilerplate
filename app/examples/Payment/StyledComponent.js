@@ -22,6 +22,8 @@ export const StyledCardWrapper = styled.div`
   }
   .pay_btn {
     margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
   }
   .paytm_logo {
     height: 100px;

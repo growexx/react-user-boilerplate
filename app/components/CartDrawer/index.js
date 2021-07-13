@@ -13,9 +13,12 @@ import {
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { DollarCircleOutlined } from '@ant-design/icons';
-
+import { useHistory } from 'react-router-dom';
+import { StyledCardWrapper } from './StyledCardWrapper';
+import { ROUTES } from '../../containers/constants';
 const { Text } = Typography;
 const CartDrawer = ({ visible, setVisible }) => {
+  const history = useHistory();
   const [productsData, setProductsData] = useState(window.product || []);
   useEffect(() => {
     setProductsData(window.product || []);
@@ -41,6 +44,11 @@ const CartDrawer = ({ visible, setVisible }) => {
     setVisible(false);
   };
 
+  const handlePaymentRedirect = () => {
+    history.push({ pathname: ROUTES.PAYMENT });
+    onCloseHandler();
+  };
+
   const total = productsData
     .map(product => product.price)
     .reduce((a, b) => a + b, 0);
@@ -62,7 +70,7 @@ const CartDrawer = ({ visible, setVisible }) => {
             <List.Item.Meta
               avatar={<Avatar src={product.imageUrl} />}
               title={
-                <div className="u-d-flex u-align-items-center u-justify-content-between">
+                <div className="   u-align-items-center u-justify-content-between">
                   {product.title}
                   <div className="u-d-flex u-align-items-center">
                     <DollarCircleOutlined className="u-mr-1" />
@@ -107,6 +115,20 @@ const CartDrawer = ({ visible, setVisible }) => {
           </div>
         </div>
       </Affix>
+
+      <StyledCardWrapper>
+        {productsData.length ? (
+          <div className="footer-pay-btn">
+            <Button
+              className="btn"
+              type="primary"
+              onClick={handlePaymentRedirect}
+            >
+              Pay Now
+            </Button>
+          </div>
+        ) : null}
+      </StyledCardWrapper>
     </Drawer>
   );
 };

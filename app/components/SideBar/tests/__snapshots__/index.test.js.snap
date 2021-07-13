@@ -341,6 +341,37 @@ exports[`<SideBar /> should render and match the snapshot 1`] = `
           </a>
         </span>
       </li>
+      <li
+        class="ant-menu-item"
+        role="menuitem"
+      >
+        <span
+          aria-label="shopping"
+          class="anticon anticon-shopping ant-menu-item-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="shopping"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M832 312H696v-16c0-101.6-82.4-184-184-184s-184 82.4-184 184v16H192c-17.7 0-32 14.3-32 32v536c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V344c0-17.7-14.3-32-32-32zm-432-16c0-61.9 50.1-112 112-112s112 50.1 112 112v16H400v-16zm392 544H232V384h96v88c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-88h224v88c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-88h96v456z"
+            />
+          </svg>
+        </span>
+        <span>
+          <a
+            href="/products"
+          >
+            Products
+          </a>
+        </span>
+      </li>
     </ul>
   </div>
 </aside>
