@@ -19,6 +19,7 @@ import { changeValue } from './actions';
 import {
   getFireStoreCollectionReference,
   addFirestoreDocumentData,
+  getFireStoreDocumentReference,
 } from '../../../utils/firebase';
 
 /**
@@ -32,12 +33,12 @@ const verifyUserInFireStore = async emailId => {
     .get()
     .then(async querySnapshot => {
       const { docs } = querySnapshot;
-      const payload = {
-        email: emailId,
-        lastSeen: new Date(),
-        userName: emailId.split('@').shift(),
-      };
       if (!docs.length > 0) {
+        const payload = {
+          email: emailId,
+          lastSeen: new Date(),
+          userName: emailId.split('@').shift(),
+        };
         // set the data
         await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.PROFILE, payload)
           .then(() => {
@@ -48,6 +49,15 @@ const verifyUserInFireStore = async emailId => {
             // eslint-disable-next-line no-console
             console.error('Error writing document: ', error);
           });
+      } else {
+        const docRef = await getFireStoreDocumentReference(
+          FIRESTORE_COLLECTIONS.PROFILE,
+          docs[0].id,
+        );
+        const updatePayload = {
+          lastSeen: new Date(),
+        };
+        docRef.update(updatePayload);
       }
     })
     .catch(error => {

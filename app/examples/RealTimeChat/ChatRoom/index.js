@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 import React, { Component, createRef } from 'react';
+import moment from 'moment';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -303,6 +304,25 @@ class ChatRoom extends Component {
   };
 
   /**
+   * getLastSeen
+   * @returns calculate last seen
+   */
+  getLastSeen = () => {
+    const {
+      storeData: { receiverUserValues },
+    } = this.props;
+    const { lastSeen } = receiverUserValues[0];
+    if (receiverUserValues.length === 1) {
+      const formattedLastSeen = moment(lastSeen.toDate());
+      if (moment().diff(formattedLastSeen, 'minutes') < 2) {
+        return 'Online';
+      }
+      return `${formattedLastSeen.calendar(moment())}`;
+    }
+    return <></>;
+  };
+
+  /**
    * getChatWindowName
    * @returns window name filtered by joined members
    */
@@ -364,7 +384,10 @@ class ChatRoom extends Component {
               {loading ? (
                 <Skeleton.Input style={{ width: 100 }} active size="small" />
               ) : (
-                <p>{this.getChatWindowName()}</p>
+                <p>
+                  {this.getChatWindowName()}
+                  <span>{this.getLastSeen()} </span>
+                </p>
               )}
 
               <CloseOutlined

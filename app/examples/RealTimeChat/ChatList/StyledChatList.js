@@ -60,11 +60,11 @@ export const ChatListContainer = styled.div`
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #b8b8b8;
+    background: @gray72;
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #d0d0d0;
+    background: @lightGray;
   }
 `;
 

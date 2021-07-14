@@ -17,11 +17,11 @@ export const StyledChatRoom = styled.div`
       border-radius: 5px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #b8b8b8;
+      background: @gray72;
       border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #d0d0d0;
+      background: @lightGray;
     }
   }
   .ant-card-head {
@@ -41,7 +41,13 @@ export const StyledChatRoom = styled.div`
     align-items: center;
     padding: 0 5px;
     p {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 0;
+      span {
+        color: @messageSent !important;
+        font-weight: normal;
+      }
     }
     svg {
       cursor: pointer;
@@ -84,11 +90,11 @@ export const StyledChatRoom = styled.div`
         border-radius: 5px;
       }
       ::-webkit-scrollbar-thumb {
-        background: #b8b8b8;
+        background: @gray72;
         border-radius: 10px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #d0d0d0;
+        background: @lightGray;
       }
     }
     .messageSent {
