@@ -259,12 +259,12 @@ class ChatRoom extends Component {
 
     if (loading) {
       return (
-        <p
+        <span
           className={index % 2 === 0 ? 'messageSent' : 'messageReceived'}
           key={`${index}_`}
         >
           <Skeleton active loading />
-        </p>
+        </span>
       );
     }
     const {
@@ -361,13 +361,12 @@ class ChatRoom extends Component {
           type="inner"
           title={
             <div className="chatRoomHeader">
-              <p>
-                {loading ? (
-                  <Skeleton.Input style={{ width: 100 }} active size="small" />
-                ) : (
-                  this.getChatWindowName()
-                )}
-              </p>
+              {loading ? (
+                <Skeleton.Input style={{ width: 100 }} active size="small" />
+              ) : (
+                <p>{this.getChatWindowName()}</p>
+              )}
+
               <CloseOutlined
                 data-testid={TEST_IDS.CLOSE_ICON}
                 onClick={() => this.closeChatWindow()}

@@ -10,6 +10,19 @@ export const StyledChatRoom = styled.div`
   .chatRoomContainer {
     overflow: auto;
     height: calc(100vh - 140px);
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b8b8b8;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d0d0d0;
+    }
   }
   .ant-card-head {
     background: @primary-color !important;
@@ -51,7 +64,8 @@ export const StyledChatRoom = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px 5px 0 5px;
-    p {
+    p,
+    span {
       padding: 10px;
       overflow: auto;
       color: @black;
@@ -61,6 +75,20 @@ export const StyledChatRoom = styled.div`
       font-size: 14px;
       @media only screen and (max-width: 767px) {
         width: 80%;
+        margin: 10px;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #b8b8b8;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d0d0d0;
       }
     }
     .messageSent {
