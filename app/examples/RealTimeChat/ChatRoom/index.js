@@ -17,6 +17,7 @@ import {
 } from 'utils/firebase';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
+import { MESSAGE_TIMESTAMP } from 'examples/RealTimeChat/constants';
 import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
@@ -255,7 +256,7 @@ class ChatRoom extends Component {
    * @param {number} index
    * @returns message UI
    */
-  renderSingleMessage = (message, index) => {
+  renderSingleMessage = (messageObject, index) => {
     const { loading } = this.state;
 
     if (loading) {
@@ -271,11 +272,18 @@ class ChatRoom extends Component {
     const {
       storeData: { currentUserRef },
     } = this.props;
-    const isCurrentUser = message.from.id === currentUserRef.id;
+    const { createdAt, from, message } = messageObject;
+    const formattedMessageTimeStamp = moment(createdAt.toDate()).format(
+      MESSAGE_TIMESTAMP,
+    );
+    const isCurrentUser = from.id === currentUserRef.id;
     const classNames = this.getClassNames(isCurrentUser, index);
     return (
       <p className={classNames} key={`${index}_${message}`}>
-        {message.message}
+        <div className="singleMessageContainer">
+          <span>{message}</span>
+          <span className="messageTimeStamp">{formattedMessageTimeStamp}</span>
+        </div>
       </p>
     );
   };

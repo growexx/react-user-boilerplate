@@ -114,5 +114,14 @@ export const StyledChatRoom = styled.div`
     .messageReceivedLast {
       border-radius: 0 10px 10px 10px;
     }
+    .singleMessageContainer {
+      display: flex;
+      .messageTimeStamp {
+        width: 100% !important;
+        margin-left: auto;
+        font-size: 10px;
+        align-self: flex-end;
+      }
+    }
   }
 `;

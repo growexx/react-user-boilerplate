@@ -21,3 +21,5 @@ export const GENERAL_MAIN_MESSAGE =
 export const ERROR_MAIN_MESSAGE = 'Some Error Occurred';
 
 export const NO_CHATS = 'No Chats';
+
+export const MESSAGE_TIMESTAMP = 'MMM-DD-YY hh:mm a';
