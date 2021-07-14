@@ -24,5 +24,8 @@ export const AvatarWrapper = styled.div`
   .anticon-bell {
     font-size: 18px;
     padding-right: 20px;
+    @media screen and (max-width: 500px) {
+      padding-right: 10px;
+    }
   }
 `;

@@ -37,7 +37,7 @@ const Notification = () => {
           onClick={onClickHandler}
           type="text"
           data-testid="badge-notification"
-          className="btn-hover-none"
+          className="btn-hover-none p-4"
         >
           <Badge count={count} size="small">
             <ShoppingCartOutlined className="u-font-size-lg" />
