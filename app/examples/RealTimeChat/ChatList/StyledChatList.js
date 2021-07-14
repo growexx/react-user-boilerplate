@@ -53,6 +53,19 @@ export const ChatListContainer = styled.div`
   .borderNone {
     border-bottom: none;
   }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #b8b8b8;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d0d0d0;
+  }
 `;
 
 export const SingleChatContainer = styled.div`
