@@ -29,7 +29,8 @@ export class SearchUser extends React.Component {
       storeData: { currentUserRef, selectedChatWindow },
     } = this.props;
 
-    const isChatWindowOpen = selectedChatWindow.length > 0;
+    const isChatWindowOpen =
+      selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
       .where(`email`, '==', value)
       .get()

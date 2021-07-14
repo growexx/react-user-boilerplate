@@ -177,7 +177,8 @@ class ChatList extends Component {
       storeData: { selectedChatWindow },
     } = this.props;
     const { joined } = event;
-    const isChatWindowOpen = selectedChatWindow.length > 0;
+    const isChatWindowOpen =
+      selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     if (!isChatWindowOpen || !isEqual(selectedChatWindow, joined)) {
       updateAction('selectedChatWindow', joined);
       if (isChatWindowOpen) {
@@ -253,7 +254,7 @@ class ChatList extends Component {
     const areChatsPresent = !loading && chatList.length > 0;
 
     const isChatWindowOpen =
-      selectedChatWindow && selectedChatWindow.length > 0;
+      selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     return (
       <ChatListContainer>
         <div className={`searchBar ${isChatWindowOpen ? 'displayNone' : ''}`}>
@@ -297,7 +298,7 @@ class ChatList extends Component {
       storeData: { selectedChatWindow },
     } = this.props;
     const isChatWindowOpen =
-      selectedChatWindow && selectedChatWindow.length > 0;
+      selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     return (
       <StyledChatList
         className={`${!isChatWindowOpen ? 'chatWindowClosed' : ''}`}
