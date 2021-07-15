@@ -1,11 +1,11 @@
 export const personOne = {
-  id: '1',
+  id: 0,
 };
 const personTwo = {
-  id: '2',
+  id: 1,
 };
 const personThree = {
-  id: '3',
+  id: 2,
 };
 export const chatWindowStub = {
   chats: [
@@ -14,8 +14,7 @@ export const chatWindowStub = {
       type: 'text',
       createdAt: new Date(),
       from: personOne,
-      seen: [personOne],
-      delivered: [personTwo],
+      seen: [personOne.id],
     },
   ],
   createdAt: new Date(),
