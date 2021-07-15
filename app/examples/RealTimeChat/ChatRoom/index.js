@@ -40,6 +40,50 @@ class ChatRoom extends Component {
   }
 
   /**
+   * updateChatWindowData - updates chat window
+   * @param {object} payload
+   */
+  updateChatWindowData = async payload => {
+    await setFirestoreDocumentData(
+      FIRESTORE_COLLECTIONS.CHAT_WINDOW,
+      this.currentChatWindow,
+      payload,
+      { merge: true },
+    )
+      .then(() => {})
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error('Error writing document: ', error);
+      });
+  };
+
+  /**
+   * handleSeenFlagForPreviousMessage - update seen flag for previous message
+   */
+  handleSeenFlagForPreviousMessage = () => {
+    const { userChats } = this.state;
+    const newChats = [...userChats];
+    const {
+      storeData: { currentUserRef },
+    } = this.props;
+    if (userChats.length > 0) {
+      const { from } = newChats[userChats.length - 1];
+      const isCurrentUser = from.id === currentUserRef.id;
+      if (!isCurrentUser) {
+        const { seen } = newChats[userChats.length - 1];
+        if (!seen.includes(currentUserRef.id)) {
+          newChats[userChats.length - 1].seen.push(currentUserRef.id);
+          this.setState({
+            userChats: newChats,
+          });
+        }
+        return true;
+      }
+    }
+    return false;
+  };
+
+  /**
    * setInitialChats
    * @param {String}} uniqueId
    * @param {Object} data
@@ -161,11 +205,15 @@ class ChatRoom extends Component {
       .get()
       .then(async querySnapshot => {
         const { docs } = querySnapshot;
-
         if (docs.length > 0) {
           this.setInitialChats(docs[0].id, docs[0].data());
           await this.setUserRefsAndValues(docs[0].data());
           await this.subscribeToWindow(docs[0].id);
+          if (this.handleSeenFlagForPreviousMessage()) {
+            await this.updateChatWindowData({
+              chats: this.state.userChats,
+            });
+          }
           this.setState({
             loading: false,
           });
@@ -209,6 +257,7 @@ class ChatRoom extends Component {
    */
   handleSend = () => {
     const { userChats, messageToSend } = this.state;
+    this.handleSeenFlagForPreviousMessage();
     if (messageToSend.length > 0) {
       const {
         storeData: { currentUserRef },
@@ -218,24 +267,13 @@ class ChatRoom extends Component {
         type: 'text',
         createdAt: new Date(),
         from: currentUserRef.ref,
-        seen: [currentUserRef.ref],
-        delivered: [currentUserRef.ref],
+        seen: [currentUserRef.id],
       };
 
       const payload = {
         chats: [...userChats, message],
       };
-      setFirestoreDocumentData(
-        FIRESTORE_COLLECTIONS.CHAT_WINDOW,
-        this.currentChatWindow,
-        payload,
-        { merge: true },
-      )
-        .then(() => {})
-        .catch(error => {
-          // eslint-disable-next-line no-console
-          console.error('Error writing document: ', error);
-        });
+      this.updateChatWindowData(payload);
       this.setState({
         messageToSend: '',
       });
@@ -280,10 +318,8 @@ class ChatRoom extends Component {
     const classNames = this.getClassNames(isCurrentUser, index);
     return (
       <p className={classNames} key={`${index}_${message}`}>
-        <div className="singleMessageContainer">
-          <span>{message}</span>
-          <span className="messageTimeStamp">{formattedMessageTimeStamp}</span>
-        </div>
+        {message}
+        <span className="messageTimeStamp">{formattedMessageTimeStamp}</span>
       </p>
     );
   };
