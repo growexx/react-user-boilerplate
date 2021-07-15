@@ -194,7 +194,22 @@ class ChatList extends Component {
    */
   getLastMessage = item => {
     if (item.chats && item.chats.length > 0) {
-      return item.chats[item.chats.length - 1].message;
+      const {
+        storeData: { currentUserRef },
+      } = this.props;
+      const { message, seen } = item.chats[item.chats.length - 1];
+      const isLastMessageSeen = seen.includes(currentUserRef.id);
+      return (
+        <p
+          className={
+            isLastMessageSeen
+              ? 'removeMarginLeft'
+              : 'removeMarginLeft lastMessage'
+          }
+        >
+          {message}
+        </p>
+      );
     }
     return '';
   };

@@ -81,9 +81,14 @@ export const SingleChatContainer = styled.div`
     margin-left: 20px;
     margin-bottom: 0px;
   }
-  .ant-list-item-meta-description {
+  .removeMarginLeft {
+    margin-left: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .lastMessage {
+    font-weight: bold;
+    color: @black;
   }
 `;
