@@ -8,10 +8,7 @@ import { BellOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Badge } from 'antd';
-import {
-  getFireStoreCollectionReference,
-  getFireStoreDocumentReference,
-} from 'utils/firebase';
+import { getFireStoreCollectionReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS, ROUTES } from 'containers/constants';
 import { getUserData } from 'utils/Helper';
 import { NotificationWrapper } from './StyledNotification';
@@ -29,27 +26,47 @@ class Notification extends React.Component {
    * subscribeToNewMessages - real time updates for new message
    */
   subscribeToNewMessages = async () => {
+    let loggedInUserId;
+    await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+      .where(`email`, '==', getUserData().email)
+      .get()
+      .then(async querySnapshot => {
+        const { docs } = querySnapshot;
+        if (docs.length > 0) {
+          loggedInUserId = docs[0].id;
+        }
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Error getting documents: ', error);
+      });
+
     this.unSubscribeToNewMessages = await getFireStoreCollectionReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
     )
-      .where(
-        'joined',
-        'array-contains',
-        getFireStoreDocumentReference(
-          FIRESTORE_COLLECTIONS.PROFILE,
-          getUserData().email,
-        ),
-      )
+      .where(`joined.${loggedInUserId}`, '==', true)
       .onSnapshot(
-        async () => {
-          const {
-            history: {
-              location: { pathname },
-            },
-          } = this.props;
-          if (pathname !== ROUTES.REAL_TIME_CHAT) {
-            this.setState({
-              newMessage: true,
+        async querySnapshot => {
+          if (!querySnapshot.empty) {
+            querySnapshot.forEach(doc => {
+              const { chats } = doc.data();
+              if (chats.length > 0) {
+                const filteredChats = chats.filter(
+                  chat => !chat.seen.includes(loggedInUserId),
+                );
+                if (filteredChats.length > 0) {
+                  const {
+                    history: {
+                      location: { pathname },
+                    },
+                  } = this.props;
+                  if (pathname !== ROUTES.REAL_TIME_CHAT) {
+                    this.setState({
+                      newMessage: true,
+                    });
+                  }
+                }
+              }
             });
           }
         },
