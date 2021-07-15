@@ -33,35 +33,89 @@ import {
   getFailureResponse,
   getSuccessChatWindowData,
   getSuccessChatsSubscription,
+  getCurrentUserMock,
   TEST_IDS,
   personOne,
 } from 'examples/RealTimeChat/stub';
-
 jest.mock('utils/firebase');
 jest.mock('utils/Helper', () => ({
   getUserData: jest.fn().mockReturnValue({
     email: 'johndoe_0@gmail.com',
   }),
 }));
-const mockGetFireStoreCollectionReference = async responseType => {
-  getFireStoreCollectionReference.mockImplementation(() => ({
-    where: jest.fn().mockImplementation(() => ({
-      onSnapshot: jest.fn(
-        (snapshotCallbackFunction, snapshotCallbackErrorFunction) => {
-          snapshotCallbackFunction(getSuccessMockChatList());
-          snapshotCallbackErrorFunction(getFailureMockChatList());
-          return jest.fn();
-        },
-      ),
-      get: jest
-        .fn()
-        .mockImplementationOnce(() =>
-          responseType === 'success'
-            ? getSuccessMockSearchResults()
-            : getFailureResponse(),
+const mockGetFireStoreCollectionReference = async (
+  responseType,
+  elseCase,
+  chatParticipants,
+) => {
+  getFireStoreCollectionReference
+    .mockImplementationOnce(() => ({
+      // real time chat component - for saving currentUserRef
+      where: jest.fn().mockImplementationOnce(() => ({
+        get: jest
+          .fn()
+          .mockImplementation(() =>
+            responseType === 'success'
+              ? getCurrentUserMock(elseCase)
+              : getFailureResponse(),
+          ),
+      })),
+    }))
+    .mockImplementationOnce(() => ({
+      // Search User component - for saving search results
+      where: jest.fn().mockImplementationOnce(() => ({
+        get: jest
+          .fn()
+          .mockImplementation(() =>
+            responseType === 'success'
+              ? getSuccessMockSearchResults()
+              : getFailureResponse(),
+          ),
+      })),
+    }))
+    .mockImplementationOnce(() => ({
+      // Chat List component - for getting the already done chats
+      where: jest.fn().mockImplementationOnce(() => ({
+        onSnapshot: jest.fn(
+          (snapshotCallbackFunction, snapshotCallbackErrorFunction) => {
+            snapshotCallbackFunction(getSuccessMockChatList());
+            snapshotCallbackErrorFunction(getFailureMockChatList());
+            return jest.fn();
+          },
         ),
-    })),
-  }));
+        get: jest
+          .fn()
+          .mockImplementationOnce(() =>
+            responseType === 'success'
+              ? getSuccessMockSearchResults()
+              : getFailureResponse(),
+          ),
+      })),
+    }))
+    .mockImplementationOnce(() => ({
+      // search user component - for selecting the user
+      where: jest.fn().mockImplementationOnce(() => ({
+        get: jest
+          .fn()
+          .mockImplementation(() =>
+            responseType === 'success'
+              ? getCurrentUserMock(elseCase)
+              : getFailureResponse(),
+          ),
+      })),
+    }))
+    .mockImplementationOnce(() => ({
+      // chat room component - for successfully getting the chat window
+      where: jest.fn().mockImplementationOnce(() => ({
+        get: jest
+          .fn()
+          .mockImplementation(() =>
+            responseType === 'success'
+              ? getSuccessChatWindowData(elseCase, chatParticipants)
+              : getFailureResponse(),
+          ),
+      })),
+    }));
 };
 
 const mockGetDataFromReference = async (responseType, emailType) => {
@@ -146,23 +200,11 @@ describe('<RealTimeChat />', () => {
     getFireStoreDocumentData.mockReset();
     getFireStoreDocumentReference.mockReset();
   });
-  it('Should render and match the snapshot', () => {
-    mockSetFirestoreDocumentData('success');
-    mockGetFireStoreDocumentReference();
-    mockGetFireStoreCollectionReference('error');
-    mockGetFireStoreDocumentData('success', 'new');
-    mockGetDataFromReference('error', 'different');
-    const {
-      container: { firstChild },
-    } = componentWrapper();
-    expect(firstChild).toMatchSnapshot();
-  });
   it('Should select the value from dropdown', async () => {
     mockSetFirestoreDocumentData('success');
     mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
     mockGetDataFromReference('success', 'same');
-    mockGetFireStoreDocumentData('success', 'new');
     const { getByRole, getByText, getByTestId } = componentWrapper();
     await waitForElement(() => getByRole('combobox'));
     fireEvent.mouseDown(getByRole('combobox'));
@@ -338,5 +380,16 @@ describe('<RealTimeChat />', () => {
     await waitForElement(() => getByTestId(TEST_IDS.SEND_MESSAGE));
     fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
     expect(queryByText('johndoe_9')).not.toBeInTheDocument();
+  });
+  it('Should render and match the snapshot', () => {
+    mockSetFirestoreDocumentData('success');
+    mockGetFireStoreDocumentReference();
+    mockGetFireStoreCollectionReference('error');
+    mockGetFireStoreDocumentData('success', 'new');
+    mockGetDataFromReference('error', 'different');
+    const {
+      container: { firstChild },
+    } = componentWrapper();
+    expect(firstChild).toMatchSnapshot();
   });
 });

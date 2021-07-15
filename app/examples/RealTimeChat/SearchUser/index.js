@@ -63,7 +63,7 @@ export class SearchUser extends React.Component {
     const { updateAction, onChangeAppLoading } = this.props;
     onChangeAppLoading(true);
     // get users for search
-    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+    await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
       .where('email', '!=', getUserData().email)
       .get()
       .then(querySnapshot => {

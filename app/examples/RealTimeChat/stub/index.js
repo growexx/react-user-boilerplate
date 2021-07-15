@@ -12,7 +12,9 @@ export const chatWindowStub = {
     {
       message: 'Hi',
       type: 'text',
-      createdAt: new Date(),
+      createdAt: {
+        toDate: () => {},
+      },
       from: personOne,
       seen: [personOne.id],
     },
@@ -50,30 +52,57 @@ export const getSuccessMockChatList = () => {
 
   return { docs };
 };
+export const getCurrentUserMock = elseCase => {
+  const docs = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 10; i++) {
+    docs.push({
+      id: '1',
+      data: () => ({ id: '1' }),
+    });
+  }
+  if (elseCase) {
+    return Promise.resolve({ docs: [] });
+  }
+  return Promise.resolve({ docs });
+};
 export const getFailureMockChatList = () => {};
 
 export const getSuccessDataFromReferenceSameEmail = () => {
   const data = {
-    data: () => ({ email: `johndoe_11@gmail.com`, userName: `johndoe_11` }),
+    data: () => ({
+      email: `johndoe_11@gmail.com`,
+      userName: `johndoe_11`,
+      lastSeen: new Date(),
+    }),
   };
 
   return Promise.resolve(data);
 };
 export const getSuccessDataFromReferenceDiffEmail = () => {
   const data = {
-    data: () => ({ email: `johndoe_1@gmail.com`, userName: `johndoe_1` }),
+    data: () => ({
+      email: `johndoe_1@gmail.com`,
+      userName: `johndoe_1`,
+      lastSeen: new Date(),
+    }),
   };
 
   return Promise.resolve(data);
 };
 
-export const getSuccessChatWindowData = (chatWindowType, chatParticipants) => {
-  const response = {
-    exists: chatWindowType === 'old',
+export const getSuccessChatWindowData = (elseCase, chatParticipants) => {
+  const data = [];
+
+  data.push({
     data: () =>
       chatParticipants === 'group' ? groupChatWindowStub : chatWindowStub,
-  };
-  return Promise.resolve(response);
+    id: '0',
+  });
+  if (elseCase) {
+    return Promise.resolve({ docs: [] });
+  }
+  return Promise.resolve({ docs: data });
 };
 
 export const getSuccessChatsSubscription = () => {

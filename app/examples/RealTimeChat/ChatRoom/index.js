@@ -2,6 +2,7 @@
 /* eslint-disable no-plusplus */
 import React, { Component, createRef } from 'react';
 import moment from 'moment';
+import { cloneDeep } from 'lodash';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -62,7 +63,7 @@ class ChatRoom extends Component {
    */
   handleSeenFlagForPreviousMessage = () => {
     const { userChats } = this.state;
-    const newChats = [...userChats];
+    const newChats = cloneDeep(userChats);
     const {
       storeData: { currentUserRef },
     } = this.props;
