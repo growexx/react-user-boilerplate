@@ -2,14 +2,10 @@
  * Test injectors
  */
 
-import { memoryHistory } from 'react-router-dom';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import renderer from 'react-test-renderer';
 import { render } from 'react-testing-library';
-// import history from 'utils/history';
-import configureStore from '../../configureStore';
 import injectReducer, { useInjectReducer } from '../injectReducer';
 import * as reducerInjectors from '../reducerInjectors';
 
@@ -20,9 +16,6 @@ const reducer = s => s;
 
 describe('injectReducer decorator', () => {
   // let store;
-  let prevStore;
-  let prevPersistor;
-
   let injectors;
   let ComponentWithReducer;
 
@@ -31,10 +24,6 @@ describe('injectReducer decorator', () => {
   });
 
   beforeEach(() => {
-    const { store, persistor } = configureStore({}, memoryHistory);
-    prevStore = store;
-    prevPersistor = persistor;
-    // prevStore = configureStore({}, memoryHistory);
     injectors = {
       injectReducer: jest.fn(),
     };
@@ -73,8 +62,6 @@ describe('injectReducer decorator', () => {
 
 describe('useInjectReducer hook', () => {
   // let store;
-  let prevStore;
-  let prevPersistor;
 
   // const { store, persistor } = configureStore({}, history);
   // prevStore = store;
@@ -88,9 +75,6 @@ describe('useInjectReducer hook', () => {
     };
     reducerInjectors.default = jest.fn().mockImplementation(() => injectors);
     // prevStore = configureStore({}, memoryHistory);
-    const { store, persistor } = configureStore({}, memoryHistory);
-    prevStore = store;
-    prevPersistor = persistor;
     ComponentWithReducer = () => {
       useInjectReducer({ key: 'test', reducer });
       return null;
