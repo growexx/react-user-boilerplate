@@ -23,6 +23,10 @@ const Item = styled.span`
 const Container = styled.span`
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export function FontAwesomeDemo() {

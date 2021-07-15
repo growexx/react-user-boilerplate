@@ -7,7 +7,7 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
@@ -25,6 +25,7 @@ import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import Users from 'examples/Users/Loadable';
 import Charts from 'examples/Charts/Loadable';
+import Products from 'examples/Products/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
@@ -35,6 +36,7 @@ import RoleMiddleWare from './RoleMiddleWare';
 import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../constants';
+import { manageSession } from '../../utils/Helper';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -43,6 +45,13 @@ const AppWrapper = styled.div`
 `;
 
 export default function App() {
+  useEffect(() => {
+    window.addEventListener('storage', manageSession, []);
+    return () => {
+      window.removeEventListener('storage', window);
+    };
+  }, []);
+
   return (
     <AppWrapper data-testid="AppRoutes">
       <Helmet
@@ -64,6 +73,7 @@ export default function App() {
         <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
         <PrivateRoute path={ROUTES.USERS} component={Users} />
         <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
+        <PrivateRoute path={ROUTES.PRODUCTS} component={Products} />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
