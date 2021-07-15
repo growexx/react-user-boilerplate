@@ -8,19 +8,25 @@ import Emitter from 'utils/events';
 import history from 'utils/history';
 import { TOKEN_KEY, EMITTER_EVENTS } from 'utils/constants';
 import StorageService from 'utils/StorageService';
+import { PersistGate } from 'redux-persist/integration/react';
 import MainLayout from '../index';
 import configureStore from '../../../configureStore';
 
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
+
 const tokenValue = 'test token';
 const componentWrapper = props =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <MainLayout {...props} />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <MainLayout {...props} />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
@@ -29,7 +35,10 @@ const logout = () => StorageService.clear();
 
 describe('<MainLayout />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
+    // store = configureStore({}, browserHistory);
     login();
   });
 
@@ -66,7 +75,10 @@ describe('<MainLayout />', () => {
 
 describe('<MainLayout />', () => {
   beforeEach(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
     login();
     const OLD_ENV = process.env;
     jest.resetModules(); // Most important - it clears the cache
@@ -109,7 +121,10 @@ describe('<MainLayout /> with variant 2', () => {
     defaultLayout: 2,
   };
   beforeEach(() => {
-    store = configureStore({}, browserHistory);
+    // prevStore = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
     login();
     const OLD_ENV = process.env;
     // Most important - it clears the cache
@@ -147,7 +162,10 @@ describe('<MainLayout /> with variant 3', () => {
     defaultLayout: 3,
   };
   beforeEach(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
     login();
     const OLD_ENV = process.env;
     // Most important - it clears the cache

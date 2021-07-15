@@ -5,6 +5,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, history) {
@@ -36,8 +38,15 @@ export default function configureStore(initialState = {}, history) {
 
   const enhancers = [applyMiddleware(...middlewares)];
 
+  const persistConfig = {
+    key: 'react-boilerplate',
+    storage,
+    blacklist: ['router'],
+  };
+  const persistedReducer = persistReducer(persistConfig, createReducer());
+
   const store = createStore(
-    createReducer(),
+    persistedReducer,
     initialState,
     composeEnhancers(...enhancers),
   );
@@ -55,5 +64,7 @@ export default function configureStore(initialState = {}, history) {
     });
   }
 
-  return store;
+  const persistor = persistStore(store);
+
+  return { store, persistor };
 }

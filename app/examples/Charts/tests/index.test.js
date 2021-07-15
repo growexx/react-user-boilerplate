@@ -10,28 +10,36 @@ import { browserHistory } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import history from 'utils/history';
+import { PersistGate } from 'redux-persist/integration/react';
 import { ConnectedRouter } from 'connected-react-router';
 import Charts from '../index';
 import configureStore from '../../../configureStore';
 
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
 
 const props = {};
 
 const componentWrapper = updatedProps =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <Charts {...props} {...updatedProps} />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <Charts {...props} {...updatedProps} />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
 describe('Check component:<Charts /> is rendering properly', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
     jest.useFakeTimers();
   });
 

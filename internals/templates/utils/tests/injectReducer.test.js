@@ -5,9 +5,11 @@
 import { memoryHistory } from 'react-router-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 import { render } from 'react-testing-library';
 
+import { PersistGate } from 'redux-persist/integration/react';
+// import history from 'utils/history';
 import configureStore from '../../configureStore';
 import injectReducer, { useInjectReducer } from '../injectReducer';
 import * as reducerInjectors from '../reducerInjectors';
@@ -18,7 +20,10 @@ const Component = () => null;
 const reducer = s => s;
 
 describe('injectReducer decorator', () => {
-  let store;
+  // let store;
+  let prevStore;
+  let prevPersistor;
+
   let injectors;
   let ComponentWithReducer;
 
@@ -27,7 +32,10 @@ describe('injectReducer decorator', () => {
   });
 
   beforeEach(() => {
-    store = configureStore({}, memoryHistory);
+    const { store, persistor } = configureStore({}, memoryHistory);
+    prevStore = store;
+    prevPersistor = persistor;
+    // prevStore = configureStore({}, memoryHistory);
     injectors = {
       injectReducer: jest.fn(),
     };
@@ -36,9 +44,11 @@ describe('injectReducer decorator', () => {
   });
 
   it('should inject a given reducer', () => {
-    renderer.create(
-      <Provider store={store}>
-        <ComponentWithReducer />
+    render(
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithReducer />
+        </PersistGate>
       </Provider>,
     );
 
@@ -55,17 +65,27 @@ describe('injectReducer decorator', () => {
 
   it('should propagate props', () => {
     const props = { testProp: 'test' };
-    const renderedComponent = renderer.create(
-      <Provider store={store}>
-        <ComponentWithReducer {...props} />
+    const renderedComponent = render(
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithReducer {...props} />
+        </PersistGate>
       </Provider>,
     );
-    expect(renderedComponent.root.props.children.props).toEqual(props);
+    expect(renderedComponent.root.props.children.props.children.props).toEqual(
+      props,
+    );
   });
 });
 
 describe('useInjectReducer hook', () => {
-  let store;
+  // let store;
+  let prevStore;
+  let prevPersistor;
+
+  // const { store, persistor } = configureStore({}, history);
+  // prevStore = store;
+  // prevPersistor = persistor;
   let injectors;
   let ComponentWithReducer;
 
@@ -74,7 +94,10 @@ describe('useInjectReducer hook', () => {
       injectReducer: jest.fn(),
     };
     reducerInjectors.default = jest.fn().mockImplementation(() => injectors);
-    store = configureStore({}, memoryHistory);
+    // prevStore = configureStore({}, memoryHistory);
+    const { store, persistor } = configureStore({}, memoryHistory);
+    prevStore = store;
+    prevPersistor = persistor;
     ComponentWithReducer = () => {
       useInjectReducer({ key: 'test', reducer });
       return null;
@@ -83,8 +106,10 @@ describe('useInjectReducer hook', () => {
 
   it('should inject a given reducer', () => {
     render(
-      <Provider store={store}>
-        <ComponentWithReducer />
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithReducer />
+        </PersistGate>
       </Provider>,
     );
 

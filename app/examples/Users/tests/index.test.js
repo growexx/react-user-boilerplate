@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import history from 'utils/history';
 import request from 'utils/request';
 import { ConnectedRouter } from 'connected-react-router';
+import { PersistGate } from 'redux-persist/integration/react';
 import Users, { mapDispatchToProps } from '../index';
 import configureStore from '../../../configureStore';
 import {
@@ -25,7 +26,9 @@ import {
 import { TEST_IDS } from '../constants';
 jest.mock('utils/request');
 
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
 const props = {
   pristine: true,
   reset: true,
@@ -49,18 +52,23 @@ const fieldUpdateViaPlaceHolder = [
 
 const componentWrapper = updatedProps =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <Users {...props} {...updatedProps} />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <Users {...props} {...updatedProps} />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
 describe('Check component:<Users /> is rendering properly', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {
@@ -127,7 +135,10 @@ describe('Check component:<Users /> is rendering properly', () => {
 
 describe('Check listing of users is rendering properly', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {
@@ -242,7 +253,10 @@ describe('Check listing of users is rendering properly', () => {
 
 describe('New Users', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {
@@ -325,7 +339,10 @@ describe('New Users', () => {
 
 describe('Update User', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {
@@ -427,7 +444,10 @@ describe('Update User', () => {
 
 describe('Status Filter', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {
@@ -466,7 +486,10 @@ describe('Status Filter', () => {
 
 describe('Search & Sorting user list', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {

@@ -16,9 +16,10 @@ import * as reducerInjectors from '../reducerInjectors';
 const Component = () => null;
 
 const reducer = s => s;
-
+let prevStore;
+// let prevPersistor;
 describe('injectReducer decorator', () => {
-  let store;
+  // let store;
   let injectors;
   let ComponentWithReducer;
 
@@ -27,7 +28,9 @@ describe('injectReducer decorator', () => {
   });
 
   beforeEach(() => {
-    store = configureStore({}, memoryHistory);
+    // store = configureStore({}, memoryHistory);
+    const { store } = configureStore({}, memoryHistory);
+    prevStore = store;
     injectors = {
       injectReducer: jest.fn(),
     };
@@ -37,7 +40,7 @@ describe('injectReducer decorator', () => {
 
   it('should inject a given reducer', () => {
     renderer.create(
-      <Provider store={store}>
+      <Provider store={prevStore}>
         <ComponentWithReducer />
       </Provider>,
     );
@@ -56,7 +59,7 @@ describe('injectReducer decorator', () => {
   it('should propagate props', () => {
     const props = { testProp: 'test' };
     const renderedComponent = renderer.create(
-      <Provider store={store}>
+      <Provider store={prevStore}>
         <ComponentWithReducer {...props} />
       </Provider>,
     );
@@ -65,7 +68,7 @@ describe('injectReducer decorator', () => {
 });
 
 describe('useInjectReducer hook', () => {
-  let store;
+  // let store;
   let injectors;
   let ComponentWithReducer;
 
@@ -74,7 +77,9 @@ describe('useInjectReducer hook', () => {
       injectReducer: jest.fn(),
     };
     reducerInjectors.default = jest.fn().mockImplementation(() => injectors);
-    store = configureStore({}, memoryHistory);
+    const { store } = configureStore({}, memoryHistory);
+    prevStore = store;
+    // store = configureStore({}, memoryHistory);
     ComponentWithReducer = () => {
       useInjectReducer({ key: 'test', reducer });
       return null;
@@ -83,7 +88,7 @@ describe('useInjectReducer hook', () => {
 
   it('should inject a given reducer', () => {
     render(
-      <Provider store={store}>
+      <Provider store={prevStore}>
         <ComponentWithReducer />
       </Provider>,
     );

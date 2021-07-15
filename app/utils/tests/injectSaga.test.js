@@ -8,6 +8,7 @@ import renderer from 'react-test-renderer';
 import { render } from 'react-testing-library';
 import React from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import configureStore from '../../configureStore';
 import injectSaga, { useInjectSaga } from '../injectSaga';
@@ -21,7 +22,16 @@ function* testSaga() {
 }
 
 describe('injectSaga decorator', () => {
-  let store;
+  // let store;
+  let prevStore;
+  let prevPersistor;
+
+  const { store, persistor } = configureStore({}, memoryHistory);
+  // eslint-disable-next-line prefer-const
+  prevStore = store;
+  // eslint-disable-next-line prefer-const
+  prevPersistor = persistor;
+
   let injectors;
   let ComponentWithSaga;
 
@@ -30,7 +40,7 @@ describe('injectSaga decorator', () => {
   });
 
   beforeEach(() => {
-    store = configureStore({}, memoryHistory);
+    // prevStore = configureStore({}, memoryHistory);
     injectors = {
       injectSaga: jest.fn(),
       ejectSaga: jest.fn(),
@@ -45,9 +55,11 @@ describe('injectSaga decorator', () => {
 
   it('should inject given saga, mode, and props', () => {
     const props = { test: 'test' };
-    renderer.create(
-      <Provider store={store}>
-        <ComponentWithSaga {...props} />
+    render(
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithSaga {...props} />
+        </PersistGate>
       </Provider>,
     );
 
@@ -61,9 +73,11 @@ describe('injectSaga decorator', () => {
 
   it('should eject on unmount with a correct saga key', () => {
     const props = { test: 'test' };
-    const renderedComponent = renderer.create(
-      <Provider store={store}>
-        <ComponentWithSaga {...props} />
+    const renderedComponent = render(
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithSaga {...props} />
+        </PersistGate>
       </Provider>,
     );
     renderedComponent.unmount();
@@ -82,16 +96,28 @@ describe('injectSaga decorator', () => {
   it('should propagate props', () => {
     const props = { testProp: 'test' };
     const renderedComponent = renderer.create(
-      <Provider store={store}>
-        <ComponentWithSaga {...props} />
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithSaga {...props} />
+        </PersistGate>
       </Provider>,
     );
-    expect(renderedComponent.root.props.children.props).toEqual(props);
+    expect(renderedComponent.root.props.children.props.children.props).toEqual(
+      props,
+    );
   });
 });
 
 describe('useInjectSaga hook', () => {
-  let store;
+  // let store;
+  let prevStore;
+  let prevPersistor;
+
+  const { store, persistor } = configureStore({}, memoryHistory);
+  // eslint-disable-next-line prefer-const
+  prevStore = store;
+  // eslint-disable-next-line prefer-const
+  prevPersistor = persistor;
   let injectors;
   let ComponentWithSaga;
 
@@ -100,7 +126,7 @@ describe('useInjectSaga hook', () => {
   });
 
   beforeEach(() => {
-    store = configureStore({}, memoryHistory);
+    // store = configureStore({}, memoryHistory);
     injectors = {
       injectSaga: jest.fn(),
       ejectSaga: jest.fn(),
@@ -119,8 +145,10 @@ describe('useInjectSaga hook', () => {
   it('should inject given saga and mode', () => {
     const props = { test: 'test' };
     render(
-      <Provider store={store}>
-        <ComponentWithSaga {...props} />
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithSaga {...props} />
+        </PersistGate>
       </Provider>,
     );
 
@@ -130,8 +158,10 @@ describe('useInjectSaga hook', () => {
   it('should eject on unmount with a correct saga key', () => {
     const props = { test: 'test' };
     const { unmount } = render(
-      <Provider store={store}>
-        <ComponentWithSaga {...props} />
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ComponentWithSaga {...props} />
+        </PersistGate>
       </Provider>,
     );
     unmount();

@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { render } from 'react-testing-library';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import LocaleToggle, { mapDispatchToProps } from '../index';
 import { changeLocale } from '../../LanguageProvider/actions';
@@ -11,18 +12,25 @@ import configureStore from '../../../configureStore';
 import { translationMessages } from '../../../i18n';
 
 describe('<LocaleToggle />', () => {
-  let store;
+  // let store;
+  let prevStore;
+  let prevPersistor;
 
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   it('should match the snapshot', () => {
     const { container } = render(
-      <Provider store={store}>
-        <LanguageProvider messages={translationMessages}>
-          <LocaleToggle />
-        </LanguageProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <LanguageProvider messages={translationMessages}>
+            <LocaleToggle />
+          </LanguageProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(container.firstChild).toMatchSnapshot();
@@ -30,10 +38,12 @@ describe('<LocaleToggle />', () => {
 
   it('should present the default `en` english language option', () => {
     const { container } = render(
-      <Provider store={store}>
-        <LanguageProvider messages={translationMessages}>
-          <LocaleToggle />
-        </LanguageProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <LanguageProvider messages={translationMessages}>
+            <LocaleToggle />
+          </LanguageProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(container.querySelector('option[value="en"]')).not.toBeNull();

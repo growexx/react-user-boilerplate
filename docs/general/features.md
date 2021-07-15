@@ -31,6 +31,7 @@ Following are the features included in the boilerplate
 | Two Factor              | Two Factor authentication with otp.             |
 | Authentication          |                                                 |
 | Payment Integration     | Basic Payment via paypal demo.                  |
+| Redux Persist           | Store Data save in browser storage              |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |

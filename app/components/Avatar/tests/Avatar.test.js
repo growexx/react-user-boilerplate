@@ -5,6 +5,7 @@ import { IntlProvider } from 'react-intl';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { createMemoryHistory } from 'history';
 
+import { PersistGate } from 'redux-persist/integration/react';
 import Avatar from '../index';
 import configureStore from '../../../configureStore';
 
@@ -19,16 +20,19 @@ describe('<Avatar />', () => {
     ],
   };
   const history = createMemoryHistory();
-  const store = configureStore({}, history);
+  const initialState = {};
+  const { store, persistor } = configureStore(initialState, history);
 
   it('should render a div', () => {
     const { container } = render(
       <Provider store={store}>
-        <IntlProvider locale="en">
-          <ConnectedRouter history={history}>
-            <Avatar {...stubProps} />
-          </ConnectedRouter>
-        </IntlProvider>
+        <PersistGate persistor={persistor}>
+          <IntlProvider locale="en">
+            <ConnectedRouter history={history}>
+              <Avatar {...stubProps} />
+            </ConnectedRouter>
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(container.firstChild).toMatchSnapshot();
