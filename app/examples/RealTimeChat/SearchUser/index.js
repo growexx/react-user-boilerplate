@@ -10,16 +10,17 @@ import { connect } from 'react-redux';
 import { Button, Select } from 'antd';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { isEqual } from 'lodash';
+import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
 import { getFireStoreCollectionReference } from 'utils/firebase';
-import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import reducer from 'examples/RealTimeChat/reducer';
 import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
-import { isEqual } from 'lodash';
+import { TEST_IDS } from 'examples/RealTimeChat/stub';
 
 export class SearchUser extends React.Component {
   constructor(props) {
@@ -113,7 +114,11 @@ export class SearchUser extends React.Component {
             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
         />
-        <Button type="primary" onClick={this.onCreate}>
+        <Button
+          type="primary"
+          onClick={this.onCreate}
+          data-testid={TEST_IDS.CREATE_CHAT}
+        >
           Create
         </Button>
       </div>

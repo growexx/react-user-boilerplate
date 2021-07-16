@@ -19,7 +19,6 @@ import {
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
 import { MESSAGE_TIMESTAMP } from 'examples/RealTimeChat/constants';
-import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
@@ -104,7 +103,6 @@ class ChatRoom extends Component {
   createNewChatWindow = async () => {
     const {
       storeData: { selectedChatWindow, currentUserRef },
-      onChangeAppLoading,
     } = this.props;
     const payload = {
       chats: [],
@@ -127,7 +125,6 @@ class ChatRoom extends Component {
         this.setState({
           loading: false,
         });
-        onChangeAppLoading(false);
       });
   };
 
@@ -152,7 +149,6 @@ class ChatRoom extends Component {
    * @returns value from reference
    */
   fetchPersonData = async person => {
-    const { onChangeAppLoading } = this.props;
     const docRef = await getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.PROFILE,
       person,
@@ -165,7 +161,6 @@ class ChatRoom extends Component {
         this.setState({
           loading: false,
         });
-        onChangeAppLoading(false);
       });
     return { userData: returnData, reference: docRef };
   };
@@ -199,7 +194,6 @@ class ChatRoom extends Component {
   setCurrentChatWindow = async () => {
     const {
       storeData: { selectedChatWindow },
-      onChangeAppLoading,
     } = this.props;
     this.setState({
       loading: true,
@@ -221,13 +215,11 @@ class ChatRoom extends Component {
           this.setState({
             loading: false,
           });
-          onChangeAppLoading(false);
         } else {
           await this.createNewChatWindow();
           this.setState({
             loading: false,
           });
-          onChangeAppLoading(false);
         }
       })
       .catch(error => {
@@ -236,7 +228,6 @@ class ChatRoom extends Component {
         this.setState({
           loading: false,
         });
-        onChangeAppLoading(false);
       });
   };
 
@@ -359,8 +350,8 @@ class ChatRoom extends Component {
     const {
       storeData: { receiverUserValues },
     } = this.props;
-    const { lastSeen } = receiverUserValues[0];
     if (receiverUserValues.length === 1) {
+      const { lastSeen } = receiverUserValues[0];
       const formattedLastSeen = moment(lastSeen.toDate());
       if (moment().diff(formattedLastSeen, 'minutes') < 2) {
         return 'Online';
@@ -480,14 +471,12 @@ class ChatRoom extends Component {
 }
 
 ChatRoom.propTypes = {
-  onChangeAppLoading: PropTypes.func,
   storeData: PropTypes.object,
   updateAction: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeAppLoading: loading => dispatch(loadApp(loading)),
     updateAction: (fieldName, fieldValue) => {
       dispatch(updateField(fieldName, fieldValue));
     },

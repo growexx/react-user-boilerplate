@@ -34,7 +34,8 @@ export const getSuccessMockSearchResults = () => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 10; i++) {
     data.push({
-      data: () => ({ email: `johndoe_${i}@gmail.com` }),
+      id: `${i}`,
+      data: () => ({ email: `johndoe_${i}@gmail.com`, userName: 'johnDoe' }),
     });
   }
 
@@ -116,6 +117,7 @@ export const getSuccessChatsSubscription = () => {
 export const getFailureResponse = () => Promise.reject(new Error());
 
 export const TEST_IDS = {
+  CREATE_CHAT: 'CREATE_CHAT',
   OPEN_CHAT_WINDOW: 'OPEN_CHAT_WINDOW',
   SEND_MESSAGE: 'SEND_MESSAGE',
   CLOSE_ICON: 'CLOSE_ICON',
