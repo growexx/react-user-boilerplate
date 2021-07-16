@@ -97,7 +97,7 @@ export class SearchUser extends React.Component {
     const {
       storeData: { searchResults },
     } = this.props;
-    const { loading } = this.state;
+    const { loading, selectedUsers } = this.state;
     if (loading) {
       return <></>;
     }
@@ -118,6 +118,7 @@ export class SearchUser extends React.Component {
           type="primary"
           onClick={this.onCreate}
           data-testid={TEST_IDS.CREATE_CHAT}
+          disabled={selectedUsers.length === 0}
         >
           Create
         </Button>

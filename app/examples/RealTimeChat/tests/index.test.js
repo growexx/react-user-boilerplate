@@ -231,7 +231,7 @@ describe('<RealTimeChat />', () => {
     expect(getByTestId(TEST_IDS.CLOSE_ICON)).toBeTruthy();
     fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
   });
-  it.only('Should select the value from dropdown and chatWindow is already open', async () => {
+  it.only('Should select the value from dropdown and chatWindow is already open and user tries to click on same user', async () => {
     mockSetFirestoreDocumentData('success');
     mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success');
@@ -255,6 +255,63 @@ describe('<RealTimeChat />', () => {
     fireEvent.change(getByRole('combobox'), {
       target: {
         value: '0',
+      },
+    });
+    await waitForElement(() => getByRole('option'));
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    expect(getByText('johnDoe')).toBeInTheDocument();
+    fireEvent.click(getByTestId(TEST_IDS.CREATE_CHAT));
+    fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
+  });
+  it.only('Should select the value from dropdown and chatWindow is already open', async () => {
+    mockSetFirestoreDocumentData('success');
+    mockGetFireStoreDocumentReference();
+    mockGetFireStoreCollectionReference('success');
+    mockGetDataFromReference('success', 'same');
+    const { getByRole, getByText, getByTestId } = componentWrapper();
+    await waitForElement(() => getByRole('combobox'));
+    fireEvent.mouseDown(getByRole('combobox'));
+    fireEvent.change(getByRole('combobox'), {
+      target: {
+        value: '0',
+      },
+    });
+    await waitForElement(() => getByRole('option'));
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    expect(getByText('johnDoe')).toBeInTheDocument();
+    fireEvent.click(getByTestId(TEST_IDS.CREATE_CHAT));
+    expect(getByTestId(TEST_IDS.CLOSE_ICON)).toBeTruthy();
+    fireEvent.click(getByTestId(TEST_IDS.CREATE_CHAT));
+    fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
+  });
+  it.only('Should select the value from dropdown and chatWindow is already open and chat is not equal', async () => {
+    mockSetFirestoreDocumentData('success');
+    mockGetFireStoreDocumentReference();
+    mockGetFireStoreCollectionReference('success');
+    mockGetDataFromReference('success', 'same');
+    const { getByRole, getByText, getByTestId } = componentWrapper();
+    await waitForElement(() => getByRole('combobox'));
+    fireEvent.mouseDown(getByRole('combobox'));
+    fireEvent.change(getByRole('combobox'), {
+      target: {
+        value: '0',
+      },
+    });
+    await waitForElement(() => getByRole('option'));
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    expect(getByText('johnDoe')).toBeInTheDocument();
+    fireEvent.click(getByTestId(TEST_IDS.CREATE_CHAT));
+    expect(getByTestId(TEST_IDS.CLOSE_ICON)).toBeTruthy();
+    fireEvent.mouseDown(getByRole('combobox'));
+    fireEvent.change(getByRole('combobox'), {
+      target: {
+        value: '8',
       },
     });
     await waitForElement(() => getByRole('option'));
