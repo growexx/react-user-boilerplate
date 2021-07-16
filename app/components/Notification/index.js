@@ -51,19 +51,19 @@ class Notification extends React.Component {
             querySnapshot.forEach(doc => {
               const { chats } = doc.data();
               if (chats.length > 0) {
-                const filteredChats = chats.filter(
-                  chat => !chat.seen.includes(loggedInUserId),
-                );
-                if (filteredChats.length > 0) {
-                  const {
-                    history: {
-                      location: { pathname },
-                    },
-                  } = this.props;
-                  if (pathname !== ROUTES.REAL_TIME_CHAT) {
-                    this.setState({
-                      newMessage: true,
-                    });
+                const { from, seen } = chats[chats.length - 1];
+                if (from.id !== loggedInUserId) {
+                  if (!seen.includes(loggedInUserId)) {
+                    const {
+                      history: {
+                        location: { pathname },
+                      },
+                    } = this.props;
+                    if (pathname !== ROUTES.REAL_TIME_CHAT) {
+                      this.setState({
+                        newMessage: true,
+                      });
+                    }
                   }
                 }
               }
