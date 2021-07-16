@@ -17,7 +17,6 @@ import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
 import { getFireStoreCollectionReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
-import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import reducer from 'examples/RealTimeChat/reducer';
 import ChatRoom from 'examples/RealTimeChat/ChatRoom';
@@ -63,11 +62,8 @@ export class RealTimeChat extends React.Component {
   };
 
   async componentDidMount() {
-    const { onChangeAppLoading } = this.props;
-    onChangeAppLoading(true);
     // get users for search
     await this.setCurrentUserRef();
-    onChangeAppLoading(false);
     this.setState({
       isFirstTimeRendered: true,
     });
@@ -136,7 +132,6 @@ export class RealTimeChat extends React.Component {
 RealTimeChat.propTypes = {
   storeData: PropTypes.object,
   updateAction: PropTypes.func,
-  onChangeAppLoading: PropTypes.func,
 };
 
 const withReducer = injectReducer({ key: REDUCER_KEY, reducer });
@@ -150,7 +145,6 @@ function mapDispatchToProps(dispatch) {
     updateAction: (fieldName, fieldValue) => {
       dispatch(updateField(fieldName, fieldValue));
     },
-    onChangeAppLoading: loading => dispatch(loadApp(loading)),
   };
 }
 

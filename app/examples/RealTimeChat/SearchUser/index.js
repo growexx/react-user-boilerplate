@@ -7,14 +7,13 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { AutoComplete } from 'antd';
+import { Button, Select } from 'antd';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import { getUserData } from 'utils/Helper';
 import { getFireStoreCollectionReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS } from 'containers/constants';
-import { loadApp } from 'containers/App/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import reducer from 'examples/RealTimeChat/reducer';
 import { REDUCER_KEY } from 'examples/RealTimeChat/constants';
@@ -23,45 +22,53 @@ import { resetChatWindow } from 'examples/RealTimeChat/helper';
 import { isEqual } from 'lodash';
 
 export class SearchUser extends React.Component {
-  onSelect = async value => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      selectedUsers: [],
+    };
+  }
+
+  onChange = value => {
+    this.setState({
+      selectedUsers: value,
+    });
+  };
+
+  onCreate = async () => {
     const {
       updateAction,
       storeData: { currentUserRef, selectedChatWindow },
     } = this.props;
-
+    const { selectedUsers } = this.state;
     const isChatWindowOpen =
       selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
-    await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
-      .where(`email`, '==', value)
-      .get()
-      .then(async querySnapshot => {
-        const { docs } = querySnapshot;
-        if (docs.length > 0) {
-          const newWindowParticipants = {
-            [currentUserRef.id]: true,
-            [docs[0].id]: true,
-          };
-          if (
-            !isChatWindowOpen ||
-            !isEqual(selectedChatWindow, newWindowParticipants)
-          ) {
-            resetChatWindow(updateAction);
-            updateAction('selectedChatWindow', newWindowParticipants);
-            if (isChatWindowOpen) {
-              updateAction('forceChatWindow', true);
-            }
-          }
-        }
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log('Error getting documents: ', error);
-      });
+    const chatParticipantsGroup = {};
+    selectedUsers.forEach(user => {
+      chatParticipantsGroup[user] = true;
+    });
+    const newWindowParticipants = {
+      [currentUserRef.id]: true,
+      ...chatParticipantsGroup,
+    };
+    if (
+      !isChatWindowOpen ||
+      !isEqual(selectedChatWindow, newWindowParticipants)
+    ) {
+      resetChatWindow(updateAction);
+      updateAction('selectedChatWindow', newWindowParticipants);
+      if (isChatWindowOpen) {
+        updateAction('forceChatWindow', true);
+      }
+    }
   };
 
   async componentDidMount() {
-    const { updateAction, onChangeAppLoading } = this.props;
-    onChangeAppLoading(true);
+    const { updateAction } = this.props;
+    this.setState({
+      loading: true,
+    });
     // get users for search
     await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
       .where('email', '!=', getUserData().email)
@@ -69,33 +76,46 @@ export class SearchUser extends React.Component {
       .then(querySnapshot => {
         const result = [];
         querySnapshot.forEach(doc => {
-          result.push({ value: doc.data().email });
+          result.push({ value: doc.id, label: doc.data().userName });
         });
         updateAction('searchResults', result);
       })
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
-        onChangeAppLoading(false);
+        this.setState({
+          loading: false,
+        });
       });
-    onChangeAppLoading(false);
+    this.setState({
+      loading: false,
+    });
   }
 
   render() {
     const {
       storeData: { searchResults },
     } = this.props;
+    const { loading } = this.state;
+    if (loading) {
+      return <></>;
+    }
     return (
       <div className="searchContainer">
-        <AutoComplete
+        <Select
           allowClear
+          maxTagCount={1}
+          onChange={this.onChange}
           options={searchResults}
-          onSelect={this.onSelect}
           placeholder="Search Users"
+          mode="multiple"
           filterOption={(inputValue, option) =>
             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
         />
+        <Button type="primary" onClick={this.onCreate}>
+          Create
+        </Button>
       </div>
     );
   }
@@ -104,7 +124,6 @@ export class SearchUser extends React.Component {
 SearchUser.propTypes = {
   storeData: PropTypes.object,
   updateAction: PropTypes.func,
-  onChangeAppLoading: PropTypes.func,
 };
 
 const withReducer = injectReducer({ key: REDUCER_KEY, reducer });
@@ -118,7 +137,6 @@ function mapDispatchToProps(dispatch) {
     updateAction: (fieldName, fieldValue) => {
       dispatch(updateField(fieldName, fieldValue));
     },
-    onChangeAppLoading: loading => dispatch(loadApp(loading)),
   };
 }
 

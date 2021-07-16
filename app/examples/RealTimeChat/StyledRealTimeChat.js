@@ -6,7 +6,13 @@ export const StyledRealTimeChat = styled.div`
   flex-wrap: wrap;
   flex: 1;
   .searchContainer {
+    margin-left: 20px;
+    display: flex;
     margin-bottom: 20px;
+    button {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
     .ant-select {
       display: flex;
     }

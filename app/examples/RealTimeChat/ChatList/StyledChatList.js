@@ -26,6 +26,9 @@ export const ChatListContainer = styled.div`
     .ant-select {
       width: 80%;
     }
+    .ant-select-selector {
+      width: 100%;
+    }
     margin-bottom: 0;
   }
   .noChatContainer {
