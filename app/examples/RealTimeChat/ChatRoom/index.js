@@ -45,6 +45,8 @@ class ChatRoom extends Component {
    * @param {object} payload
    */
   updateChatWindowData = async payload => {
+    // eslint-disable-next-line no-param-reassign
+    payload.updatedAt = new Date();
     await setFirestoreDocumentData(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
       this.currentChatWindow,
@@ -109,6 +111,7 @@ class ChatRoom extends Component {
       createdAt: new Date(),
       createdBy: currentUserRef.ref,
       joined: selectedChatWindow,
+      updatedAt: new Date(),
     };
     await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, payload)
       .then(async docRef => {
