@@ -107,9 +107,11 @@ Following are the features included in the boilerplate
 | **Performance Monitoring & Error Tracking**        |                                                 |
 |                         |                                                 |
 | Sentry         | Sentry has been used for any code errors or performance related issue   |
-> Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
-> Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
-> Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
-> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** <br/>
-> Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** <br/>
+> Hooks Support :  **feature/12-Hooks-Support**  <br />
+> Google Analytics Integration :  **feature/18-Analytics-Tools** <br />
+> Graphql support for boilerplate :  **feature/11-GraphQL-Support** <br />
+> React-Final-Form support for boilerplate :  **feature/React-Final-Form** <br/>
+> Firebase Social Login support for boilerplate :  **feature/social-login** <br/>
 > Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>
+> Real Time Chat:  **feature/RB-66-Real-Time-Chat** 
+<br/>

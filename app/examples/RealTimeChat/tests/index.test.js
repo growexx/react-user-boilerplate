@@ -209,6 +209,15 @@ describe('<RealTimeChat />', () => {
     await waitForElement(() => getByRole('combobox'));
     expect(getByTestId(TEST_IDS.CREATE_CHAT)).toBeInTheDocument();
   });
+  it.only('Current User data is not available', async () => {
+    mockSetFirestoreDocumentData('success');
+    mockGetFireStoreDocumentReference();
+    mockGetFireStoreCollectionReference('success', true);
+    mockGetDataFromReference('success', 'same');
+    const { getByTestId, getByRole } = componentWrapper();
+    await waitForElement(() => getByRole('combobox'));
+    expect(getByTestId(TEST_IDS.CREATE_CHAT)).toBeInTheDocument();
+  });
   it.only('Should select the value from dropdown', async () => {
     mockSetFirestoreDocumentData('success');
     mockGetFireStoreDocumentReference();

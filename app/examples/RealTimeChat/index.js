@@ -62,7 +62,7 @@ export class RealTimeChat extends React.Component {
   };
 
   async componentDidMount() {
-    // get users for search
+    // update currentUserRef state
     await this.setCurrentUserRef();
     this.setState({
       isFirstTimeRendered: true,
