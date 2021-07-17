@@ -155,10 +155,10 @@ class ChatList extends Component {
           returnData = apiData;
           break;
         } else if (returnData.apiUserName) {
-          returnData.apiUserName = `${returnData.apiUserName},${
+          returnData.apiUserName = `${returnData.apiUserName}, ${
             apiData.apiUserName
           }`;
-          returnData.apiEmail = `${returnData.apiEmail},${apiData.apiEmail}`;
+          returnData.apiEmail = `${returnData.apiEmail}, ${apiData.apiEmail}`;
         } else {
           returnData = apiData;
         }

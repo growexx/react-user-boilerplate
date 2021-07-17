@@ -376,7 +376,7 @@ class ChatRoom extends Component {
       } else {
         for (let index = 0; index < receiverUserValues.length; index++) {
           if (chatWindowName) {
-            chatWindowName = `${chatWindowName},${
+            chatWindowName = `${chatWindowName}, ${
               receiverUserValues[index].userName
             }`;
           } else {
