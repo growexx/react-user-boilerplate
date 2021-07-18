@@ -130,7 +130,7 @@ class ChatRoom extends Component {
 
   /**
    * subscribeToWindow - listen to updates in chat
-   * @param {firebase chat window reference} chatWindow
+   * @param {string} chatWindow
    */
   subscribeToWindow = async chatWindow => {
     this.unSubscribeToWindow = getFireStoreDocumentReference(

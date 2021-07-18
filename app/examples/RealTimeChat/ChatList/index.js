@@ -15,7 +15,6 @@ import {
 } from 'utils/firebase';
 import { getUserData } from 'utils/Helper';
 import { FIRESTORE_COLLECTIONS, API_ENDPOINTS } from 'containers/constants';
-import { loadApp } from 'containers/App/actions';
 import { updateField } from 'examples/RealTimeChat/actions';
 import makeSelectRealTimeChat from 'examples/RealTimeChat/selectors';
 import {
@@ -41,7 +40,7 @@ class ChatList extends Component {
    * subscribeToChatList - real time updates for chat list
    */
   subscribeToChatList = () => {
-    const { onChangeAppLoading, storeData, updateAction } = this.props;
+    const { storeData, updateAction } = this.props;
     this.setState({
       loading: true,
     });
@@ -72,7 +71,6 @@ class ChatList extends Component {
             }
           }
           updateAction('chatList', [...result]);
-          onChangeAppLoading(false);
           this.setState({
             loading: false,
           });
@@ -80,7 +78,6 @@ class ChatList extends Component {
         error => {
           // eslint-disable-next-line no-console
           console.log('Error getting documents: ', error);
-          onChangeAppLoading(false);
           this.setState({
             loading: false,
           });
@@ -110,7 +107,6 @@ class ChatList extends Component {
    * @returns person data if found
    */
   fetchPersonData = async person => {
-    const { onChangeAppLoading } = this.props;
     const docRef = await getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.PROFILE,
       person,
@@ -128,7 +124,6 @@ class ChatList extends Component {
       .catch(error => {
         // eslint-disable-next-line no-console
         console.log('Error getting documents: ', error);
-        onChangeAppLoading(false);
         this.setState({
           loading: false,
         });
@@ -325,14 +320,12 @@ class ChatList extends Component {
 }
 
 ChatList.propTypes = {
-  onChangeAppLoading: PropTypes.func,
   updateAction: PropTypes.func,
   storeData: PropTypes.object,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeAppLoading: loading => dispatch(loadApp(loading)),
     updateAction: (fieldName, fieldValue) => {
       dispatch(updateField(fieldName, fieldValue));
     },

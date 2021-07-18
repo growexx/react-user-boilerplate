@@ -39,7 +39,7 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
-- First of set the env file with firebase keys.
+- First of all set the env file with firebase keys.
 
 - Following is the list of env values needed.
 
