@@ -24,66 +24,104 @@ import {
 } from 'examples/RealTimeChat/ChatList/StyledChatList';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS, skeletonLoaderStub } from 'examples/RealTimeChat/stub';
-import { NO_CHATS } from 'examples/RealTimeChat/constants';
+import { NO_CHATS, CHAT_LIST_LIMIT } from 'examples/RealTimeChat/constants';
 import SearchUser from 'examples/RealTimeChat/SearchUser';
-
 class ChatList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
+      hasMore: true,
     };
-    this.unSubscribeToChatList = null;
+    this.unSubscribeToChatList = [];
+    this.lastChatReference = null;
   }
+
+  setChatValuesInState = async querySnapshot => {
+    const {
+      updateAction,
+      storeData: { chatList },
+    } = this.props;
+    const result = [];
+    const { docs } = querySnapshot;
+    for (let i = 0; i <= docs.length; i++) {
+      let name;
+      let email;
+      const data = docs[i] && docs[i].data();
+      if (data) {
+        await this.getPersonData(data).then(value => {
+          const { apiUserName, apiEmail } = value;
+          name = apiUserName;
+          email = apiEmail;
+        });
+        result.push({
+          ...data,
+          name,
+          email,
+        });
+      }
+    }
+    this.lastChatReference = docs[docs.length - 1];
+    if (chatList.length > 0) {
+      updateAction('chatList', [...chatList, ...result]);
+    } else {
+      updateAction('chatList', [...result]);
+    }
+    if (result.length !== CHAT_LIST_LIMIT) {
+      this.setState({
+        hasMore: false,
+      });
+    }
+    this.setState({
+      loading: false,
+    });
+  };
 
   /**
    * subscribeToChatList - real time updates for chat list
    */
   subscribeToChatList = () => {
-    const { storeData, updateAction } = this.props;
+    const { storeData } = this.props;
     this.setState({
       loading: true,
     });
 
-    this.unSubscribeToChatList = getFireStoreCollectionReference(
-      FIRESTORE_COLLECTIONS.CHAT_WINDOW,
-    )
-      .where(`joined.${storeData.currentUserRef.id}`, '==', true)
-      // .orderBy('updatedAt', 'desc')
-      .onSnapshot(
-        async querySnapshot => {
-          const result = [];
-          const { docs } = querySnapshot;
-          for (let i = 0; i <= docs.length; i++) {
-            let name;
-            let email;
-            const data = docs[i] && docs[i].data();
-            if (data) {
-              await this.getPersonData(data).then(value => {
-                const { apiUserName, apiEmail } = value;
-                name = apiUserName;
-                email = apiEmail;
-              });
-              result.push({
-                ...data,
-                name,
-                email,
-              });
-            }
-          }
-          updateAction('chatList', [...result]);
-          this.setState({
-            loading: false,
-          });
-        },
-        error => {
-          // eslint-disable-next-line no-console
-          console.log('Error getting documents: ', error);
-          this.setState({
-            loading: false,
-          });
-        },
-      );
+    if (this.lastChatReference === null) {
+      this.unSubscribeToChatList[0] = getFireStoreCollectionReference(
+        FIRESTORE_COLLECTIONS.CHAT_WINDOW,
+      )
+        .where(`joined.${storeData.currentUserRef.id}`, '==', true)
+        .limit(CHAT_LIST_LIMIT)
+        // .orderBy('updatedAt', 'desc')
+        .onSnapshot(
+          async querySnapshot => this.setChatValuesInState(querySnapshot),
+          error => {
+            // eslint-disable-next-line no-console
+            console.log('Error getting documents: ', error);
+            this.setState({
+              loading: false,
+            });
+          },
+        );
+    } else {
+      this.unSubscribeToChatList[
+        this.unSubscribeToChatList.length
+      ] = getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
+        .where(`joined.${storeData.currentUserRef.id}`, '==', true)
+        .limit(CHAT_LIST_LIMIT)
+        .startAfter(this.lastChatReference)
+        // .orderBy('updatedAt', 'desc')
+        .onSnapshot(
+          async querySnapshot => this.setChatValuesInState(querySnapshot),
+          error => {
+            // eslint-disable-next-line no-console
+            console.log('Error getting documents: ', error);
+            this.setState({
+              loading: false,
+            });
+          },
+        );
+    }
   };
 
   componentDidMount() {
@@ -224,6 +262,17 @@ class ChatList extends Component {
     );
   };
 
+  getLoadMore = () => {
+    const { hasMore } = this.state;
+    return (
+      <div>
+        <Button disabled={!hasMore} onClick={() => this.subscribeToChatList()}>
+          Load More
+        </Button>
+      </div>
+    );
+  };
+
   /**
    * getEmptyContainer
    * @returns styled message for no container
@@ -281,6 +330,7 @@ class ChatList extends Component {
           <ConfigProvider renderEmpty={!areChatsPresent && this.getEmptyList}>
             <List
               dataSource={listData}
+              loadMore={this.getLoadMore()}
               renderItem={item => (
                 <List.Item
                   key={item.id}

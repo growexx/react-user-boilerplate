@@ -22,4 +22,6 @@ export const ERROR_MAIN_MESSAGE = 'Some Error Occurred';
 
 export const NO_CHATS = 'No Chats';
 
-export const MESSAGE_TIMESTAMP = 'MMM-DD-YY hh:mm a';
+export const MESSAGE_TIMESTAMP = 'MM-DD-YY hh:mm a';
+
+export const CHAT_LIST_LIMIT = 3;

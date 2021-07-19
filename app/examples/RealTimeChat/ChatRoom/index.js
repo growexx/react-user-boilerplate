@@ -312,9 +312,12 @@ class ChatRoom extends Component {
     const isCurrentUser = from.id === currentUserRef.id;
     const classNames = this.getClassNames(isCurrentUser, index);
     return (
-      <p className={classNames} key={`${index}_${message}`}>
+      <p
+        className={classNames}
+        key={`${index}_${message}`}
+        title={formattedMessageTimeStamp}
+      >
         {message}
-        <span className="messageTimeStamp">{formattedMessageTimeStamp}</span>
       </p>
     );
   };
