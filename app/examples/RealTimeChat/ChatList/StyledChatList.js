@@ -20,6 +20,14 @@ export const ChatListContainer = styled.div`
       box-shadow: none;
     }
     border-bottom: 1px solid @border-color-base;
+    .activeChat {
+      background-color: @gray72;
+    }
+    .newChatsLoaderContainer {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
   }
   .searchBar {
     margin-top: 10px;

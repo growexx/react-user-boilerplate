@@ -103,6 +103,7 @@ class ChatRoom extends Component {
   createNewChatWindow = async () => {
     const {
       storeData: { selectedChatWindow, currentUserRef },
+      updateAction,
     } = this.props;
     const payload = {
       chats: [],
@@ -113,6 +114,7 @@ class ChatRoom extends Component {
     };
     await addFirestoreDocumentData(FIRESTORE_COLLECTIONS.CHAT_WINDOW, payload)
       .then(async docRef => {
+        updateAction('chatWindowId', docRef.id);
         this.setInitialChats(docRef.id, payload);
         await this.setUserRefsAndValues(payload);
         await this.subscribeToWindow(docRef.id);
@@ -194,6 +196,7 @@ class ChatRoom extends Component {
   setCurrentChatWindow = async () => {
     const {
       storeData: { selectedChatWindow },
+      updateAction,
     } = this.props;
     this.setState({
       loading: true,
@@ -204,6 +207,7 @@ class ChatRoom extends Component {
       .then(async querySnapshot => {
         const { docs } = querySnapshot;
         if (docs.length > 0) {
+          updateAction('chatWindowId', docs[0].id);
           this.setInitialChats(docs[0].id, docs[0].data());
           await this.setUserRefsAndValues(docs[0].data());
           await this.subscribeToWindow(docs[0].id);

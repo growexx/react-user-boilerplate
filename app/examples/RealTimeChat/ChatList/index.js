@@ -31,6 +31,7 @@ class ChatList extends Component {
     super(props);
     this.state = {
       loading: true,
+      newChatsLoading: false,
       hasMore: true,
     };
     this.unSubscribeToChatList = [];
@@ -48,6 +49,7 @@ class ChatList extends Component {
       let name;
       let email;
       const data = docs[i] && docs[i].data();
+      this.lastChatReference = docs[docs.length - 1];
       if (data) {
         await this.getPersonData(data).then(value => {
           const { apiUserName, apiEmail } = value;
@@ -58,12 +60,20 @@ class ChatList extends Component {
           ...data,
           name,
           email,
+          id: docs[i].id,
         });
       }
     }
-    this.lastChatReference = docs[docs.length - 1];
     if (chatList.length > 0) {
-      updateAction('chatList', [...chatList, ...result]);
+      const updatedChatList = chatList.map(
+        chat => result.find(newChat => newChat.id === chat.id) || chat,
+      );
+      result.forEach(newChat => {
+        if (updatedChatList.every(oldChat => oldChat.id !== newChat.id)) {
+          updatedChatList.push(newChat);
+        }
+      });
+      updateAction('chatList', updatedChatList);
     } else {
       updateAction('chatList', [...result]);
     }
@@ -74,6 +84,7 @@ class ChatList extends Component {
     }
     this.setState({
       loading: false,
+      newChatsLoading: false,
     });
   };
 
@@ -82,11 +93,10 @@ class ChatList extends Component {
    */
   subscribeToChatList = () => {
     const { storeData } = this.props;
-    this.setState({
-      loading: true,
-    });
-
     if (this.lastChatReference === null) {
+      this.setState({
+        loading: true,
+      });
       this.unSubscribeToChatList[0] = getFireStoreCollectionReference(
         FIRESTORE_COLLECTIONS.CHAT_WINDOW,
       )
@@ -100,10 +110,14 @@ class ChatList extends Component {
             console.log('Error getting documents: ', error);
             this.setState({
               loading: false,
+              newChatsLoading: false,
             });
           },
         );
     } else {
+      this.setState({
+        newChatsLoading: true,
+      });
       this.unSubscribeToChatList[
         this.unSubscribeToChatList.length
       ] = getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
@@ -118,6 +132,7 @@ class ChatList extends Component {
             console.log('Error getting documents: ', error);
             this.setState({
               loading: false,
+              newChatsLoading: false,
             });
           },
         );
@@ -165,6 +180,7 @@ class ChatList extends Component {
         console.log('Error getting documents: ', error);
         this.setState({
           loading: false,
+          newChatsLoading: false,
         });
       });
     return returnData;
@@ -248,7 +264,7 @@ class ChatList extends Component {
     return '';
   };
 
-  getActions = (isChatWindowOpen, item) => {
+  getActions = item => {
     const { loading } = this.state;
     return (
       <Button
@@ -296,14 +312,25 @@ class ChatList extends Component {
   );
 
   /**
+   * getLoaderForNewChats - skeleton loader for new chats
+   */
+  getLoaderForNewChats = () => {
+    const { newChatsLoading } = this.state;
+    const arrayWithLoaders = Array(CHAT_LIST_LIMIT).fill(
+      <Skeleton avatar title={false} loading={newChatsLoading} active />,
+    );
+    return <div className="newChatsLoaderContainer">{arrayWithLoaders}</div>;
+  };
+
+  /**
    * renderAllChats
    * @returns list of chats
    */
   renderAllChats = () => {
-    const { loading } = this.state;
+    const { loading, newChatsLoading } = this.state;
     const stubChatList = skeletonLoaderStub();
     const {
-      storeData: { chatList, selectedChatWindow },
+      storeData: { chatList, selectedChatWindow, chatWindowId },
     } = this.props;
     let listData;
     if (loading) {
@@ -334,7 +361,8 @@ class ChatList extends Component {
               renderItem={item => (
                 <List.Item
                   key={item.id}
-                  actions={[this.getActions(isChatWindowOpen, item)]}
+                  actions={[this.getActions(item)]}
+                  className={item.id === chatWindowId ? 'activeChat' : ''}
                 >
                   <SingleChatContainer>
                     <Skeleton avatar title={false} loading={loading} active>
@@ -348,6 +376,7 @@ class ChatList extends Component {
                 </List.Item>
               )}
             />
+            {newChatsLoading && this.getLoaderForNewChats()}
           </ConfigProvider>
         </div>
       </ChatListContainer>

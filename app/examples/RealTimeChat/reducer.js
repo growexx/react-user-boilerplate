@@ -14,6 +14,7 @@ export const initialState = {
   searchResults: [],
   loading: false,
   selectedChatWindow: '',
+  chatWindowId: '',
   chatList: [],
   forceChatWindow: false,
 };
