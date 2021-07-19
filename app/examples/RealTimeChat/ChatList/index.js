@@ -2,7 +2,7 @@
 /* eslint-disable no-plusplus */
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { Waypoint } from 'react-waypoint';
 import { isEqual } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -147,11 +147,13 @@ class ChatList extends Component {
 
   componentWillUnmount() {
     const { updateAction } = this.props;
-    if (
-      this.unSubscribeToChatList !== null &&
-      typeof this.unSubscribeToChatList === 'function'
-    ) {
-      this.unSubscribeToChatList();
+    if (this.unSubscribeToChatList !== null) {
+      for (let index = 0; index < this.unSubscribeToChatList.length; index++) {
+        if (typeof this.unSubscribeToChatList[index] === 'function') {
+          const unSubscribe = this.unSubscribeToChatList[index];
+          unSubscribe();
+        }
+      }
       resetChatWindow(updateAction, 'chatList');
     }
   }
@@ -306,9 +308,18 @@ class ChatList extends Component {
    */
   getLoaderForNewChats = () => {
     const { newChatsLoading } = this.state;
-    const arrayWithLoaders = Array(CHAT_LIST_LIMIT).fill(
-      <Skeleton avatar title={false} loading={newChatsLoading} active />,
-    );
+    const arrayWithLoaders = [];
+    for (let index = 0; index < CHAT_LIST_LIMIT; index++) {
+      arrayWithLoaders.push(
+        <Skeleton
+          avatar
+          title={false}
+          loading={newChatsLoading}
+          active
+          key={index}
+        />,
+      );
+    }
     return <div className="newChatsLoaderContainer">{arrayWithLoaders}</div>;
   };
 
@@ -317,7 +328,7 @@ class ChatList extends Component {
    * @returns list of chats
    */
   renderAllChats = () => {
-    const { loading, newChatsLoading, hasMore } = this.state;
+    const { loading, hasMore } = this.state;
     const stubChatList = skeletonLoaderStub();
     const {
       storeData: { chatList, selectedChatWindow, chatWindowId },
@@ -333,7 +344,7 @@ class ChatList extends Component {
     const isChatWindowOpen =
       selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     return (
-      <ChatListContainer id="infiniteLoaderDiv">
+      <ChatListContainer>
         <div className={`searchBar ${isChatWindowOpen ? 'displayNone' : ''}`}>
           <center>
             <SearchUser />
@@ -345,40 +356,35 @@ class ChatList extends Component {
           } ${!areChatsPresent ? 'borderNone' : ''}`}
         >
           <ConfigProvider renderEmpty={!areChatsPresent && this.getEmptyList}>
-            <InfiniteScroll
-              dataLength={chatList.length}
-              next={this.subscribeToChatList}
-              hasMore={hasMore}
-              scrollableTarget="infiniteLoaderDiv"
-              scrollThreshold="0"
-              endMessage={
-                <p style={{ textAlign: 'center' }}>
-                  <b>Yay! You have seen it all</b>
-                </p>
-              }
-            >
-              <List
-                dataSource={listData}
-                renderItem={item => (
-                  <List.Item
-                    key={item.id}
-                    actions={[this.getActions(item)]}
-                    className={item.id === chatWindowId ? 'activeChat' : ''}
-                  >
-                    <SingleChatContainer>
-                      <Skeleton avatar title={false} loading={loading} active>
-                        <List.Item.Meta
-                          avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
-                          title={item.name}
-                          description={this.getLastMessage(item)}
-                        />
-                      </Skeleton>
-                    </SingleChatContainer>
-                  </List.Item>
-                )}
-              />
-            </InfiniteScroll>
-            {newChatsLoading && this.getLoaderForNewChats()}
+            <List
+              dataSource={listData}
+              renderItem={item => (
+                <List.Item
+                  key={item.id}
+                  actions={[this.getActions(item)]}
+                  className={item.id === chatWindowId ? 'activeChat' : ''}
+                >
+                  <SingleChatContainer>
+                    <Skeleton avatar title={false} loading={loading} active>
+                      <List.Item.Meta
+                        avatar={<Avatar src={API_ENDPOINTS.IMAGE_SRC} />}
+                        title={item.name}
+                        description={this.getLastMessage(item)}
+                      />
+                    </Skeleton>
+                  </SingleChatContainer>
+                </List.Item>
+              )}
+            />
+            {hasMore && !loading && (
+              <Waypoint
+                onEnter={() => {
+                  this.subscribeToChatList();
+                }}
+              >
+                {this.getLoaderForNewChats()}
+              </Waypoint>
+            )}
           </ConfigProvider>
         </div>
       </ChatListContainer>
