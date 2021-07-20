@@ -8,7 +8,7 @@ export const getSuccessMockUserId = dataLength => {
   for (let i = 0; i < 10; i++) {
     data.push({
       email: `johndoe_${i}@gmail.com`,
-      id: i,
+      id: `${i}`,
     });
   }
   const returnData = {
@@ -27,6 +27,7 @@ export const getSuccessWindows = dataLength => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 10; i++) {
     docs.push({
+      id: `${i}`,
       data: () => (i % 2 === 0 ? chatWindowStub(0) : groupChatWindowStub),
     });
   }

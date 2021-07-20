@@ -203,6 +203,10 @@ const mockGetDataFromReference = async (responseType, emailType) => {
         .mockImplementationOnce(() => getSuccessDataFromReferenceDiffEmail())
         .mockImplementation(() => getSuccessDataFromReferenceDiffEmail());
     }
+  } else if (responseType === 'successWithFailure') {
+    getDataFromReference
+      .mockImplementationOnce(() => getSuccessDataFromReferenceDiffEmail())
+      .mockImplementation(() => getFailureResponse());
   } else {
     getDataFromReference.mockImplementation(() => getFailureResponse());
   }
@@ -542,6 +546,28 @@ describe('<ChatRoom />', () => {
     mockGetFireStoreDocumentReference();
     mockGetFireStoreCollectionReference('success', '', '', 'chatWindow');
     mockGetDataFromReference('success', 'different');
+    mockSetFirestoreDocumentData('failure');
+    const { getByText, getByTestId, queryByText } = componentWrapper();
+    await waitForElement(() => getByText('johndoe_1'));
+    await waitForElement(() => getByTestId(TEST_IDS.OPEN_CHAT_WINDOW));
+    fireEvent.click(getByTestId(TEST_IDS.OPEN_CHAT_WINDOW));
+    await waitForElement(() => getByTestId(TEST_IDS.SEND_MESSAGE));
+    expect(getByTestId(TEST_IDS.SEND_MESSAGE)).toBeInTheDocument();
+    fireEvent.change(getByTestId(TEST_IDS.MESSAGE_INPUT), {
+      target: {
+        value: 'Hello',
+      },
+    });
+    await waitForElement(() => getByText('TestMessage'));
+    fireEvent.click(getByTestId(TEST_IDS.SEND_MESSAGE));
+    fireEvent.click(getByTestId(TEST_IDS.CLOSE_ICON));
+    // state gets cleared
+    expect(queryByText('Hello')).not.toBeInTheDocument();
+  });
+  it('Should click on chat button and getting user refs fails', async () => {
+    mockGetFireStoreDocumentReference();
+    mockGetFireStoreCollectionReference('success', '', '', 'chatWindow');
+    mockGetDataFromReference('successWithFailure');
     mockSetFirestoreDocumentData('failure');
     const { getByText, getByTestId, queryByText } = componentWrapper();
     await waitForElement(() => getByText('johndoe_1'));

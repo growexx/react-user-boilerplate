@@ -75,6 +75,7 @@ describe('<Notification />', () => {
   });
   it('should render a div', () => {
     mockGetFireStoreCollectionReference('error');
+    history.push(ROUTES.HOME);
     const { container } = render(
       <Provider store={store}>
         <IntlProvider locale="en">
