@@ -27,7 +27,7 @@ export const getSuccessWindows = dataLength => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 10; i++) {
     docs.push({
-      data: () => (i % 2 === 0 ? chatWindowStub : groupChatWindowStub),
+      data: () => (i % 2 === 0 ? chatWindowStub(0) : groupChatWindowStub),
     });
   }
   if (dataLength === 0) {
