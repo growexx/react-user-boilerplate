@@ -1,13 +1,15 @@
 export const personOne = {
-  id: 0,
+  id: '0',
 };
 const personTwo = {
-  id: 1,
+  id: '1',
 };
 const personThree = {
-  id: 2,
+  id: '2',
 };
-export const chatWindowStub = {
+
+export const chatWindowStub = i => ({
+  id: 0,
   chats: [
     {
       message: 'Hi',
@@ -16,18 +18,23 @@ export const chatWindowStub = {
         toDate: () => {},
       },
       from: personOne,
-      seen: [personOne.id],
+      seen: i % 2 === 0 ? [personOne.id, personTwo.id] : [personOne.id],
     },
   ],
   createdAt: new Date(),
   createdBy: '',
-  joined: [personOne, personTwo],
-};
+  joined: { [personOne.id]: true, [personTwo.id]: true },
+});
 export const groupChatWindowStub = {
+  id: 1,
   chats: [],
   createdAt: new Date(),
   createdBy: '',
-  joined: [personOne, personTwo, personThree],
+  joined: {
+    [personOne.id]: true,
+    [personTwo.id]: true,
+    [personThree.id]: true,
+  },
 };
 export const getSuccessMockSearchResults = () => {
   const data = [];
@@ -47,7 +54,8 @@ export const getSuccessMockChatList = () => {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < 10; i++) {
     docs.push({
-      data: () => (i % 2 === 0 ? chatWindowStub : groupChatWindowStub),
+      id: `${i}`,
+      data: () => (i % 2 === 0 ? chatWindowStub(i) : groupChatWindowStub),
     });
   }
 
@@ -97,7 +105,7 @@ export const getSuccessChatWindowData = (elseCase, chatParticipants) => {
 
   data.push({
     data: () =>
-      chatParticipants === 'group' ? groupChatWindowStub : chatWindowStub,
+      chatParticipants === 'group' ? groupChatWindowStub : chatWindowStub(0),
     id: '0',
   });
   if (elseCase) {
@@ -108,7 +116,7 @@ export const getSuccessChatWindowData = (elseCase, chatParticipants) => {
 
 export const getSuccessChatsSubscription = () => {
   const returnData = {
-    chats: chatWindowStub.chats,
+    chats: chatWindowStub(0).chats,
   };
   return {
     data: () => returnData,
@@ -131,7 +139,7 @@ export const skeletonLoaderStub = () => {
     data.push({
       name: 'John',
       id: index,
-      chats: chatWindowStub.chats,
+      chats: chatWindowStub(index).chats,
     });
   }
   return data;
