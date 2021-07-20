@@ -33,7 +33,16 @@ const verifyUserInFireStore = async emailId => {
     .get()
     .then(async querySnapshot => {
       const { docs } = querySnapshot;
-      if (!docs.length > 0) {
+      if (docs.length > 0) {
+        const docRef = await getFireStoreDocumentReference(
+          FIRESTORE_COLLECTIONS.PROFILE,
+          docs[0].id,
+        );
+        const updatePayload = {
+          lastSeen: new Date(),
+        };
+        docRef.update(updatePayload);
+      } else {
         const payload = {
           email: emailId,
           lastSeen: new Date(),
@@ -49,15 +58,6 @@ const verifyUserInFireStore = async emailId => {
             // eslint-disable-next-line no-console
             console.error('Error writing document: ', error);
           });
-      } else {
-        const docRef = await getFireStoreDocumentReference(
-          FIRESTORE_COLLECTIONS.PROFILE,
-          docs[0].id,
-        );
-        const updatePayload = {
-          lastSeen: new Date(),
-        };
-        docRef.update(updatePayload);
       }
     })
     .catch(error => {

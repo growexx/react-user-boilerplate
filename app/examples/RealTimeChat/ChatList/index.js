@@ -40,6 +40,10 @@ class ChatList extends Component {
     this.infiniteLoadingCursor = 0;
   }
 
+  /**
+   * setChatValuesInState - sets state value from API.
+   * @param {object} querySnapshot
+   */
   setChatValuesInState = async querySnapshot => {
     const {
       updateAction,
@@ -127,7 +131,6 @@ class ChatList extends Component {
         .where(`joined.${storeData.currentUserRef.id}`, '==', true)
         .limit(CHAT_LIST_LIMIT)
         .startAfter(this.lastChatReference)
-        // .orderBy('updatedAt', 'desc')
         .onSnapshot(
           async querySnapshot => this.setChatValuesInState(querySnapshot),
           error => {
@@ -170,7 +173,7 @@ class ChatList extends Component {
       FIRESTORE_COLLECTIONS.PROFILE,
       person,
     );
-    const returnData = await getDataFromReference(docRef)
+    return getDataFromReference(docRef)
       .then(data => {
         if (data.data().email !== getUserData().email) {
           return {
@@ -188,7 +191,6 @@ class ChatList extends Component {
           newChatsLoading: false,
         });
       });
-    return returnData;
   };
 
   /**
