@@ -21,7 +21,7 @@ export const ChatListContainer = styled.div`
     }
     border-bottom: 1px solid @border-color-base;
     .activeChat {
-      background-color: @gray72;
+      background-color: @border-color-base;
     }
     .newChatsLoaderContainer {
       display: flex;

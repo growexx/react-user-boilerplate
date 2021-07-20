@@ -37,6 +37,7 @@ class ChatList extends Component {
     };
     this.unSubscribeToChatList = [];
     this.lastChatReference = null;
+    this.infiniteLoadingCursor = 0;
   }
 
   setChatValuesInState = async querySnapshot => {
@@ -119,6 +120,7 @@ class ChatList extends Component {
       this.setState({
         newChatsLoading: true,
       });
+      this.infiniteLoadingCursor += 1;
       this.unSubscribeToChatList[
         this.unSubscribeToChatList.length
       ] = getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
@@ -378,6 +380,7 @@ class ChatList extends Component {
             />
             {hasMore && !loading && (
               <Waypoint
+                key={this.infiniteLoadingCursor}
                 onEnter={() => {
                   this.subscribeToChatList();
                 }}
