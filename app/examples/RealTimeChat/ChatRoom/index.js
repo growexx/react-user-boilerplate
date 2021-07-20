@@ -24,7 +24,6 @@ import { StyledChatRoom } from 'examples/RealTimeChat/ChatRoom/StyledChatRoom';
 import { updateField } from 'examples/RealTimeChat/actions';
 import { resetChatWindow } from 'examples/RealTimeChat/helper';
 import { TEST_IDS } from 'examples/RealTimeChat/stub';
-import chatImage from 'images/chat_window.png';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -257,27 +256,25 @@ class ChatRoom extends Component {
   handleSend = () => {
     const { userChats, messageToSend } = this.state;
     this.handleSeenFlagForPreviousMessage();
-    if (messageToSend.length > 0) {
-      const {
-        storeData: { currentUserRef },
-      } = this.props;
-      const message = {
-        message: messageToSend.trim(),
-        type: 'text',
-        createdAt: new Date(),
-        from: currentUserRef.ref,
-        seen: [currentUserRef.id],
-      };
+    const {
+      storeData: { currentUserRef },
+    } = this.props;
+    const message = {
+      message: messageToSend.trim(),
+      type: 'text',
+      createdAt: new Date(),
+      from: currentUserRef.ref,
+      seen: [currentUserRef.id],
+    };
 
-      const payload = {
-        chats: [...userChats, message],
-      };
-      this.updateChatWindowData(payload);
-      this.setState({
-        messageToSend: '',
-      });
-      this.scrollToBottom();
-    }
+    const payload = {
+      chats: [...userChats, message],
+    };
+    this.updateChatWindowData(payload);
+    this.setState({
+      messageToSend: '',
+    });
+    this.scrollToBottom();
   };
 
   getClassNames = isCurrentUser => {
@@ -377,18 +374,16 @@ class ChatRoom extends Component {
       storeData: { receiverUserValues },
     } = this.props;
     let chatWindowName = '';
-    if (receiverUserValues) {
-      if (receiverUserValues.length === 1) {
-        chatWindowName = receiverUserValues[0].userName;
-      } else {
-        for (let index = 0; index < receiverUserValues.length; index++) {
-          if (chatWindowName) {
-            chatWindowName = `${chatWindowName}, ${
-              receiverUserValues[index].userName
-            }`;
-          } else {
-            chatWindowName = `${receiverUserValues[index].userName}`;
-          }
+    if (receiverUserValues.length === 1) {
+      chatWindowName = receiverUserValues[0].userName;
+    } else {
+      for (let index = 0; index < receiverUserValues.length; index++) {
+        if (chatWindowName) {
+          chatWindowName = `${chatWindowName}, ${
+            receiverUserValues[index].userName
+          }`;
+        } else {
+          chatWindowName = `${receiverUserValues[index].userName}`;
         }
       }
     }
@@ -422,7 +417,7 @@ class ChatRoom extends Component {
       this.setCurrentChatWindow();
     }
     return (
-      <StyledChatRoom backgroundImage={chatImage}>
+      <StyledChatRoom>
         <Card
           type="inner"
           title={

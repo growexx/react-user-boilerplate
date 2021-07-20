@@ -24,4 +24,4 @@ export const NO_CHATS = 'No Chats';
 
 export const MESSAGE_TIMESTAMP = 'MM-DD-YY hh:mm a';
 
-export const CHAT_LIST_LIMIT = 5;
+export const CHAT_LIST_LIMIT = 10;

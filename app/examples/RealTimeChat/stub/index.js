@@ -12,13 +12,22 @@ export const chatWindowStub = i => ({
   id: 0,
   chats: [
     {
-      message: 'Hi',
+      message: 'TestMessage',
       type: 'text',
       createdAt: {
         toDate: () => {},
       },
       from: personOne,
       seen: i % 2 === 0 ? [personOne.id, personTwo.id] : [personOne.id],
+    },
+    {
+      message: 'SecondTestMessage',
+      type: 'text',
+      createdAt: {
+        toDate: () => {},
+      },
+      from: personOne,
+      seen: i % 2 === 0 ? [personOne.id] : [personOne.id, personTwo.id],
     },
   ],
   createdAt: new Date(),
@@ -130,6 +139,7 @@ export const TEST_IDS = {
   SEND_MESSAGE: 'SEND_MESSAGE',
   CLOSE_ICON: 'CLOSE_ICON',
   MESSAGE_INPUT: 'MESSAGE_INPUT',
+  SCROLL_CONTAINER: 'SCROLL_CONTAINER',
 };
 
 export const skeletonLoaderStub = () => {

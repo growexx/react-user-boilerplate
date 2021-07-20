@@ -346,7 +346,7 @@ class ChatList extends Component {
     const isChatWindowOpen =
       selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     return (
-      <ChatListContainer>
+      <ChatListContainer data-testid={TEST_IDS.SCROLL_CONTAINER}>
         <div className={`searchBar ${isChatWindowOpen ? 'displayNone' : ''}`}>
           <center>
             <SearchUser />

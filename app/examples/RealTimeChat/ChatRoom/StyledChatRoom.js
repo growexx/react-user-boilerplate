@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import chatImage from 'images/chat_window.png';
+
 export const StyledChatRoom = styled.div`
   font-family: 'Montserrat', sans-serif;
   display: flex;
@@ -30,7 +32,7 @@ export const StyledChatRoom = styled.div`
   .ant-card-body {
     padding: 0 !important;
     background-repeat: repeat;
-    background-image: ${props => `url(${props.backgroundImage})`};
+    background-image: url(${chatImage});
   }
   .chatRoomHeader {
     color: @white;
