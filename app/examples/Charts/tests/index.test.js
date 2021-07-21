@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, fireEvent, waitForElement } from 'react-testing-library';
 import { browserHistory } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
@@ -44,6 +44,26 @@ describe('Check component:<Charts /> is rendering properly', () => {
     const {
       container: { firstChild },
     } = componentWrapper();
+    expect(firstChild).toMatchSnapshot();
+  });
+  it('Should change the period', async () => {
+    const {
+      container: { firstChild },
+      getByRole,
+      debug,
+    } = componentWrapper();
+    fireEvent.mouseDown(getByRole('combobox'));
+    fireEvent.change(getByRole('combobox'), {
+      target: {
+        value: 'lastMonth',
+      },
+    });
+    debug();
+    await waitForElement(() => getByRole('option'));
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[1],
+    );
+    // fireEvent.click(getByTestId(TEST_IDS.PERIOD_DROPDOWN));
     expect(firstChild).toMatchSnapshot();
   });
 });
