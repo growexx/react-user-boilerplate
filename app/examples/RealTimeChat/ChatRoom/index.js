@@ -31,7 +31,7 @@ class ChatRoom extends Component {
     this.state = {
       userChats: [],
       messageToSend: '',
-      loading: true,
+      loading: false,
     };
     this.unSubscribeToWindow = null;
     this.currentChatWindow = null;
@@ -117,6 +117,9 @@ class ChatRoom extends Component {
         this.setInitialChats(docRef.id, payload);
         await this.setUserRefsAndValues(payload);
         await this.subscribeToWindow(docRef.id);
+        this.setState({
+          loading: false,
+        });
         // eslint-disable-next-line no-console
         console.log('Document written with ID: ', docRef.id);
       })
@@ -134,7 +137,7 @@ class ChatRoom extends Component {
    * @param {string} chatWindow
    */
   subscribeToWindow = async chatWindow => {
-    this.unSubscribeToWindow = getFireStoreDocumentReference(
+    this.unSubscribeToWindow = await getFireStoreDocumentReference(
       FIRESTORE_COLLECTIONS.CHAT_WINDOW,
       chatWindow,
     ).onSnapshot(doc => {
@@ -197,16 +200,16 @@ class ChatRoom extends Component {
       storeData: { selectedChatWindow },
       updateAction,
     } = this.props;
+    updateAction('forceChatWindow', false);
     this.setState({
       loading: true,
     });
-    getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
+    await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.CHAT_WINDOW)
       .where(`joined`, '==', selectedChatWindow)
       .get()
       .then(async querySnapshot => {
         const { docs } = querySnapshot;
         if (docs.length > 0) {
-          updateAction('chatWindowId', docs[0].id);
           this.setInitialChats(docs[0].id, docs[0].data());
           await this.setUserRefsAndValues(docs[0].data());
           await this.subscribeToWindow(docs[0].id);
@@ -220,9 +223,6 @@ class ChatRoom extends Component {
           });
         } else {
           await this.createNewChatWindow();
-          this.setState({
-            loading: false,
-          });
         }
       })
       .catch(error => {
@@ -246,8 +246,8 @@ class ChatRoom extends Component {
     }
   };
 
-  componentDidMount() {
-    this.setCurrentChatWindow();
+  async componentDidMount() {
+    await this.setCurrentChatWindow();
   }
 
   /**
@@ -409,11 +409,9 @@ class ChatRoom extends Component {
   render() {
     const { messageToSend, loading } = this.state;
     const {
-      updateAction,
       storeData: { forceChatWindow },
     } = this.props;
     if (forceChatWindow) {
-      updateAction('forceChatWindow', false);
       this.setCurrentChatWindow();
     }
     return (

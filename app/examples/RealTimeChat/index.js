@@ -32,14 +32,13 @@ import {
   OFFLINE_MAIN_MESSAGE,
 } from 'examples/RealTimeChat/constants';
 import { updateField } from 'examples/RealTimeChat/actions';
-import { ERROR_MAIN_MESSAGE, GENERAL_MAIN_MESSAGE } from './constants';
+import { GENERAL_MAIN_MESSAGE } from './constants';
 
 export class RealTimeChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isFirstTimeRendered: false,
-      error: false,
     };
   }
 
@@ -69,29 +68,14 @@ export class RealTimeChat extends React.Component {
     });
   }
 
-  componentDidCatch() {
-    this.setState({
-      error: true,
-    });
-  }
-
   render() {
-    const { isFirstTimeRendered, error } = this.state;
+    const { isFirstTimeRendered } = this.state;
     const {
       storeData: { selectedChatWindow, chatList },
     } = this.props;
     const chatRightView = chatList.length > 0 ? NO_CHATS_OPEN : SEARCH_USER;
     const isChatWindowOpen =
       selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
-    if (error) {
-      return (
-        <Result
-          type="error"
-          title={ERROR_MAIN_MESSAGE}
-          subTitle={GENERAL_MAIN_MESSAGE}
-        />
-      );
-    }
 
     return (
       <div>
