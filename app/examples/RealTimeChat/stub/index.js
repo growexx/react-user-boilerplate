@@ -76,7 +76,6 @@ export const getCurrentUserMock = elseCase => {
   for (let i = 0; i < 10; i++) {
     docs.push({
       id: '1',
-      data: () => ({ id: '1' }),
     });
   }
   if (elseCase) {
@@ -109,12 +108,11 @@ export const getSuccessDataFromReferenceDiffEmail = () => {
   return Promise.resolve(data);
 };
 
-export const getSuccessChatWindowData = (elseCase, chatParticipants) => {
+export const getSuccessChatWindowData = elseCase => {
   const data = [];
 
   data.push({
-    data: () =>
-      chatParticipants === 'group' ? groupChatWindowStub : chatWindowStub(0),
+    data: () => chatWindowStub(0),
     id: '0',
   });
   if (elseCase) {
