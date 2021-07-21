@@ -46,6 +46,20 @@ describe('<Notification />', () => {
   beforeEach(() => getFireStoreCollectionReference.mockReset());
   afterEach(() => getFireStoreCollectionReference.mockClear());
   it('should render a div with real time chat path', () => {
+    mockGetFireStoreCollectionReference('success', 1);
+    history.push(ROUTES.REAL_TIME_CHAT);
+    const { container } = render(
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <Router history={history}>
+            <Notification />
+          </Router>
+        </IntlProvider>
+      </Provider>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
+  it('should render a div with real time chat path', () => {
     mockGetFireStoreCollectionReference('success');
     history.push(ROUTES.REAL_TIME_CHAT);
     const { container } = render(

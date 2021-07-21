@@ -8,7 +8,7 @@ export const getSuccessMockUserId = dataLength => {
   for (let i = 0; i < 10; i++) {
     data.push({
       email: `johndoe_${i}@gmail.com`,
-      id: `${i}`,
+      id: dataLength === 1 ? `1` : `0`,
     });
   }
   const returnData = {
