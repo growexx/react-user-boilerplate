@@ -173,6 +173,9 @@ const GlobalStyle = createGlobalStyle`
   margin: @margin-lg;
   }
   // margin top
+  .u-mt-0 {
+    margin-top: 0 !important;
+  }
   .u-mt-1{
   margin-top: @margin-xss;
   }
@@ -451,6 +454,9 @@ const GlobalStyle = createGlobalStyle`
   .u-font-size-lg {
     font-size : @font-size-lg;
   }
+  .u-font-size-xlg {
+    font-size: @font-size-sm * 2;
+  }
   // text-monospace 
   .u-text-monospace {
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace !important;
@@ -489,6 +495,47 @@ const GlobalStyle = createGlobalStyle`
   word-break: break-word !important;
   overflow-wrap: break-word !important;
   }
+.ant-carousel .slick-next::before {
+  content: '';
+border-left: 10px solid #000000;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;
+opacity: 0.2 !important; 
+margin-left: -50px
+}
+.ant-carousel .slick-prev,.ant-carousel .slick-next {
+  z-index:1;
+}
+.ant-carousel .slick-prev::before {
+  content: '';
+border-right: 10px solid #000000;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;
+opacity: 0.2 !important; 
+margin-left: 30px
+}
+.lh-6 {
+  line-height: 6px !important;
+}
+.btn-hover-none:hover {
+  background: none !important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #B8B8B8; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D0D0D0; 
+}
+.p-4 {
+  padding: 4px !important;
+}
 `;
 
 export default GlobalStyle;
