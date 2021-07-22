@@ -62,27 +62,27 @@ class ProfileForm extends React.PureComponent {
           <title>ProfileForm</title>
           <meta name="description" content="Description of ProfileForm" />
         </Helmet>
-        <p className="u-mb-1">
+        <div className="u-mb-1">
           <InlineEdit
             value={nameContent}
             onSave={value => this.setState({ nameContent: value })}
             placeholder="Enter Name"
           />
-        </p>
-        <p className="u-mb-1">
+        </div>
+        <div className="u-mb-1">
           <InlineEdit
             value={designationContent}
             onSave={value => this.setState({ designationContent: value })}
             placeholder="Enter Designation"
           />
-        </p>
-        <p className="u-mb-5">
+        </div>
+        <div className="u-mb-5">
           <InlineEdit
             value={locationContent}
             onSave={value => this.setState({ locationContent: value })}
             placeholder="Enter Location"
           />
-        </p>
+        </div>
         <Card
           hoverable
           type="inner"

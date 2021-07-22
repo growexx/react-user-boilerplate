@@ -12,27 +12,15 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
         class="StyledProfile-ye6z70-0 bwLVOd"
       >
         <div>
-          <p
+          <div
             class="u-mb-1"
-          >
-            <span>
-              John Doe
-            </span>
-          </p>
-          <p
+          />
+          <div
             class="u-mb-1"
-          >
-            <span>
-              Software Engineer at GrowExx
-            </span>
-          </p>
-          <p
+          />
+          <div
             class="u-mb-5"
-          >
-            <span>
-              Ahmedabad, Gujarat
-            </span>
-          </p>
+          />
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           >

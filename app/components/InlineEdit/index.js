@@ -10,10 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import { ESC_KEY_CODE } from 'components/InlineEdit/constants';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
+import { StyledInlineInput } from 'components/InlineEdit/StyledInlineInput';
+import { TEST_IDS } from 'components/InlineEdit/stub';
 class InlineEdit extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -59,13 +57,21 @@ class InlineEdit extends React.PureComponent {
   };
 
   saveIcon = () => (
-    <Button type="link" onClick={this.onSave}>
+    <Button
+      type="link"
+      onClick={this.onSave}
+      data-testid={TEST_IDS.SAVE_BUTTON}
+    >
       <FontAwesomeIcon icon={faCheck} />
     </Button>
   );
 
   cancelIcon = () => (
-    <Button type="link" onClick={this.onCancel}>
+    <Button
+      type="link"
+      onClick={this.onCancel}
+      data-testid={TEST_IDS.CANCEL_BUTTON}
+    >
       <FontAwesomeIcon icon={faTimes} />
     </Button>
   );
@@ -81,16 +87,15 @@ class InlineEdit extends React.PureComponent {
     const { inputValue, isInputActive } = this.state;
     const { value, placeholder } = this.props;
     return (
-      <span>
+      <StyledInlineInput>
         {!isInputActive ? (
-          <span onDoubleClick={this.handleDoubleClick}>
-            <FormattedMessage
-              {...messages.inputValue}
-              values={{
-                inputValue: value || '',
-              }}
-            />
-          </span>
+          <div
+            data-testid={TEST_IDS.INPUT_VALUE}
+            onDoubleClick={this.handleDoubleClick}
+            className="inputValue"
+          >
+            {value}
+          </div>
         ) : (
           <Input
             placeholder={placeholder}
@@ -101,9 +106,10 @@ class InlineEdit extends React.PureComponent {
             onBlur={this.onSave}
             onPressEnter={this.onSave}
             onKeyDown={this.handleKeyDown}
+            data-testid={TEST_IDS.INPUT_EDIT}
           />
         )}
-      </span>
+      </StyledInlineInput>
     );
   }
 }
