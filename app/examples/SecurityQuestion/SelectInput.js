@@ -1,5 +1,3 @@
-// /* eslint-disable indent */
-// /* eslint-disable prettier/prettier */
 import React from 'react';
 import { Select, Input } from 'antd';
 import PropTypes from 'prop-types';
