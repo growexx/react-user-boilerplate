@@ -22,6 +22,7 @@ export const ROUTES = {
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
   REAL_TIME_CHAT: '/real-time-chat',
+  PRODUCTS: '/products',
 };
 
 // API-ROUTES

@@ -31,7 +31,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
               class="ant-space-item"
             >
               <div
-                class="ant-select constants__PeriodDropDown-sc-8ehz4a-0 klYhCt ant-select-single ant-select-show-arrow"
+                class="ant-select constants__PeriodDropDown-sc-8ehz4a-0 iSZFcr ant-select-single ant-select-show-arrow"
               >
                 <div
                   class="ant-select-selector"
@@ -126,7 +126,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
                   class="ant-statistic-content-value-int"
                 >
                   
-                  34,487,612
+                  46,967,513
                 </span>
                 
               </span>
@@ -160,7 +160,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
                   class="ant-statistic-content-value-int"
                 >
                   
-                  34,487,612
+                  46,967,513
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -197,7 +197,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
                   class="ant-statistic-content-value-int"
                 >
                   
-                  34,487,612
+                  46,967,513
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -311,7 +311,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
               class="ant-space-item"
             >
               <div
-                class="ant-select constants__PeriodDropDown-sc-8ehz4a-0 klYhCt ant-select-single ant-select-show-arrow"
+                class="ant-select constants__PeriodDropDown-sc-8ehz4a-0 iSZFcr ant-select-single ant-select-show-arrow"
               >
                 <div
                   class="ant-select-selector"
@@ -405,7 +405,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  34,487,329
+                  46,967,394
                 </span>
                 
               </span>
@@ -439,7 +439,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  34,487,329
+                  46,967,394
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -476,7 +476,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  34,487,329
+                  46,967,394
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"

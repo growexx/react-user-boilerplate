@@ -4,20 +4,24 @@
  * This is the Notification Component file.
  */
 import React from 'react';
-import { BellOutlined } from '@ant-design/icons';
+import { BellOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Badge } from 'antd';
+import { Badge, Button } from 'antd';
 import { getFireStoreCollectionReference } from 'utils/firebase';
 import { FIRESTORE_COLLECTIONS, ROUTES } from 'containers/constants';
 import { getUserData } from 'utils/Helper';
 import { NotificationWrapper } from './StyledNotification';
+import CartDrawer from '../CartDrawer';
+const productCount = JSON.parse(localStorage.products || '[]').length;
 
 class Notification extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       newMessage: false,
+      visible: false,
+      count: productCount,
     };
     this.unSubscribeToNewMessages = null;
   }
@@ -79,11 +83,27 @@ class Notification extends React.Component {
 
   async componentDidMount() {
     await this.subscribeToNewMessages();
+    window.setCount = count => {
+      this.setState({
+        count,
+      });
+    };
+    window.addEventListener('storage', () => {
+      this.setState({
+        count: JSON.parse(localStorage.getItem('products')).length || [],
+      });
+    });
   }
 
   setFlagToFalse = () => {
     this.setState({
       newMessage: false,
+    });
+  };
+
+  onClickHandler = () => {
+    this.setState({
+      visible: true,
     });
   };
 
@@ -111,12 +131,34 @@ class Notification extends React.Component {
   }
 
   render() {
-    const { newMessage } = this.state;
+    const { newMessage, count, visible } = this.state;
     return (
       <NotificationWrapper>
+        <div className="u-mr-1 u-d-inline-block">
+          <Button
+            onClick={this.onClickHandler}
+            type="text"
+            data-testid="badge-notification"
+            className="btn-hover-none p-4"
+          >
+            <Badge count={count} size="small">
+              <ShoppingCartOutlined className="u-font-size-lg" />
+            </Badge>
+          </Button>
+        </div>
         <Badge dot={newMessage}>
           <BellOutlined />
         </Badge>
+        <div data-testid="badge-cart-drawer" data-visible={visible}>
+          <CartDrawer
+            visible={visible}
+            setVisible={e => {
+              this.setState({
+                visible: e,
+              });
+            }}
+          />
+        </div>
       </NotificationWrapper>
     );
   }

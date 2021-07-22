@@ -15,6 +15,7 @@ import {
   LockOutlined,
   PieChartOutlined,
   MessageOutlined,
+  ShoppingOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -78,6 +79,11 @@ export const MenuItems = [
     to: ROUTES.REAL_TIME_CHAT,
     tabName: 'Real Time Chat',
     icon: <MessageOutlined />,
+  },
+  {
+    to: ROUTES.PRODUCTS,
+    tabName: 'Products',
+    icon: <ShoppingOutlined />,
   },
 ];
 
