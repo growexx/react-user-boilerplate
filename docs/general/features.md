@@ -57,6 +57,7 @@ Following are the features included in the boilerplate
 | OTPComponent            | Component to capture OTP.                       |
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
+| InlineEdit              | Inline edit input                               |
 |                         |                                                 |
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
