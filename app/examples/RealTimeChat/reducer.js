@@ -16,7 +16,6 @@ export const initialState = {
   selectedChatWindow: '',
   chatWindowId: '',
   chatList: [],
-  forceChatWindow: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */

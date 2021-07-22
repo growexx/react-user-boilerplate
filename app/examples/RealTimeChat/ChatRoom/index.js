@@ -2,7 +2,7 @@
 /* eslint-disable no-plusplus */
 import React, { Component, createRef } from 'react';
 import moment from 'moment';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -198,9 +198,7 @@ class ChatRoom extends Component {
   setCurrentChatWindow = async () => {
     const {
       storeData: { selectedChatWindow },
-      updateAction,
     } = this.props;
-    updateAction('forceChatWindow', false);
     this.setState({
       loading: true,
     });
@@ -245,6 +243,18 @@ class ChatRoom extends Component {
       });
     }
   };
+
+  componentDidUpdate(prevProps) {
+    const {
+      storeData: { selectedChatWindow },
+    } = this.props;
+    const {
+      storeData: { selectedChatWindow: oldChatWindow },
+    } = prevProps;
+    if (oldChatWindow && !isEqual(selectedChatWindow, oldChatWindow)) {
+      this.setCurrentChatWindow();
+    }
+  }
 
   async componentDidMount() {
     await this.setCurrentChatWindow();
@@ -408,12 +418,6 @@ class ChatRoom extends Component {
 
   render() {
     const { messageToSend, loading } = this.state;
-    const {
-      storeData: { forceChatWindow },
-    } = this.props;
-    if (forceChatWindow) {
-      this.setCurrentChatWindow();
-    }
     return (
       <StyledChatRoom>
         <Card

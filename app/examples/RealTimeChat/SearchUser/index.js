@@ -59,9 +59,6 @@ export class SearchUser extends React.Component {
     ) {
       resetChatWindow(updateAction);
       updateAction('selectedChatWindow', newWindowParticipants);
-      if (isChatWindowOpen) {
-        updateAction('forceChatWindow', true);
-      }
     }
   };
 

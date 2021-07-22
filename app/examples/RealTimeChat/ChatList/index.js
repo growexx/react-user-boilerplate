@@ -236,9 +236,6 @@ class ChatList extends Component {
       selectedChatWindow && Object.keys(selectedChatWindow).length > 0;
     if (!isChatWindowOpen || !isEqual(selectedChatWindow, joined)) {
       updateAction('selectedChatWindow', joined);
-      if (isChatWindowOpen) {
-        updateAction('forceChatWindow', true);
-      }
     }
   };
 
