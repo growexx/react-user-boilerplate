@@ -3,7 +3,11 @@
  * This file contains constants used in Header component.
  */
 import React from 'react';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  LockOutlined,
+  QuestionOutlined,
+} from '@ant-design/icons';
 import { ROUTES } from 'containers/constants';
 
 export const MenuItems = [
@@ -21,5 +25,10 @@ export const MenuItems = [
     to: ROUTES.LOGOUT,
     tabName: 'Logout',
     icon: <LockOutlined />,
+  },
+  {
+    to: ROUTES.REGISTER_QUESTION,
+    tabName: 'Security Question',
+    icon: <QuestionOutlined />,
   },
 ];

@@ -22,6 +22,7 @@ export const ROUTES = {
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
   PRODUCTS: '/products',
+  REGISTER_QUESTION: '/resgiter-security-questions',
 };
 
 // API-ROUTES

@@ -30,6 +30,7 @@ import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
+import RegisterQuestion from 'examples/SecurityQuestion/RegisterQuestion';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import RoleMiddleWare from './RoleMiddleWare';
@@ -74,6 +75,10 @@ export default function App() {
         <PrivateRoute path={ROUTES.USERS} component={Users} />
         <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
         <PrivateRoute path={ROUTES.PRODUCTS} component={Products} />
+        <PrivateRoute
+          path={ROUTES.REGISTER_QUESTION}
+          component={RegisterQuestion}
+        />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
