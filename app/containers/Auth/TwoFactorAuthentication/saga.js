@@ -28,7 +28,7 @@ import {
  */
 const verifyUserInFireStore = async emailId => {
   // see if data exits
-  await getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
+  getFireStoreCollectionReference(FIRESTORE_COLLECTIONS.PROFILE)
     .where(`email`, '==', emailId)
     .get()
     .then(async querySnapshot => {

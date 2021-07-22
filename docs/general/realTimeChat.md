@@ -1,7 +1,11 @@
 
   
 
+  
+
 ## Real Time Chat with Firebase
+
+  
 
   
 
@@ -13,7 +17,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 ## ***Feature List***
+
+  
 
   
 
@@ -23,43 +31,63 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 2. Group Chat Support.
 
   
 
-3. Listing of current chats.
+  
+
+3. Listing of current chats with real time updates
 
   
 
-4. Chat Window Component
+4. Infinite scrolling of chats in chat list
 
   
 
-5. Real time listening to updates from database.
+  
+
+6. Real time listening to updates from database.
 
   
 
-6. Message Seen feature.
+  
+
+7. Message Seen feature.
 
   
 
-7. Notification dot for new messages.
+  
+
+8. Notification dot for new messages.
 
   
 
-8. Last seen of user.
+  
+
+9. Last seen of user.
 
   
 
-9. Tracking of online and offline states using react-detect-offline
+  
+
+10. Tracking of online and offline states using react-detect-offline
 
   
 
-10. All antd components used.
+  
+
+11. All antd components used.
 
   
 
-11. 85% unit test covered code.
+  
+
+12. 85% unit test covered code.
+
+  
 
   
 
@@ -69,17 +97,31 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - First off, head over to the [Firebase Console](https://console.firebase.google.com/) and click the **“Add project”** option.
+
 - Next, enter a name for the project.
+
 - Next, we have to get the configuration details down for our project. So, click on the web icon in the dashboard.
+
 - Then, enter a name for the app and click **Register app**.
+
 - Next up, copy and store the configuration details on the next screen in a safe place. That will come in handy in the next step.
+
+  
 
 - Now, use these keys to add ENV values in the project.
 
+  
+
 - Following is the list of env values needed.
 
+  
+
 1. REACT_APP_FIREBASE_API_KEY
+
+  
 
   
 
@@ -87,7 +129,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 3. REACT_APP_FIREBASE_PROJECT_ID
+
+  
 
   
 
@@ -95,22 +141,37 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 5. REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+
+  
 
   
 
 6. REACT_APP_FIREBASE_APP_ID
 
-- Here, for real time chat we are using cloud firestore database by firebase.
   
-  - Now, head to firebase and select the ‘Database’ option from the left-hand navigation and select ‘Create database’ on the Firestore cta.
-  - Whilst in development, we’ll relax the security preferences to allow _‘read’_ & _‘writes’_ to our database. _This will need to be addressed prior to any publishing of your app for obvious security reasons._
-  - Once enabled, you’ll be presented with your new database. Leave it for now and jump to App.
 
-- Login with the email id and password of your choice. 
+- Here, for real time chat we are using cloud firestore database by firebase.
+
+- Now, head to firebase and select the ‘Database’ option from the left-hand navigation and select ‘Create database’ on the Firestore cta.
+
+- Whilst in development, we’ll relax the security preferences to allow _‘read’_ & _‘writes’_ to our database. _This will need to be addressed prior to any publishing of your app for obvious security reasons._
+
+- Once enabled, you’ll be presented with your new database. Leave it for now and jump to App.
+
+  
+
+- Login with the email id and password of your choice.
+
 - Make sure to login with two different users, so that real-time-chat feature can be tested.
+
 - Go to real time chat from left menu and let the component load.
-- Search for the user from dropdown and start the chat. 
+
+- Search for the user from dropdown and start the chat.
+
+  
 
   
 
@@ -120,7 +181,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  **RealTimeChat**
+
+  
 
   
 
@@ -128,7 +193,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - This component in it's componentDidMount calls an API for getting current user reference and stores it in "*currentUserRef*" state value in redux state for this component.
+
+  
 
   
 
@@ -136,7 +205,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 -  **Life Cycle methods used**.
+
+  
 
   
 
@@ -144,7 +217,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - calls the API for current user reference.
+
+  
 
   
 
@@ -152,7 +229,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - catches the error found in component.
+
+  
 
   
 
@@ -160,7 +241,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  *setCurrentUserRef*
+
+  
 
   
 
@@ -170,7 +255,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 2.  **ChatList**
+
+  
 
   
 
@@ -178,7 +267,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - This component in it's componentDidMount calls an API which finds the chat windows where currentUserRef.id is present true. In short lists down the chats for the user.
+
+  
 
   
 
@@ -186,7 +279,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - This API returns a function for unsubscribing the listener which i call when unmounting a component so that we don't keep listening even the component is not rendered in DOM.
+
+  
 
   
 
@@ -194,7 +291,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Here, when storing the results, i append username and email for the chat by calling getDataFromReference API for each chat window.
+
+  
 
   
 
@@ -202,7 +303,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  *componentDidMount*
+
+  
 
   
 
@@ -210,7 +315,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - calls the API for getting username and email for each user in the chat.
+
+  
 
   
 
@@ -218,7 +327,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - unsubscribes the listener set for the list of users.
+
+  
 
   
 
@@ -226,7 +339,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  *subscribeToChatList*
+
+  
 
   
 
@@ -234,7 +351,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 2.  *fetchPersonData*
+
+  
 
   
 
@@ -242,7 +363,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - It loops through joined object in chat window document and calls getPersonData function for each user.
+
+  
 
   
 
@@ -250,7 +375,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 3.  *getPersonData*
+
+  
 
   
 
@@ -258,7 +387,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - it returns username and email from the document.
+
+  
 
   
 
@@ -266,7 +399,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - If the list is empty, it renders empty component from antd.
+
+  
 
   
 
@@ -274,7 +411,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - returns description for empty component from antd.
+
+  
 
   
 
@@ -282,7 +423,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Returns the actions for chat list, basically if that chat window is to be opened then click on action.
+
+  
 
   
 
@@ -290,7 +435,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - handles the clicking of chat list item and sets the chat window.
+
+  
 
   
 
@@ -298,11 +447,17 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Returns last message for showing in the chat list.
 
   
 
+  
+
 9.  *renderAllChats*
+
+  
 
   
 
@@ -312,7 +467,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 3.  **SearchUser**
+
+  
 
   
 
@@ -320,7 +479,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - This component in it's componentDidMount calls API for search results of user.
+
+  
 
   
 
@@ -328,7 +491,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Contains a antd select dropdown and a create button to create or open a chat window.
+
+  
 
   
 
@@ -336,7 +503,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  *componentDidMount*
+
+  
 
   
 
@@ -344,7 +515,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 -  **Functions Used**
+
+  
 
   
 
@@ -352,7 +527,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - called when user is selected from downdown.
+
+  
 
   
 
@@ -360,7 +539,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - called when user clicks on create button.
+
+  
 
   
 
@@ -370,7 +553,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 4.  **ChatRoom**
+
+  
 
   
 
@@ -378,7 +565,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Calls API for getting the document and sets the initial chats.
+
+  
 
   
 
@@ -386,7 +577,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 -  **Life Cycle methods used.**
+
+  
 
   
 
@@ -394,7 +589,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - calls the API for getting chat window and subscribing to that result.
+
+  
 
   
 
@@ -402,7 +601,19 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - unsubscribes the listener set for the chat window.
+
+  
+
+3.  *componentWillUpdate*
+
+  
+
+  
+
+- update the window if other chat window is clicked from chatlist or from user's dropdown.
 
   
 
@@ -410,7 +621,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  *setCurrentChatWindow*
+
+  
 
   
 
@@ -418,7 +633,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Here mainly the decision is taken if the window is new or already present.
+
+  
 
   
 
@@ -426,7 +645,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Called from setCurrentChatWindow function if the window document is not present and so it creates new document.
+
+  
 
   
 
@@ -434,7 +657,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - It stores initial chats of user if present.
+
+  
 
   
 
@@ -442,7 +669,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - If the list is empty, it renders empty component from antd.
+
+  
 
   
 
@@ -450,7 +681,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - for each user in chat window it sets values of states "currentUserValue" and "receiverUserValues", "receiverUserRefs".
+
+  
 
   
 
@@ -458,7 +693,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 6.  *fetchPersonData*
+
+  
 
   
 
@@ -466,7 +705,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 7.  *subscribeToWindow*
+
+  
 
   
 
@@ -474,7 +717,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 8.  *handleSeenFlagForPreviousMessage*
+
+  
 
   
 
@@ -482,7 +729,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 9.  *updateChatWindowData*
+
+  
 
   
 
@@ -490,7 +741,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 10.  *handleSend*
+
+  
 
   
 
@@ -498,7 +753,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - calls API for updating the chat
+
+  
 
   
 
@@ -506,7 +765,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - called when displaying messages.
+
+  
 
   
 
@@ -514,7 +777,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 12.  *renderMessages*
+
+  
 
   
 
@@ -522,7 +789,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 13.  *renderSingleMessage*
+
+  
 
   
 
@@ -530,7 +801,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - takes decision if the message is sent or received.
+
+  
 
   
 
@@ -538,7 +813,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 14.  *getLastSeen*
+
+  
 
   
 
@@ -546,7 +825,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 15.  *getChatWindowName*
+
+  
 
   
 
@@ -554,7 +837,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 16.  *closeChatWindow*
+
+  
 
   
 
@@ -562,11 +849,17 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 17.  *scrollToBottom*
 
   
 
+  
+
 - scrolls to last message in the chat.
+
+  
 
   
 
@@ -578,7 +871,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 1.  **Two Factor Authentication**
+
+  
 
   
 
@@ -588,7 +885,11 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - If user is already present then the lastSeen value of user is updated.
+
+  
 
   
 
@@ -598,10 +899,16 @@ This feature is an example of real time chat with Firebase firestore database.
 
   
 
+  
+
 - Here the API for listening the updates for new messages for user is called.
 
   
 
+  
+
 3.  **Util file for Firebase**
+
+  
 
 - List of all API utils needed for firebase firestore.

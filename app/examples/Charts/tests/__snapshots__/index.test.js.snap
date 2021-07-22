@@ -126,7 +126,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
                   class="ant-statistic-content-value-int"
                 >
                   
-                  32,143,212
+                  34,487,612
                 </span>
                 
               </span>
@@ -160,7 +160,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
                   class="ant-statistic-content-value-int"
                 >
                   
-                  32,143,212
+                  34,487,612
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -197,7 +197,7 @@ exports[`Check component:<Charts /> is rendering properly Should change the peri
                   class="ant-statistic-content-value-int"
                 >
                   
-                  32,143,212
+                  34,487,612
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -405,7 +405,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  32,142,774
+                  34,487,329
                 </span>
                 
               </span>
@@ -439,7 +439,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  32,142,774
+                  34,487,329
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -476,7 +476,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  32,142,774
+                  34,487,329
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"

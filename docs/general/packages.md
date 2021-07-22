@@ -61,3 +61,4 @@ Following are the packages used in the boilerplate
 | recharts                | Charts                                          |
 | firebase                | Firebase package crud operations                |
 | react-detect-offline    | Detects if browser is offline or online         |
+| react-waypoint          | Infinite scrolling in react                     |
