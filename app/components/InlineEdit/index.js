@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, createRef } from 'react';
 import { Input, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +19,31 @@ class InlineEdit extends React.PureComponent {
       isInputActive: false,
       inputValue: props.value,
     };
+    this.inputContainerRef = createRef(null);
+  }
+
+  handleOutSide = e => {
+    const { isInputActive } = this.state;
+    if (
+      this.inputContainerRef &&
+      this.inputContainerRef.current &&
+      this.inputContainerRef.current.contains(e.target)
+    ) {
+      return;
+    }
+    if (isInputActive) {
+      this.onSave();
+    }
+  };
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleOutSide);
+    document.addEventListener('touchstart', this.handleOutSide);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', () => {});
+    document.removeEventListener('touchstart', () => {});
   }
 
   onSave = () => {
@@ -57,22 +82,22 @@ class InlineEdit extends React.PureComponent {
   };
 
   saveIcon = () => (
-    <Button
-      type="link"
-      onClick={this.onSave}
-      data-testid={TEST_IDS.SAVE_BUTTON}
-    >
-      <FontAwesomeIcon icon={faCheck} />
+    <Button type="link">
+      <FontAwesomeIcon
+        icon={faCheck}
+        onClick={this.onSave}
+        data-testid={TEST_IDS.SAVE_BUTTON}
+      />
     </Button>
   );
 
   cancelIcon = () => (
-    <Button
-      type="link"
-      onClick={this.onCancel}
-      data-testid={TEST_IDS.CANCEL_BUTTON}
-    >
-      <FontAwesomeIcon icon={faTimes} />
+    <Button type="link">
+      <FontAwesomeIcon
+        icon={faTimes}
+        onClick={this.onCancel}
+        data-testid={TEST_IDS.CANCEL_BUTTON}
+      />
     </Button>
   );
 
@@ -83,18 +108,26 @@ class InlineEdit extends React.PureComponent {
     </span>
   );
 
+  getValue = () => {
+    const { value, placeholder } = this.props;
+    if (value.length > 0) {
+      return value;
+    }
+    return <span className="placeHolderView">{placeholder}</span>;
+  };
+
   render() {
     const { inputValue, isInputActive } = this.state;
-    const { value, placeholder } = this.props;
+    const { placeholder } = this.props;
     return (
-      <StyledInlineInput>
+      <StyledInlineInput ref={this.inputContainerRef}>
         {!isInputActive ? (
           <div
             data-testid={TEST_IDS.INPUT_VALUE}
             onDoubleClick={this.handleDoubleClick}
             className="inputValue"
           >
-            {value}
+            {this.getValue()}
           </div>
         ) : (
           <Input
@@ -103,7 +136,6 @@ class InlineEdit extends React.PureComponent {
             value={inputValue}
             onChange={this.handleOnChange}
             allowClear
-            onBlur={this.onSave}
             onPressEnter={this.onSave}
             onKeyDown={this.handleKeyDown}
             data-testid={TEST_IDS.INPUT_EDIT}

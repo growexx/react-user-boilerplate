@@ -81,6 +81,7 @@ describe('<InlineEdit />', () => {
     expect(getByTestId(TEST_IDS.INPUT_VALUE)).toBeInTheDocument();
   });
   it('Should double click and press escape', () => {
+    props.value = '';
     const { getByTestId, queryByTestId } = componentWrapper();
     // show the input
     userEvent.dblClick(getByTestId(TEST_IDS.INPUT_VALUE));
@@ -99,5 +100,16 @@ describe('<InlineEdit />', () => {
       keyCode: 13,
     });
     expect(queryByTestId(TEST_IDS.INPUT_VALUE)).toBeInTheDocument();
+  });
+  it('Should double click and fire mouse down', () => {
+    const { getByTestId } = componentWrapper();
+    // show the input
+    userEvent.dblClick(getByTestId(TEST_IDS.INPUT_VALUE));
+    // click on input should not close it
+    fireEvent.mouseDown(getByTestId(TEST_IDS.INPUT_EDIT));
+    expect(getByTestId(TEST_IDS.INPUT_EDIT)).toBeInTheDocument();
+    // click on outside input should close it
+    fireEvent.click(getByTestId(TEST_IDS.CANCEL_BUTTON));
+    expect(getByTestId(TEST_IDS.INPUT_VALUE)).toBeInTheDocument();
   });
 });
