@@ -42,8 +42,8 @@ class InlineEdit extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', () => {});
-    document.removeEventListener('touchstart', () => {});
+    document.removeEventListener('mousedown', this.handleOutSide);
+    document.removeEventListener('touchstart', this.handleOutSide);
   }
 
   onSave = () => {
