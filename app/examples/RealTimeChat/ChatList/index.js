@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { createStructuredSelector } from 'reselect';
 import { Waypoint } from 'react-waypoint';
-import { isEqual } from 'lodash';
+import { isEqual, orderBy } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
@@ -79,9 +79,11 @@ class ChatList extends Component {
           updatedChatList.push(newChat);
         }
       });
-      updateAction('chatList', updatedChatList);
+      const sortedChats = orderBy(updatedChatList, ['updatedAt'], ['desc']);
+      updateAction('chatList', sortedChats);
     } else {
-      updateAction('chatList', [...result]);
+      const sortedChats = orderBy(result, ['updatedAt'], ['desc']);
+      updateAction('chatList', sortedChats);
     }
     if (result.length !== CHAT_LIST_LIMIT) {
       this.setState({
@@ -108,7 +110,6 @@ class ChatList extends Component {
       )
         .where(`joined.${storeData.currentUserRef.id}`, '==', true)
         .limit(CHAT_LIST_LIMIT)
-        // .orderBy('updatedAt', 'desc')
         .onSnapshot(
           async querySnapshot => this.setChatValuesInState(querySnapshot),
           error => {
