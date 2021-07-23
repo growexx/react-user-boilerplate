@@ -55,6 +55,7 @@ Following are the features included in the boilerplate
 | File Upload             | File Upload component.                          |
 | Image Upload            | Image editor before upload.                     |
 | OTPComponent            | Component to capture OTP.                       |
+| InlineEdit              | Inline edit input                               |
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
 |                         |                                                 |
