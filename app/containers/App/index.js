@@ -30,6 +30,9 @@ import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
+import RegisterQuestion from 'examples/SecurityQuestion/RegisterQuestion';
+import ResetPassword from 'examples/SecurityQuestion/ResetPassword';
+import ResetPasswordMain from 'examples/SecurityQuestion/ResetPassword/ResetPasswordMain';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import RoleMiddleWare from './RoleMiddleWare';
@@ -75,6 +78,10 @@ export default function App() {
         <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
         <PrivateRoute path={ROUTES.PRODUCTS} component={Products} />
         <PrivateRoute
+          path={ROUTES.REGISTER_QUESTION}
+          component={RegisterQuestion}
+        />
+        <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
         />
@@ -100,6 +107,11 @@ export default function App() {
           exact
           path={ROUTES.FORGOT_PASSWORD}
           component={ForgotPassword}
+        />
+        <AuthRoute path={ROUTES.RESET_PASSWORD} component={ResetPasswordMain} />
+        <AuthRoute
+          path={ROUTES.RESET_PASSWORD_SECURITY}
+          component={ResetPassword}
         />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
         <Route path="" component={NotFoundPage} />

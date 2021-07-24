@@ -18,6 +18,7 @@ import { API_ENDPOINTS, ROUTES } from '../../constants';
 import AuthSideContainer from '../index';
 import { AUTH_TYPE } from '../constants';
 import { StyledForgotPassword } from './StyledForgotPassword';
+import { postSecurityQuestionRegister } from '../../../examples/SecurityQuestion/stub';
 
 class ForgotPassword extends React.Component {
   constructor(props) {
@@ -34,6 +35,12 @@ class ForgotPassword extends React.Component {
       loading: true,
     });
     // API Call
+    postSecurityQuestionRegister(values.email).then(res => {
+      if (res.data.securityQuestionAvailable) {
+        // eslint-disable-next-line react/prop-types
+        this.props.history.push(ROUTES.RESET_PASSWORD);
+      }
+    });
     request(`${API_ENDPOINTS.FORGOT_PASSWORD}`, {
       method: 'POST',
       body: { email: values.email },
