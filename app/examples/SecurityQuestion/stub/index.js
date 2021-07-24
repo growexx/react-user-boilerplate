@@ -56,25 +56,18 @@ export const getSecurityQuestions = () =>
     data: securityQuestions,
     status: 1,
   });
-export const postSecurityQuestionRegister = emailId => {
-  // from email will check in db
-  // eslint-disable-next-line no-console
-  console.log('emailId', emailId);
-  return Promise.resolve({
+export const postSecurityQuestionRegister = () =>
+  Promise.resolve({
     data: {
       securityQuestionAvailable: true,
     },
     status: 1,
   });
-};
 
-export const getRegisteredSecurityQuestion = emailId => {
-  // eslint-disable-next-line no-console
-  console.log('emailId', emailId);
-  return Promise.resolve({
+export const getRegisteredSecurityQuestion = () =>
+  Promise.resolve({
     data: {
       securityQuestions: securityQuestions.slice(0, 3),
     },
     status: 1,
   });
-};

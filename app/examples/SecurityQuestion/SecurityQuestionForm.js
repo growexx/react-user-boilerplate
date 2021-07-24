@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -18,7 +17,7 @@ function SecurityQuestionForm(props) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   useEffect(() => {
     if (isReset) {
-      getRegisteredSecurityQuestion('abc@abc.com').then(res => {
+      getRegisteredSecurityQuestion().then(res => {
         const newData = {};
         res.data.securityQuestions.forEach((item, index) => {
           newData[questionList[index]] = item;
@@ -30,7 +29,7 @@ function SecurityQuestionForm(props) {
       getSecurityQuestions().then(res => {
         setOptions(
           res.data.map(item => {
-            Object.assign(item, { isvisible: true });
+            Object.assign(item, { isVisible: true });
             return item;
           }),
         );
@@ -59,21 +58,21 @@ function SecurityQuestionForm(props) {
           selectedItems.question1 &&
           selectedItems.question1 === item.id
         ) {
-          item.isVisible = false;
+          Object.assign(item, { isVisible: false });
         } else if (
           selectedItems &&
           selectedItems.question2 &&
           selectedItems.question2 === item.id
         ) {
-          item.isVisible = false;
+          Object.assign(item, { isVisible: false });
         } else if (
           selectedItems &&
           selectedItems.question3 &&
           selectedItems.question3 === item.id
         ) {
-          item.isVisible = false;
+          Object.assign(item, { isVisible: false });
         } else {
-          item.isVisible = true;
+          Object.assign(item, { isVisible: true });
         }
         return item;
       });
