@@ -105,4 +105,12 @@ describe('<Profile />', () => {
     fireEvent.click(getAllByTestId(TEST_IDS.SAVE_BUTTON)[0]);
     expect(getAllByTestId(TEST_IDS.INPUT_VALUE)[2]).toBeInTheDocument();
   });
+  it('Should fire mouse down on other target and input should be disappeared', async () => {
+    const { getAllByTestId } = componentWrapper();
+    // show the input
+    userEvent.dblClick(getAllByTestId(TEST_IDS.INPUT_VALUE)[2]);
+    expect(getAllByTestId(TEST_IDS.INPUT_EDIT)[0]).toBeInTheDocument();
+    fireEvent.mouseDown(getAllByTestId(TEST_IDS.INPUT_VALUE)[0]);
+    expect(getAllByTestId(TEST_IDS.INPUT_VALUE)[2]).toBeInTheDocument();
+  });
 });
