@@ -3,9 +3,17 @@ import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import { render } from 'react-testing-library';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import ReposList from '../index';
 import configureStore from '../../../configureStore';
+
+// const initialState = {};
+// const { persistor } = configureStore(initialState);
+const { store, persistor } = configureStore(
+  { global: { currentUser: 'mxstbr' } },
+  browserHistory,
+);
 
 describe('<ReposList />', () => {
   it('should render the loading indicator when its loading', () => {
@@ -23,10 +31,10 @@ describe('<ReposList />', () => {
   });
 
   it('should render the repositories if loading was successful', () => {
-    const store = configureStore(
-      { global: { currentUser: 'mxstbr' } },
-      browserHistory,
-    );
+    // const store = configureStore(
+    //   { global: { currentUser: 'mxstbr' } },
+    //   browserHistory,
+    // );
     const repos = [
       {
         owner: {
@@ -40,9 +48,11 @@ describe('<ReposList />', () => {
     ];
     const { container } = render(
       <Provider store={store}>
-        <IntlProvider locale="en">
-          <ReposList repos={repos} error={false} />
-        </IntlProvider>
+        <PersistGate persistor={persistor}>
+          <IntlProvider locale="en">
+            <ReposList repos={repos} error={false} />
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
 

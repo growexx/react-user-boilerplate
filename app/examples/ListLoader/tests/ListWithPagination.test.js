@@ -6,23 +6,32 @@ import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
 import request from 'utils/request';
+import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from '../../../configureStore';
 import ListWithPagination from '../ListWithPagination';
-let store;
+
+let prevStore;
+let prevPersistor;
+const initialState = {};
 jest.mock('utils/request');
 const componentWrapper = () =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <ListWithPagination />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <ListWithPagination />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 describe('<ListWithLoadMore />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore(initialState, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   it('should render and match the snapshot', () => {

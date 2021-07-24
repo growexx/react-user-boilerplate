@@ -12,26 +12,34 @@ import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import request from 'utils/request';
+import { PersistGate } from 'redux-persist/integration/react';
 import ForgotPassword from '../Loadable';
 import configureStore from '../../../../configureStore';
 import { TEST_IDS } from '../stub/test.stub';
 jest.mock('utils/request');
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
 
 const componentWrapper = () =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <ForgotPassword />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <ForgotPassword />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
 describe('<ForgotPassword />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   beforeEach(() => {
@@ -51,9 +59,9 @@ describe('<ForgotPassword />', () => {
 });
 
 describe('Forgot Password Request', () => {
-  beforeAll(() => {
-    store = configureStore({}, browserHistory);
-  });
+  // beforeAll(() => {
+  //   store = configureStore({}, browserHistory);
+  // });
 
   afterEach(() => {
     request.mockClear();
