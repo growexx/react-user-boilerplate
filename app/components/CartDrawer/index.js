@@ -14,8 +14,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { DollarCircleOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
+import { ROUTES } from 'containers/constants';
 import { StyledCardWrapper } from './StyledCardWrapper';
-import { ROUTES } from '../../containers/constants';
 const { Text } = Typography;
 const CartDrawer = ({ visible, setVisible }) => {
   const history = useHistory();
@@ -30,6 +30,9 @@ const CartDrawer = ({ visible, setVisible }) => {
     window.addEventListener('storage', () => {
       setProductsData(JSON.parse(localStorage.getItem('products')) || []);
     });
+    return () => {
+      window.removeEventListener('storage', window);
+    };
   }, []);
   const onDeleteClick = id => {
     const filterProductsData = productsData.filter(
@@ -70,7 +73,7 @@ const CartDrawer = ({ visible, setVisible }) => {
             <List.Item.Meta
               avatar={<Avatar src={product.imageUrl} />}
               title={
-                <div className="   u-align-items-center u-justify-content-between">
+                <div className="u-d-flex u-align-items-center u-justify-content-between">
                   {product.title}
                   <div className="u-d-flex u-align-items-center">
                     <DollarCircleOutlined className="u-mr-1" />
@@ -115,7 +118,6 @@ const CartDrawer = ({ visible, setVisible }) => {
           </div>
         </div>
       </Affix>
-
       <StyledCardWrapper>
         {productsData.length ? (
           <div className="footer-pay-btn">

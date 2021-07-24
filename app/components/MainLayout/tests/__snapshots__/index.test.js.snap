@@ -429,16 +429,16 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
               class="StyledAppHeader-sc-305pn5-0 enPSEw"
             >
               <div
-                class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 khWwDg"
+                class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 eYgsyP"
               >
                 <div
                   class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
                 >
                   <div
-                    class="u-mr-3 u-d-inline-block"
+                    class="u-mr-1 u-d-inline-block"
                   >
                     <button
-                      class="ant-btn ant-btn-text"
+                      class="ant-btn ant-btn-text btn-hover-none p-4"
                       data-testid="badge-notification"
                       type="button"
                     >
@@ -1053,16 +1053,16 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
               class="StyledAppHeader-sc-305pn5-0 enPSEw"
             >
               <div
-                class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 khWwDg"
+                class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 eYgsyP"
               >
                 <div
                   class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
                 >
                   <div
-                    class="u-mr-3 u-d-inline-block"
+                    class="u-mr-1 u-d-inline-block"
                   >
                     <button
-                      class="ant-btn ant-btn-text"
+                      class="ant-btn ant-btn-text btn-hover-none p-4"
                       data-testid="badge-notification"
                       type="button"
                     >
@@ -1293,16 +1293,16 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
             class="StyledAppHeader-sc-305pn5-0 enPSEw"
           >
             <div
-              class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 khWwDg"
+              class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 eYgsyP"
             >
               <div
                 class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
               >
                 <div
-                  class="u-mr-3 u-d-inline-block"
+                  class="u-mr-1 u-d-inline-block"
                 >
                   <button
-                    class="ant-btn ant-btn-text"
+                    class="ant-btn ant-btn-text btn-hover-none p-4"
                     data-testid="badge-notification"
                     type="button"
                   >
@@ -2246,16 +2246,16 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
             class="StyledAppHeader__StyledAppHeaderColored-sc-305pn5-1 btUqTq"
           >
             <div
-              class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 khWwDg"
+              class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 eYgsyP"
             >
               <div
                 class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
               >
                 <div
-                  class="u-mr-3 u-d-inline-block"
+                  class="u-mr-1 u-d-inline-block"
                 >
                   <button
-                    class="ant-btn ant-btn-text"
+                    class="ant-btn ant-btn-text btn-hover-none p-4"
                     data-testid="badge-notification"
                     type="button"
                   >

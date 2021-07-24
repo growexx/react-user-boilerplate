@@ -517,6 +517,25 @@ margin-left: 30px
 .lh-6 {
   line-height: 6px !important;
 }
+.btn-hover-none:hover {
+  background: none !important;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #B8B8B8; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D0D0D0; 
+}
+.p-4 {
+  padding: 4px !important;
+}
 `;
 
 export default GlobalStyle;

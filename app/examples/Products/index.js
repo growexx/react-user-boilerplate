@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import products from './product.json';
+import products from './stub/product.json';
 import ProductCard from '../../components/ProductCard';
 
 function ProductCardPage() {

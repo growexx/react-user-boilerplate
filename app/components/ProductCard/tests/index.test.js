@@ -1,18 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from 'react-testing-library';
 import ProductCard from '../index';
+import products from '../../../examples/Products/stub/product.json';
 
-const dummyData = [
-  {
-    id: 1,
-    title: 'Product1',
-    description: 'Description 1',
-    imageUrl:
-      'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-    price: 100,
-    qty: 1,
-  },
-];
+const dummyData = products.products.slice(0, 2);
 
 describe('<ProductCard />', () => {
   test('display should increment the quantity', () => {

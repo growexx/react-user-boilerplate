@@ -5,10 +5,10 @@ exports[`<Notification /> should render a div 1`] = `
   class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
 >
   <div
-    class="u-mr-3 u-d-inline-block"
+    class="u-mr-1 u-d-inline-block"
   >
     <button
-      class="ant-btn ant-btn-text"
+      class="ant-btn ant-btn-text btn-hover-none p-4"
       data-testid="badge-notification"
       type="button"
     >

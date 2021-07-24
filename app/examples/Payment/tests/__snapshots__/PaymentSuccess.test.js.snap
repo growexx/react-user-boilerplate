@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<PaymentSuccess /> payment success redirect 1`] = `
+<div
+  class="StyledComponent__StyledCardWrapper-sc-19o39w7-0 iSdcrb"
+>
+  <div
+    class="ant-spin ant-spin-spinning"
+  >
+    <span
+      class="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+    </span>
+  </div>
+</div>
+`;
+
 exports[`<PaymentSuccess /> reject should redner when promise reject 1`] = `
 <div
   class="StyledComponent__StyledCardWrapper-sc-19o39w7-0 iSdcrb"
@@ -176,33 +203,6 @@ exports[`<PaymentSuccess /> should render with no props 1`] = `
         Go To Dashboard
       </span>
     </button>
-  </div>
-</div>
-`;
-
-exports[`<PaymentSuccess /> user root redirects to profile 1`] = `
-<div
-  class="StyledComponent__StyledCardWrapper-sc-19o39w7-0 iSdcrb"
->
-  <div
-    class="ant-spin ant-spin-spinning"
-  >
-    <span
-      class="ant-spin-dot ant-spin-dot-spin"
-    >
-      <i
-        class="ant-spin-dot-item"
-      />
-      <i
-        class="ant-spin-dot-item"
-      />
-      <i
-        class="ant-spin-dot-item"
-      />
-      <i
-        class="ant-spin-dot-item"
-      />
-    </span>
   </div>
 </div>
 `;

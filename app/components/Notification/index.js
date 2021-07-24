@@ -22,6 +22,9 @@ const Notification = () => {
     window.addEventListener('storage', () => {
       setCount(JSON.parse(localStorage.getItem('products')).length || []);
     });
+    return () => {
+      window.removeEventListener('storage', window);
+    };
   }, []);
 
   useEffect(() => {
@@ -29,11 +32,12 @@ const Notification = () => {
   }, [window.product]);
   return (
     <NotificationWrapper>
-      <div className="u-mr-3 u-d-inline-block">
+      <div className="u-mr-1 u-d-inline-block">
         <Button
           onClick={onClickHandler}
           type="text"
           data-testid="badge-notification"
+          className="btn-hover-none p-4"
         >
           <Badge count={count} size="small">
             <ShoppingCartOutlined className="u-font-size-lg" />
