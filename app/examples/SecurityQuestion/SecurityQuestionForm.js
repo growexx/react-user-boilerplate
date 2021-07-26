@@ -98,6 +98,8 @@ function SecurityQuestionForm(props) {
         defaultValue="-- Choose a Security Question --"
         disabled={isReset}
         selectOptions={options}
+        dataTestid="question1"
+        dataTestIdAnswer="answer1"
         onSelectChange={(value, option) =>
           handleSelect(value, option, 'question1')
         }
@@ -117,6 +119,8 @@ function SecurityQuestionForm(props) {
         onSelectChange={(value, option) =>
           handleSelect(value, option, 'question2')
         }
+        dataTestid="question2"
+        dataTestIdAnswer="answer2"
         value={
           isReset
             ? selectedQuestion && selectedQuestion[questionList[1]].name
@@ -143,11 +147,14 @@ function SecurityQuestionForm(props) {
         onChange={handleAnswer}
         selectName="question3"
         inputName="answer3"
+        dataTestid="question3"
+        dataTestIdAnswer="answer3"
         disabled={isReset}
       />
 
       <Button
         type="primary"
+        data-testid="submit_question"
         onClick={() => handleSubmit({ selectedQuestion, selectedAnswer })}
         disabled={checkDisable()}
       >

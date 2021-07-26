@@ -71,3 +71,8 @@ export const getRegisteredSecurityQuestion = () =>
     },
     status: 1,
   });
+export const registerSecurityQuestion = reqData =>
+  Promise.resolve({
+    data: reqData,
+    status: 1,
+  });

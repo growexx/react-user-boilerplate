@@ -14,6 +14,8 @@ function SelectInput(props) {
     inputName,
     value,
     disabled,
+    dataTestid,
+    dataTestIdAnswer,
   } = props;
 
   const renderOption = () =>
@@ -36,6 +38,7 @@ function SelectInput(props) {
       name={selectName}
       value={value}
       disabled={disabled}
+      data-testid={dataTestid}
     >
       {renderOption()}
     </Select>
@@ -48,6 +51,7 @@ function SelectInput(props) {
       onChange={onSelectChange}
       name={selectName}
       disabled={disabled}
+      data-testid={dataTestid}
     >
       {renderOption()}
     </Select>
@@ -60,6 +64,7 @@ function SelectInput(props) {
         placeholder={placeholder}
         onChange={onChange}
         name={inputName}
+        data-testid={dataTestIdAnswer}
       />
     </StyledSelectInput>
   );
@@ -80,5 +85,7 @@ SelectInput.propTypes = {
   inputName: PropTypes.string,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  dataTestid: PropTypes.string,
+  dataTestIdAnswer: PropTypes.string,
 };
 export default SelectInput;
