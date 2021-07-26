@@ -593,6 +593,7 @@ margin-left: 30px
   }
   .newNotificationsLoader {
     padding: 20px 12px;
+    margin-left: 20px;
   }
 }
 `;
