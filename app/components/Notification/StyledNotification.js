@@ -1,11 +1,19 @@
 import styled from 'styled-components';
+import { Popover } from 'antd';
 export const NotificationWrapper = styled.div`
-  .ant-btn-group > .ant-btn:first-child {
-    display: none;
+  .anticon-bell {
+    font-size: 18px;
+    padding-right: 10px;
+    @media screen and (max-width: 500px) {
+      padding-right: 10px;
+    }
   }
-  .ant-btn {
-    border: none;
-    box-shadow: none;
-    padding: 0;
+  .ant-badge {
+    font-size: 18px;
+    padding-right: 20px;
+  }
+  .ant-badge-count {
+    right: 20px;
   }
 `;
+export const StyledPopOver = styled(Popover)``;

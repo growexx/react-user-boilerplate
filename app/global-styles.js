@@ -536,6 +536,37 @@ margin-left: 30px
 .p-4 {
   padding: 4px !important;
 }
+
+.notificationPopoverContainer {
+  .ant-popover-content {
+    max-height: 250px;
+    overflow: auto;
+  }
+  .ant-popover-title {
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    font-size: 20px;
+  }
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+  .ant-list-item {
+    overflow: hidden;
+    align-items: flex-start;
+    padding: 20px 12px;
+    cursor: pointer;
+    p {
+      margin-bottom: 0;
+    }
+    .notificationIcon {
+      margin-right: 10px;
+      font-size: 15px;
+    }
+  }
+  .newNotificationsLoader {
+    padding: 20px 12px;
+  }
+}
 `;
 
 export default GlobalStyle;

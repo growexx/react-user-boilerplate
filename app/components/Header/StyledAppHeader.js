@@ -21,13 +21,6 @@ export const AvatarWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  .anticon-bell {
-    font-size: 18px;
-    padding-right: 20px;
-    @media screen and (max-width: 500px) {
-      padding-right: 10px;
-    }
-  }
   .anticon-shopping-cart {
     font-size: 18px;
   }
