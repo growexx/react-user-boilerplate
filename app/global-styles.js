@@ -539,16 +539,41 @@ margin-left: 30px
 
 .notificationPopoverContainer {
   .ant-popover-content {
-    max-height: 250px;
-    overflow: auto;
+    max-height: 400px;
+    max-width: 300px;
+    overflow: hidden;
   }
   .ant-popover-title {
-    padding-top: 15px;
-    padding-bottom: 15px; 
-    font-size: 20px;
+    background: @primary-color;
+    color: @white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    p {
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+    svg {
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
+  .notificationCount .ant-badge-count {
+    font-size: 2px;
+    padding: 10px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .ant-popover-inner-content {
     padding: 0;
+  }
+  .ant-list {
+    max-height: 300px;
+    overflow: auto;
   }
   .ant-list-item {
     overflow: hidden;

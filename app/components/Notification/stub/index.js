@@ -33,3 +33,7 @@ export const NOTIFICATIONS = [
     timestamp: 1596119688264,
   },
 ];
+
+export const TEST_IDS = {
+  MARK_ALL_READ: 'MARK_ALL_READ',
+};

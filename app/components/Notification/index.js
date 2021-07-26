@@ -5,10 +5,12 @@
  */
 import React from 'react';
 import { cloneDeep } from 'lodash';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Waypoint } from 'react-waypoint';
 import { Badge, List, Skeleton } from 'antd';
 import { BellOutlined } from '@ant-design/icons';
-import { NOTIFICATIONS } from 'components/Notification/stub';
+import { NOTIFICATIONS, TEST_IDS } from 'components/Notification/stub';
 import {
   NotificationWrapper,
   StyledPopOver,
@@ -48,12 +50,14 @@ class Notification extends React.Component {
     const { notificationList } = this.state;
     this.setState({
       newItemsLoading: true,
+      unreadCount: 0,
     });
     setTimeout(() => {
       const newNotificationList = notificationList.concat(NOTIFICATIONS);
       this.setState({
         notificationList: newNotificationList,
         newItemsLoading: false,
+        unreadCount: NOTIFICATION_LIMIT,
       });
       this.newNotificationsCursor = this.newNotificationsCursor + 1;
     }, 5000);
@@ -71,24 +75,37 @@ class Notification extends React.Component {
               <p className="notificationContent">{item.update}</p>
             </List.Item>
           )}
-        />
-
-        <Waypoint
-          key={this.newNotificationsCursor}
-          onEnter={this.handleMoreNotifications}
         >
-          {this.getNewNotificationsLoader()}
-        </Waypoint>
+          <Waypoint
+            key={this.newNotificationsCursor}
+            onEnter={this.handleMoreNotifications}
+          >
+            {this.getNewNotificationsLoader()}
+          </Waypoint>
+        </List>
       </>
     );
   };
 
-  setUnreadCount = visibility => {
-    if (visibility) {
-      this.setState({
-        unreadCount: 0,
-      });
-    }
+  setMarkAllRead = () => {
+    this.setState({
+      unreadCount: 0,
+    });
+  };
+
+  getTitle = () => {
+    const { unreadCount } = this.state;
+    return (
+      <>
+        <p>Notifications</p>
+        {unreadCount > 0 && <p>{unreadCount}</p>}
+        <FontAwesomeIcon
+          icon={faCheck}
+          onClick={this.setMarkAllRead}
+          data-testid={TEST_IDS.MARK_ALL_READ}
+        />
+      </>
+    );
   };
 
   render() {
@@ -99,10 +116,10 @@ class Notification extends React.Component {
           <StyledPopOver
             placement="bottom"
             content={this.getNotificationContent}
-            title="Notifications"
+            title={this.getTitle}
             overlayClassName="notificationPopoverContainer"
-            autoAdjustOverflow
             onVisibleChange={this.setUnreadCount}
+            trigger="click"
           >
             <BellOutlined />
           </StyledPopOver>
