@@ -2,15 +2,16 @@
 
 exports[`<Notification /> should render a div 1`] = `
 <div
-  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 dQHYeo"
+  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 bZxFTh"
 >
   <span
     class="ant-badge"
   >
     <span
       aria-label="bell"
-      class="anticon anticon-bell ant-popover-open StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+      class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
       role="img"
+      tabindex="-1"
     >
       <svg
         aria-hidden="true"
@@ -26,6 +27,13 @@ exports[`<Notification /> should render a div 1`] = `
         />
       </svg>
     </span>
+    <sup
+      class="ant-scroll-number ant-badge-count ant-badge-multiple-words"
+      data-show="true"
+      title="10"
+    >
+      9+
+    </sup>
   </span>
 </div>
 `;

@@ -114,7 +114,7 @@ class Notification extends React.Component {
       <NotificationWrapper>
         <Badge count={unreadCount} overflowCount={9}>
           <StyledPopOver
-            placement="bottom"
+            placement="bottomLeft"
             content={this.getNotificationContent}
             title={this.getTitle}
             overlayClassName="notificationPopoverContainer"

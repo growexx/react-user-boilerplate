@@ -540,6 +540,7 @@ margin-left: 30px
 .notificationPopoverContainer {
   .ant-popover-content {
     max-height: 400px;
+    min-width: 300px;
     max-width: 300px;
     overflow: hidden;
   }
@@ -577,14 +578,16 @@ margin-left: 30px
   }
   .ant-list-item {
     overflow: hidden;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     padding: 20px 12px;
     cursor: pointer;
     p {
       margin-bottom: 0;
     }
     .notificationIcon {
-      margin-right: 10px;
+      margin-left: 20px;
+      margin-right: 30px;
       font-size: 15px;
     }
   }
