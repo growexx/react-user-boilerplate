@@ -58,6 +58,7 @@ Following are the features included in the boilerplate
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
 | InlineEdit              | Inline edit input                               |
+| Notification            | Basic notification implemented                  |
 |                         |                                                 |
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
