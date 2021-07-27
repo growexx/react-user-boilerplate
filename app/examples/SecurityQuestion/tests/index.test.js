@@ -1,27 +1,29 @@
 import React from 'react';
-import { render, wait, fireEvent, waitForElement } from 'react-testing-library';
-import { createMemoryHistory } from 'history';
+import { render, wait, fireEvent } from 'react-testing-library';
+// import { createMemoryHistory } from 'history';
 import request from 'utils/request';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
+import 'jest-dom/extend-expect';
+
 import RegisterQuestion from '../RegisterQuestion/index';
 import ResetPassword from '../ResetPassword/index';
 import { getSecurityQuestions, registerSecurityQuestion } from '../stub';
 
 jest.mock('utils/request');
 
-function renderWithRouter(
-  ui,
-  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) },
-) {
-  // eslint-disable-next-line react/prop-types
-  const Wrapper = ({ children }) => (
-    <Router history={history}>{children}</Router>
-  );
-  return {
-    ...render(ui, { wrapper: Wrapper }),
-    history,
-  };
-}
+// function renderWithRouter(
+//   ui,
+//   { route = '/', history = createMemoryHistory({ initialEntries: [route] }) },
+// ) {
+//   // eslint-disable-next-line react/prop-types
+//   const Wrapper = ({ children }) => (
+//     <Router history={history}>{children}</Router>
+//   );
+//   return {
+//     ...render(ui, { wrapper: Wrapper }),
+//     history,
+//   };
+// }
 export async function selectOption(
   container,
   optionText,
@@ -83,7 +85,7 @@ describe('<ResetPassword />', () => {
   });
 
   it('should render and match the snapshot', async () => {
-    request.mockImplementation(getSecurityQuestions);
+    request.mockImplementation(registerSecurityQuestion);
     const {
       container: { firstChild },
     } = render(<RegisterQuestion />);
@@ -100,35 +102,72 @@ describe('register security quetsion mock', () => {
 
   it('should call submit function call', async () => {
     request.mockImplementationOnce(registerSecurityQuestion);
-
-    const { getByTestId, debug } = renderWithRouter(
-      <RegisterQuestion
-        handlesubmit={data => {
-          registerSecurityQuestion(data);
-        }}
-      />,
-      {
-        route: '/resgiter-security-questions',
-      },
-    );
-    const keyDownEvent = {
-      key: 'ArrowDown',
-    };
-    await waitForElement(async () => {
-      const que1 = getByTestId('question1').firstElementChild;
-
-      fireEvent.mouseDown(que1);
-
-      fireEvent.keyDown(que1, keyDownEvent);
-
-      const ans1 = getByTestId('answer1');
-      const ans2 = getByTestId('answer2');
-      const ans3 = getByTestId('answer3');
-      fireEvent.change(ans1, { target: { value: 'whamo' } });
-      fireEvent.change(ans2, { target: { value: 'whamo' } });
-      fireEvent.change(ans3, { target: { value: 'whamo' } });
-
-      debug();
-    });
   });
+
+  it('should render <select/> tag', async () => {
+    const { getAllByRole, getByTestId, getByText } = render(
+      <RegisterQuestion />,
+    );
+    await wait(() => expect(getAllByRole('combobox')[0]).toBeTruthy());
+    fireEvent.mouseDown(getAllByRole('combobox')[0]);
+    fireEvent.change(getAllByRole('combobox')[0], {
+      target: {
+        value: 'What is the name of the town where you were born?',
+      },
+    });
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    fireEvent.mouseDown(getAllByRole('combobox')[1]);
+    fireEvent.change(getAllByRole('combobox')[1], {
+      target: {
+        value: 'What elementary school did you attend?',
+      },
+    });
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    fireEvent.mouseDown(getAllByRole('combobox')[1]);
+    fireEvent.change(getAllByRole('combobox')[1], {
+      target: {
+        value: 'What is the name of your first pet?',
+      },
+    });
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    fireEvent.mouseDown(getAllByRole('combobox')[2]);
+    fireEvent.change(getAllByRole('combobox')[2], {
+      target: {
+        value: 'What was your first car?',
+      },
+    });
+    fireEvent.click(
+      document.querySelectorAll('.ant-select-item-option-content')[0],
+    );
+    const eventObject = {
+      preventDefault: jest.fn(),
+      target: {
+        value: 'test',
+        name: 'test',
+      },
+    };
+    fireEvent.change(getByTestId('answer1'), eventObject);
+    fireEvent.change(getByTestId('answer2'), eventObject);
+    fireEvent.change(getByTestId('answer3'), eventObject);
+    const button = getByTestId('submit_question');
+    fireEvent.click(button);
+    expect(getByText('Submit')).toBeTruthy();
+  });
+
+  // it('should called handle submit', async () => {
+  //   request.mockImplementation(registerSecurityQuestion);
+  //   const { getByTestId, debug } = render(<RegisterQuestion />);
+  //   const button = getByTestId('submit_question');
+  //   fireEvent.click(button);
+
+  //   await wait(() => expect(request).toHaveBeenCalledTimes(0));
+  //   // expect(firstChild).toMatchSnapshot();
+  //   debug();
+  // });
 });

@@ -11,11 +11,15 @@ const questionList = {
   2: 'question3',
 };
 function SecurityQuestionForm(props) {
+  // console.log(props);
   const { handleSubmit, isReset } = props;
   const [options, setOptions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
     if (isReset) {
       getRegisteredSecurityQuestion().then(res => {
         const newData = {};
@@ -24,6 +28,7 @@ function SecurityQuestionForm(props) {
         });
         setOptions(res.data.securityQuestions);
         setSelectedQuestion(newData);
+        setLoading(false);
       });
     } else {
       getSecurityQuestions().then(res => {
@@ -34,6 +39,7 @@ function SecurityQuestionForm(props) {
           }),
         );
       });
+      setLoading(false);
     }
   }, []);
 
@@ -94,63 +100,69 @@ function SecurityQuestionForm(props) {
 
   return (
     <StyledSecurityQuestion>
-      <SelectInput
-        defaultValue="-- Choose a Security Question --"
-        disabled={isReset}
-        selectOptions={options}
-        dataTestid="question1"
-        dataTestIdAnswer="answer1"
-        onSelectChange={(value, option) =>
-          handleSelect(value, option, 'question1')
-        }
-        value={
-          isReset
-            ? selectedQuestion && selectedQuestion[questionList[0]].name
-            : ''
-        }
-        placeholder="Answer"
-        onChange={handleAnswer}
-        selectName="question1"
-        inputName="answer1"
-      />
-      <SelectInput
-        defaultValue="-- Choose a Security Question --"
-        selectOptions={options}
-        onSelectChange={(value, option) =>
-          handleSelect(value, option, 'question2')
-        }
-        dataTestid="question2"
-        dataTestIdAnswer="answer2"
-        value={
-          isReset
-            ? selectedQuestion && selectedQuestion[questionList[1]].name
-            : ''
-        }
-        placeholder="Answer"
-        onChange={handleAnswer}
-        selectName="question2"
-        inputName="answer2"
-        disabled={isReset}
-      />
-      <SelectInput
-        defaultValue="-- Choose a Security Question --"
-        selectOptions={options}
-        onSelectChange={(value, option) =>
-          handleSelect(value, option, 'question3')
-        }
-        value={
-          isReset
-            ? selectedQuestion && selectedQuestion[questionList[2]].name
-            : ''
-        }
-        placeholder="Answer"
-        onChange={handleAnswer}
-        selectName="question3"
-        inputName="answer3"
-        dataTestid="question3"
-        dataTestIdAnswer="answer3"
-        disabled={isReset}
-      />
+      {loading ? (
+        <></>
+      ) : (
+        <>
+          <SelectInput
+            defaultValue="-- Choose a Security Question --"
+            disabled={isReset}
+            selectOptions={options}
+            dataTestid="question1"
+            dataTestIdAnswer="answer1"
+            onSelectChange={(value, option) =>
+              handleSelect(value, option, 'question1')
+            }
+            value={
+              isReset
+                ? selectedQuestion && selectedQuestion[questionList[0]].name
+                : ''
+            }
+            placeholder="Answer"
+            onChange={handleAnswer}
+            selectName="question1"
+            inputName="answer1"
+          />
+          <SelectInput
+            defaultValue="-- Choose a Security Question --"
+            selectOptions={options}
+            onSelectChange={(value, option) =>
+              handleSelect(value, option, 'question2')
+            }
+            dataTestid="question2"
+            dataTestIdAnswer="answer2"
+            value={
+              isReset
+                ? selectedQuestion && selectedQuestion[questionList[1]].name
+                : ''
+            }
+            placeholder="Answer"
+            onChange={handleAnswer}
+            selectName="question2"
+            inputName="answer2"
+            disabled={isReset}
+          />
+          <SelectInput
+            defaultValue="-- Choose a Security Question --"
+            selectOptions={options}
+            onSelectChange={(value, option) =>
+              handleSelect(value, option, 'question3')
+            }
+            value={
+              isReset
+                ? selectedQuestion && selectedQuestion[questionList[2]].name
+                : ''
+            }
+            placeholder="Answer"
+            onChange={handleAnswer}
+            selectName="question3"
+            inputName="answer3"
+            dataTestid="question3"
+            dataTestIdAnswer="answer3"
+            disabled={isReset}
+          />
+        </>
+      )}
 
       <Button
         type="primary"

@@ -33,6 +33,7 @@ import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import RegisterQuestion from 'examples/SecurityQuestion/RegisterQuestion';
 import ResetPassword from 'examples/SecurityQuestion/ResetPassword';
 import ResetPasswordMain from 'examples/SecurityQuestion/ResetPassword/ResetPasswordMain';
+import PasswordChange from 'examples/SecurityQuestion/ResetPassword/PasswordChange';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import RoleMiddleWare from './RoleMiddleWare';
@@ -81,6 +82,7 @@ export default function App() {
           path={ROUTES.REGISTER_QUESTION}
           component={RegisterQuestion}
         />
+
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}
@@ -107,6 +109,11 @@ export default function App() {
           exact
           path={ROUTES.FORGOT_PASSWORD}
           component={ForgotPassword}
+        />
+        <AuthRoute
+          exact
+          path={ROUTES.PASSWORD_CHANGE}
+          component={PasswordChange}
         />
         <AuthRoute path={ROUTES.RESET_PASSWORD} component={ResetPasswordMain} />
         <AuthRoute

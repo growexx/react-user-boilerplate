@@ -25,6 +25,7 @@ export const ROUTES = {
   REGISTER_QUESTION: '/resgiter-security-questions',
   RESET_PASSWORD: '/reset-password',
   RESET_PASSWORD_SECURITY: '/reset-password-security',
+  PASSWORD_CHANGE: '/password-change',
 };
 
 // API-ROUTES

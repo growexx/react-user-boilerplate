@@ -128,6 +128,11 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <AuthRoute
       component={[Function]}
+      exact={true}
+      path="/password-change"
+    />
+    <AuthRoute
+      component={[Function]}
       path="/reset-password"
     />
     <AuthRoute
