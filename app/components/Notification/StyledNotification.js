@@ -13,7 +13,7 @@ export const NotificationWrapper = styled.div`
     padding-right: 20px;
   }
   .ant-badge-count {
-    right: 20px;
+    right: 30px;
   }
 `;
 export const StyledPopOver = styled(Popover)``;

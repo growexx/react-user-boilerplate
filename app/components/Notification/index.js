@@ -166,7 +166,7 @@ class Notification extends React.Component {
     const { unreadCount } = this.state;
     return (
       <NotificationWrapper>
-        <Badge count={unreadCount} overflowCount={9}>
+        <Badge count={unreadCount} overflowCount={9} size="small">
           <StyledPopOver
             placement="bottomLeft"
             content={this.getNotificationContent()}
