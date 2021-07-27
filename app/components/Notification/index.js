@@ -52,8 +52,8 @@ class Notification extends React.Component {
           } else {
             this.setState({
               notificationList,
-              loading: false,
               unreadCount,
+              loading: false,
               newItemsLoading: false,
             });
           }
@@ -62,8 +62,8 @@ class Notification extends React.Component {
           notification.error({ message: err.message });
           this.setState({
             notificationList,
-            loading: false,
             unreadCount,
+            loading: false,
             newItemsLoading: false,
           });
         });
