@@ -446,6 +446,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                     <span
                       aria-label="bell"
                       class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                      data-testid="BELL_ICON"
                       role="img"
                       tabindex="-1"
                     >
@@ -463,13 +464,6 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                         />
                       </svg>
                     </span>
-                    <sup
-                      class="ant-scroll-number ant-badge-count ant-badge-multiple-words"
-                      data-show="true"
-                      title="10"
-                    >
-                      9+
-                    </sup>
                   </span>
                 </div>
                 <div
@@ -1051,6 +1045,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                     <span
                       aria-label="bell"
                       class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                      data-testid="BELL_ICON"
                       role="img"
                       tabindex="-1"
                     >
@@ -1068,13 +1063,6 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                         />
                       </svg>
                     </span>
-                    <sup
-                      class="ant-scroll-number ant-badge-count ant-badge-multiple-words"
-                      data-show="true"
-                      title="10"
-                    >
-                      9+
-                    </sup>
                   </span>
                 </div>
                 <div
@@ -1303,6 +1291,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                   <span
                     aria-label="bell"
                     class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                    data-testid="BELL_ICON"
                     role="img"
                     tabindex="-1"
                   >
@@ -1320,13 +1309,6 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <sup
-                    class="ant-scroll-number ant-badge-count ant-badge-multiple-words"
-                    data-show="true"
-                    title="10"
-                  >
-                    9+
-                  </sup>
                 </span>
               </div>
               <div
@@ -2206,6 +2188,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
                   <span
                     aria-label="bell"
                     class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                    data-testid="BELL_ICON"
                     role="img"
                     tabindex="-1"
                   >
@@ -2223,13 +2206,6 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <sup
-                    class="ant-scroll-number ant-badge-count ant-badge-multiple-words"
-                    data-show="true"
-                    title="10"
-                  >
-                    9+
-                  </sup>
                 </span>
               </div>
               <div

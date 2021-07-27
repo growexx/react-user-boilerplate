@@ -53,6 +53,7 @@ exports[`<Header /> should render a div 1`] = `
         <span
           aria-label="bell"
           class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+          data-testid="BELL_ICON"
           role="img"
           tabindex="-1"
         >
@@ -70,13 +71,6 @@ exports[`<Header /> should render a div 1`] = `
             />
           </svg>
         </span>
-        <sup
-          class="ant-scroll-number ant-badge-count ant-badge-multiple-words"
-          data-show="true"
-          title="10"
-        >
-          9+
-        </sup>
       </span>
     </div>
     <div

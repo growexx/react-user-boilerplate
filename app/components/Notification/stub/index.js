@@ -6,7 +6,7 @@ import {
   ExportOutlined,
   NumberOutlined,
 } from '@ant-design/icons';
-export const NOTIFICATIONS = [
+const NOTIFICATIONS = [
   {
     icon: <UserOutlined />,
     update: '70 new employees are shifted',
@@ -36,4 +36,29 @@ export const NOTIFICATIONS = [
 
 export const TEST_IDS = {
   MARK_ALL_READ: 'MARK_ALL_READ',
+  BELL_ICON: 'BELL_ICON',
+  EMPTY_CONTAINER: 'EMPTY_CONTAINER',
+  INFINITE_SCROLLING: 'INFINITE_SCROLLING',
 };
+
+export const getNotificationsSuccessMock = () =>
+  Promise.resolve({
+    data: NOTIFICATIONS,
+    status: 1,
+  });
+export const getNotificationsMockWithNoData = () =>
+  Promise.resolve({
+    data: [],
+    status: 0,
+  });
+export const getNotificationsMockWithLessData = () =>
+  Promise.resolve({
+    data: [NOTIFICATIONS[0]],
+    status: 1,
+  });
+export const getNotificationsFailureData = () =>
+  Promise.reject(
+    new Error({
+      message: 'something went wrong',
+    }),
+  );

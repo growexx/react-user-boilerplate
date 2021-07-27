@@ -538,11 +538,15 @@ margin-left: 30px
 }
 
 .notificationPopoverContainer {
+  .ant-empty {
+    margin: 20px;
+  }
   .ant-popover-content {
     max-height: 400px;
     min-width: 300px;
     max-width: 300px;
     overflow: hidden;
+    border: 2px solid @primary-color;
   }
   .ant-popover-title {
     background: @primary-color;
