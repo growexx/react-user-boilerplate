@@ -98,6 +98,12 @@ function SecurityQuestionForm(props) {
     return true;
   };
 
+  const getValue = index => {
+    if (isReset && selectedQuestion) {
+      return selectedQuestion[questionList[index]].name;
+    }
+    return '';
+  };
   return (
     <StyledSecurityQuestion>
       {loading ? (
@@ -113,11 +119,7 @@ function SecurityQuestionForm(props) {
             onSelectChange={(value, option) =>
               handleSelect(value, option, 'question1')
             }
-            value={
-              isReset
-                ? selectedQuestion && selectedQuestion[questionList[0]].name
-                : ''
-            }
+            value={getValue(0)}
             placeholder="Answer"
             onChange={handleAnswer}
             selectName="question1"
@@ -131,11 +133,7 @@ function SecurityQuestionForm(props) {
             }
             dataTestid="question2"
             dataTestIdAnswer="answer2"
-            value={
-              isReset
-                ? selectedQuestion && selectedQuestion[questionList[1]].name
-                : ''
-            }
+            value={getValue(1)}
             placeholder="Answer"
             onChange={handleAnswer}
             selectName="question2"
@@ -148,11 +146,7 @@ function SecurityQuestionForm(props) {
             onSelectChange={(value, option) =>
               handleSelect(value, option, 'question3')
             }
-            value={
-              isReset
-                ? selectedQuestion && selectedQuestion[questionList[2]].name
-                : ''
-            }
+            value={getValue(2)}
             placeholder="Answer"
             onChange={handleAnswer}
             selectName="question3"

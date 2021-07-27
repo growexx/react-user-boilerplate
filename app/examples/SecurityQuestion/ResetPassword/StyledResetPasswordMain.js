@@ -26,6 +26,36 @@ export const StyledResetPassword = styled.div`
     display: inline-block;
     display: flex;
   }
+  .registrationSideContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: @font-weight-bold;
+      margin: 0;
+    }
+    .subTitle {
+      width: 60%;
+      text-align: center;
+      margin: 0;
+    }
+    button {
+      margin-top: 35px;
+      height: @height-lg;
+      width: 160px;
+      background: @btn-default-ghost-bg;
+      border: 2px solid @white;
+      border-radius: 50px;
+      text-align: center;
+      color: @white;
+    }
+    button:hover {
+      color: @white;
+    }
+    color: @white;
+  }
   .main {
     display: flex;
     flex: 0.6;
@@ -45,35 +75,5 @@ export const StyledResetPassword = styled.div`
     justify-content: flex-end;
     align-items: center;
     padding: 32px;
-    .registrationSideContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .title {
-        text-align: center;
-        font-size: 42px;
-        font-weight: @font-weight-bold;
-        margin: 0;
-      }
-      .subTitle {
-        width: 60%;
-        text-align: center;
-        margin: 0;
-      }
-      button {
-        margin-top: 35px;
-        height: @height-lg;
-        width: 160px;
-        background: @btn-default-ghost-bg;
-        border: 2px solid @white;
-        border-radius: 50px;
-        text-align: center;
-        color: @white;
-      }
-      button:hover {
-        color: @white;
-      }
-      color: @white;
-    }
   }
 `;

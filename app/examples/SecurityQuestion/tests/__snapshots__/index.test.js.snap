@@ -4,13 +4,13 @@ exports[`<ResetPassword /> should render an <StyledSecurityQuestion> tag 1`] = `
 
 exports[`<ResetPassword /> should render and match the snapshot 1`] = `
 <div
-  class="StyledSecurityQuestion-xocjhi-0 fTavOS"
+  class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
 >
   <h2>
     Please Verify your security question
   </h2>
   <div
-    class="StyledSecurityQuestion-xocjhi-0 fTavOS"
+    class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
   >
     <button
       class="ant-btn ant-btn-primary"
@@ -28,7 +28,7 @@ exports[`<ResetPassword /> should render and match the snapshot 1`] = `
 
 exports[`<ResetPassword /> should render and match the snapshot 2`] = `
 <div
-  class="StyledSecurityQuestion-xocjhi-0 fTavOS"
+  class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
 >
   <div
     class="container"
@@ -37,7 +37,7 @@ exports[`<ResetPassword /> should render and match the snapshot 2`] = `
       Register Secuirty Question
     </h3>
     <div
-      class="StyledSecurityQuestion-xocjhi-0 fTavOS"
+      class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
     >
       <div
         class="StylesSelectInput__StyledSelectInput-icgqix-0 jmdLZo"
