@@ -438,7 +438,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                   data-visible="false"
                 />
                 <div
-                  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 bZxFTh"
+                  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
                 >
                   <span
                     class="ant-badge"
@@ -1037,7 +1037,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                   data-visible="false"
                 />
                 <div
-                  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 bZxFTh"
+                  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
                 >
                   <span
                     class="ant-badge"
@@ -1283,7 +1283,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                 data-visible="false"
               />
               <div
-                class="StyledNotification__NotificationWrapper-sc-103nxwt-0 bZxFTh"
+                class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
               >
                 <span
                   class="ant-badge"
@@ -2180,7 +2180,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
                 data-visible="false"
               />
               <div
-                class="StyledNotification__NotificationWrapper-sc-103nxwt-0 bZxFTh"
+                class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
               >
                 <span
                   class="ant-badge"

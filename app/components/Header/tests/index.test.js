@@ -8,7 +8,11 @@ import { createMemoryHistory } from 'history';
 import Header from '../index';
 import { StyledAppHeader } from '../StyledAppHeader';
 import configureStore from '../../../configureStore';
-
+jest.mock('utils/firebase', () => ({
+  fcm: {
+    onMessage: jest.fn(),
+  },
+}));
 describe('<Header />', () => {
   const history = createMemoryHistory();
   const store = configureStore({}, history);
