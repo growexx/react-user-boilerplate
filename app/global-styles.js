@@ -579,6 +579,9 @@ margin-left: 30px
   .ant-list {
     max-height: 300px;
     overflow: auto;
+    .readNotifications {
+      font-weight: bold; 
+    }
   }
   .ant-list-item {
     overflow: hidden;
@@ -593,6 +596,10 @@ margin-left: 30px
       margin-left: 20px;
       margin-right: 30px;
       font-size: 15px;
+      img {
+        height: 18px;
+        width: 18px;
+      }
     }
   }
   .newNotificationsLoader {

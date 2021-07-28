@@ -4,6 +4,7 @@
 
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const OfflinePlugin = require('offline-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -42,6 +43,31 @@ module.exports = require('./webpack.base.babel')({
       failOnError: false, // show a warning when there is a circular dependency
     }),
     new Dotenv(),
+    new OfflinePlugin({
+      relativePaths: false,
+      publicPath: '/',
+      appShell: '/',
+      safeToUseOptionalCaches: true,
+      ServiceWorker: {
+        events: true,
+        entry: path.join(process.cwd(), 'app/firebase-messaging-sw.js'),
+      },
+
+      // No need to cache .htaccess. See http://mxs.is/googmp,
+      // this is applied before any match in `caches` section
+      excludes: ['.htaccess'],
+
+      caches: {
+        main: [':rest:'],
+
+        // All chunks marked as `additional`, loaded after main section
+        // and do not prevent SW to install. Change to `optional` if
+        // do not want them to be preloaded at all (cached only when first loaded)
+        additional: ['*.chunk.js'],
+      },
+
+      // Removes warning for about `additional` section usage
+    }),
   ],
 
   // Emit a source map for easier debugging

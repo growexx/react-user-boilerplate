@@ -33,6 +33,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicons/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
+import 'file-loader?name=firebase-messaging-sw.js!./firebase-messaging-sw';
 
 import configureStore from './configureStore';
 
@@ -104,3 +105,4 @@ if (!window.Intl) {
 if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install(); // eslint-disable-line global-require
 }
+require('offline-plugin/runtime').install(); // eslint-disable-line global-require

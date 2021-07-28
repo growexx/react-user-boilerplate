@@ -11,26 +11,31 @@ const NOTIFICATIONS = [
     icon: <UserOutlined />,
     update: '70 new employees are shifted',
     timestamp: 1596119688264,
+    read: false,
   },
   {
     icon: <CheckCircleOutlined />,
     update: 'Time to Take a Break, TADA!!!',
     timestamp: 1596119686811,
+    read: false,
   },
   {
     icon: <SmileOutlined />,
     update: 'Time to Take a Break, TADA!!!',
     timestamp: 1596119686811,
+    read: false,
   },
   {
     icon: <ExportOutlined />,
     update: 'Time to Take a Break, TADA!!!',
     timestamp: 1596119686811,
+    read: false,
   },
   {
     icon: <NumberOutlined />,
     update: '70 new employees are shifted',
     timestamp: 1596119688264,
+    read: false,
   },
 ];
 
