@@ -9,30 +9,33 @@ import 'jest-dom/extend-expect';
 import {
   TEST_IDS,
   getNotificationsSuccessMock,
+  getNotificationsSuccessMockForClick,
   getNotificationsFailureData,
   getNotificationsMockWithNoData,
   getNotificationsMockWithLessData,
 } from 'components/Notification/stub';
 import Notification from 'components/Notification/index';
 import { getNotificationsMock } from 'components/Notification/constants';
+jest.mock('utils/firebase', () => ({
+  fcm: {
+    onMessage: jest.fn(messageCallbackFunction => {
+      messageCallbackFunction({
+        notification: {
+          title: 'New notification',
+          body: 'Notification Changes',
+          click_action: '/',
+          icon:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZZrv3_PEnkdOIZvnr0COONt3kL7rSSq623dB3fyLCgT7GARpReF26nPOre6JCLHKu7KQ&usqp=CAU',
+        },
+      });
+    }),
+  },
+}));
 jest.mock('components/Notification/constants');
 
 describe('<Notification />', () => {
   const history = createMemoryHistory();
   const store = configureStore({}, history);
-
-  it('should render a div', () => {
-    const { container } = render(
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <ConnectedRouter history={history}>
-            <Notification />
-          </ConnectedRouter>
-        </IntlProvider>
-      </Provider>,
-    );
-    expect(container.firstChild).toMatchSnapshot();
-  });
   it('should render notifications first time with success', async () => {
     getNotificationsMock.mockImplementation(() =>
       getNotificationsSuccessMock(),
@@ -52,6 +55,31 @@ describe('<Notification />', () => {
       expect(document.querySelector('.ant-skeleton')).toBeFalsy();
     });
     expect(getByTestId(TEST_IDS.MARK_ALL_READ)).toBeInTheDocument();
+  });
+  it('should render notifications first time with success and click on single notification', async () => {
+    getNotificationsMock.mockImplementation(() =>
+      getNotificationsSuccessMockForClick(),
+    );
+    const { getByTestId, getByText, getAllByTestId } = render(
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <Notification />
+          </ConnectedRouter>
+        </IntlProvider>
+      </Provider>,
+    );
+    fireEvent.click(getByTestId(TEST_IDS.BELL_ICON));
+    await wait(() => {
+      expect(getByText('Notifications')).toBeInTheDocument();
+      expect(document.querySelector('.ant-skeleton')).toBeFalsy();
+    });
+    fireEvent.click(getAllByTestId(TEST_IDS.NOTIFICATION_ITEM)[0]);
+    // reads one notification
+    expect(getByText('4')).toBeInTheDocument();
+    fireEvent.click(getAllByTestId(TEST_IDS.NOTIFICATION_ITEM)[1]);
+    // reads one notification
+    expect(getByText('3')).toBeInTheDocument();
   });
   it('should render notifications first time with success and click on mark all read', async () => {
     getNotificationsMock.mockImplementation(() =>
@@ -133,5 +161,17 @@ describe('<Notification />', () => {
       expect(document.querySelector('.ant-skeleton')).toBeFalsy();
     });
     expect(getByTestId(TEST_IDS.EMPTY_CONTAINER)).toBeInTheDocument();
+  });
+  it('should render a div', () => {
+    const { container } = render(
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <Notification />
+          </ConnectedRouter>
+        </IntlProvider>
+      </Provider>,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

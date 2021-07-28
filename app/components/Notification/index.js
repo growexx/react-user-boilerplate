@@ -199,6 +199,7 @@ class Notification extends React.Component {
                 key={`${index}_${item}`}
                 className={item.read === false ? 'readNotifications' : ''}
                 onClick={() => this.handleNotificationClick(item, index)}
+                data-testid={TEST_IDS.NOTIFICATION_ITEM}
               >
                 <span className="notificationIcon">
                   {this.getIcon(item.icon)}
