@@ -15,7 +15,7 @@ const RegisterQuestion = () => {
   return (
     <StyledSecurityQuestion>
       <div className="container">
-        <h3>Register Secuirty Question</h3>
+        <h3>Register Security Question</h3>
         <SecurityQuestionForm handleSubmit={handleSubmit} />
       </div>
     </StyledSecurityQuestion>

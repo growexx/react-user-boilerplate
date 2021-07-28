@@ -23,7 +23,7 @@ export const MenuItems = [
   },
   {
     to: ROUTES.REGISTER_QUESTION,
-    tabName: 'Security Question',
+    tabName: ' Set Security Question',
     icon: <QuestionOutlined />,
   },
   {

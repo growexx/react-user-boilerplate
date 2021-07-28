@@ -16,7 +16,7 @@ function ResetPassword() {
   };
   return (
     <StyledSecurityQuestion>
-      <h2>Please Verify your security question</h2>
+      <h2>Please Verify your Security question</h2>
       <SecurityQuestionForm handleSubmit={handleSubmit} isReset />
     </StyledSecurityQuestion>
   );

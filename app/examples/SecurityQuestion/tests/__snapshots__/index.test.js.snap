@@ -7,7 +7,7 @@ exports[`<ResetPassword /> should render and match the snapshot 1`] = `
   class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
 >
   <h2>
-    Please Verify your security question
+    Please Verify your Security question
   </h2>
   <div
     class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
@@ -34,7 +34,7 @@ exports[`<ResetPassword /> should render and match the snapshot 2`] = `
     class="container"
   >
     <h3>
-      Register Secuirty Question
+      Register Security Question
     </h3>
     <div
       class="StyledSecurityQuestion-xocjhi-0 bHDpqI"
