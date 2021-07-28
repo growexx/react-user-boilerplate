@@ -57,14 +57,7 @@ module.exports = require('./webpack.base.babel')({
       // this is applied before any match in `caches` section
       excludes: ['.htaccess'],
 
-      caches: {
-        main: [':rest:'],
-
-        // All chunks marked as `additional`, loaded after main section
-        // and do not prevent SW to install. Change to `optional` if
-        // do not want them to be preloaded at all (cached only when first loaded)
-        additional: ['*.chunk.js'],
-      },
+      caches: {},
 
       // Removes warning for about `additional` section usage
     }),
