@@ -2,7 +2,7 @@
 
 exports[`<Notification /> should render a div 1`] = `
 <div
-  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 bZxFTh"
+  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
 >
   <span
     class="ant-badge"

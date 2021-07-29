@@ -11,26 +11,31 @@ const NOTIFICATIONS = [
     icon: <UserOutlined />,
     update: '70 new employees are shifted',
     timestamp: 1596119688264,
+    read: false,
   },
   {
     icon: <CheckCircleOutlined />,
     update: 'Time to Take a Break, TADA!!!',
     timestamp: 1596119686811,
+    read: false,
   },
   {
     icon: <SmileOutlined />,
     update: 'Time to Take a Break, TADA!!!',
     timestamp: 1596119686811,
+    read: false,
   },
   {
     icon: <ExportOutlined />,
     update: 'Time to Take a Break, TADA!!!',
     timestamp: 1596119686811,
+    read: false,
   },
   {
     icon: <NumberOutlined />,
     update: '70 new employees are shifted',
     timestamp: 1596119688264,
+    read: false,
   },
 ];
 
@@ -39,6 +44,7 @@ export const TEST_IDS = {
   BELL_ICON: 'BELL_ICON',
   EMPTY_CONTAINER: 'EMPTY_CONTAINER',
   INFINITE_SCROLLING: 'INFINITE_SCROLLING',
+  NOTIFICATION_ITEM: 'NOTIFICATION_ITEM',
 };
 
 export const getNotificationsSuccessMock = () =>
@@ -62,3 +68,25 @@ export const getNotificationsFailureData = () =>
       message: 'something went wrong',
     }),
   );
+
+export const getNotificationsSuccessMockForClick = () =>
+  Promise.resolve({
+    data: [
+      {
+        icon:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZZrv3_PEnkdOIZvnr0COONt3kL7rSSq623dB3fyLCgT7GARpReF26nPOre6JCLHKu7KQ&usqp=CAU',
+        update: '70 new employees are shifted',
+        timestamp: 1596119688264,
+        read: false,
+        clickAction: 'http://localhost:3000/features',
+      },
+      {
+        icon: <UserOutlined />,
+        update: '70 new employees are shifted',
+        timestamp: 1596119688264,
+        read: true,
+      },
+      ...NOTIFICATIONS,
+    ],
+    status: 1,
+  });

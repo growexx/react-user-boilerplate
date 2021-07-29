@@ -95,10 +95,53 @@ class Notification extends React.Component {
     return <div className="newNotificationsLoader">{loaderArray}</div>;
   };
 
+  handleReadCount = () => {
+    const { notificationList } = this.state;
+    const unreadCount = notificationList.filter(
+      singleNotification => singleNotification.read === false,
+    ).length;
+    this.setState({
+      unreadCount,
+    });
+  };
+
+  handleNotificationClick = (item, index) => {
+    const { notificationList } = this.state;
+    const { read } = item;
+    if (read === false) {
+      const newItem = {
+        ...item,
+        read: true,
+      };
+      const currentItems = [...notificationList];
+      currentItems[index] = newItem;
+      this.setState(
+        {
+          notificationList: currentItems,
+        },
+        () => {
+          this.handleReadCount();
+        },
+      );
+    }
+  };
+
+  markAllNotificationsAsRead = () => {
+    const { notificationList } = this.state;
+    const updatedNotificationList = notificationList.map(
+      updatedNotification => ({
+        ...updatedNotification,
+        read: true,
+      }),
+    );
+    this.setState({
+      notificationList: updatedNotificationList,
+    });
+  };
+
   handleMoreNotifications = () => {
     this.setState({
       newItemsLoading: true,
-      unreadCount: 0,
     });
     this.loadNotifications();
   };
@@ -117,7 +160,13 @@ class Notification extends React.Component {
           ) : (
             notificationList.map((item, index) => (
               // eslint-disable-next-line react/no-array-index-key
-              <List.Item key={`${index}_${item}`}>
+              <List.Item
+                // eslint-disable-next-line react/no-array-index-key
+                key={`${index}_${item}`}
+                className={item.read === false ? 'readNotifications' : ''}
+                onClick={() => this.handleNotificationClick(item, index)}
+                data-testid={TEST_IDS.NOTIFICATION_ITEM}
+              >
                 <span className="notificationIcon">{item.icon}</span>
                 <p className="notificationContent">{item.update}</p>
               </List.Item>
@@ -138,6 +187,7 @@ class Notification extends React.Component {
   };
 
   setMarkAllRead = () => {
+    this.markAllNotificationsAsRead();
     this.setState({
       unreadCount: 0,
     });

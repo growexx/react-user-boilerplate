@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     min-width: 100%;
   }
-
   /**
   * display utility class
   */
@@ -53,7 +52,6 @@ const GlobalStyle = createGlobalStyle`
   .u-d-table-cell{
   display: table-cell;
   }
-
   /**
   * Utility classes for flex-box 
   */
@@ -354,11 +352,9 @@ const GlobalStyle = createGlobalStyle`
   .u-mh-100 {
   max-height: 100%;
   }
-
   /*
   * colors utility class
   */
-
   //background
   .u-bg-primary {
   background-color: @primary-color;
@@ -387,7 +383,6 @@ const GlobalStyle = createGlobalStyle`
   .u-bg-white {
   background-color: @white;
   }
-
   //text
   .u-text-primary {
   color: @text-color;
@@ -419,7 +414,6 @@ const GlobalStyle = createGlobalStyle`
   /*
   * Text utility class
   */
-
   // font-weight
   .u-font-weight-bold {
   font-weight: bold;
@@ -436,7 +430,6 @@ const GlobalStyle = createGlobalStyle`
   .u-font-weight-normal {
   font-weight: normal;
   } 
-
   // text-decoration
   .u-text-decoration-none {
   text-decoration: none; 
@@ -536,7 +529,6 @@ margin-left: 30px
 .p-4 {
   padding: 4px !important;
 }
-
 .notificationPopoverContainer {
   .ant-empty {
     margin: 20px;
@@ -579,12 +571,17 @@ margin-left: 30px
   .ant-list {
     max-height: 300px;
     overflow: auto;
+    .readNotifications {
+      font-weight: bold; 
+    }
   }
   .ant-list-item {
     overflow: hidden;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 12px;
+    padding: 20px 8px 20px 12px;
+    word-break: break-word;
+    font-size: 15px;
     cursor: pointer;
     p {
       margin-bottom: 0;
@@ -593,6 +590,10 @@ margin-left: 30px
       margin-left: 20px;
       margin-right: 30px;
       font-size: 15px;
+      img {
+        height: 18px;
+        width: 18px;
+      }
     }
   }
   .newNotificationsLoader {
