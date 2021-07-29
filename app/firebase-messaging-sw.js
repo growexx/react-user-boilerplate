@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-console */
 /**
  * THIS IS FOR NOTIFICATION FIREBASE
  */
@@ -18,11 +16,7 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage(payload => {
-  console.log(
-    '[firebase-messaging-sw.js] Received background message ',
-    payload,
-  );
   const { notification } = payload;
 
-  self.registration.showNotification(notification.title, notification);
+  window.self.registration.showNotification(notification.title, notification);
 });
