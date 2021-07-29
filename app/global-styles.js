@@ -587,7 +587,9 @@ margin-left: 30px
     overflow: hidden;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 12px;
+    padding: 20px 8px 20px 12px;
+    word-break: break-word;
+    font-size: 15px;
     cursor: pointer;
     p {
       margin-bottom: 0;

@@ -52,14 +52,9 @@ module.exports = require('./webpack.base.babel')({
         events: true,
         entry: path.join(process.cwd(), 'app/firebase-messaging-sw.js'),
       },
-
-      // No need to cache .htaccess. See http://mxs.is/googmp,
-      // this is applied before any match in `caches` section
       excludes: ['.htaccess'],
 
       caches: {},
-
-      // Removes warning for about `additional` section usage
     }),
   ],
 
