@@ -96,6 +96,11 @@
   
   More about Real Time Chat setup can be found [here](docs/general/realTimeChat.md).
   </dd>
+  <dt>Firebase Cloud Messaging</dt>
+  <dd> Firebase cloud messaging allows us to send real time push notifications to the client.
+  
+  More about Firebase cloud messaging setup can be found [here](docs/general/firebaseCloudMessaging.md).
+  </dd>
 </dl>
 
 But wait... there's more!

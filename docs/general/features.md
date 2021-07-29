@@ -95,6 +95,7 @@ Following are the features included in the boilerplate
 | Authentication          | authentication.                                 |
 | Admin Charts            | Charts Pages with statistics and Filters        |
 | Real-Time-Chat          | Real time chat with firebase                    |
+| Firebase Cloud Messaging| Basic example for push notifications using fcm  |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
@@ -115,6 +116,8 @@ Following are the features included in the boilerplate
 > Firebase Social Login support for boilerplate :  **feature/social-login** <br/>
 > Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>
 > Real Time Chat:  **feature/RB-66-Real-Time-Chat** 
+<br/>
+> Firebase Cloud Messaging:  **feature/RB-85-Push-Notifications-FCM** 
 <br/>
 > Add Item in Cart should be reflected in all pages
  Cart Sidebar For listing currently added items
