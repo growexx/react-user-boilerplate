@@ -91,6 +91,16 @@
   
   More about two factor authentication setup can be found [here](docs/general/twoFactorAuthentication.md).
   </dd>
+  <dt>Real Time Chat</dt>
+  <dd> Real time chat is feature of chatting and sending messages real time with the use of firebase.
+  
+  More about Real Time Chat setup can be found [here](docs/general/realTimeChat.md).
+  </dd>
+  <dt>Firebase Cloud Messaging</dt>
+  <dd> Firebase cloud messaging allows us to send real time push notifications to the client.
+  
+  More about Firebase cloud messaging setup can be found [here](docs/general/firebaseCloudMessaging.md).
+  </dd>
 </dl>
 
 But wait... there's more!
