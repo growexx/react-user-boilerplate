@@ -43,9 +43,9 @@ class Notification extends React.Component {
       } = payload;
       const notificationObject = {
         update: body,
-        icon,
         read: false,
         clickAction,
+        icon,
       };
       this.setState({
         notificationList: [notificationObject, ...notificationList],
