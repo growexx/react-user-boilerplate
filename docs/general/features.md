@@ -55,6 +55,7 @@ Following are the features included in the boilerplate
 | File Upload             | File Upload component.                          |
 | Image Upload            | Image editor before upload.                     |
 | OTPComponent            | Component to capture OTP.                       |
+| InlineEdit              | Inline edit input                               |
 | Rich Text editor        | wysiwyg editor                                  |
 | 401, 403, Not found     | Misc cases                                      |
 | InlineEdit              | Inline edit input                               |
@@ -95,6 +96,9 @@ Following are the features included in the boilerplate
 | User Management         | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
 | Authentication          | authentication.                                 |
 | Admin Charts            | Charts Pages with statistics and Filters        |
+| Real-Time-Chat          | Real time chat with firebase                    |
+| Firebase Cloud Messaging| Basic example for push notifications using fcm  |
+| Notifications with socket.io | Basic example for real time notifications using socket.io  |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
@@ -108,12 +112,16 @@ Following are the features included in the boilerplate
 | **Performance Monitoring & Error Tracking**        |                                                 |
 |                         |                                                 |
 | Sentry         | Sentry has been used for any code errors or performance related issue   |
-> Hooks Support can be found in branch:  **feature/12-Hooks-Support**  <br />
-> Google Analytics Integration can be found in branch:  **feature/18-Analytics-Tools** <br />
-> Graphql support for boilerplate can be found in branch:  **feature/11-GraphQL-Support** <br />
-> React-Final-Form support for boilerplate can be found in branch:  **feature/React-Final-Form** <br/>
-> Firebase Social Login support for boilerplate can be found in branch:  **feature/social-login** <br/>
+> Hooks Support :  **feature/12-Hooks-Support**  <br />
+> Google Analytics Integration :  **feature/18-Analytics-Tools** <br />
+> Graphql support for boilerplate :  **feature/11-GraphQL-Support** <br />
+> React-Final-Form support for boilerplate :  **feature/React-Final-Form** <br/>
+> Firebase Social Login support for boilerplate :  **feature/social-login** <br/>
 > Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>
+> Real Time Chat:  **feature/RB-66-Real-Time-Chat** 
+<br/>
+> Firebase Cloud Messaging:  **feature/RB-85-Push-Notifications-FCM** 
+
 > Add Item in Cart should be reflected in all pages
  Cart Sidebar For listing currently added items
   Logged into one tab should update all other tabs **RB-65-Loggedin-one-tab-update-in-another**
@@ -123,3 +131,8 @@ Following are the features included in the boilerplate
                  4.app/examples/Products/index.js
                  5.app/examples/Products/utils.js   
                  **for multitab support used window and localStorage**)
+
+
+<br />
+> Real Time Notifications with socket.io: **feature/RB-87-Notifications-socket.io**
+<br/>
