@@ -94,12 +94,19 @@
   <dt>Real Time Chat</dt>
   <dd> Real time chat is feature of chatting and sending messages real time with the use of firebase.
   
+  Support for firebase authentication can be found in <b>feature/RB-66-Real-Time-Chat</b> branch.
+
   More about Real Time Chat setup can be found [here](docs/general/realTimeChat.md).
   </dd>
   <dt>Firebase Cloud Messaging</dt>
   <dd> Firebase cloud messaging allows us to send real time push notifications to the client.
   
   More about Firebase cloud messaging setup can be found [here](docs/general/firebaseCloudMessaging.md).
+  </dd>
+  <dt>Notifications with socket.io</dt>
+  <dd> Boilerplate supports  Real time notifications with socket.io.
+  
+    Support for React-Final-Form can be found in <b>feature/RB-87-Notifications-socket.io</b> branch.
   </dd>
 </dl>
 

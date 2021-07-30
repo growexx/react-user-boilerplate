@@ -96,6 +96,7 @@ Following are the features included in the boilerplate
 | Admin Charts            | Charts Pages with statistics and Filters        |
 | Real-Time-Chat          | Real time chat with firebase                    |
 | Firebase Cloud Messaging| Basic example for push notifications using fcm  |
+| Notifications with socket.io | Basic example for real time notifications using fcm  |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
@@ -116,6 +117,7 @@ Following are the features included in the boilerplate
 > Firebase Social Login support for boilerplate :  **feature/social-login** <br/>
 > Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>
 > Real Time Chat:  **feature/RB-66-Real-Time-Chat** 
+> Real Time Notifications with socket.io: **feature/RB-87-Notifications-socket.io**
 <br/>
 > Firebase Cloud Messaging:  **feature/RB-85-Push-Notifications-FCM** 
 <br/>
