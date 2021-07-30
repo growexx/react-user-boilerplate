@@ -100,13 +100,14 @@
   </dd>
   <dt>Firebase Cloud Messaging</dt>
   <dd> Firebase cloud messaging allows us to send real time push notifications to the client.
+  Support for React-Final-Form can be found in 
+  <b>feature/RB-85-Push-Notifications-FCM</b> branch.
   
   More about Firebase cloud messaging setup can be found [here](docs/general/firebaseCloudMessaging.md).
   </dd>
   <dt>Notifications with socket.io</dt>
-  <dd> Boilerplate supports  Real time notifications with socket.io.
-  
-    Support for React-Final-Form can be found in <b>feature/RB-87-Notifications-socket.io</b> branch.
+  <dd> Boilerplate supports  Real time notifications with socket.io. 
+  Support for React-Final-Form can be found in <b>feature/RB-87-Notifications-socket.io</b> branch.
   </dd>
 </dl>
 

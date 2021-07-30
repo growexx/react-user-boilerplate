@@ -96,7 +96,7 @@ Following are the features included in the boilerplate
 | Admin Charts            | Charts Pages with statistics and Filters        |
 | Real-Time-Chat          | Real time chat with firebase                    |
 | Firebase Cloud Messaging| Basic example for push notifications using fcm  |
-| Notifications with socket.io | Basic example for real time notifications using fcm  |
+| Notifications with socket.io | Basic example for real time notifications using socket.io  |
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
