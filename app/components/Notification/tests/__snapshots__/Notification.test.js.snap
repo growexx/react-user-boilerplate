@@ -28,6 +28,22 @@ exports[`<Notification /> should render a div 1`] = `
         />
       </svg>
     </span>
+    <sup
+      class="ant-scroll-number ant-badge-count ant-badge-count-sm"
+      data-show="true"
+      title="1"
+    >
+      <span
+        class="ant-scroll-number-only"
+        style="transition: none;"
+      >
+        <p
+          class="ant-scroll-number-only-unit current"
+        >
+          1
+        </p>
+      </span>
+    </sup>
   </span>
 </div>
 `;

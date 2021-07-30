@@ -78,7 +78,6 @@ export const getNotificationsSuccessMockForClick = () =>
         update: '70 new employees are shifted',
         timestamp: 1596119688264,
         read: false,
-        clickAction: 'http://localhost:3000/features',
       },
       {
         icon: <UserOutlined />,
