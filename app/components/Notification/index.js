@@ -104,6 +104,10 @@ class Notification extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.socket.close();
+  }
+
   getNewNotificationsLoader = loaderCount => {
     const { loading, newItemsLoading } = this.state;
     const loaderArray = [];
