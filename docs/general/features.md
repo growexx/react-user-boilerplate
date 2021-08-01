@@ -117,11 +117,10 @@ Following are the features included in the boilerplate
 > Graphql support for boilerplate :  **feature/11-GraphQL-Support** <br />
 > React-Final-Form support for boilerplate :  **feature/React-Final-Form** <br/>
 > Firebase Social Login support for boilerplate :  **feature/social-login** <br/>
-> Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup** <br/>
-> Real Time Chat:  **feature/RB-66-Real-Time-Chat** 
-<br/>
-> Firebase Cloud Messaging:  **feature/RB-85-Push-Notifications-FCM** 
-
+> Sentry Performance Monitoring & Error Tracking:  **feature/RB-13-Sentry-setup**<br/>
+> Real Time Chat:  **feature/RB-66-Real-Time-Chat**  <br/>
+> Real Time Notifications with socket.io: **feature/RB-87-Notifications-socket.io** <br/>
+> Firebase Cloud Messaging:  **feature/RB-85-Push-Notifications-FCM**
 > Add Item in Cart should be reflected in all pages
  Cart Sidebar For listing currently added items
   Logged into one tab should update all other tabs **RB-65-Loggedin-one-tab-update-in-another**
@@ -134,5 +133,3 @@ Following are the features included in the boilerplate
 
 
 <br />
-> Real Time Notifications with socket.io: **feature/RB-87-Notifications-socket.io**
-<br/>
