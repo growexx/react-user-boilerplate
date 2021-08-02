@@ -22,7 +22,8 @@ export const ROUTES = {
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
   PAYMENT: '/payment',
-  PAYMENTSUCCESS: '/gateway/success',
+  PAYMENT_SUCCESS: '/gateway/success',
+  PAYMENT_FAILED: '/gateway/failed',
   PRODUCTS: '/products',
 };
 

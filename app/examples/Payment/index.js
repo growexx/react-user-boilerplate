@@ -3,11 +3,8 @@ import { Radio, Spin } from 'antd';
 import { StyledCardWrapper } from './StyledComponent';
 import PayPayment from './PayPayment';
 
-const { Group } = Radio;
-
 export default function Payments() {
   const [paymentOption, setPaymentOption] = useState('Paypal');
-
   const [isAccountLinked, setIsAccountLinked] = useState({
     isLoading: true,
     linked: false,
@@ -27,18 +24,19 @@ export default function Payments() {
     setPaymentOption(e.target.value);
     checkAcoountLinked();
   };
-  const renderPayment = () => <PayPayment type={paymentOption} amount="0" />;
+  const renderPayment = () => <PayPayment type={paymentOption} amount="100" />;
   return (
     <StyledCardWrapper>
       <div>
         <h2>Payment Option</h2>
       </div>
       <div>
-        <Group onChange={onRadioBtnChange} value={paymentOption}>
+        <Radio.Group onChange={onRadioBtnChange} value={paymentOption}>
           <Radio value="Paypal">Paypal</Radio>
-          <Radio value="Paytm">Paytm</Radio>
-          <Radio value="Net_Banking">Net Banking</Radio>
-        </Group>
+          <Radio value="Braintree">Braintree</Radio>
+          <Radio value="Stripe">Stripe</Radio>
+          <Radio value="Square">Square</Radio>
+        </Radio.Group>
       </div>
       {isAccountLinked.isLoading ? <Spin /> : renderPayment()}
     </StyledCardWrapper>

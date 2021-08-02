@@ -13,9 +13,13 @@ function PaymentSuccess() {
     history && history.location
       ? new URLSearchParams(history.location.search)
       : '';
-
+  const payType =
+    history &&
+    history.location &&
+    history.location.state &&
+    history.location.state.payType;
   useEffect(() => {
-    if (queryParams) {
+    if (queryParams && !payType) {
       const reqData = {
         requesterId: queryParams.get('PayerID'),
         transactionId: queryParams.get('paymentId'),
