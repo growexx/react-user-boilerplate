@@ -37,6 +37,7 @@ describe('<Notification />', () => {
   beforeEach(() => {
     io.mockImplementation(() => ({
       on: mockSocketOn,
+      close: mockSocketOn,
     }));
   });
   it('should render notifications first time with success', async () => {
@@ -168,6 +169,7 @@ describe('<Notification />', () => {
   it('should render a div', () => {
     io.mockImplementation(() => ({
       on: mockSocketOnWithPayload,
+      close: mockSocketOn,
     }));
     const { container } = render(
       <Provider store={store}>
