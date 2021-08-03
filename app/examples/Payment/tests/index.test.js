@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render, fireEvent, waitForElement } from 'react-testing-library';
 // import { DollarCircleOutlined } from '@ant-design/icons';
 // import { Router } from 'react-router-dom';
@@ -21,6 +22,14 @@ const dummyData = [
   },
 ];
 describe('<Payments />', () => {
+  it.only('shows a render list', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Payments />, div);
+    console.log(div.innerHTML);
+    expect(div.innerHTML).toContain('Payment Option');
+
+    ReactDOM.unmountComponentAtNode(div);
+  });
   it('should render an <StyledCardWrapper> tag', () => {
     const {
       container: { firstChild },
@@ -109,10 +118,10 @@ describe('<Payments />', () => {
   //   localStorage.removeItem('products');
   // });
   it('should change Radio Button Value', async () => {
-    const { container, getByText, debug } = render(<Payments />);
+    const { container, getByText } = render(<Payments />);
     fireEvent.click(container.getElementsByClassName('ant-radio-input')[1]);
     expect(getByText('Braintree')).toBeTruthy();
-    debug();
+    // debug();
     // await waitForElement(() => getByText('Pay Now ₹ 100'));
     // expect(getByText('Pay Now ₹ 100')).toBeTruthy();
   });

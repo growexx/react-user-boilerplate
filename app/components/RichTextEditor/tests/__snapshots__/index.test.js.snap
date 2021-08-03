@@ -7,7 +7,7 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
   <div
     aria-label="rdw-wrapper"
     class="rdw-editor-wrapper"
-    id="rdw-wrapper-6041"
+    id="rdw-wrapper-8000"
   >
     <div
       aria-hidden="false"
@@ -393,15 +393,15 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
               <div
                 class=""
                 data-block="true"
-                data-editor="388gn"
-                data-offset-key="4f804-0-0"
+                data-editor="3fouo"
+                data-offset-key="8d3dk-0-0"
               >
                 <div
                   class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                  data-offset-key="4f804-0-0"
+                  data-offset-key="8d3dk-0-0"
                 >
                   <span
-                    data-offset-key="4f804-0-0"
+                    data-offset-key="8d3dk-0-0"
                   >
                     <br
                       data-text="true"

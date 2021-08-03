@@ -107,39 +107,47 @@ function PayPayment(props) {
     );
 
   const requestPaymentStripe = (stripe, paymentMethod) => {
-    stripe.handleCardAction(`${paymentMethod.id}`).then(data => {
-      if (data.error) {
+    setIsLoading(true);
+    const reqData = {
+      gateway: 'stripe',
+      amount: totalAmount || amount,
+      currency: 'USD',
+      requestId: paymentMethod.id,
+    };
+    request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
+      method: 'POST',
+      body: reqData,
+    })
+      .then(res => {
         // eslint-disable-next-line no-console
-        console.error('Your card was not authenticated, please try again');
-      } else if (data.paymentIntent.status === 'requires_confirmation') {
-        setIsLoading(true);
-        const reqData = {
-          gateway: 'stripe',
-          amount: totalAmount,
-          currency: 'USD',
-          requestId: data.id,
-        };
 
-        request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
-          method: 'POST',
-          body: reqData,
-        })
-          .then(res => {
-            // eslint-disable-next-line no-console
-            console.log('res', res);
-            setIsLoading(false);
-            // history.push({
-            //   pathname: ROUTES.PAYMENT_SUCCESS,
-            //   search: `?paymentId=${res.data.transactionId}`,
-            //   state: { payType: 'stripe' },
-            // });
-          })
-          .catch(() => {
-            // console.log('err',err)
-            setIsLoading(false);
+        setIsLoading(false);
+        if (res.status) {
+          history.push({
+            pathname: ROUTES.PAYMENT_SUCCESS,
+            search: `?paymentId=${res.data.transactionId}`,
+            state: { payType: 'stripe' },
           });
-      }
-    });
+        }
+      })
+      .then(res => {
+        if (res.requiresAction) {
+          // Request authentication
+          stripe.handleCardAction(`${paymentMethod.id}`).then(data => {
+            if (data.error) {
+              // eslint-disable-next-line no-console
+              console.error(
+                'Your card was not authenticated, please try again',
+              );
+            }
+          });
+        }
+      })
+      .catch(() => {
+        stripe.retrievePaymentIntent(paymentMethod.id).then(() => {
+          setIsLoading(false);
+        });
+      });
   };
   const renderStripePayment = () =>
     !token ? (
