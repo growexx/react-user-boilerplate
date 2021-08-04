@@ -46,7 +46,7 @@ class Notification extends React.Component {
             this.setState({
               notificationList: [...notificationList, ...res.data],
               loading: false,
-              unreadCount: res.data.length,
+              unreadCount: res.data.length + unreadCount,
               newItemsLoading: false,
             });
           } else {
