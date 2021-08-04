@@ -30,6 +30,7 @@ import history from 'utils/history';
 import Profile from '../index';
 import configureStore from '../../../configureStore';
 import { DATA_TEST_IDS } from '../constants';
+jest.mock('draft-js/lib/generateRandomKey', () => jest.fn(() => '123'));
 
 let store;
 

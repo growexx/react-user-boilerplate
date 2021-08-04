@@ -16,7 +16,7 @@ import { browserHistory } from 'react-router-dom';
 import history from 'utils/history';
 import RichTextEditor from '../index';
 import configureStore from '../../../configureStore';
-
+jest.mock('draft-js/lib/generateRandomKey', () => jest.fn(() => '123'));
 let store;
 const props = {
   value: EditorState.createEmpty(),

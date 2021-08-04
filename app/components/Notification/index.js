@@ -200,7 +200,6 @@ class Notification extends React.Component {
         <p>Notifications</p>
         {unreadCount > 0 && (
           <>
-            <p>{unreadCount}</p>
             <FontAwesomeIcon
               icon={faCheck}
               onClick={this.setMarkAllRead}
