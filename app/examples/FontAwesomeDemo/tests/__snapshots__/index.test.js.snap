@@ -3,7 +3,7 @@
 exports[`<FontAwesomeDemo /> Should render and match the snapshot 1`] = `
 <div>
   <span
-    class="FontAwesomeDemo__Container-sc-1eklgjm-1 hSQKKX"
+    class="FontAwesomeDemo__Container-sc-1eklgjm-1 bUVRCN"
   >
     <span
       class="FontAwesomeDemo__Item-sc-1eklgjm-0 iryxNm"

@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet';
 import { Card, Button } from 'antd';
 import { stateToHTML } from 'draft-js-export-html';
 import FileUpload from 'components/FileUpload/Loadable';
+import InlineEdit from 'components/InlineEdit/Loadable';
 import { CardExtraContainer } from './StyledProfile';
 import { DATA_TEST_IDS, PROFILE_PLACEHOLDER } from './constants';
 import { options } from './helper';
@@ -24,6 +25,9 @@ class ProfileForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      nameContent: 'John Doe',
+      designationContent: 'Software Engineer at GrowExx',
+      locationContent: 'Ahmedabad, India',
       aboutContent: EditorState.createEmpty(),
       experienceContent: EditorState.createEmpty(),
       educationContent: EditorState.createEmpty(),
@@ -44,6 +48,9 @@ class ProfileForm extends React.PureComponent {
 
   render() {
     const {
+      nameContent,
+      designationContent,
+      locationContent,
       aboutContent,
       educationContent,
       experienceContent,
@@ -55,15 +62,27 @@ class ProfileForm extends React.PureComponent {
           <title>ProfileForm</title>
           <meta name="description" content="Description of ProfileForm" />
         </Helmet>
-        <p className="u-mb-1">
-          <FormattedHTMLMessage {...messages.name} />
-        </p>
-        <p className="u-mb-1">
-          <FormattedHTMLMessage {...messages.designation} />
-        </p>
-        <p className="u-mb-5">
-          <FormattedHTMLMessage {...messages.location} />
-        </p>
+        <div className="u-mb-1">
+          <InlineEdit
+            value={nameContent}
+            onSave={value => this.setState({ nameContent: value })}
+            placeholder="Enter Name"
+          />
+        </div>
+        <div className="u-mb-1">
+          <InlineEdit
+            value={designationContent}
+            onSave={value => this.setState({ designationContent: value })}
+            placeholder="Enter Designation"
+          />
+        </div>
+        <div className="u-mb-5">
+          <InlineEdit
+            value={locationContent}
+            onSave={value => this.setState({ locationContent: value })}
+            placeholder="Enter Location"
+          />
+        </div>
         <Card
           hoverable
           type="inner"

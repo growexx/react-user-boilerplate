@@ -10,7 +10,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </span>
   </p>
   <div
-    class="StyledNumeralConversion__StyledInput-sc-21e78q-1 cPDsf"
+    class="StyledNumeralConversion__StyledInput-sc-21e78q-1 gJlLFd"
   >
     <span
       class="ant-input-group-wrapper ant-input-search ant-input-search-with-button"
@@ -40,7 +40,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </span>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -62,16 +62,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -101,6 +102,30 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                     class="ant-table-tbody"
                   >
                     <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="1"
                     >
@@ -125,7 +150,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledFormatHeader-sc-21e78q-3 ijMKzY"
+    class="StyledNumeralConversion__StyledFormatHeader-sc-21e78q-3 iQHhKx"
   >
     <p>
       <span>
@@ -139,7 +164,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </p>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -156,16 +181,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -202,6 +228,39 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="0"
@@ -592,7 +651,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -609,16 +668,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -655,6 +715,39 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="0"
@@ -785,7 +878,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -802,16 +895,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -848,6 +942,39 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="0"
@@ -998,7 +1125,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -1015,16 +1142,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -1061,6 +1189,39 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="0"
@@ -1151,7 +1312,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -1168,16 +1329,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -1214,6 +1376,39 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="0"
@@ -1284,7 +1479,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kOmKSs"
+    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
   >
     <p>
       <span>
@@ -1301,16 +1496,17 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
           >
             <div
               class="ant-table-container"
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -1347,6 +1543,39 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="0"

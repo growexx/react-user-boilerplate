@@ -13,18 +13,6 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the Profile container!',
   },
-  name: {
-    id: `${scope}.name`,
-    defaultMessage: 'John Doe',
-  },
-  designation: {
-    id: `${scope}.designation`,
-    defaultMessage: 'Software Engineer at GrowExx',
-  },
-  location: {
-    id: `${scope}.location`,
-    defaultMessage: 'Ahmedabad, Gujarat',
-  },
   save: {
     id: `${scope}.save`,
     defaultMessage: 'Save',
