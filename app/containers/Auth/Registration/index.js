@@ -31,9 +31,9 @@ export function Registration() {
             <FormattedMessage {...messages.emailRegistration} />
           </p>
           <div className="accountData">
-            <Input defaultValue="Name" />
-            <Input defaultValue="Email" />
-            <Input defaultValue="Password" />
+            <Input placeholder="Name" />
+            <Input placeholder="Email" />
+            <Input placeholder="Password" type="password" />
           </div>
           <Button>
             <FormattedMessage {...messages.signUp} />
