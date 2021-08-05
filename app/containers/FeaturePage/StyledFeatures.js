@@ -1,22 +1,37 @@
 import styled from 'styled-components';
 
 export const StyledFeaturePage = styled.div`
-  h2 {
+  height: 620px;
+  overflow: hidden;
+  div {
+    overflow: auto;
+    height: calc(100vh - 120px);
+    padding: 10px;
+  }
+  h1 {
     color: @primary-color;
   }
+  h2,
+  ol {
+    display: none;
+  }
   table {
-    margin-bottom: 10px;
-    border: 1px solid @primary-color;
+    overflow: hidden;
+    border: 2px solid @primary-color;
     th {
       font-size: @font-size-lg;
       color: @primary-color;
+      display: none;
     }
     tr {
-      border-bottom: 1px solid @grey;
+      border-bottom: 2px solid @grey;
     }
     td {
-      border-right: 1px solid @grey;
+      border-right: 2px solid @grey;
+    }
+    td {
       padding: 10px;
+      font-size: 15px;
     }
   }
 `;

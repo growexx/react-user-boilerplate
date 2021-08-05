@@ -20,7 +20,6 @@ import {
 } from 'containers/App/selectors';
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
 import Form from './Form';
 import Input from './Input';
 import Section from './Section';
@@ -65,14 +64,6 @@ export function HomePage({
         />
       </Helmet>
       <div>
-        <CenteredSection>
-          <h2>
-            <FormattedMessage {...messages.startProjectHeader} />
-          </h2>
-          <p>
-            <FormattedMessage {...messages.startProjectMessage} />
-          </p>
-        </CenteredSection>
         <Section>
           <h2>
             <FormattedMessage {...messages.trymeHeader} />
