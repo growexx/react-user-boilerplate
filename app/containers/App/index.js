@@ -63,8 +63,8 @@ export default function App() {
         ))}
       </Helmet>
       <Switch>
-        <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
-        <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
+        <PrivateRoute exact path={ROUTES.HOME} component={FeaturePage} />
+        <PrivateRoute path={ROUTES.GITHUB_SEARCH} component={HomePage} />
         <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />
