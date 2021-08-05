@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SquarePaymentForm from './SquarePaymentForm';
 import { SquarePaymentWrapper } from './SquarePaymentWrapper';
 
@@ -13,7 +14,7 @@ class SquarePayment extends Component {
   componentWillMount() {
     const that = this;
     const SquarePaymentScript = document.createElement('script');
-    SquarePaymentScript.src = 'https://js.squareup.com/v2/paymentform';
+    SquarePaymentScript.src = 'https://js.squareupsandbox.com/v2/paymentform';
     SquarePaymentScript.type = 'text/javascript';
     SquarePaymentScript.async = false;
     SquarePaymentScript.onload = () => {
@@ -25,14 +26,28 @@ class SquarePayment extends Component {
   }
 
   render() {
+    const { appId, location, amount, requestPaymentSquare } = this.props;
     return (
       this.state.loaded && (
         <SquarePaymentWrapper>
-          <SquarePaymentForm PaymentForm={window.SqPaymentForm} />
+          <SquarePaymentForm
+            PaymentForm={window.SqPaymentForm}
+            appId={appId}
+            location={location}
+            amount={amount}
+            requestPaymentSquare={requestPaymentSquare}
+          />
         </SquarePaymentWrapper>
       )
     );
   }
 }
+
+SquarePayment.propTypes = {
+  appId: PropTypes.string,
+  location: PropTypes.string,
+  amount: PropTypes.string,
+  requestPaymentSquare: PropTypes.func,
+};
 
 export default SquarePayment;

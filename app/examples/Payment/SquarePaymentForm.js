@@ -36,7 +36,6 @@ class SquarePaymentForm extends Component {
     super(props);
     this.state = {
       cardBrand: '',
-      //   nonce: undefined,
     };
     this.requestCardNonce = this.requestCardNonce.bind(this);
   }
@@ -46,9 +45,10 @@ class SquarePaymentForm extends Component {
   }
 
   componentDidMount() {
+    const { appId, location, amount, requestPaymentSquare } = this.props;
     const config = {
-      applicationId: 'sq0idp-rARHLPiahkGtp6mMz2OeCA',
-      locationId: 'GMT96A77XABR1',
+      applicationId: appId,
+      locationId: location,
       inputClass: 'sq-input',
       autoBuild: false,
       inputStyles: [
@@ -88,30 +88,22 @@ class SquarePaymentForm extends Component {
           countryCode: 'US',
           total: {
             label: 'MERCHANT NAME',
-            amount: '100',
+            amount,
             pending: false,
           },
           lineItems: [
             {
               label: 'Subtotal',
-              amount: '100',
+              amount,
               pending: false,
             },
           ],
         }),
-        cardNonceResponseReceived: (errors, nonce, cardData) => {
+        cardNonceResponseReceived: (errors, nonce) => {
           if (errors) {
-            // Log errors from nonce generation to the Javascript console
-            // console.log('Encountered errors:');
-            // errors.forEach(function(error) {
-            //   console.log('  ' + error.message);
-            // });
-            // eslint-disable-next-line no-console
-            console.log(cardData);
+            requestPaymentSquare('');
           } else {
-            //   this.setState({
-            //     nonce,
-            //   });
+            requestPaymentSquare(nonce);
           }
         },
         unsupportedBrowserDetected: () => {},
@@ -193,6 +185,10 @@ class SquarePaymentForm extends Component {
 }
 SquarePaymentForm.propTypes = {
   PaymentForm: PropTypes.func,
+  appId: PropTypes.string,
+  location: PropTypes.string,
+  amount: PropTypes.string,
+  requestPaymentSquare: PropTypes.func,
 };
 
 export default SquarePaymentForm;

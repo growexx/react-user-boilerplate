@@ -17,6 +17,7 @@ function PayPayment(props) {
   const history = useHistory();
   const { type, amount } = props;
   const [token, setToken] = useState('');
+  const [location, setlocation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const productData = JSON.parse(localStorage.getItem('products'));
   const totalAmount =
@@ -36,6 +37,7 @@ function PayPayment(props) {
     }).then(res => {
       switch (paymentType) {
         case 'paypal':
+          localStorage.setItem('amount', reqData.amount);
           window.location.replace(res.data.key);
           break;
         case 'braintree':
@@ -54,6 +56,7 @@ function PayPayment(props) {
           break;
         case 'square':
           setToken(res.data.key);
+          setlocation(res.data.api_key);
           break;
         default:
           break;
@@ -72,7 +75,6 @@ function PayPayment(props) {
           body: reqData,
         })
           .then(res => {
-            setIsLoading(false);
             history.push({
               pathname: ROUTES.PAYMENT_SUCCESS,
               search: `?paymentId=${res.data.transactionId}`,
@@ -80,7 +82,7 @@ function PayPayment(props) {
             });
           })
           .catch(() => {
-            setIsLoading(false);
+            history.push(ROUTES.PAYMENT_FAILED);
           });
       });
     });
@@ -106,7 +108,10 @@ function PayPayment(props) {
       </div>
     );
 
-  const requestPaymentStripe = (stripe, paymentMethod) => {
+  const requestPaymentStripe = (paymentMethod, error) => {
+    if (error) {
+      history.push(ROUTES.PAYMENT_FAILED);
+    }
     setIsLoading(true);
     const reqData = {
       gateway: 'stripe',
@@ -119,9 +124,6 @@ function PayPayment(props) {
       body: reqData,
     })
       .then(res => {
-        // eslint-disable-next-line no-console
-
-        setIsLoading(false);
         if (res.status) {
           history.push({
             pathname: ROUTES.PAYMENT_SUCCESS,
@@ -130,23 +132,8 @@ function PayPayment(props) {
           });
         }
       })
-      .then(res => {
-        if (res.requiresAction) {
-          // Request authentication
-          stripe.handleCardAction(`${paymentMethod.id}`).then(data => {
-            if (data.error) {
-              // eslint-disable-next-line no-console
-              console.error(
-                'Your card was not authenticated, please try again',
-              );
-            }
-          });
-        }
-      })
       .catch(() => {
-        stripe.retrievePaymentIntent(paymentMethod.id).then(() => {
-          setIsLoading(false);
-        });
+        history.push(ROUTES.PAYMENT_FAILED);
       });
   };
   const renderStripePayment = () =>
@@ -169,6 +156,35 @@ function PayPayment(props) {
       />
     );
 
+  const requestPaymentSquare = nonce => {
+    if (nonce) {
+      setIsLoading(true);
+      const reqData = {
+        gateway: 'square',
+        amount: totalAmount || amount,
+        currency: 'USD',
+        requestId: nonce,
+      };
+      request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
+        method: 'POST',
+        body: reqData,
+      })
+        .then(res => {
+          if (res.status) {
+            history.push({
+              pathname: ROUTES.PAYMENT_SUCCESS,
+              search: `?paymentId=${res.data.transactionId}`,
+              state: { payType: 'square' },
+            });
+          }
+        })
+        .catch(() => {
+          history.push(ROUTES.PAYMENT_FAILED);
+        });
+    } else {
+      history.push(ROUTES.PAYMENT_FAILED);
+    }
+  };
   const renderSquarePayment = () =>
     !token ? (
       <div>
@@ -183,7 +199,12 @@ function PayPayment(props) {
         </div>
       </div>
     ) : (
-      <SquarePayment />
+      <SquarePayment
+        location={token}
+        appId={location}
+        amount={totalAmount || amount}
+        requestPaymentSquare={requestPaymentSquare}
+      />
     );
 
   switch (type) {

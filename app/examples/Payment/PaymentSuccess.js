@@ -22,8 +22,10 @@ function PaymentSuccess() {
     if (queryParams && !payType) {
       const reqData = {
         requesterId: queryParams.get('PayerID'),
-        transactionId: queryParams.get('paymentId'),
+        requestId: queryParams.get('paymentId'),
         gateway: 'paypal',
+        amount: parseFloat(localStorage.getItem('amount')),
+        currency: 'USD',
       };
       setIsLoading(true);
       request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
@@ -32,9 +34,10 @@ function PaymentSuccess() {
       })
         .then(() => {
           setIsLoading(false);
+          localStorage.removeItem('amount');
         })
         .catch(() => {
-          setIsLoading(false);
+          history.push(ROUTES.PAYMENT_FAILED);
         });
     }
   }, []);

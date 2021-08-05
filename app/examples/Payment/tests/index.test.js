@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render, fireEvent, waitForElement } from 'react-testing-library';
-// import { DollarCircleOutlined } from '@ant-design/icons';
-// import { Router } from 'react-router-dom';
-// import { createMemoryHistory } from 'history';
+import { render, fireEvent, waitForElement, wait } from 'react-testing-library';
+
 import request from 'utils/request';
 import Payments from '../index';
-// import PaymentSuccess from '../PaymentSuccess';
+
 import { TEST_IDS } from '../../Users/constants';
 
 jest.mock('utils/request');
@@ -22,10 +20,9 @@ const dummyData = [
   },
 ];
 describe('<Payments />', () => {
-  it.only('shows a render list', () => {
+  it('shows a render list', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Payments />, div);
-    console.log(div.innerHTML);
     expect(div.innerHTML).toContain('Payment Option');
 
     ReactDOM.unmountComponentAtNode(div);
@@ -60,19 +57,7 @@ describe('<Payments />', () => {
     await waitForElement(() => getByText('Pay Now'));
     expect(getByText('Pay Now')).toBeTruthy();
   });
-  // it('should change Radio Button Value', async () => {
-  //   const { container, getByText } = render(<Payments />);
-  //   fireEvent.click(container.getElementsByClassName('ant-radio-input')[1]);
-  //   await waitForElement(() => getByText('Pay Now ₹ 0'));
-  //   expect(getByText('Pay Now ₹ 0')).toBeTruthy();
-  // });
-  // it('should change Radio Button Value', async () => {
-  //   const { getByTestId } = render(<Payments />);
-  //   await waitForElement(() => getByTestId('braintree-paybtn'));
-  //   // debug();
-  //   fireEvent.click(getByTestId('braintree-paybtn'));
-  // expect(getByText('Pay Now  0')).toBeTruthy();
-  // });
+
   it('should call handlePay function with paypal', async () => {
     request.mockImplementationOnce(() =>
       Promise.resolve({ data: 'testValue' }),
@@ -103,34 +88,50 @@ describe('<Payments />', () => {
     // debug();
     localStorage.removeItem('products');
   });
-  // it('should call handlePay function with braintree', async () => {
-  //   localStorage.setItem('products', JSON.stringify(dummyData));
-  //   request.mockImplementationOnce(() =>
-  //     Promise.resolve({ data: 'testValue' }),
-  //   );
 
-  //   const { getByTestId } = render(<Payments />);
-  //   // await waitForElement(() =>
-  //   //   getByText(`Pay Now ${<DollarCircleOutlined />} 100`),
-  //   // );
-  //   fireEvent.click(getByTestId('braintree-paybtn'));
-  //   expect(request).toHaveBeenCalled();
-  //   localStorage.removeItem('products');
-  // });
-  it('should change Radio Button Value', async () => {
-    const { container, getByText } = render(<Payments />);
-    fireEvent.click(container.getElementsByClassName('ant-radio-input')[1]);
-    expect(getByText('Braintree')).toBeTruthy();
+  it('should change Radio Button to Braintree', async () => {
+    localStorage.setItem('products', JSON.stringify(dummyData));
+    request.mockImplementationOnce(() =>
+      Promise.resolve({ data: { key: 'abc1212shjsaiisiusia' } }),
+    );
+    const { getByText, getByTestId } = render(<Payments />);
+    await wait(() => {
+      const wrapper = getByTestId('radio-group').firstElementChild;
+      fireEvent.click(wrapper.firstElementChild.nextElementSibling);
+      expect(getByText('Braintree')).toBeTruthy();
+    });
+    await wait(() => fireEvent.click(getByTestId('braintree-paybtn')));
     // debug();
-    // await waitForElement(() => getByText('Pay Now ₹ 100'));
-    // expect(getByText('Pay Now ₹ 100')).toBeTruthy();
+    expect(request).toHaveBeenCalled();
   });
-  // it('should render queryparams function with queryparams', async () => {
-  //   const { container, getByText } = render(<Payments />);
-  //   await waitForElement(() => getByText('Go To Dashboard'));
-  //   request.mockImplementationOnce(() =>
-  //     Promise.resolve({ data: 'testValue' }),
-  //     fireEvent.click(container.getByTestId('redirect-btn'));
-  //   // expect(getByText('Go To Dashboard')).toBeTruthy();
-  // });
+  it('should change Radio Button to Stripe', async () => {
+    localStorage.setItem('products', JSON.stringify(dummyData));
+    request.mockImplementationOnce(() =>
+      Promise.resolve({ data: 'testValue' }),
+    );
+    const { getByText, debug, getByTestId } = render(<Payments />);
+    await wait(() => {
+      const wrapper = getByTestId('radio-group').firstElementChild;
+      fireEvent.click(
+        wrapper.firstElementChild.nextElementSibling.nextElementSibling,
+      );
+      expect(getByText('Stripe')).toBeTruthy();
+      debug();
+    });
+  });
+  it('should change Radio Button to Square', async () => {
+    localStorage.setItem('products', JSON.stringify(dummyData));
+    request.mockImplementationOnce(() =>
+      Promise.resolve({ data: 'testValue' }),
+    );
+    const { getByText, getByTestId } = render(<Payments />);
+    await wait(() => {
+      const wrapper = getByTestId('radio-group').firstElementChild;
+      fireEvent.click(
+        wrapper.firstElementChild.nextElementSibling.nextElementSibling
+          .nextElementSibling,
+      );
+    });
+    expect(getByText('Square')).toBeTruthy();
+  });
 });

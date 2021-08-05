@@ -30,7 +30,7 @@ export default function Payments() {
       <div>
         <h2>Payment Option</h2>
       </div>
-      <div>
+      <div data-testid="radio-group">
         <Radio.Group onChange={onRadioBtnChange} value={paymentOption}>
           <Radio value="Paypal">Paypal</Radio>
           <Radio value="Braintree">Braintree</Radio>

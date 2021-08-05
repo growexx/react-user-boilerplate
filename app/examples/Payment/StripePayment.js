@@ -34,10 +34,9 @@ const CheckoutForm = props => {
       card: cardElement,
     });
     if (error) {
-      console.log('[error]', error);
+      requestPaymentStripe(paymentMethod, error);
     } else {
-      console.log('[PaymentMethod]', paymentMethod);
-      requestPaymentStripe(stripe, paymentMethod);
+      requestPaymentStripe(paymentMethod);
     }
   };
 
@@ -47,6 +46,7 @@ const CheckoutForm = props => {
         options={{
           style: {
             base: {
+              // marginTop: '40px',
               fontSize: '16px',
               color: '#424770',
               '::placeholder': {
@@ -59,7 +59,7 @@ const CheckoutForm = props => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe}>
+      <button type="submit" disabled={!stripe} style={{ marginTop: '50px' }}>
         Pay
       </button>
     </form>
