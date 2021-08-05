@@ -87,6 +87,7 @@ class InlineEdit extends React.PureComponent {
         icon={faCheck}
         onClick={this.onSave}
         data-testid={TEST_IDS.SAVE_BUTTON}
+        title={TEST_IDS.SAVE_BUTTON}
       />
     </Button>
   );
@@ -97,6 +98,7 @@ class InlineEdit extends React.PureComponent {
         icon={faTimes}
         onClick={this.onCancel}
         data-testid={TEST_IDS.CANCEL_BUTTON}
+        title={TEST_IDS.CANCEL_BUTTON}
       />
     </Button>
   );

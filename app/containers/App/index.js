@@ -16,7 +16,6 @@ import Profile from 'containers/Profile/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
-import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import TwoFactorAuthentication from 'containers/Auth/TwoFactorAuthentication/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
@@ -66,7 +65,6 @@ export default function App() {
       <Switch>
         <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
         <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
-        <PrivateRoute path={ROUTES.FONT_AWESOME} component={FontAwesomeDemo} />
         <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
         <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
         <PrivateRoute path={ROUTES.LOADER} component={Loader} />

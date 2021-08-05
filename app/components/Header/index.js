@@ -8,7 +8,7 @@ import React from 'react';
 import Notification from 'components/Notification';
 import Cart from 'components/Cart';
 import PropTypes from 'prop-types';
-import { MenuItems } from './Constants';
+import { MenuItems } from './constants';
 import {
   StyledAppHeader,
   AvatarWrapper,
