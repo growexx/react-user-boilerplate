@@ -1,8 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InlineEdit /> Should render and match the snapshot 1`] = `
+.c0 .inputValue {
+  height: auto;
+  padding: 8px;
+}
+
+.c0 .inputValue:hover {
+  cursor: text;
+  background: rgba(9,30,66,0.04);
+}
+
+.c0 .placeHolderView {
+  color: #808080 !important;
+}
+
 <div
-  class="StyledInlineInput-vg6qf2-0 iqavBP"
+  class="c0"
 >
   <div
     class="inputValue"

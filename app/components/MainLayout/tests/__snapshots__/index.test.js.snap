@@ -1,6 +1,242 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MainLayout /> should render and match the snapshot 1`] = `
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 .ant-layout-sider {
+  -webkit-transition: none;
+  transition: none;
+  background: #190426;
+}
+
+.c0 .ant-menu .ant-menu-item,
+.c0 .ant-menu-submenu-title,
+.c0 .ant-menu {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0 .ant-menu.ant-menu-dark,
+.c0 .ant-menu-dark .ant-menu-sub,
+.c0 .ant-menu.ant-menu-dark .ant-menu-sub {
+  background-color: #190426;
+}
+
+.c0 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c0 .ant-menu-dark .ant-menu-item,
+.c0 .ant-menu-dark .ant-menu-item-group-title,
+.c0 .ant-menu-dark .ant-menu-item > a,
+.c0 .ant-menu-dark .ant-menu-item > span > a {
+  color: #fff;
+}
+
+.c0 .ant-menu-item-selected > span > a {
+  color: #fff !important;
+}
+
+.c0 .sideBarTrigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  outline: none;
+}
+
+.c0 .sideBarTrigger:hover {
+  color: #4d186e;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo img {
+  margin: 16px;
+}
+
+.c0 .site-layout .site-layout-background {
+  background: #fff;
+}
+
+.c0 .headerLayout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  background-color: #fff;
+}
+
+.c0[data-environment]:before {
+  content: attr(data-environment);
+  background: #ff8c1e;
+  height: 25px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 200;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c0[data-environment] > .ant-layout {
+  position: relative;
+  top: 25px;
+}
+
+.c0[data-environment='development']:before {
+  background: #b6c5cd;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 {
+  line-height: 1em;
+  background-color: transparent;
+  border-style: none;
+}
+
+.c8 {
+  padding: 2px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #fff;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  padding: 8px 0;
+  font-weight: 700;
+}
+
+.c7 > section:first-child {
+  margin-left: 8px;
+}
+
+.c7 > section:nth-child(2) {
+  margin-right: 8px;
+}
+
+.c7 > section:nth-child(2) option {
+  color: #000;
+}
+
+.c4 .anticon-bell {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.c4 .ant-badge {
+  font-size: 18px;
+  padding-right: 20px;
+}
+
+.c4 .ant-badge-count {
+  right: 30px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 0;
+}
+
+.c3 {
+  margin-left: auto;
+  margin-right: 16px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 .anticon-shopping-cart {
+  font-size: 18px;
+}
+
+.c5 .ant-btn-group > .ant-btn:first-child {
+  display: none;
+}
+
+.c5 .ant-dropdown-trigger,
+.c5 .ant-dropdown-trigger:hover {
+  border-radius: 50% !important;
+  background-color: #4d186e;
+  color: #fff;
+}
+
+@media only screen and (max-width:767px) {
+  .c7 > section:nth-child(2) {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .c4 .anticon-bell {
+    padding-right: 10px;
+  }
+}
+
 <div
   class="ant-spin-nested-loading"
 >
@@ -8,7 +244,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
     class="ant-spin-container"
   >
     <div
-      class="main-layout StyledMainLayout-jh4dg-0 chyjYC"
+      class="main-layout c0"
       data-environment="test"
     >
       <section
@@ -330,7 +566,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
             class="ant-layout-header headerLayout"
           >
             <div
-              class="StyledMainLayout__ToggleBreadCrumb-jh4dg-1 bxrHpo"
+              class="c1"
             >
               <span
                 aria-label="Navigation Toggle"
@@ -361,10 +597,10 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
               </span>
             </div>
             <div
-              class="StyledAppHeader-sc-305pn5-0 enPSEw"
+              class="c2"
             >
               <div
-                class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 gxwaGG"
+                class="c3"
               >
                 <div
                   class="u-mr-1 u-d-inline-block"
@@ -404,14 +640,14 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                   data-visible="false"
                 />
                 <div
-                  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
+                  class="c4"
                 >
                   <span
                     class="ant-badge"
                   >
                     <span
                       aria-label="bell"
-                      class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                      class="anticon anticon-bell "
                       data-testid="BELL_ICON"
                       role="img"
                       tabindex="-1"
@@ -433,7 +669,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="StyledAvatar__AvatarWrapper-sc-7zqxik-0 bIXJjY"
+                  class="c5"
                 >
                   <div
                     class="ant-btn-group ant-dropdown-button"
@@ -476,7 +712,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
             style="margin: 24px 16px; padding: 24px; min-height: 280px;"
           >
             <div
-              class="App__AppWrapper-sc-13edzow-0 hLuJAl"
+              class="c6"
               data-testid="AppRoutes"
             />
           </main>
@@ -484,7 +720,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
             class="ant-layout site-layout"
           >
             <footer
-              class="Wrapper-wcfdfo-0 kJFYpj"
+              class="c7"
             >
               <section>
                 <span>
@@ -498,10 +734,10 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
               </section>
               <section>
                 <div
-                  class="Wrapper-xnjoq9-0 dNmQIR"
+                  class="c8"
                 >
                   <select
-                    class="Select-sc-1sm01tk-0 wIjFa"
+                    class="c9"
                   >
                     <option
                       value="en"
@@ -526,6 +762,293 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
 `;
 
 exports[`<MainLayout /> should render and match the snapshot 2`] = `
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 .ant-layout-sider {
+  -webkit-transition: none;
+  transition: none;
+  background: #190426;
+}
+
+.c0 .ant-menu .ant-menu-item,
+.c0 .ant-menu-submenu-title,
+.c0 .ant-menu {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0 .ant-menu.ant-menu-dark,
+.c0 .ant-menu-dark .ant-menu-sub,
+.c0 .ant-menu.ant-menu-dark .ant-menu-sub {
+  background-color: #190426;
+}
+
+.c0 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c0 .ant-menu-dark .ant-menu-item,
+.c0 .ant-menu-dark .ant-menu-item-group-title,
+.c0 .ant-menu-dark .ant-menu-item > a,
+.c0 .ant-menu-dark .ant-menu-item > span > a {
+  color: #fff;
+}
+
+.c0 .ant-menu-item-selected > span > a {
+  color: #fff !important;
+}
+
+.c0 .sideBarTrigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  outline: none;
+}
+
+.c0 .sideBarTrigger:hover {
+  color: #4d186e;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo img {
+  margin: 16px;
+}
+
+.c0 .site-layout .site-layout-background {
+  background: #fff;
+}
+
+.c0 .headerLayout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  background-color: #fff;
+}
+
+.c0[data-environment]:before {
+  content: attr(data-environment);
+  background: #ff8c1e;
+  height: 25px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 200;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c0[data-environment] > .ant-layout {
+  position: relative;
+  top: 25px;
+}
+
+.c0[data-environment='development']:before {
+  background: #b6c5cd;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c10 {
+  line-height: 1em;
+  background-color: transparent;
+  border-style: none;
+}
+
+.c9 {
+  padding: 2px;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #fff;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  padding: 8px 0;
+  font-weight: 700;
+}
+
+.c8 > section:first-child {
+  margin-left: 8px;
+}
+
+.c8 > section:nth-child(2) {
+  margin-right: 8px;
+}
+
+.c8 > section:nth-child(2) option {
+  color: #000;
+}
+
+.c4 .anticon-bell {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.c4 .ant-badge {
+  font-size: 18px;
+  padding-right: 20px;
+}
+
+.c4 .ant-badge-count {
+  right: 30px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 0;
+}
+
+.c3 {
+  margin-left: auto;
+  margin-right: 16px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 .anticon-shopping-cart {
+  font-size: 18px;
+}
+
+.c5 .ant-btn-group > .ant-btn:first-child {
+  display: none;
+}
+
+.c5 .ant-dropdown-trigger,
+.c5 .ant-dropdown-trigger:hover {
+  border-radius: 50% !important;
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c7 {
+  overflow: hidden;
+}
+
+.c7 p {
+  margin-bottom: 30px;
+}
+
+.c7 div {
+  box-shadow: 0 0 3px #f0f2f5;
+  background: #f0f2f5;
+  border-radius: 20px;
+  overflow: auto;
+  height: calc(100vh - 120px);
+  padding: 12px;
+}
+
+.c7 h1 {
+  color: #4d186e;
+}
+
+.c7 h2,
+.c7 ol {
+  display: none;
+}
+
+.c7 table {
+  margin: 10px;
+  overflow: hidden;
+}
+
+.c7 table th {
+  font-size: 16px;
+  color: #4d186e;
+  display: none;
+}
+
+.c7 table tr:not(:first-child) {
+  border-bottom: 2px solid #808080;
+}
+
+.c7 table td:first-child {
+  border-right: 2px solid #808080;
+}
+
+.c7 table td {
+  padding: 12px 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width:767px) {
+  .c8 > section:nth-child(2) {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .c4 .anticon-bell {
+    padding-right: 10px;
+  }
+}
+
 <div
   class="ant-spin-nested-loading"
 >
@@ -533,7 +1056,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
     class="ant-spin-container"
   >
     <div
-      class="main-layout StyledMainLayout-jh4dg-0 chyjYC"
+      class="main-layout c0"
     >
       <section
         class="ant-layout ant-layout-has-sider"
@@ -854,7 +1377,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
             class="ant-layout-header headerLayout"
           >
             <div
-              class="StyledMainLayout__ToggleBreadCrumb-jh4dg-1 bxrHpo"
+              class="c1"
             >
               <span
                 aria-label="Navigation Toggle"
@@ -885,10 +1408,10 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
               </span>
             </div>
             <div
-              class="StyledAppHeader-sc-305pn5-0 enPSEw"
+              class="c2"
             >
               <div
-                class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 gxwaGG"
+                class="c3"
               >
                 <div
                   class="u-mr-1 u-d-inline-block"
@@ -928,14 +1451,14 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                   data-visible="false"
                 />
                 <div
-                  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
+                  class="c4"
                 >
                   <span
                     class="ant-badge"
                   >
                     <span
                       aria-label="bell"
-                      class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                      class="anticon anticon-bell "
                       data-testid="BELL_ICON"
                       role="img"
                       tabindex="-1"
@@ -957,7 +1480,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                   </span>
                 </div>
                 <div
-                  class="StyledAvatar__AvatarWrapper-sc-7zqxik-0 bIXJjY"
+                  class="c5"
                 >
                   <div
                     class="ant-btn-group ant-dropdown-button"
@@ -1000,11 +1523,11 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
             style="margin: 24px 16px; padding: 24px; min-height: 280px;"
           >
             <div
-              class="App__AppWrapper-sc-13edzow-0 hLuJAl"
+              class="c6"
               data-testid="AppRoutes"
             >
               <div
-                class="StyledFeatures__StyledFeaturePage-yvjjmt-0 fibwWR"
+                class="c7"
               >
                 IMAGE_MOCK
               </div>
@@ -1014,7 +1537,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
             class="ant-layout site-layout"
           >
             <footer
-              class="Wrapper-wcfdfo-0 kJFYpj"
+              class="c8"
             >
               <section>
                 <span>
@@ -1028,10 +1551,10 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
               </section>
               <section>
                 <div
-                  class="Wrapper-xnjoq9-0 dNmQIR"
+                  class="c9"
                 >
                   <select
-                    class="Select-sc-1sm01tk-0 wIjFa"
+                    class="c10"
                   >
                     <option
                       value="en"
@@ -1056,6 +1579,297 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
 `;
 
 exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] = `
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 .ant-layout-sider {
+  -webkit-transition: none;
+  transition: none;
+  background: #190426;
+}
+
+.c0 .ant-menu .ant-menu-item,
+.c0 .ant-menu-submenu-title,
+.c0 .ant-menu {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0 .ant-menu.ant-menu-dark,
+.c0 .ant-menu-dark .ant-menu-sub,
+.c0 .ant-menu.ant-menu-dark .ant-menu-sub {
+  background-color: #190426;
+}
+
+.c0 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c0 .ant-menu-dark .ant-menu-item,
+.c0 .ant-menu-dark .ant-menu-item-group-title,
+.c0 .ant-menu-dark .ant-menu-item > a,
+.c0 .ant-menu-dark .ant-menu-item > span > a {
+  color: #fff;
+}
+
+.c0 .ant-menu-item-selected > span > a {
+  color: #fff !important;
+}
+
+.c0 .sideBarTrigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  outline: none;
+}
+
+.c0 .sideBarTrigger:hover {
+  color: #4d186e;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo img {
+  margin: 16px;
+}
+
+.c0 .site-layout .site-layout-background {
+  background: #fff;
+}
+
+.c0 .headerLayout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  background-color: #fff;
+}
+
+.c0[data-environment]:before {
+  content: attr(data-environment);
+  background: #ff8c1e;
+  height: 25px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 200;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c0[data-environment] > .ant-layout {
+  position: relative;
+  top: 25px;
+}
+
+.c0[data-environment='development']:before {
+  background: #b6c5cd;
+}
+
+.c10 {
+  line-height: 1em;
+  background-color: transparent;
+  border-style: none;
+}
+
+.c9 {
+  padding: 2px;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #fff;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  padding: 8px 0;
+  font-weight: 700;
+}
+
+.c8 > section:first-child {
+  margin-left: 8px;
+}
+
+.c8 > section:nth-child(2) {
+  margin-right: 8px;
+}
+
+.c8 > section:nth-child(2) option {
+  color: #000;
+}
+
+.c4 .anticon-bell {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.c4 .ant-badge {
+  font-size: 18px;
+  padding-right: 20px;
+}
+
+.c4 .ant-badge-count {
+  right: 30px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 0;
+}
+
+.c3 {
+  margin-left: auto;
+  margin-right: 16px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 .anticon-shopping-cart {
+  font-size: 18px;
+}
+
+.c5 .ant-btn-group > .ant-btn:first-child {
+  display: none;
+}
+
+.c5 .ant-dropdown-trigger,
+.c5 .ant-dropdown-trigger:hover {
+  border-radius: 50% !important;
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c1 {
+  background: #190426;
+  -webkit-flex: 0 0 200px;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  max-width: 200px;
+  min-width: 200px;
+  width: 200px;
+  text-align: center;
+}
+
+.c7 {
+  overflow: hidden;
+}
+
+.c7 p {
+  margin-bottom: 30px;
+}
+
+.c7 div {
+  box-shadow: 0 0 3px #f0f2f5;
+  background: #f0f2f5;
+  border-radius: 20px;
+  overflow: auto;
+  height: calc(100vh - 120px);
+  padding: 12px;
+}
+
+.c7 h1 {
+  color: #4d186e;
+}
+
+.c7 h2,
+.c7 ol {
+  display: none;
+}
+
+.c7 table {
+  margin: 10px;
+  overflow: hidden;
+}
+
+.c7 table th {
+  font-size: 16px;
+  color: #4d186e;
+  display: none;
+}
+
+.c7 table tr:not(:first-child) {
+  border-bottom: 2px solid #808080;
+}
+
+.c7 table td:first-child {
+  border-right: 2px solid #808080;
+}
+
+.c7 table td {
+  padding: 12px 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width:767px) {
+  .c8 > section:nth-child(2) {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .c4 .anticon-bell {
+    padding-right: 10px;
+  }
+}
+
 <div
   class="ant-spin-nested-loading"
 >
@@ -1063,7 +1877,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
     class="ant-spin-container"
   >
     <div
-      class="main-layout StyledMainLayout-jh4dg-0 chyjYC"
+      class="main-layout c0"
     >
       <section
         class="ant-layout"
@@ -1072,7 +1886,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
           class="ant-layout-header headerLayout"
         >
           <div
-            class="logo Layout__LogoContainer-fhrxn-0 gpSMCV"
+            class="logo c1"
           >
             <a
               href="/"
@@ -1084,10 +1898,10 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
             </a>
           </div>
           <div
-            class="StyledAppHeader-sc-305pn5-0 enPSEw"
+            class="c2"
           >
             <div
-              class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 gxwaGG"
+              class="c3"
             >
               <div
                 class="u-mr-1 u-d-inline-block"
@@ -1127,14 +1941,14 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                 data-visible="false"
               />
               <div
-                class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
+                class="c4"
               >
                 <span
                   class="ant-badge"
                 >
                   <span
                     aria-label="bell"
-                    class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                    class="anticon anticon-bell "
                     data-testid="BELL_ICON"
                     role="img"
                     tabindex="-1"
@@ -1156,7 +1970,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                 </span>
               </div>
               <div
-                class="StyledAvatar__AvatarWrapper-sc-7zqxik-0 bIXJjY"
+                class="c5"
               >
                 <div
                   class="ant-btn-group ant-dropdown-button"
@@ -1508,11 +2322,11 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
             style="margin: 24px 16px; padding: 24px; min-height: 280px;"
           >
             <div
-              class="App__AppWrapper-sc-13edzow-0 hLuJAl"
+              class="c6"
               data-testid="AppRoutes"
             >
               <div
-                class="StyledFeatures__StyledFeaturePage-yvjjmt-0 fibwWR"
+                class="c7"
               >
                 IMAGE_MOCK
               </div>
@@ -1520,7 +2334,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
           </main>
         </section>
         <footer
-          class="Wrapper-wcfdfo-0 kJFYpj"
+          class="c8"
         >
           <section>
             <span>
@@ -1534,10 +2348,10 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
           </section>
           <section>
             <div
-              class="Wrapper-xnjoq9-0 dNmQIR"
+              class="c9"
             >
               <select
-                class="Select-sc-1sm01tk-0 wIjFa"
+                class="c10"
               >
                 <option
                   value="en"
@@ -1560,6 +2374,317 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
 `;
 
 exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] = `
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 .ant-layout-sider {
+  -webkit-transition: none;
+  transition: none;
+  background: #190426;
+}
+
+.c0 .ant-menu .ant-menu-item,
+.c0 .ant-menu-submenu-title,
+.c0 .ant-menu {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0 .ant-menu.ant-menu-dark,
+.c0 .ant-menu-dark .ant-menu-sub,
+.c0 .ant-menu.ant-menu-dark .ant-menu-sub {
+  background-color: #190426;
+}
+
+.c0 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c0 .ant-menu-dark .ant-menu-item,
+.c0 .ant-menu-dark .ant-menu-item-group-title,
+.c0 .ant-menu-dark .ant-menu-item > a,
+.c0 .ant-menu-dark .ant-menu-item > span > a {
+  color: #fff;
+}
+
+.c0 .ant-menu-item-selected > span > a {
+  color: #fff !important;
+}
+
+.c0 .sideBarTrigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  outline: none;
+}
+
+.c0 .sideBarTrigger:hover {
+  color: #4d186e;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 #components-layout-demo-custom-trigger .logo img {
+  margin: 16px;
+}
+
+.c0 .site-layout .site-layout-background {
+  background: #fff;
+}
+
+.c0 .headerLayout {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  background-color: #fff;
+}
+
+.c0[data-environment]:before {
+  content: attr(data-environment);
+  background: #ff8c1e;
+  height: 25px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 200;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.c0[data-environment] > .ant-layout {
+  position: relative;
+  top: 25px;
+}
+
+.c0[data-environment='development']:before {
+  background: #b6c5cd;
+}
+
+.c12 {
+  line-height: 1em;
+  background-color: transparent;
+  border-style: none;
+}
+
+.c11 {
+  padding: 2px;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #fff;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  padding: 8px 0;
+  font-weight: 700;
+}
+
+.c10 > section:first-child {
+  margin-left: 8px;
+}
+
+.c10 > section:nth-child(2) {
+  margin-right: 8px;
+}
+
+.c10 > section:nth-child(2) option {
+  color: #000;
+}
+
+.c6 .anticon-bell {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.c6 .ant-badge {
+  font-size: 18px;
+  padding-right: 20px;
+}
+
+.c6 .ant-badge-count {
+  right: 30px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 0;
+  background-color: #190426;
+  color: white !important;
+}
+
+.c5 {
+  margin-left: auto;
+  margin-right: 16px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 .anticon-shopping-cart {
+  font-size: 18px;
+}
+
+.c7 .ant-btn-group > .ant-btn:first-child {
+  display: none;
+}
+
+.c7 .ant-dropdown-trigger,
+.c7 .ant-dropdown-trigger:hover {
+  border-radius: 50% !important;
+  background-color: #4d186e;
+  color: #fff;
+}
+
+.c1 {
+  background: #190426;
+  -webkit-flex: 0 0 200px;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  max-width: 200px;
+  min-width: 200px;
+  width: 200px;
+  text-align: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  margin: 0 !important;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+
+.c9 {
+  overflow: hidden;
+}
+
+.c9 p {
+  margin-bottom: 30px;
+}
+
+.c9 div {
+  box-shadow: 0 0 3px #f0f2f5;
+  background: #f0f2f5;
+  border-radius: 20px;
+  overflow: auto;
+  height: calc(100vh - 120px);
+  padding: 12px;
+}
+
+.c9 h1 {
+  color: #4d186e;
+}
+
+.c9 h2,
+.c9 ol {
+  display: none;
+}
+
+.c9 table {
+  margin: 10px;
+  overflow: hidden;
+}
+
+.c9 table th {
+  font-size: 16px;
+  color: #4d186e;
+  display: none;
+}
+
+.c9 table tr:not(:first-child) {
+  border-bottom: 2px solid #808080;
+}
+
+.c9 table td:first-child {
+  border-right: 2px solid #808080;
+}
+
+.c9 table td {
+  padding: 12px 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width:767px) {
+  .c10 > section:nth-child(2) {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .c6 .anticon-bell {
+    padding-right: 10px;
+  }
+}
+
 <div
   class="ant-spin-nested-loading"
 >
@@ -1567,7 +2692,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
     class="ant-spin-container"
   >
     <div
-      class="main-layout StyledMainLayout-jh4dg-0 chyjYC"
+      class="main-layout c0"
     >
       <section
         class="ant-layout"
@@ -1576,7 +2701,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
           class="ant-layout-header headerLayout"
         >
           <div
-            class="logo Layout__LogoContainer-fhrxn-0 gpSMCV"
+            class="logo c1"
           >
             <a
               href="/"
@@ -1588,11 +2713,11 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
             </a>
           </div>
           <ul
-            class="ant-menu ant-menu-dark Layout__HeaderMenu-fhrxn-1 iytGGl ant-menu-root ant-menu-inline"
+            class="ant-menu ant-menu-dark c2 ant-menu-root ant-menu-inline"
             role="menu"
           >
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ ant-menu-item-selected"
+              class="ant-menu-item c3 ant-menu-item-selected"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1622,7 +2747,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1655,7 +2780,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1685,7 +2810,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1715,7 +2840,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1745,7 +2870,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1775,7 +2900,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1805,7 +2930,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1835,7 +2960,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
+              class="ant-menu-item c3"
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -1866,10 +2991,10 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
             </li>
           </ul>
           <div
-            class="StyledAppHeader__StyledAppHeaderColored-sc-305pn5-1 cckKfF"
+            class="c4"
           >
             <div
-              class="StyledAppHeader__AvatarWrapper-sc-305pn5-2 gxwaGG"
+              class="c5"
             >
               <div
                 class="u-mr-1 u-d-inline-block"
@@ -1909,14 +3034,14 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
                 data-visible="false"
               />
               <div
-                class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
+                class="c6"
               >
                 <span
                   class="ant-badge"
                 >
                   <span
                     aria-label="bell"
-                    class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+                    class="anticon anticon-bell "
                     data-testid="BELL_ICON"
                     role="img"
                     tabindex="-1"
@@ -1938,7 +3063,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
                 </span>
               </div>
               <div
-                class="StyledAvatar__AvatarWrapper-sc-7zqxik-0 bIXJjY"
+                class="c7"
               >
                 <div
                   class="ant-btn-group ant-dropdown-button"
@@ -1981,18 +3106,18 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
           style="margin: 24px 16px; padding: 24px; min-height: 280px;"
         >
           <div
-            class="App__AppWrapper-sc-13edzow-0 hLuJAl"
+            class="c8"
             data-testid="AppRoutes"
           >
             <div
-              class="StyledFeatures__StyledFeaturePage-yvjjmt-0 fibwWR"
+              class="c9"
             >
               IMAGE_MOCK
             </div>
           </div>
         </main>
         <footer
-          class="Wrapper-wcfdfo-0 kJFYpj"
+          class="c10"
         >
           <section>
             <span>
@@ -2006,10 +3131,10 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
           </section>
           <section>
             <div
-              class="Wrapper-xnjoq9-0 dNmQIR"
+              class="c11"
             >
               <select
-                class="Select-sc-1sm01tk-0 wIjFa"
+                class="c12"
               >
                 <option
                   value="en"
