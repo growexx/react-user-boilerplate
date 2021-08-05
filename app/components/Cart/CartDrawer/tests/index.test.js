@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from 'react-testing-library';
 import CartDrawer from '../index';
-import products from '../../../examples/Products/stub/product.json';
+import products from '../../../../examples/Products/stub/product.json';
 
 const mockFunction = () => {};
 const dummyData = products.products.slice(0, 2);

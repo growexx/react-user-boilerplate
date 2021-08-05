@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import Notification from 'components/Notification';
+import Cart from 'components/Cart';
 import PropTypes from 'prop-types';
 import { MenuItems } from './Constants';
 import {
@@ -19,6 +20,7 @@ const Header = props =>
   props.menuBackground ? (
     <StyledAppHeaderColored {...props}>
       <AvatarWrapper>
+        <Cart />
         <Notification />
         <Avatar menu={MenuItems} />
       </AvatarWrapper>
@@ -26,6 +28,7 @@ const Header = props =>
   ) : (
     <StyledAppHeader {...props}>
       <AvatarWrapper>
+        <Cart />
         <Notification />
         <Avatar menu={MenuItems} />
       </AvatarWrapper>

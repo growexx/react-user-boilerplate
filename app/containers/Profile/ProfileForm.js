@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet';
 import { Card, Button } from 'antd';
 import { stateToHTML } from 'draft-js-export-html';
 import FileUpload from 'components/FileUpload/Loadable';
-import InlineEdit from 'components/InlineEdit/Loadable';
+import InlineEdit from 'components/InlineEdit';
 import { CardExtraContainer } from './StyledProfile';
 import { DATA_TEST_IDS, PROFILE_PLACEHOLDER } from './constants';
 import { options } from './helper';
