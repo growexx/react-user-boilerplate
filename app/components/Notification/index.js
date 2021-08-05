@@ -202,6 +202,7 @@ class Notification extends React.Component {
           <>
             <FontAwesomeIcon
               icon={faCheck}
+              title={TEST_IDS.MARK_ALL_READ}
               onClick={this.setMarkAllRead}
               data-testid={TEST_IDS.MARK_ALL_READ}
             />
