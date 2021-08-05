@@ -41,6 +41,15 @@ describe('Check component:<Charts /> is rendering properly', () => {
   });
 
   it('Should render and match the snapshot', () => {
+    global.Date = jest.fn(() => ({
+      now: jest.fn(),
+      getTime: jest.fn(() => ({
+        toString: jest.fn(() => ({
+          slice: jest.fn(() => '000'),
+        })),
+      })),
+    }));
+    global.Date.now = jest.fn(() => 1530518207007);
     const {
       container: { firstChild },
     } = componentWrapper();

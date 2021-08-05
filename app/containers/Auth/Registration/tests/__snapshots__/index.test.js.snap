@@ -63,18 +63,21 @@ exports[`<Registration /> Should render and match the snapshot 1`] = `
       >
         <input
           class="ant-input"
+          placeholder="Name"
           type="text"
-          value="Name"
+          value=""
         />
         <input
           class="ant-input"
+          placeholder="Email"
           type="text"
-          value="Email"
+          value=""
         />
         <input
           class="ant-input"
-          type="text"
-          value="Password"
+          placeholder="Password"
+          type="password"
+          value=""
         />
       </div>
       <button

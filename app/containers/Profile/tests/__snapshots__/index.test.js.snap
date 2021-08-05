@@ -14,13 +14,46 @@ exports[`<Profile /> Should render and match the snapshot 1`] = `
         <div>
           <div
             class="u-mb-1"
-          />
+          >
+            <div
+              class="StyledInlineInput-vg6qf2-0 iqavBP"
+            >
+              <div
+                class="inputValue"
+                data-testid="INPUT_VALUE"
+              >
+                John Doe
+              </div>
+            </div>
+          </div>
           <div
             class="u-mb-1"
-          />
+          >
+            <div
+              class="StyledInlineInput-vg6qf2-0 iqavBP"
+            >
+              <div
+                class="inputValue"
+                data-testid="INPUT_VALUE"
+              >
+                Software Engineer at GrowExx
+              </div>
+            </div>
+          </div>
           <div
             class="u-mb-5"
-          />
+          >
+            <div
+              class="StyledInlineInput-vg6qf2-0 iqavBP"
+            >
+              <div
+                class="inputValue"
+                data-testid="INPUT_VALUE"
+              >
+                Ahmedabad, India
+              </div>
+            </div>
+          </div>
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           >

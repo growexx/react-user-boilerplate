@@ -8,7 +8,18 @@
 
 import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
+/**
+ * user-event is a companion library for Testing Library
+ * that provides more advanced simulation of browser
+ * interactions than the built-in fireEvent method
+ * https://testing-library.com/docs/ecosystem-user-event/
+ */
 import userEvent from '@testing-library/user-event';
+/**
+ * This import adds some helpful assertions.
+ * Custom jest matchers to test the state of the DOM
+ * https://github.com/testing-library/jest-dom
+ */
 import 'jest-dom/extend-expect';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
@@ -19,6 +30,7 @@ import history from 'utils/history';
 import Profile from '../index';
 import configureStore from '../../../configureStore';
 import { DATA_TEST_IDS } from '../constants';
+jest.mock('draft-js/lib/generateRandomKey', () => jest.fn(() => '123'));
 
 let store;
 
