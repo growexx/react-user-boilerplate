@@ -1,8 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Loader /> should render and match the snapshot 1`] = `
+.c1 .demo-infinite-container {
+  overflow: auto;
+  border-radius: 4px;
+}
+
+.c1 .demo-loading-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.c0 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #4d186e;
+}
+
 <div
-  class="StyledList-sc-1g8c4g5-1 iqEzEM"
+  class="c0"
 >
   <div
     class="ant-tabs ant-tabs-top"
@@ -109,7 +125,7 @@ exports[`<Loader /> should render and match the snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="StyledList__ListWithInfiniteLoader-sc-1g8c4g5-0 enoTdC"
+            class="c1"
           >
             <div
               class="demo-infinite-container"
