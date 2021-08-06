@@ -1,8 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ListWithInfiniteLoader /> should render and match the snapshot 1`] = `
+.c0 .demo-infinite-container {
+  overflow: auto;
+  border-radius: 4px;
+}
+
+.c0 .demo-loading-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
 <div
-  class="StyledList__ListWithInfiniteLoader-sc-1g8c4g5-0 enoTdC"
+  class="c0"
 >
   <div
     class="demo-infinite-container"
@@ -76,8 +88,20 @@ exports[`<ListWithInfiniteLoader /> should render and match the snapshot 1`] = `
 `;
 
 exports[`<ListWithInfiniteLoader /> should render and match the snapshot 2`] = `
+.c0 .demo-infinite-container {
+  overflow: auto;
+  border-radius: 4px;
+}
+
+.c0 .demo-loading-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
 <div
-  class="StyledList__ListWithInfiniteLoader-sc-1g8c4g5-0 enoTdC"
+  class="c0"
 >
   <div
     class="demo-infinite-container"
