@@ -7,7 +7,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { Input, Button } from 'antd';
+import { Input, Button, Form } from 'antd';
 import messages from './messages';
 import { StyledRegistration } from './StyledRegistration';
 import AuthSideContainer from '../index';
@@ -30,10 +30,19 @@ export function Registration() {
           <p className="emailRegistration">
             <FormattedMessage {...messages.emailRegistration} />
           </p>
-          <div className="accountData">
-            <Input placeholder="Name" />
-            <Input placeholder="Email" />
-            <Input placeholder="Password" type="password" />
+          <div className="accountData input-margin-0">
+            <Form>
+              <Form.Item name="username">
+                <Input placeholder="Name" />
+              </Form.Item>
+              <Form.Item name="email">
+                <Input type="email" placeholder="email" />
+              </Form.Item>
+
+              <Form.Item name="password">
+                <Input.Password type="password" placeholder="Password" />
+              </Form.Item>
+            </Form>
           </div>
           <Button>
             <FormattedMessage {...messages.signUp} />

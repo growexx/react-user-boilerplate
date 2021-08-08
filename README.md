@@ -43,7 +43,8 @@
   <dt>Storybook Support</dt>
   <dd>Get storybook setup out of the box in the boilerplate. Learn more about storybook <a href="https://storybook.js.org/">here</a>.
 
-  For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
+For easy use and development of stories in our boilerplate, follow these [instructions](docs/general/storybook.md).
+
   </dd>
   <dt>Access Control</dt>
   <dd>Boilerplate supports access control of features out of the box.
@@ -53,14 +54,16 @@
   <dt>Redux-Form Support</dt>
   <dd>Boilerplate supports Redux-Form. It has demo and setup added out of the box for Redux-Form.
 
-  More about Redux-Form can be found [here](docs/third-party-integrations/redux-form.md).
+More about Redux-Form can be found [here](docs/third-party-integrations/redux-form.md).
+
   </dd>
   <dt>Google Analytics</dt>
   <dd>Google Analytics support is given in the boilerplate. This feature is optional and is based on requirement, so not merged in main branch.
   <br/>
   Support for Google Analytics can be found in <b>feature/18-Analytics-Tools</b> branch.
 
-  More about google analytics can be found [here](docs/general/googleAnalytics.md).
+More about google analytics can be found [here](docs/general/googleAnalytics.md).
+
   </dd>
   <dt>Hooks Support</dt>
   <dd>Boilerplate supports hooks and all current components are converted to hooks. This feature is optional and is based on requirement, so not merged in main branch.
@@ -72,7 +75,8 @@
   <br/>
   Support for graphql can be found in <b>feature/11-GraphQL-Support</b> branch.
 
-  More about graphql setup can be found [here](docs/general/graphql.md).
+More about graphql setup can be found [here](docs/general/graphql.md).
+
   </dd>
   <dt>React-Final-Form Support</dt>
   <dd>Boilerplate supports React-Final-Form. It has demo and setup added out of the box for React-Final-Form. This feature is optional and is based on requirement, so not merged in main branch.
@@ -84,19 +88,27 @@
   <br/>
   Support for firebase authentication can be found in <b>feature/social-login</b> branch.
 
-  More about firebase setup can be found [here](docs/general/firebase.md).
+More about firebase setup can be found [here](docs/general/firebase.md).
+
   </dd>
   <dt>Two Factor Authentication</dt>
   <dd>Boilerplate supports two factor authentication. It has demo and setup added out of the box for two factor authentication.
   
   More about two factor authentication setup can be found [here](docs/general/twoFactorAuthentication.md).
   </dd>
+  
+<dt>Ecommerce Cart Functionality</dt>
+  <dd>You can add and delete the product in the cart and also consistency is managed between the tabs using local storage. 
+  
+  More about Ecommerce Cart Functionality setup can be found [here](docs/general/ecommerceCartFunctionality.md).
+  </dd>
   <dt>Real Time Chat</dt>
   <dd> Real time chat is feature of chatting and sending messages real time with the use of firebase.
   
   Support for firebase authentication can be found in <b>feature/RB-66-Real-Time-Chat</b> branch.
 
-  More about Real Time Chat setup can be found [here](docs/general/realTimeChat.md).
+More about Real Time Chat setup can be found [here](docs/general/realTimeChat.md).
+
   </dd>
   <dt>Firebase Cloud Messaging</dt>
   <dd> Firebase cloud messaging allows us to send real time push notifications to the client.
@@ -105,7 +117,8 @@
   <b>feature/RB-85-Push-Notifications-FCM</b> branch.
     <br />
 
-  More about Firebase cloud messaging setup can be found [here](docs/general/firebaseCloudMessaging.md).
+More about Firebase cloud messaging setup can be found [here](docs/general/firebaseCloudMessaging.md).
+
   </dd>
   <dt>Notifications with socket.io</dt>
   <dd> Boilerplate supports  Real time notifications with socket.io.
@@ -137,7 +150,7 @@ There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on ho
 4.  Run `npm run setup` in order to install dependencies and clean the git repo.<br />
     _At this point you can run `npm start` to see the example app at `http://localhost:3000`._
 5.  Run `npm run clean` to delete the example app.
-6.  Add env file into the project's main directory. Values for env file can be found [here](docs/general/env.md). 
+6.  Add env file into the project's main directory. Values for env file can be found [here](docs/general/env.md).
 
 Now you're ready to rumble!
 
