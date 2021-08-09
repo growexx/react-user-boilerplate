@@ -63,7 +63,7 @@ function PaymentSuccess() {
               />
               <h1>Payment Succeful!</h1>
             </div>
-            <div>{queryParams ? renderQueryParam() : null}</div>
+            <div>{queryParams && renderQueryParam()}</div>
           </div>
           <Button
             data-testid="redirect-btn"

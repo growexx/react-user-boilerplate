@@ -87,14 +87,14 @@ class SquarePaymentForm extends Component {
           currencyCode: 'USD',
           countryCode: 'US',
           total: {
-            label: 'MERCHANT NAME',
             amount,
+            label: 'MERCHANT NAME',
             pending: false,
           },
           lineItems: [
             {
-              label: 'Subtotal',
               amount,
+              label: 'Subtotal',
               pending: false,
             },
           ],

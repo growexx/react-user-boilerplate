@@ -39,8 +39,8 @@ export default function configureStore(initialState = {}, history) {
   const enhancers = [applyMiddleware(...middlewares)];
 
   const persistConfig = {
-    key: 'react-boilerplate',
     storage,
+    key: 'react-boilerplate',
     blacklist: ['router'],
   };
   const persistedReducer = persistReducer(persistConfig, createReducer());
