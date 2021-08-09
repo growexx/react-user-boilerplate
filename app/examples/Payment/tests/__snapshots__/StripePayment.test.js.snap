@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StripePayment /> should render with token 1`] = `
+<form>
+  <div />
+  <button
+    data-testid="stripePayBtn"
+    disabled=""
+    style="margin-top: 50px;"
+    type="submit"
+  >
+    Pay
+  </button>
+</form>
+`;

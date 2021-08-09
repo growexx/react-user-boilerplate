@@ -1,0 +1,720 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SquarePaymentForm /> should render with appId and location 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with card nounce 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with card nounce error 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type cardBrandChanged with card 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        >
+          VISA
+        </span>
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type cardBrandChanged with no card 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type errorClassAdded 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  >
+    Please fix card information errors before continuing.
+  </p>
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type errorClassRemoved 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center; display: none;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type focusClassAdded 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type focusClassRemoved 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type not matched 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;
+
+exports[`<SquarePaymentForm /> should render with event type postalCodeChanged 1`] = `
+<div
+  class="container"
+>
+  <div
+    id="form-container"
+  >
+    <div
+      id="sq-ccbox"
+    >
+      <p>
+        <span
+          style="float: left; text-align: center;"
+        >
+          Enter Card Info Below 
+        </span>
+        <span
+          style="display: block; float: right;"
+        />
+      </p>
+      <div
+        id="cc-field-wrapper"
+      >
+        <div
+          id="sq-card-number"
+        />
+        <input
+          id="card-nonce"
+          name="nonce"
+          type="hidden"
+        />
+        <div
+          id="sq-expiration-date"
+        />
+        <div
+          id="sq-cvv"
+        />
+      </div>
+      <input
+        id="name"
+        placeholder="Name"
+        style="vertical-align: top; display: none; margin: 0px; font-size: 16px; font-family: Helvetica Neue; padding: 16px; color: rgb(55, 63, 74); background-color: transparent; line-height: 1.15em;"
+        type="text"
+      />
+      <div
+        id="sq-postal-code"
+      />
+    </div>
+    <button
+      class="ant-btn button-credit-card"
+      data-testid="squarePayBtn"
+      type="button"
+    >
+      <span>
+        Pay
+      </span>
+    </button>
+  </div>
+  <p
+    id="error"
+    style="text-align: center;"
+  />
+</div>
+`;

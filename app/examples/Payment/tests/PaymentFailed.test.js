@@ -1,12 +1,10 @@
 import React from 'react';
 import { render, wait } from 'react-testing-library';
 import request from 'utils/request';
+import PropTypes from 'prop-types';
 import { createMemoryHistory } from 'history';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import PaymentSuccess from '../PaymentSuccess';
 import PaymentFailed from '../PaymentFailed';
-
-// import { ROUTES } from '../../../containers/constants';
 
 const props = {};
 jest.mock('utils/request');
@@ -18,10 +16,12 @@ function renderWithRouter(
   ui,
   { route = '/', history = createMemoryHistory({ initialEntries: [route] }) },
 ) {
-  // eslint-disable-next-line react/prop-types
   const Wrapper = ({ children }) => (
     <Router history={history}>{children}</Router>
   );
+  Wrapper.propTypes = {
+    children: PropTypes.any,
+  };
   return {
     ...render(ui, { wrapper: Wrapper }),
     history,

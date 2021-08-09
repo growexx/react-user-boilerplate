@@ -5,8 +5,6 @@ import { createMemoryHistory } from 'history';
 import { BrowserRouter as Router } from 'react-router-dom';
 import PaymentSuccess from '../PaymentSuccess';
 
-// import { ROUTES } from '../../../containers/constants';
-
 const props = {};
 jest.mock('utils/request');
 

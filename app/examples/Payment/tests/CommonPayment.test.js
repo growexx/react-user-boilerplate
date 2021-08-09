@@ -4,17 +4,18 @@ import { render } from 'react-testing-library';
 import CommonPaymentInput from '../CommonPaymentInput';
 
 describe('<CommonPaymentInput />', () => {
-  it('should render an <Card> tag', () => {
+  it('should render with continue btn disable', () => {
+    const props = {
+      inputPlaceholder: 'abc',
+      onInputChange: () => {},
+      onLinkClick: () => {},
+      onContinueClick: () => {},
+      continueBtnDisable: false,
+      inputValue: 'abc',
+    };
     const {
       container: { firstChild },
-    } = render(<CommonPaymentInput />);
-    expect(firstChild.tagName).toEqual('DIV');
-  });
-
-  it('should have a class attribute', () => {
-    const {
-      container: { firstChild },
-    } = render(<CommonPaymentInput />);
-    expect(firstChild.hasAttribute('class')).toBe(true);
+    } = render(<CommonPaymentInput {...props} />);
+    expect(firstChild).toMatchSnapshot();
   });
 });

@@ -10,16 +10,15 @@ export default function Payments() {
     linked: false,
   });
 
-  useEffect(() => {
-    checkAcoountLinked();
-  }, []);
-
   const checkAcoountLinked = () => {
     setIsAccountLinked({ isLoading: true });
     setTimeout(() => {
       setIsAccountLinked({ isLoading: false, linked: true });
     }, 1000);
   };
+  useEffect(() => {
+    checkAcoountLinked();
+  }, []);
   const onRadioBtnChange = e => {
     setPaymentOption(e.target.value);
     checkAcoountLinked();

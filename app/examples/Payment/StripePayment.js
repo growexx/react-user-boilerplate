@@ -46,7 +46,6 @@ const CheckoutForm = props => {
         options={{
           style: {
             base: {
-              // marginTop: '40px',
               fontSize: '16px',
               color: '#424770',
               '::placeholder': {
@@ -59,7 +58,12 @@ const CheckoutForm = props => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe} style={{ marginTop: '50px' }}>
+      <button
+        data-testid="stripePayBtn"
+        type="submit"
+        disabled={!stripe}
+        style={{ marginTop: '50px' }}
+      >
         Pay
       </button>
     </form>

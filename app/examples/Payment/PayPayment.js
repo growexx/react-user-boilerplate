@@ -25,6 +25,30 @@ function PayPayment(props) {
       ? productData.reduce((accu, product) => accu + product.price, 0)
       : 0;
 
+  const requestPaymentBraintree = (createErr, instance, reqData) => {
+    const button = document.getElementById('braintreebtn');
+    button.addEventListener('click', () => {
+      instance.requestPaymentMethod(async (err, payload) => {
+        setIsLoading(true);
+        Object.assign(reqData, { requestId: payload.nonce });
+        request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
+          method: 'POST',
+          body: reqData,
+        })
+          .then(res => {
+            history.push({
+              pathname: ROUTES.PAYMENT_SUCCESS,
+              search: `?paymentId=${res.data.transactionId}`,
+              state: { payType: 'braintree' },
+            });
+          })
+          .catch(() => {
+            history.push(ROUTES.PAYMENT_FAILED);
+          });
+      });
+    });
+  };
+
   const handlePay = paymentType => {
     const reqData = {
       gateway: paymentType,
@@ -64,30 +88,6 @@ function PayPayment(props) {
     });
   };
 
-  const requestPaymentBraintree = (createErr, instance, reqData) => {
-    const button = document.getElementById('braintreebtn');
-    button.addEventListener('click', () => {
-      instance.requestPaymentMethod(async (err, payload) => {
-        setIsLoading(true);
-        Object.assign(reqData, { requestId: payload.nonce });
-        request(`${PAYMENT_INTEGRATION_API.SUCCESS}`, {
-          method: 'POST',
-          body: reqData,
-        })
-          .then(res => {
-            history.push({
-              pathname: ROUTES.PAYMENT_SUCCESS,
-              search: `?paymentId=${res.data.transactionId}`,
-              state: { payType: 'braintree' },
-            });
-          })
-          .catch(() => {
-            history.push(ROUTES.PAYMENT_FAILED);
-          });
-      });
-    });
-  };
-
   const renderBrainTree = () =>
     !token ? (
       <div>
@@ -104,7 +104,9 @@ function PayPayment(props) {
     ) : (
       <div>
         <div id="dropin-container" />
-        <Button id="braintreebtn">Request payment method</Button>
+        <Button data-testid="braintreebtn" id="braintreebtn">
+          Request payment method
+        </Button>
       </div>
     );
 
@@ -191,7 +193,7 @@ function PayPayment(props) {
         <img className="paytm_logo" src={SquareLogo} alt="square_logo" />
         <div>
           <Button
-            data-testid="stripe-paybtn"
+            data-testid="square-paybtn"
             onClick={() => handlePay('square')}
           >
             Pay Now <DollarCircleOutlined /> {totalAmount || amount}

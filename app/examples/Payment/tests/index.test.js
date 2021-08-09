@@ -8,6 +8,7 @@ import Payments from '../index';
 import { TEST_IDS } from '../../Users/constants';
 
 jest.mock('utils/request');
+jest.mock('@stripe/react-stripe-js');
 const dummyData = [
   {
     id: 1,
@@ -48,9 +49,6 @@ describe('<Payments />', () => {
     fireEvent.change(radio);
     fireEvent.change(radio, { target: { value: 'Braintree' } });
     expect(radio.value).toBe('Braintree');
-    // debug();
-
-    // expect(radio.textContent).toBe('Braintree');
   });
   it('should call renderPayment function', async () => {
     const { getByText } = render(<Payments />);
@@ -85,38 +83,40 @@ describe('<Payments />', () => {
     await waitForElement(() => getByText('Pay Now'));
     fireEvent.click(getByTestId(TEST_IDS.PAYNOW_BUTTON));
     expect(request).toHaveBeenCalled();
-    // debug();
     localStorage.removeItem('products');
   });
 
   it('should change Radio Button to Braintree', async () => {
     localStorage.setItem('products', JSON.stringify(dummyData));
-    request.mockImplementationOnce(() =>
-      Promise.resolve({ data: { key: 'abc1212shjsaiisiusia' } }),
-    );
-    const { getByText, getByTestId } = render(<Payments />);
+    const props = {
+      type: 'paypal',
+      amount: 100,
+    };
+    const { getByText, getByTestId } = render(<Payments {...props} />);
     await wait(() => {
       const wrapper = getByTestId('radio-group').firstElementChild;
       fireEvent.click(wrapper.firstElementChild.nextElementSibling);
       expect(getByText('Braintree')).toBeTruthy();
     });
-    await wait(() => fireEvent.click(getByTestId('braintree-paybtn')));
-    // debug();
-    expect(request).toHaveBeenCalled();
   });
   it('should change Radio Button to Stripe', async () => {
     localStorage.setItem('products', JSON.stringify(dummyData));
     request.mockImplementationOnce(() =>
       Promise.resolve({ data: 'testValue' }),
     );
-    const { getByText, debug, getByTestId } = render(<Payments />);
+
+    const { getByText, getByTestId } = render(<Payments />);
     await wait(() => {
       const wrapper = getByTestId('radio-group').firstElementChild;
       fireEvent.click(
         wrapper.firstElementChild.nextElementSibling.nextElementSibling,
       );
       expect(getByText('Stripe')).toBeTruthy();
-      debug();
+      wait(() => fireEvent.click(getByTestId('stripe-paybtn')));
+
+      expect(request).toHaveBeenCalled();
+      wait(() => fireEvent.click(getByTestId('stripePayBtn')));
+      expect(request).toHaveBeenCalled();
     });
   });
   it('should change Radio Button to Square', async () => {
@@ -133,5 +133,7 @@ describe('<Payments />', () => {
       );
     });
     expect(getByText('Square')).toBeTruthy();
+    wait(() => fireEvent.click(getByTestId('squarePayBtn')));
+    expect(request).toHaveBeenCalled();
   });
 });

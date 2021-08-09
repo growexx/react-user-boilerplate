@@ -106,7 +106,6 @@ class SquarePaymentForm extends Component {
             requestPaymentSquare(nonce);
           }
         },
-        unsupportedBrowserDetected: () => {},
         inputEventReceived: inputEvent => {
           switch (inputEvent.eventType) {
             case 'focusClassAdded':
@@ -174,6 +173,7 @@ class SquarePaymentForm extends Component {
           <Button
             className="button-credit-card"
             onClick={this.requestCardNonce}
+            data-testid="squarePayBtn"
           >
             Pay
           </Button>
