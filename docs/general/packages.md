@@ -61,3 +61,5 @@ Following are the packages used in the boilerplate
 | recharts                | Charts                                          |
 | react-waypoint          | Skeleton loader                                 |
 | firebase                | Firebase related features                       |
+| jest-styled-components  | Jest utilities for Styled Components            |
+

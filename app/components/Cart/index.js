@@ -39,7 +39,7 @@ const Cart = () => {
           className="btn-hover-none p-4"
         >
           <Badge count={count} size="small">
-            <ShoppingCartOutlined className="u-font-size-lg" />
+            <ShoppingCartOutlined className="u-font-size-xlg" />
           </Badge>
         </Button>
       </div>
