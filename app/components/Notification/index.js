@@ -95,8 +95,6 @@ class Notification extends React.Component {
     });
     this.loadNotifications();
     fcm.onMessage(payload => {
-      // eslint-disable-next-line no-console
-      console.log('payload', payload);
       this.loadNotifications('pushNotification', payload);
     });
   }

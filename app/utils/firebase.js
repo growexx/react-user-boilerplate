@@ -16,7 +16,6 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('../firebase-messaging-sw.js', { scope: '/' })
     .then(async registration => {
-      console.log('Service Worker Registered', registration);
       fcm
         .getToken({
           vapidKey: process.env.REACT_APP_FIREBASE_VAPID_KEY,
