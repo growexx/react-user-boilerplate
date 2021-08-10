@@ -22,7 +22,7 @@ export const ROUTES = {
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
   PRODUCTS: '/products',
-  REGISTER_QUESTION: '/resgiter-security-questions',
+  REGISTER_QUESTION: '/register-security-questions',
   RESET_PASSWORD: '/reset-password',
   RESET_PASSWORD_SECURITY: '/reset-password-security',
   PASSWORD_CHANGE: '/password-change',

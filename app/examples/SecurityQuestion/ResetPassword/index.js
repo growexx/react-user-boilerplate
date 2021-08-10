@@ -1,13 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import AuthSideContainer from '../../../containers/Auth';
+import { AUTH_TYPE } from '../../../containers/Auth/constants';
 import { ROUTES } from '../../../containers/constants';
 import SecurityQuestionForm from '../SecurityQuestionForm';
 import { postSecurityQuestionRegister } from '../stub';
-import { StyledSecurityQuestion } from '../StyledSecurityQuestion';
+// import { StyledSecurityQuestion } from '../StyledSecurityQuestion';
+import { StyledResetPassword } from './StyledResetPasswordMain';
 
 function ResetPassword() {
-  // console.log('props')
-
   const history = useHistory();
   const handleSubmit = data => {
     postSecurityQuestionRegister(data).then(() => {
@@ -15,10 +16,13 @@ function ResetPassword() {
     });
   };
   return (
-    <StyledSecurityQuestion>
-      <h2>Please Verify your Security question</h2>
-      <SecurityQuestionForm handleSubmit={handleSubmit} isReset />
-    </StyledSecurityQuestion>
+    <StyledResetPassword>
+      <AuthSideContainer authType={AUTH_TYPE[0]} />
+      <div className="security-main">
+        <p className="title-reset">Please Verify your Security question</p>
+        <SecurityQuestionForm handleSubmit={handleSubmit} isReset />
+      </div>
+    </StyledResetPassword>
   );
 }
 

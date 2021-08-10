@@ -87,7 +87,7 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <PrivateRoute
       component={[Function]}
-      path="/resgiter-security-questions"
+      path="/register-security-questions"
     />
     <PrivateRoute
       component={[Function]}

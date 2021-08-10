@@ -11,7 +11,6 @@ const questionList = {
   2: 'question3',
 };
 function SecurityQuestionForm(props) {
-  // console.log(props);
   const { handleSubmit, isReset } = props;
   const [options, setOptions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);

@@ -15,8 +15,10 @@ const RegisterQuestion = () => {
   return (
     <StyledSecurityQuestion>
       <div className="container">
-        <h3>Register Security Question</h3>
-        <SecurityQuestionForm handleSubmit={handleSubmit} />
+        <p className="title-main">Set Security Question</p>
+        <div className="question-form">
+          <SecurityQuestionForm handleSubmit={handleSubmit} />
+        </div>
       </div>
     </StyledSecurityQuestion>
   );

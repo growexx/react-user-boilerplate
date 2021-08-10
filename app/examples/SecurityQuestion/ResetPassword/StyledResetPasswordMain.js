@@ -58,22 +58,40 @@ export const StyledResetPassword = styled.div`
   }
   .main {
     display: flex;
-    flex: 0.6;
+    flex: 0.7;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
   .resetPassword {
     font-weight: @font-weight-bold;
     font-size: @font-size-lg+26;
     color: @primary-color;
+    margin: unset;
   }
   .sideContainer {
     background: @primary-color;
     display: flex;
-    flex: 0.4;
+    flex: 0.3;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    padding: 32px;
+  }
+  .security-main {
+    display: flex;
+    flex: 0.7;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & .title {
+      font-weight: @font-weight-bold;
+      font-size: @font-size-lg+16;
+      color: @primary-color;
+    }
+  }
+  .title-reset {
+    font-weight: @font-weight-bold;
+    font-size: @font-size-lg+16;
+    color: @primary-color;
   }
 `;
