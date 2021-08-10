@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     min-width: 100%;
   }
-
   /**
   * display utility class
   */
@@ -53,7 +52,6 @@ const GlobalStyle = createGlobalStyle`
   .u-d-table-cell{
   display: table-cell;
   }
-
   /**
   * Utility classes for flex-box 
   */
@@ -354,11 +352,9 @@ const GlobalStyle = createGlobalStyle`
   .u-mh-100 {
   max-height: 100%;
   }
-
   /*
   * colors utility class
   */
-
   //background
   .u-bg-primary {
   background-color: @primary-color;
@@ -387,7 +383,6 @@ const GlobalStyle = createGlobalStyle`
   .u-bg-white {
   background-color: @white;
   }
-
   //text
   .u-text-primary {
   color: @text-color;
@@ -419,7 +414,6 @@ const GlobalStyle = createGlobalStyle`
   /*
   * Text utility class
   */
-
   // font-weight
   .u-font-weight-bold {
   font-weight: bold;
@@ -436,7 +430,6 @@ const GlobalStyle = createGlobalStyle`
   .u-font-weight-normal {
   font-weight: normal;
   } 
-
   // text-decoration
   .u-text-decoration-none {
   text-decoration: none; 
@@ -455,7 +448,7 @@ const GlobalStyle = createGlobalStyle`
     font-size : @font-size-lg;
   }
   .u-font-size-xlg {
-    font-size: @font-size-sm * 2;
+    font-size: @font-size-sm * 2 !important;
   }
   // text-monospace 
   .u-text-monospace {
@@ -535,6 +528,82 @@ margin-left: 30px
 }
 .p-4 {
   padding: 4px !important;
+}
+.notificationPopoverContainer {
+  .ant-empty {
+    margin: 20px;
+  }
+  .ant-popover-content {
+    max-height: 400px;
+    min-width: 300px;
+    max-width: 300px;
+    overflow: hidden;
+    border: 2px solid @primary-color;
+  }
+  .ant-popover-title {
+    background: @primary-color;
+    color: @white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    p {
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+    svg {
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
+  .notificationCount .ant-badge-count {
+    font-size: 2px;
+    padding: 10px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+  .ant-list {
+    max-height: 300px;
+    overflow: auto;
+    .readNotifications {
+      font-weight: bold; 
+    }
+  }
+  .ant-list-item {
+    overflow: hidden;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 8px 20px 12px;
+    word-break: break-word;
+    font-size: 15px;
+    cursor: pointer;
+    p {
+      margin-bottom: 0;
+    }
+    .notificationIcon {
+      margin-left: 20px;
+      margin-right: 30px;
+      font-size: 15px;
+      img {
+        height: 18px;
+        width: 18px;
+      }
+    }
+  }
+  .newNotificationsLoader {
+    padding: 20px 12px;
+    margin-left: 20px;
+  }
+  .sideContainer {
+    max-width: 513px;
+    width: 100%;
+  }
 }
 `;
 

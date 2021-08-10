@@ -47,6 +47,7 @@ describe('<RichTextEditor />', () => {
     prevPersistor = persistor;
   });
   it('Should render and match the snapshot', () => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.123456789);
     const {
       container: { firstChild },
     } = componentWrapper();

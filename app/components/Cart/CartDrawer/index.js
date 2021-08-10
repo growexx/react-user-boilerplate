@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import { DollarCircleOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 import { ROUTES } from 'containers/constants';
-import { StyledCardWrapper } from './StyledCardWrapper';
+import { StyledCardWrapper } from '../../CartDrawer/StyledCardWrapper';
 const { Text } = Typography;
 const CartDrawer = ({ visible, setVisible }) => {
   const history = useHistory();

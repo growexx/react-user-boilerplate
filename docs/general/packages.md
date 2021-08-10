@@ -59,3 +59,8 @@ Following are the packages used in the boilerplate
 | dotenv                  | Loads environment modules to process.env        |
 | react-otp-input         | Input for otp.                                  |
 | recharts                | Charts                                          |
+| react-waypoint          | Skeleton loader                                 |
+| jest-styled-components  | Jest utilities for Styled Components            |
+| braintree-web-drop-in   | Braintree drop in instance create               |
+| @stripe/react-stripe-js | Library to use stripe hoook and card element    |
+| SquarePaymentForm       | Library to create square payment form for dev   |

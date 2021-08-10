@@ -18,7 +18,7 @@ import styled from 'styled-components';
 import { ToggleBreadCrumb } from './StyledMainLayout';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
-import { GET_FILTERED_MENU_ITEM } from '../SideBar/Constants';
+import { GET_FILTERED_MENU_ITEM } from '../SideBar/constants';
 const { Header, Content } = Layout;
 
 const LogoContainer = styled.div`
