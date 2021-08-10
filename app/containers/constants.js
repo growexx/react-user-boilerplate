@@ -4,7 +4,7 @@ export const IS_DEMO_CODE = true;
 // App-Routes
 export const ROUTES = {
   HOME: '/',
-  FEATURES: '/features',
+  GITHUB_SEARCH: '/github-search',
   FONT_AWESOME: '/font-awesome',
   LOGIN: '/login',
   REGISTER: '/register',

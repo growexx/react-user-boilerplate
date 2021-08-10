@@ -1,6 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Check component:<Charts /> is rendering properly Should render and match the snapshot 1`] = `
+.c0 {
+  width: 100%;
+  min-width: 325px;
+}
+
+.c3 {
+  width: 97%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.c2 {
+  width: 50%;
+  text-align: center;
+}
+
+.c1 {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media screen and (max-width:500px) {
+  .c0 {
+    max-width: 325px;
+    min-width: initial;
+  }
+}
+
+@media all and (max-width:1024px) {
+  .c2 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (min-width:768px) and (max-width:1024px) {
+  .c1 .ant-statistic-content {
+    font-size: 23px;
+  }
+}
+
+@media all and (min-width:480px) and (max-width:768px) {
+  .c1 .ant-statistic-content {
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width:480px) {
+  .c1 .ant-statistic-content {
+    font-size: 17px;
+  }
+}
+
 <div>
   <div
     class="ant-page-header CommonClasses.PageHeader ant-page-header-ghost"
@@ -101,7 +157,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
       class="ant-row d-flex justify-content-around flex-row w-100"
     >
       <div
-        class="ant-space ant-space-horizontal ant-space-align-center d-flex justify-content-around flex-row w-100 Statistics__SpaceContainer-sc-3wwsqz-0 bDrSGG"
+        class="ant-space ant-space-horizontal ant-space-align-center d-flex justify-content-around flex-row w-100 c1"
       >
         <div
           class="ant-space-item"
@@ -218,7 +274,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
       class="ant-row m-1 d-flex justify-content-center flex-row align-items-start"
     >
       <div
-        class=" d-flex justify-content-center flex-column constants__PieChartItem-sc-8ehz4a-4 cSvPKy"
+        class=" d-flex justify-content-center flex-column c2"
       >
         <h4>
           Sales by Category
@@ -241,7 +297,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
         </div>
       </div>
       <div
-        class=" d-flex justify-content-center flex-column constants__PieChartItem-sc-8ehz4a-4 cSvPKy"
+        class=" d-flex justify-content-center flex-column c2"
       >
         <h4>
           Sales by University
@@ -264,7 +320,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
         </div>
       </div>
       <div
-        class="ant-row mt-5 d-flex justify-content-center flex-column w-90 constants__BarChartWrapper-sc-8ehz4a-2 imWADU"
+        class="ant-row mt-5 d-flex justify-content-center flex-column w-90 c3"
       >
         <h4>
           Sign up
