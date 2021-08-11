@@ -400,14 +400,14 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
                 class=""
                 data-block="true"
                 data-editor="1v6mt"
-                data-offset-key="6lrre-0-0"
+                data-offset-key="1r3sa-0-0"
               >
                 <div
                   class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                  data-offset-key="6lrre-0-0"
+                  data-offset-key="1r3sa-0-0"
                 >
                   <span
-                    data-offset-key="6lrre-0-0"
+                    data-offset-key="1r3sa-0-0"
                   >
                     <br
                       data-text="true"
