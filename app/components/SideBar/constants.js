@@ -6,7 +6,6 @@
 import React from 'react';
 import {
   UserOutlined,
-  CheckCircleOutlined,
   SmileOutlined,
   LoadingOutlined,
   ExportOutlined,
@@ -16,6 +15,7 @@ import {
   PieChartOutlined,
   MessageOutlined,
   ShoppingOutlined,
+  SearchOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -28,22 +28,12 @@ export const MenuItems = [
   {
     to: ROUTES.HOME,
     tabName: 'Home',
-    icon: <UserOutlined />,
-  },
-  {
-    to: ROUTES.USERS,
-    tabName: 'User Management',
-    icon: <UserOutlined />,
-  },
-  {
-    to: ROUTES.FEATURES,
-    tabName: 'Features',
-    icon: <CheckCircleOutlined />,
-  },
-  {
-    to: ROUTES.FONT_AWESOME,
-    tabName: 'Font Awesome Demo',
     icon: <SmileOutlined />,
+  },
+  {
+    to: ROUTES.SAMPLE_FORM,
+    tabName: 'Redux-Saga Form',
+    icon: <FormOutlined />,
   },
   {
     to: ROUTES.LOADER,
@@ -61,9 +51,14 @@ export const MenuItems = [
     icon: <NumberOutlined />,
   },
   {
-    to: ROUTES.SAMPLE_FORM,
-    tabName: 'Redux-Saga Form',
-    icon: <FormOutlined />,
+    to: ROUTES.USERS,
+    tabName: 'User Management',
+    icon: <UserOutlined />,
+  },
+  {
+    to: ROUTES.GITHUB_SEARCH,
+    tabName: 'Github Search',
+    icon: <SearchOutlined />,
   },
   {
     to: ROUTES.TEST_ADMIN_PAGE,

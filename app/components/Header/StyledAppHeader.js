@@ -11,7 +11,7 @@ export const StyledAppHeaderColored = styled.div`
   flex: 1;
   line-height: 0;
   background-color: #190426;
-  color: white;
+  color: white !important;
 `;
 
 export const AvatarWrapper = styled.div`
@@ -21,4 +21,7 @@ export const AvatarWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  .anticon-shopping-cart {
+    font-size: 18px;
+  }
 `;

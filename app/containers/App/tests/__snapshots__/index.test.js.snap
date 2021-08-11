@@ -51,11 +51,7 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <PrivateRoute
       component={[Function]}
-      path="/features"
-    />
-    <PrivateRoute
-      component={[Function]}
-      path="/font-awesome"
+      path="/github-search"
     />
     <PrivateRoute
       component={[Function]}
