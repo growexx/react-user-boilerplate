@@ -1,9 +1,162 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TwoFactorAuthentication /> Should render and match the snapshot 1`] = `
+.c2 {
+  width: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 .otpComponentContainerStyle {
+  width: 100%;
+}
+
+.c2 .otpComponentInputStyle {
+  color: #4d186e;
+  border: 1px solid #d9d9d9;
+  width: 100% !important;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.c2 .otpComponentFocusStyle {
+  border: 1px solid #4d186e;
+  outline: none;
+  border-radius: 10px;
+}
+
+.c2 .otpComponentDisabledStyle {
+  background: #f5f5f5;
+}
+
+.c2 .otpComponentErrorStyle {
+  border: 1px solid #ff0000;
+}
+
+.c1 {
+  font-family: 'Montserrat',sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.c1 .twoFactorAuthenticationTitle {
+  text-align: center;
+  margin: 0;
+  font-weight: 700;
+  font-size: 42px;
+  color: #4d186e;
+}
+
+.c0 {
+  font-family: 'Montserrat',sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c0 .sideContainer {
+  background: #4d186e;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 32px;
+}
+
+.c0 .sideContainer .registrationSideContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.c0 .sideContainer .registrationSideContainer .title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.c0 .sideContainer .registrationSideContainer .subTitle {
+  width: 60%;
+  text-align: center;
+  margin: 0;
+}
+
+.c0 .sideContainer .registrationSideContainer button {
+  margin-top: 35px;
+  height: 40px;
+  width: 160px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.c0 .sideContainer .registrationSideContainer button:hover {
+  color: #fff;
+}
+
 <div>
   <div
-    class="StyledAuthContainer-tf5ue0-0 cCdhDo"
+    class="c0"
   >
     <div
       class="sideContainer"
@@ -44,7 +197,7 @@ exports[`<TwoFactorAuthentication /> Should render and match the snapshot 1`] = 
       </div>
     </div>
     <div
-      class="StyledTwoFactorAuthentication-xs6qze-0 efqtix"
+      class="c1"
     >
       <p
         class="twoFactorAuthenticationTitle"
@@ -54,7 +207,7 @@ exports[`<TwoFactorAuthentication /> Should render and match the snapshot 1`] = 
         </span>
       </p>
       <div
-        class="StyledOtpComponent-q540lc-0 edafRV"
+        class="c2"
       >
         <div
           class="otpComponentContainerStyle"

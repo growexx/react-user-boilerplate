@@ -1,12 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ExportDataToCsv /> Should render and match the snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 button {
+  margin-bottom: 12px;
+}
+
+.c1 {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
 <div>
   <div
-    class="StyledExport-sc-12nm5za-0 gLYSEf"
+    class="c0"
   >
     <div
-      class="StyledExport__StyledButton-sc-12nm5za-1 fyrcLQ"
+      class="c1"
     >
       <button
         class="ant-btn ant-btn-primary"
@@ -29,7 +49,7 @@ exports[`<ExportDataToCsv /> Should render and match the snapshot 1`] = `
           class="ant-spin-container"
         >
           <div
-            class="ant-table"
+            class="ant-table ant-table-scroll-horizontal"
             data-testid="DataTable"
           >
             <div
@@ -37,9 +57,10 @@ exports[`<ExportDataToCsv /> Should render and match the snapshot 1`] = `
             >
               <div
                 class="ant-table-content"
+                style="overflow-x: auto; overflow-y: hidden;"
               >
                 <table
-                  style="table-layout: auto;"
+                  style="width: 350px; min-width: 100%; table-layout: auto;"
                 >
                   <colgroup>
                     <col
@@ -94,6 +115,48 @@ exports[`<ExportDataToCsv /> Should render and match the snapshot 1`] = `
                   <tbody
                     class="ant-table-tbody"
                   >
+                    <tr
+                      aria-hidden="true"
+                      class="ant-table-measure-row"
+                      style="height: 0px; font-size: 0;"
+                    >
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                      <td
+                        style="padding: 0px; border: 0px; height: 0px;"
+                      >
+                        <div
+                          style="height: 0px; overflow: hidden;"
+                        >
+                           
+                        </div>
+                      </td>
+                    </tr>
                     <tr
                       class="ant-table-row ant-table-row-level-0"
                       data-row-key="1"
