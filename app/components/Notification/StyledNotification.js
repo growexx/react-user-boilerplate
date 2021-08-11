@@ -1,10 +1,6 @@
 import styled from 'styled-components';
+import { Popover } from 'antd';
 export const NotificationWrapper = styled.div`
-  .ant-badge {
-    font-size: 18px;
-    padding-right: 20px;
-  }
-  .ant-badge-dot {
-    right: 20px;
-  }
+  margin-right: 10px;
 `;
+export const StyledPopOver = styled(Popover)``;
