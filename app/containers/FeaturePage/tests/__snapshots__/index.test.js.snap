@@ -1,109 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FeaturePage /> should render its heading 1`] = `
-<div>
-  <h1>
-    <span>
-      Features
-    </span>
-  </h1>
-  <ul
-    class="List-sc-1aai6b-0 gbaodI"
-  >
-    <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
-    >
-      <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
-      >
-        <span>
-          Quick scaffolding
-        </span>
-      </p>
-      <p>
-        <span>
-          Automate the creation of components, containers, routes, selectors
-  and sagas - and their tests - right from the CLI!
-        </span>
-      </p>
-    </li>
-    <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
-    >
-      <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
-      >
-        <span>
-          Instant feedback
-        </span>
-      </p>
-      <p>
-        <span>
-          
-      Enjoy the best DX and code your app at the speed of thought! Your
-    saved changes to the CSS and JS are reflected instantaneously
-    without refreshing the page. Preserve application state even when
-    you update something in the underlying code!
-    
-        </span>
-      </p>
-    </li>
-    <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
-    >
-      <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
-      >
-        <span>
-          Industry-standard routing
-        </span>
-      </p>
-      <p>
-        <span>
-          
-      Write composable CSS that's co-located with your components for
-    complete modularity. Unique generated class names keep the
-    specificity low while eliminating style clashes. Ship only the
-    styles that are on the page for the best performance.
-    
-        </span>
-      </p>
-    </li>
-    <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
-    >
-      <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
-      >
-        <span>
-          Offline-first
-        </span>
-      </p>
-      <p>
-        <span>
-          
-      The next frontier in performant web apps: availability without a
-      network connection from the instant your users load the app.
-    
-        </span>
-      </p>
-    </li>
-    <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
-    >
-      <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
-      >
-        <span>
-          Complete i18n Standard Internationalization & Pluralization
-        </span>
-      </p>
-      <p>
-        <span>
-          Scalable apps need to support multiple languages, easily add and support multiple languages with \`react-intl\`.
-        </span>
-      </p>
-    </li>
-  </ul>
+.c0 {
+  overflow: hidden;
+}
+
+.c0 p {
+  margin-bottom: 30px;
+}
+
+.c0 div {
+  box-shadow: 0 0 3px #f0f2f5;
+  background: #f0f2f5;
+  border-radius: 20px;
+  overflow: auto;
+  height: calc(100vh - 120px);
+  padding: 12px;
+}
+
+.c0 h1 {
+  color: #4d186e;
+}
+
+.c0 h2,
+.c0 ol {
+  display: none;
+}
+
+.c0 table {
+  margin: 10px;
+  overflow: hidden;
+}
+
+.c0 table th {
+  font-size: 16px;
+  color: #4d186e;
+  display: none;
+}
+
+.c0 table tr:not(:first-child) {
+  border-bottom: 2px solid #808080;
+}
+
+.c0 table td:first-child {
+  border-right: 2px solid #808080;
+}
+
+.c0 table td {
+  padding: 12px 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+<div
+  class="c0"
+>
+  IMAGE_MOCK
 </div>
 `;

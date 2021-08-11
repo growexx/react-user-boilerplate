@@ -80,6 +80,7 @@ class ExportDataToCsv extends React.Component {
             </Button>
           </StyledButton>
           <Table
+            scroll={{ x: 350 }}
             data-testid="DataTable"
             pagination={false}
             rowSelection={{
