@@ -11,7 +11,7 @@ import { ROUTES } from 'containers/constants';
 import { showLogoInSideBar } from 'components/constants';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
-import { GET_FILTERED_MENU_ITEM } from './Constants';
+import { GET_FILTERED_MENU_ITEM } from './constants';
 
 const { Sider } = Layout;
 
