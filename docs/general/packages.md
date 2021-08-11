@@ -61,4 +61,5 @@ Following are the packages used in the boilerplate
 | recharts                | Charts                                          |
 | react-waypoint          | Skeleton loader                                 |
 | socket.io-client        | Front end package for socket.io                 |
+| jest-styled-components  | Jest utilities for Styled Components            |
 

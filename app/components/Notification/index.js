@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Waypoint } from 'react-waypoint';
 import { io } from 'socket.io-client';
-import { Badge, List, Skeleton, Empty, notification } from 'antd';
+import { Badge, List, Skeleton, Empty, notification, Button } from 'antd';
 import { BellOutlined } from '@ant-design/icons';
 import { TEST_IDS } from 'components/Notification/stub';
 import {
@@ -242,6 +242,7 @@ class Notification extends React.Component {
           <>
             <FontAwesomeIcon
               icon={faCheck}
+              title={TEST_IDS.MARK_ALL_READ}
               onClick={this.setMarkAllRead}
               data-testid={TEST_IDS.MARK_ALL_READ}
             />
@@ -255,17 +256,28 @@ class Notification extends React.Component {
     const { unreadCount } = this.state;
     return (
       <NotificationWrapper>
-        <Badge count={unreadCount} overflowCount={9} size="small">
-          <StyledPopOver
-            placement="bottomLeft"
-            content={this.getNotificationContent()}
-            title={this.getTitle}
-            overlayClassName="notificationPopoverContainer"
-            trigger="click"
+        <div className="u-mr-1 u-d-inline-block">
+          <Button
+            type="text"
+            data-testid="badge-Cart"
+            className="btn-hover-none p-4"
           >
-            <BellOutlined data-testid={TEST_IDS.BELL_ICON} />
-          </StyledPopOver>
-        </Badge>
+            <StyledPopOver
+              placement="bottomLeft"
+              content={this.getNotificationContent()}
+              title={this.getTitle}
+              overlayClassName="notificationPopoverContainer"
+              trigger="click"
+            >
+              <Badge count={unreadCount} overflowCount={9} size="small">
+                <BellOutlined
+                  data-testid={TEST_IDS.BELL_ICON}
+                  className="u-font-size-xlg"
+                />
+              </Badge>
+            </StyledPopOver>
+          </Button>
+        </div>
       </NotificationWrapper>
     );
   }

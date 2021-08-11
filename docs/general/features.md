@@ -1,19 +1,17 @@
-## Features
-Following are the features included in the boilerplate
-## React Version : ^16.14.0
+# Features
+**React Version : ^16.14.0**  
+<div>
+
+
 | Feature                 | Description                                     |
 | ----------------------- | ----------------------------------------------- |
 | **Features**            |                                                 |
 |                         |                                                 |
-| Quick Scaffolding       | Create components, containers, routes, selectors| 
-|                         | and sagas - and their tests - right from the CLI|
-|                         | with npm run generate.                          |
-| Webpack                 | Webpack support added out of box with basic     |
-|                         | loaders.                                        |
+| Quick Scaffolding       | Create components, containers, routes, selectors and sagas - and their tests - right from the CLI with npm run generate.                                                                   |
+| Webpack                 | Webpack support added out of box with basic    loaders. |                                          
 | Babel                   | Babel loader support added out of box.          |
 | Redux-Saga              | Built in support for redux, react-redux and saga|
-| i18n international      | Supports multiple languages with react-intl.    |
-| support                 |                                                 |
+| i18n international support      | Supports multiple languages with react-intl.    |
 | SEO support             | SEO support with react-helmet                   |
 | Webpack Chunk Analyser  | npm run analyze                                 |
 | Ngrok support           | npm run start:tunnel                            |
@@ -28,29 +26,24 @@ Following are the features included in the boilerplate
 | React-Final-Form        | React-Final-Form support added.                 |
 | Redux-Form              | Redux-Form support added.                       |
 | Social login            | Boilerplate supports social login using firebase|
-| Two Factor              | Two Factor authentication with otp.             |
-| Authentication          |                                                 |
+| Two Factor Authentication          | Two Factor authentication with otp.             |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
 | Ant design              | Ant design library for styles and theme.        | 
-| Style variables         | Boilerplate s configuration supports            |
-|                         | all antd default variables.                     |
+| Style variables         | Boilerplate s configuration supports all antd default variables.            |
 | Utility classes         | css classes for common styling scenarios.       |
-| Override antd variables | Support added for overriding theme variables    |
-|                         | of ant design library variables.                |
+| Override antd variables | Support added for overriding theme variables  of ant design library variables.  |
 | Less support            | Boilerplate supports less files                 |
 | Styled components       | Boilerplate supports style components out of box|
 | Different Layouts       | Show different layout configured by antD (Just add ?layout=1 in the url and it'll switch to that layout, Currently 3 layouts are added. you can try 1(Vertical), 2(Vertical) and 3 (Horizontal)|
 |                         |                                                 |
 | **Components**          |                                                 |
 |                         |                                                 |
-| Base Layout Integrated  | Base layout with routes, header and sidebar     |                       | Storybook support       | Every component made in boilerplate has         |
-|                         | storybook support where you can get visual      |
-|                         | idea of how component looks.                    |
+| Base Layout Integrated  | Base layout with routes, header and sidebar     |
+| Storybook support       | Every component made in boilerplate has storybook     support where you can get visual idea of how component looks                |    
 | Login and Registration  | Login and registration page redux saga and api  |
 | Change Password         | Change Password with api code.                  |
-| page                    | ready code.                                     |
 | Footer component        | Basic footer implemented.                       |
 | File Upload             | File Upload component.                          |
 | Image Upload            | Image editor before upload.                     |
@@ -63,10 +56,9 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | **Additional Utils**    |                                                 |
 |                         |                                                 |
-| Export Data as CSV      | Export data as csv ( client and backend side )  |         
+| Export Data as CSV      | Export data as csv ( client and backend side ) |         
 | Numeral Conversion      | Numeral js library added for all numeric actions|   
-| Localstorage util       | Util to add, delete and get items from          |
-|                         | localstorage.                                   |
+| Localstorage            | Util to add, delete and get items from localstorage |      
 | Event Emitter           | Util to on and off emitter events.              |
 | Form Validations        | Redux form fields with validations              |
 | Inject reducer          | Inject reducer in redux form.                   |
@@ -94,7 +86,6 @@ Following are the features included in the boilerplate
 | Social Login demo       | Basic demo  for google and facebook login.      |
 | Two Factor              | Basic demo  for OtpComponent and two factor     |
 | User Management         | Basic demo User list with Pagination, Sort, Search, Filter, Add/Edit/Delete User     |
-| Authentication          | authentication.                                 |
 | Admin Charts            | Charts Pages with statistics and Filters        |
 | Real-Time-Chat          | Real time chat with firebase                    |
 | Firebase Cloud Messaging| Basic example for push notifications using fcm  |
@@ -102,16 +93,18 @@ Following are the features included in the boilerplate
 |                         |                                                 |
 | **Test-Cases**          |                                                 |
 |                         |                                                 |
-| React-Testing-Library   | Examples of testing react components with RTL   |
-|                         | implemented.                                    |
+| React-Testing-Library   | Examples of testing react components with RTL   implemented.|
 |                         |                                                 |
 | **Code-Quality**        |                                                 |
 |                         |                                                 |
-| Sonar standards         | All code is written according to standards of   |
-|                         | sonar.                                          |
+| Sonar standards         | All code is written according to standards of sonar.|
+|                         |                                                 |
 | **Performance Monitoring & Error Tracking**        |                                                 |
 |                         |                                                 |
 | Sentry         | Sentry has been used for any code errors or performance related issue   |
+
+</div>
+
 
 ## Optional Feature Branches 
 
@@ -124,15 +117,3 @@ Following are the features included in the boilerplate
 7.  Real Time Chat:  **feature/RB-66-Real-Time-Chat**  <br/>
 8.  Real Time Notifications with socket.io: **feature/RB-87-Notifications-socket.io** <br/>
 9.  Firebase Cloud Messaging:  **feature/RB-85-Push-Notifications-FCM**<br />
-10. Add Item in Cart should be reflected in all pages
- Cart Sidebar For listing currently added items
-  Logged into one tab should update all other tabs **RB-65-Loggedin-one-tab-update-in-another**
-(For Cart Page - 1.app/components/CartDrawer/index.js
-                 2.app/components/Notification/index.js
-                 3.app/components/ProductCard/index.js
-                 4.app/examples/Products/index.js
-                 5.app/examples/Products/utils.js   
-                 **for multitab support used window and localStorage**)
-
-
-<br />

@@ -1,15 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Notification /> should render a div 1`] = `
+.c0 .anticon-bell {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.c0 .ant-badge {
+  font-size: 18px;
+  padding-right: 20px;
+}
+
+.c0 .ant-badge-count {
+  right: 30px;
+}
+
+@media screen and (max-width:500px) {
+  .c0 .anticon-bell {
+    padding-right: 10px;
+  }
+}
+
 <div
-  class="StyledNotification__NotificationWrapper-sc-103nxwt-0 gorKEU"
+  class="c0"
 >
   <span
     class="ant-badge"
   >
     <span
       aria-label="bell"
-      class="anticon anticon-bell StyledNotification__StyledPopOver-sc-103nxwt-1 eeZovj"
+      class="anticon anticon-bell "
       data-testid="BELL_ICON"
       role="img"
       tabindex="-1"

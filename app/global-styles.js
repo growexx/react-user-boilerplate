@@ -448,7 +448,7 @@ const GlobalStyle = createGlobalStyle`
     font-size : @font-size-lg;
   }
   .u-font-size-xlg {
-    font-size: @font-size-sm * 2;
+    font-size: @font-size-sm * 2 !important;
   }
   // text-monospace 
   .u-text-monospace {
@@ -599,6 +599,10 @@ margin-left: 30px
   .newNotificationsLoader {
     padding: 20px 12px;
     margin-left: 20px;
+  }
+  .sideContainer {
+    max-width: 513px;
+    width: 100%;
   }
 }
 `;

@@ -1,8 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
+.c0 {
+  border: 1px solid #d9d9d9;
+  min-height: 64px;
+  cursor: text;
+}
+
 <div
-  class="StyledEditor-l6ccd5-0 gzMMsh"
+  class="c0"
 >
   <div
     aria-label="rdw-wrapper"
