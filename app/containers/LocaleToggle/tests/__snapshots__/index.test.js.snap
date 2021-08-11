@@ -1,11 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LocaleToggle /> should match the snapshot 1`] = `
+.c1 {
+  line-height: 1em;
+  background-color: transparent;
+  border-style: none;
+}
+
+.c0 {
+  padding: 2px;
+}
+
 <div
-  class="Wrapper-xnjoq9-0 dNmQIR"
+  class="c0"
 >
   <select
-    class="Select-sc-1sm01tk-0 wIjFa"
+    class="c1"
   >
     <option
       value="en"

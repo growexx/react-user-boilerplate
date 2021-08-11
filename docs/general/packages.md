@@ -67,3 +67,6 @@ Following are the packages used in the boilerplate
 | graphql-tag             | Template literal  parses GraphQL query string   |
 | subscriptions-          | Graphql websocket server and client helper      |
 | transport-ws            |                                                 |
+| react-waypoint          | Skeleton loader                                 |
+| jest-styled-components  | Jest utilities for Styled Components            |
+

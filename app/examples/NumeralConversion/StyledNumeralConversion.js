@@ -8,6 +8,9 @@ export const StyledHeader = styled.p`
 
 export const StyledInput = styled.div`
   margin: 31px 18px;
+  @media screen and (max-width: 400px) {
+    margin: 31px -15px;
+  }
 `;
 
 export const StyledTableContainer = styled.div`
@@ -25,6 +28,9 @@ export const StyledTableContainer = styled.div`
     font-weight: @font-weight-medium;
     color: @heading-color;
   }
+  @media screen and (max-width: 400px) {
+    margin: 31px -15px;
+  }
 `;
 
 export const StyledFormatHeader = styled.div`
@@ -41,5 +47,8 @@ export const StyledFormatHeader = styled.div`
     margin-top: 0px;
     font-weight: @font-weight-medium;
     color: @heading-color;
+  }
+  @media screen and (max-width: 400px) {
+    margin: 31px -15px;
   }
 `;

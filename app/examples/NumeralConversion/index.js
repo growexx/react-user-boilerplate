@@ -113,6 +113,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.createMessage} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={CREATE_COLUMNS}
             dataSource={createData()}
@@ -131,6 +132,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.number} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={FORMAT_COLUMNS}
             dataSource={numbersData()}
@@ -141,6 +143,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.currency} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={FORMAT_COLUMNS}
             dataSource={currencyData()}
@@ -151,6 +154,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.bytes} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={FORMAT_COLUMNS}
             dataSource={bytesData()}
@@ -161,6 +165,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.percentages} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={FORMAT_COLUMNS}
             dataSource={percentagesData()}
@@ -171,6 +176,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.time} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={FORMAT_COLUMNS}
             dataSource={timeData()}
@@ -181,6 +187,7 @@ class NumeralConversion extends React.Component {
             <FormattedMessage {...messages.exponential} />
           </p>
           <Table
+            scroll={{ x: 350 }}
             pagination={false}
             columns={FORMAT_COLUMNS}
             dataSource={exponentialData()}

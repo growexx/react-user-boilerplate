@@ -63,6 +63,10 @@ export const GET_COLORS = data => {
 export const PeriodDropDown = styled(Select)`
   width: 100%;
   min-width: 325px;
+  @media screen and (max-width: 500px) {
+    max-width: 325px;
+    min-width: initial;
+  }
 `;
 
 export const FilterItem = styled(Space)``;

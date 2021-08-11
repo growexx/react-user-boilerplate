@@ -25,3 +25,13 @@ export function getUserData() {
 export function logout() {
   StorageService.clear();
 }
+
+export function manageSession() {
+  if (!localStorage.userData && !localStorage.loggedOut) {
+    localStorage.setItem('loggedOut', 1);
+    window.location.reload();
+  } else if (localStorage.userData && !localStorage.loggedIn) {
+    localStorage.setItem('loggedIn', 1);
+    window.location.reload();
+  }
+}
