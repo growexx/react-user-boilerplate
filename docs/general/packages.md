@@ -60,3 +60,6 @@ Following are the packages used in the boilerplate
 | react-otp-input         | Input for otp.                                  |
 | recharts                | Charts                                          |
 | react-ga                | Library to apply google analytics in react app. |
+| react-waypoint          | Skeleton loader                                 |
+| jest-styled-components  | Jest utilities for Styled Components            |
+

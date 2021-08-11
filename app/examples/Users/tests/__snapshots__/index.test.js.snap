@@ -1,9 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Check component:<Users /> is rendering properly Should render and match the snapshot 1`] = `
+.c3 {
+  width: 100%;
+  max-width: 400px;
+}
+
+.c4 {
+  max-width: 500px;
+}
+
+.c0 .ant-page-header-heading-extra {
+  width: 100%;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c2 {
+  width: 100%;
+  vertical-align: middle;
+  margin: 1px;
+}
+
+.c2 .ant-space-item {
+  width: 100%;
+}
+
+.c6 {
+  min-width: 1000px;
+}
+
+.c6 .ant-table-content {
+  overflow-x: auto;
+  min-width: 1000px;
+}
+
+.c6 .ant-table-cell {
+  background-color: #fff;
+}
+
+.c5 {
+  box-sizing: border-box;
+  margin: 0;
+  color: rgba(0,0,0,0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  padding: 16px 24px;
+  overflow-x: auto;
+}
+
+@media all and (min-width:768px) {
+  .c0 .ant-page-header-heading-extra {
+    width: auto;
+  }
+}
+
+@media all and (min-width:768px) and (max-width:1024px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 5px 0 0;
+  }
+}
+
+@media all and (min-width:480px) and (max-width:768px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media all and (max-width:480px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
 <div>
   <div
-    class="ant-page-header styled__PageHeaderWrapper-sc-1d9g05f-2 bmbGQz ant-page-header-ghost"
+    class="ant-page-header c0 ant-page-header-ghost"
   >
     <div
       class="ant-page-header-heading"
@@ -22,16 +114,16 @@ exports[`Check component:<Users /> is rendering properly Should render and match
         class="ant-page-header-heading-extra"
       >
         <div
-          class="styled__FiltersWrapper-sc-1d9g05f-3 dfrZFW"
+          class="c1"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center styled__FilterItems-sc-1d9g05f-4 jEDBFO"
+            class="ant-space ant-space-horizontal ant-space-align-center c2"
           >
             <div
               class="ant-space-item"
             >
               <div
-                class="ant-select styled__AccountStatusDropDown-sc-1d9g05f-0 fSyOsh ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
+                class="ant-select c3 ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
               >
                 <div
                   class="ant-select-selector"
@@ -94,13 +186,13 @@ exports[`Check component:<Users /> is rendering properly Should render and match
             </div>
           </div>
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center styled__FilterItems-sc-1d9g05f-4 jEDBFO"
+            class="ant-space ant-space-horizontal ant-space-align-center c2"
           >
             <div
               class="ant-space-item"
             >
               <span
-                class="ant-input-group-wrapper ant-input-search styled__SearchWrapper-sc-1d9g05f-1 gccdXV"
+                class="ant-input-group-wrapper ant-input-search c4"
               >
                 <span
                   class="ant-input-wrapper ant-input-group"
@@ -172,7 +264,7 @@ exports[`Check component:<Users /> is rendering properly Should render and match
             </div>
           </div>
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center styled__FilterItems-sc-1d9g05f-4 jEDBFO"
+            class="ant-space ant-space-horizontal ant-space-align-center c2"
           >
             <div
               class="ant-space-item"
@@ -194,10 +286,10 @@ exports[`Check component:<Users /> is rendering properly Should render and match
     </div>
   </div>
   <div
-    class="styled__MainContentWrapper-sc-1d9g05f-6 TvICX"
+    class="c5"
   >
     <div
-      class="ant-table-wrapper styled__DataTableWrapper-sc-1d9g05f-5 eccjIp"
+      class="ant-table-wrapper c6"
     >
       <div
         class="ant-spin-nested-loading"

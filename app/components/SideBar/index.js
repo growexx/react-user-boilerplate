@@ -13,7 +13,7 @@ import { GA_CATEGORY_MENU_CLICKS } from 'utils/constants';
 import { showLogoInSideBar } from 'components/constants';
 import GrowExxTriangleLogo from '../../images/Growexx-Triangle-White.png';
 import GrowExxLogo from '../../images/GrowExx_Group_Logo.png';
-import { GA_LABEL_SIDEBAR, GET_FILTERED_MENU_ITEM } from './Constants';
+import { GA_LABEL_SIDEBAR, GET_FILTERED_MENU_ITEM } from './constants';
 
 const { Sider } = Layout;
 

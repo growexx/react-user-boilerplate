@@ -4,10 +4,12 @@ export const StyledAuthContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   .sideContainer {
+    max-width: 513px;
+    width: 100%;
     background: @primary-color;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding: 32px;
     .registrationSideContainer {

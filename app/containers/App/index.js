@@ -17,7 +17,6 @@ import Profile from 'containers/Profile/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import UnauthorizedPage from 'containers/UnauthorizedPage/Loadable';
-import FontAwesomeDemo from 'examples/FontAwesomeDemo/Loadable';
 import Login from 'containers/Auth/Login/Loadable';
 import TwoFactorAuthentication from 'containers/Auth/TwoFactorAuthentication/Loadable';
 import Logout from 'containers/Auth/Logout/Loadable';
@@ -26,6 +25,7 @@ import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import Users from 'examples/Users/Loadable';
 import Charts from 'examples/Charts/Loadable';
+import Products from 'examples/Products/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
@@ -37,6 +37,7 @@ import AuthRoute from './AuthRoute';
 import GlobalStyle from '../../global-styles';
 import { ROUTES } from '../constants';
 import { initGA, recordPageViewGA } from '../../utils/googleAnalytics';
+import { manageSession } from '../../utils/Helper';
 
 const AppWrapper = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ class App extends React.Component {
   componentDidMount() {
     // google analytics init
     initGA();
+    window.addEventListener('storage', manageSession, []);
 
     // first time page render
     recordPageViewGA(this.props.location.pathname);
@@ -55,6 +57,10 @@ class App extends React.Component {
   componentDidUpdate() {
     // record page view on every route change
     recordPageViewGA(this.props.location.pathname);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('storage', window);
   }
 
   render() {
@@ -75,10 +81,6 @@ class App extends React.Component {
         <Switch>
           <PrivateRoute exact path={ROUTES.HOME} component={HomePage} />
           <PrivateRoute path={ROUTES.FEATURES} component={FeaturePage} />
-          <PrivateRoute
-            path={ROUTES.FONT_AWESOME}
-            component={FontAwesomeDemo}
-          />
           <PrivateRoute path={ROUTES.LOGOUT} component={Logout} />
           <PrivateRoute path={ROUTES.LOADER} component={Loader} />
           <PrivateRoute path={ROUTES.EXPORT_DATA} component={ExportDataToCsv} />
@@ -98,7 +100,7 @@ class App extends React.Component {
             component={ChangePassword}
           />
           <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-
+          <PrivateRoute path={ROUTES.PRODUCTS} component={Products} />
           <AuthRoute exact path={ROUTES.LOGIN} component={Login} />
           <AuthRoute exact path={ROUTES.REGISTER} component={Register} />
           <AuthRoute

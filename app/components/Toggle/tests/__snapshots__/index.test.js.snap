@@ -1,8 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Toggle /> should contain default text 1`] = `
+.c0 {
+  line-height: 1em;
+  background-color: transparent;
+  border-style: none;
+}
+
 <select
-  class="Select-sc-1sm01tk-0 wIjFa"
+  class="c0"
 >
   <option
     value="en"
