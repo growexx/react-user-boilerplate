@@ -1,13 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
+.c0 {
+  border: 1px solid #d9d9d9;
+  min-height: 64px;
+  cursor: text;
+}
+
 <div
-  class="StyledEditor-l6ccd5-0 gzMMsh"
+  class="c0"
 >
   <div
     aria-label="rdw-wrapper"
     class="rdw-editor-wrapper"
-    id="rdw-wrapper-543"
+    id="rdw-wrapper-1234"
   >
     <div
       aria-hidden="false"
@@ -393,6 +399,7 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
               <div
                 class=""
                 data-block="true"
+<<<<<<< HEAD
                 data-editor="59mid"
                 data-offset-key="82amu-0-0"
               >
@@ -402,6 +409,17 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
                 >
                   <span
                     data-offset-key="82amu-0-0"
+=======
+                data-editor="123"
+                data-offset-key="123-0-0"
+              >
+                <div
+                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
+                  data-offset-key="123-0-0"
+                >
+                  <span
+                    data-offset-key="123-0-0"
+>>>>>>> origin/main
                   >
                     <br
                       data-text="true"

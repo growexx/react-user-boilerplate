@@ -50,6 +50,14 @@ export const StyledRegistration = styled.div`
       color: @text-color-secondary;
       font-size: @font-size-base+1px;
     }
+    &.input-margin-0 {
+      input {
+        margin-top: 0;
+      }
+    }
+    .ant-input-password {
+      background-color: @background-color-base;
+    }
   }
   button {
     margin-top: @font-size-lg+15;

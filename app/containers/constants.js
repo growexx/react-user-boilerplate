@@ -4,7 +4,7 @@ export const IS_DEMO_CODE = true;
 // App-Routes
 export const ROUTES = {
   HOME: '/',
-  FEATURES: '/features',
+  GITHUB_SEARCH: '/github-search',
   FONT_AWESOME: '/font-awesome',
   LOGIN: '/login',
   REGISTER: '/register',
@@ -22,6 +22,7 @@ export const ROUTES = {
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
   MULTI_TAB_SUPPORT: '/multi-tab-support',
+  PRODUCTS: '/products',
 };
 
 // API-ROUTES
