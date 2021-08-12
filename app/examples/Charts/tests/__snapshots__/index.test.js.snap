@@ -87,7 +87,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
               class="ant-space-item"
             >
               <div
-                class="ant-select constants__PeriodDropDown-sc-8ehz4a-0 iSZFcr ant-select-single ant-select-show-arrow"
+                class="ant-select c0 ant-select-single ant-select-show-arrow"
               >
                 <div
                   class="ant-select-selector"
@@ -181,7 +181,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  56,379,660
+                  000
                 </span>
                 
               </span>
@@ -215,7 +215,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  56,379,660
+                  0
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"
@@ -252,7 +252,7 @@ exports[`Check component:<Charts /> is rendering properly Should render and matc
                   class="ant-statistic-content-value-int"
                 >
                   
-                  56,379,660
+                  0
                 </span>
                 <span
                   class="ant-statistic-content-value-decimal"

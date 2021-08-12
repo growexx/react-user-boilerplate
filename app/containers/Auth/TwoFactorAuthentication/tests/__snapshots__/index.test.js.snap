@@ -92,6 +92,8 @@ exports[`<TwoFactorAuthentication /> Should render and match the snapshot 1`] = 
 }
 
 .c0 .sideContainer {
+  max-width: 513px;
+  width: 100%;
   background: #4d186e;
   display: -webkit-box;
   display: -webkit-flex;
@@ -100,10 +102,10 @@ exports[`<TwoFactorAuthentication /> Should render and match the snapshot 1`] = 
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

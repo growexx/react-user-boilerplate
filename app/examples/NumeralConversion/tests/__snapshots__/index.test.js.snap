@@ -86,7 +86,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </span>
   </p>
   <div
-    class="StyledNumeralConversion__StyledInput-sc-21e78q-1 gJlLFd"
+    class="c1"
   >
     <span
       class="ant-input-group-wrapper ant-input-search ant-input-search-with-button"
@@ -116,7 +116,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </span>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>
@@ -226,7 +226,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledFormatHeader-sc-21e78q-3 iQHhKx"
+    class="c3"
   >
     <p>
       <span>
@@ -240,7 +240,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </p>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>
@@ -727,7 +727,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>
@@ -954,7 +954,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>
@@ -1201,7 +1201,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>
@@ -1388,7 +1388,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>
@@ -1555,7 +1555,7 @@ exports[`<NumeralConversion /> Should render and match the snapshot 1`] = `
     </div>
   </div>
   <div
-    class="StyledNumeralConversion__StyledTableContainer-sc-21e78q-2 kZOxbY"
+    class="c2"
   >
     <p>
       <span>

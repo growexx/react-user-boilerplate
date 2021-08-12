@@ -5,7 +5,6 @@ import { AUTH_TYPE } from '../../../containers/Auth/constants';
 import { ROUTES } from '../../../containers/constants';
 import SecurityQuestionForm from '../SecurityQuestionForm';
 import { postSecurityQuestionRegister } from '../stub';
-// import { StyledSecurityQuestion } from '../StyledSecurityQuestion';
 import { StyledResetPassword } from './StyledResetPasswordMain';
 
 function ResetPassword() {

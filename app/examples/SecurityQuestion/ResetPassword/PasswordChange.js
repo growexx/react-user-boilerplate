@@ -13,10 +13,10 @@ function PasswordChange() {
         <Form
           name="basic"
           labelCol={{
-            span: 8,
+            span: 12,
           }}
           wrapperCol={{
-            span: 16,
+            span: 12,
           }}
           initialValues={{
             remember: true,
@@ -51,8 +51,8 @@ function PasswordChange() {
           </Form.Item>
           <Form.Item
             wrapperCol={{
-              offset: 8,
-              span: 16,
+              offset: 16,
+              span: 12,
             }}
           >
             <Button type="primary" htmlType="submit">

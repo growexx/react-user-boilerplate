@@ -1,7 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { render } from 'react-testing-library';
-import { MemoryRouter } from 'react-router-dom';
+// import request from 'utils/request';
 import 'jest-dom/extend-expect';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
@@ -10,20 +9,7 @@ import { createMemoryHistory } from 'history';
 import PasswordChange from '../ResetPassword/PasswordChange';
 import configureStore from '../../../configureStore';
 
-import ResetPasswordMain from '../ResetPassword/ResetPasswordMain';
-
-describe('SampleComponent', () => {
-  test('should render', () => {
-    const component = renderer
-      .create(
-        <MemoryRouter>
-          <ResetPasswordMain />
-        </MemoryRouter>,
-      )
-      .toJSON();
-
-    expect(component).toMatchSnapshot();
-  });
+describe('<ResetPassword />', () => {
   it('should render an <StyledSecurityQuestion> tag', () => {
     //   const {
     //     container: { firstChild },
