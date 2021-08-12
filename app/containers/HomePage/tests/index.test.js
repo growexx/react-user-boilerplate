@@ -6,7 +6,9 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
+// import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
@@ -14,20 +16,27 @@ import { loadRepos } from '../../App/actions';
 import configureStore from '../../../configureStore';
 
 describe('<HomePage />', () => {
-  let store;
+  // let store;
+  let prevStore;
+  let prevPersistor;
 
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   it('should render and match the snapshot', () => {
     const {
       container: { firstChild },
     } = render(
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <HomePage loading={false} error={false} repos={[]} />
-        </IntlProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <IntlProvider locale="en">
+            <HomePage loading={false} error={false} repos={[]} />
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
@@ -36,14 +45,16 @@ describe('<HomePage />', () => {
   it('should fetch the repos on mount if a username exists', () => {
     const submitSpy = jest.fn();
     render(
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <HomePage
-            username="Not Empty"
-            onChangeUsername={() => {}}
-            onSubmitForm={submitSpy}
-          />
-        </IntlProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <IntlProvider locale="en">
+            <HomePage
+              username="Not Empty"
+              onChangeUsername={() => {}}
+              onSubmitForm={submitSpy}
+            />
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(submitSpy).toHaveBeenCalledTimes(0);
@@ -52,10 +63,12 @@ describe('<HomePage />', () => {
   it('should not call onSubmitForm if username is an empty string', () => {
     const submitSpy = jest.fn();
     render(
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <HomePage onChangeUsername={() => {}} onSubmitForm={submitSpy} />
-        </IntlProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <IntlProvider locale="en">
+            <HomePage onChangeUsername={() => {}} onSubmitForm={submitSpy} />
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(submitSpy).not.toHaveBeenCalled();
@@ -64,14 +77,16 @@ describe('<HomePage />', () => {
   it('should not call onSubmitForm if username is null', () => {
     const submitSpy = jest.fn();
     render(
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <HomePage
-            username=""
-            onChangeUsername={() => {}}
-            onSubmitForm={submitSpy}
-          />
-        </IntlProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <IntlProvider locale="en">
+            <HomePage
+              username=""
+              onChangeUsername={() => {}}
+              onSubmitForm={submitSpy}
+            />
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(submitSpy).not.toHaveBeenCalled();

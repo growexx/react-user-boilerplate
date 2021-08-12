@@ -13,26 +13,34 @@ import { Provider } from 'react-redux';
 import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Login, mapDispatchToProps } from '../index';
 import Lodable from '../Loadable';
 import configureStore from '../../../../configureStore';
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
 const props = {
   error: true,
 };
 const componentWrapper = Component =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <Component {...props} />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <Component {...props} />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 describe('<Login />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   it('Should render and match the snapshot', () => {

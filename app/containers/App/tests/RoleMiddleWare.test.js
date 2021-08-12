@@ -9,12 +9,15 @@ import { TOKEN_KEY } from 'utils/constants';
 import StorageService from 'utils/StorageService';
 import Login from 'containers/Auth/Login/Loadable';
 import request from 'utils/request';
+import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from '../../../configureStore';
 import RoleMiddleWare from '../RoleMiddleWare';
 import { ROLES, ROUTES } from '../../constants';
 
 jest.mock('utils/request');
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
 const tokenValue = 'test token';
 const props = {
   component: Login,
@@ -37,12 +40,14 @@ const mockAPI = response => {
 
 const componentWrapper = localProps =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <RoleMiddleWare {...props} {...localProps} />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <RoleMiddleWare {...props} {...localProps} />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
@@ -50,7 +55,11 @@ const login = () => StorageService.set(TOKEN_KEY, tokenValue);
 
 describe('<RoleMiddleWare />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
+
     login();
   });
   afterEach(() => {

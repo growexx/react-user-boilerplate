@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { createMemoryHistory } from 'history';
+import { PersistGate } from 'redux-persist/integration/react';
 import products from '../../../examples/Products/stub/product.json';
 
 import Cart from '../index';
@@ -13,16 +14,27 @@ const dummyData = products.products.slice(0, 2);
 
 describe('<Cart />', () => {
   const history = createMemoryHistory();
-  const store = configureStore({}, history);
+  // let store = configureStore({}, history);
+  // let store;
+  let prevStore;
+  let prevPersistor;
+  // const { store, persistor } = configureStore({}, createMemoryHistory);
+  // prevStore = store;
+  // prevPersistor = persistor;
 
   it('should render a div', () => {
+    const { store, persistor } = configureStore({}, createMemoryHistory);
+    prevStore = store;
+    prevPersistor = persistor;
     const { container } = render(
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <ConnectedRouter history={history}>
-            <Cart />
-          </ConnectedRouter>
-        </IntlProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <IntlProvider locale="en">
+            <ConnectedRouter history={history}>
+              <Cart />
+            </ConnectedRouter>
+          </IntlProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(container.firstChild).toMatchSnapshot();

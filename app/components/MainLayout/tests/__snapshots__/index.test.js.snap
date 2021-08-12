@@ -168,18 +168,8 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
   color: #000;
 }
 
-.c4 .anticon-bell {
-  font-size: 18px;
-  padding-right: 10px;
-}
-
-.c4 .ant-badge {
-  font-size: 18px;
-  padding-right: 20px;
-}
-
-.c4 .ant-badge-count {
-  right: 30px;
+.c4 {
+  margin-right: 10px;
 }
 
 .c2 {
@@ -228,12 +218,6 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
 @media only screen and (max-width:767px) {
   .c7 > section:nth-child(2) {
     margin-top: 12px;
-  }
-}
-
-@media screen and (max-width:500px) {
-  .c4 .anticon-bell {
-    padding-right: 10px;
   }
 }
 
@@ -530,6 +514,37 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                 role="menuitem"
               >
                 <span
+                  aria-label="bank"
+                  class="anticon anticon-bank ant-menu-item-icon"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="bank"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M894 462c30.9 0 43.8-39.7 18.7-58L530.8 126.2a31.81 31.81 0 00-37.6 0L111.3 404c-25.1 18.2-12.2 58 18.8 58H192v374h-72c-4.4 0-8 3.6-8 8v52c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-52c0-4.4-3.6-8-8-8h-72V462h62zM512 196.7l271.1 197.2H240.9L512 196.7zM264 462h117v374H264V462zm189 0h117v374H453V462zm307 374H642V462h118v374z"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  <a
+                    href="/payment"
+                  >
+                    Payments
+                  </a>
+                </span>
+              </li>
+              <li
+                class="ant-menu-item"
+                role="menuitem"
+              >
+                <span
                   aria-label="shopping"
                   class="anticon anticon-shopping ant-menu-item-icon"
                   role="img"
@@ -615,7 +630,7 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                     >
                       <span
                         aria-label="shopping-cart"
-                        class="anticon anticon-shopping-cart u-font-size-lg"
+                        class="anticon anticon-shopping-cart u-font-size-xlg"
                         role="img"
                       >
                         <svg
@@ -642,31 +657,40 @@ exports[`<MainLayout /> should render and match the snapshot 1`] = `
                 <div
                   class="c4"
                 >
-                  <span
-                    class="ant-badge"
+                  <div
+                    class="u-mr-1 u-d-inline-block"
                   >
-                    <span
-                      aria-label="bell"
-                      class="anticon anticon-bell "
-                      data-testid="BELL_ICON"
-                      role="img"
-                      tabindex="-1"
+                    <button
+                      class="ant-btn ant-btn-text btn-hover-none p-4"
+                      data-testid="badge-Cart"
+                      type="button"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="bell"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
+                      <span
+                        class="ant-badge "
                       >
-                        <path
-                          d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
+                        <span
+                          aria-label="bell"
+                          class="anticon anticon-bell u-font-size-xlg"
+                          data-testid="BELL_ICON"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="bell"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </button>
+                  </div>
                 </div>
                 <div
                   class="c5"
@@ -929,18 +953,8 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
   color: #000;
 }
 
-.c4 .anticon-bell {
-  font-size: 18px;
-  padding-right: 10px;
-}
-
-.c4 .ant-badge {
-  font-size: 18px;
-  padding-right: 20px;
-}
-
-.c4 .ant-badge-count {
-  right: 30px;
+.c4 {
+  margin-right: 10px;
 }
 
 .c2 {
@@ -1040,12 +1054,6 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
 @media only screen and (max-width:767px) {
   .c8 > section:nth-child(2) {
     margin-top: 12px;
-  }
-}
-
-@media screen and (max-width:500px) {
-  .c4 .anticon-bell {
-    padding-right: 10px;
   }
 }
 
@@ -1341,6 +1349,37 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                 role="menuitem"
               >
                 <span
+                  aria-label="bank"
+                  class="anticon anticon-bank ant-menu-item-icon"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="bank"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M894 462c30.9 0 43.8-39.7 18.7-58L530.8 126.2a31.81 31.81 0 00-37.6 0L111.3 404c-25.1 18.2-12.2 58 18.8 58H192v374h-72c-4.4 0-8 3.6-8 8v52c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-52c0-4.4-3.6-8-8-8h-72V462h62zM512 196.7l271.1 197.2H240.9L512 196.7zM264 462h117v374H264V462zm189 0h117v374H453V462zm307 374H642V462h118v374z"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  <a
+                    href="/payment"
+                  >
+                    Payments
+                  </a>
+                </span>
+              </li>
+              <li
+                class="ant-menu-item"
+                role="menuitem"
+              >
+                <span
                   aria-label="shopping"
                   class="anticon anticon-shopping ant-menu-item-icon"
                   role="img"
@@ -1426,7 +1465,7 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                     >
                       <span
                         aria-label="shopping-cart"
-                        class="anticon anticon-shopping-cart u-font-size-lg"
+                        class="anticon anticon-shopping-cart u-font-size-xlg"
                         role="img"
                       >
                         <svg
@@ -1453,31 +1492,40 @@ exports[`<MainLayout /> should render and match the snapshot 2`] = `
                 <div
                   class="c4"
                 >
-                  <span
-                    class="ant-badge"
+                  <div
+                    class="u-mr-1 u-d-inline-block"
                   >
-                    <span
-                      aria-label="bell"
-                      class="anticon anticon-bell "
-                      data-testid="BELL_ICON"
-                      role="img"
-                      tabindex="-1"
+                    <button
+                      class="ant-btn ant-btn-text btn-hover-none p-4"
+                      data-testid="badge-Cart"
+                      type="button"
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="bell"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
+                      <span
+                        class="ant-badge "
                       >
-                        <path
-                          d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
+                        <span
+                          aria-label="bell"
+                          class="anticon anticon-bell u-font-size-xlg"
+                          data-testid="BELL_ICON"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="bell"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </button>
+                  </div>
                 </div>
                 <div
                   class="c5"
@@ -1739,18 +1787,8 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
   color: #000;
 }
 
-.c4 .anticon-bell {
-  font-size: 18px;
-  padding-right: 10px;
-}
-
-.c4 .ant-badge {
-  font-size: 18px;
-  padding-right: 20px;
-}
-
-.c4 .ant-badge-count {
-  right: 30px;
+.c4 {
+  margin-right: 10px;
 }
 
 .c2 {
@@ -1864,12 +1902,6 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
   }
 }
 
-@media screen and (max-width:500px) {
-  .c4 .anticon-bell {
-    padding-right: 10px;
-  }
-}
-
 <div
   class="ant-spin-nested-loading"
 >
@@ -1916,7 +1948,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                   >
                     <span
                       aria-label="shopping-cart"
-                      class="anticon anticon-shopping-cart u-font-size-lg"
+                      class="anticon anticon-shopping-cart u-font-size-xlg"
                       role="img"
                     >
                       <svg
@@ -1943,31 +1975,40 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
               <div
                 class="c4"
               >
-                <span
-                  class="ant-badge"
+                <div
+                  class="u-mr-1 u-d-inline-block"
                 >
-                  <span
-                    aria-label="bell"
-                    class="anticon anticon-bell "
-                    data-testid="BELL_ICON"
-                    role="img"
-                    tabindex="-1"
+                  <button
+                    class="ant-btn ant-btn-text btn-hover-none p-4"
+                    data-testid="badge-Cart"
+                    type="button"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="bell"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
+                    <span
+                      class="ant-badge "
                     >
-                      <path
-                        d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
-                      />
-                    </svg>
-                  </span>
-                </span>
+                      <span
+                        aria-label="bell"
+                        class="anticon anticon-bell u-font-size-xlg"
+                        data-testid="BELL_ICON"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="bell"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
               </div>
               <div
                 class="c5"
@@ -2023,49 +2064,12 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                 class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
                 role="menu"
               >
-<<<<<<< HEAD
                 <li
                   class="ant-menu-item ant-menu-item-selected"
                   role="menuitem"
                   style="padding-left: 24px;"
                 >
                   <span
-                    aria-label="smile"
-                    class="anticon anticon-smile ant-menu-item-icon"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="smile"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M288 421a48 48 0 1096 0 48 48 0 10-96 0zm352 0a48 48 0 1096 0 48 48 0 10-96 0zM512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm263 711c-34.2 34.2-74 61-118.3 79.8C611 874.2 562.3 884 512 884c-50.3 0-99-9.8-144.8-29.2A370.4 370.4 0 01248.9 775c-34.2-34.2-61-74-79.8-118.3C149.8 611 140 562.3 140 512s9.8-99 29.2-144.8A370.4 370.4 0 01249 248.9c34.2-34.2 74-61 118.3-79.8C413 149.8 461.7 140 512 140c50.3 0 99 9.8 144.8 29.2A370.4 370.4 0 01775.1 249c34.2 34.2 61 74 79.8 118.3C874.2 413 884 461.7 884 512s-9.8 99-29.2 144.8A368.89 368.89 0 01775 775zM664 533h-48.1c-4.2 0-7.8 3.2-8.1 7.4C604 589.9 562.5 629 512 629s-92.1-39.1-95.8-88.6c-.3-4.2-3.9-7.4-8.1-7.4H360a8 8 0 00-8 8.4c4.4 84.3 74.5 151.6 160 151.6s155.6-67.3 160-151.6a8 8 0 00-8-8.4z"
-                      />
-                    </svg>
-                  </span>
-                  <span>
-                    <a
-                      href="/"
-                    >
-                      Home
-                    </a>
-                  </span>
-                </li>
-=======
->>>>>>> origin/main
-                <li
-                  class="ant-menu-item ant-menu-item-selected"
-                  role="menuitem"
-                  style="padding-left: 24px;"
-                >
-                  <span
-<<<<<<< HEAD
-=======
                     aria-label="smile"
                     class="anticon anticon-smile ant-menu-item-icon"
                     role="img"
@@ -2098,7 +2102,6 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                   style="padding-left: 24px;"
                 >
                   <span
->>>>>>> origin/main
                     aria-label="form"
                     class="anticon anticon-form ant-menu-item-icon"
                     role="img"
@@ -2326,6 +2329,38 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
                   style="padding-left: 24px;"
                 >
                   <span
+                    aria-label="bank"
+                    class="anticon anticon-bank ant-menu-item-icon"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="bank"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M894 462c30.9 0 43.8-39.7 18.7-58L530.8 126.2a31.81 31.81 0 00-37.6 0L111.3 404c-25.1 18.2-12.2 58 18.8 58H192v374h-72c-4.4 0-8 3.6-8 8v52c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-52c0-4.4-3.6-8-8-8h-72V462h62zM512 196.7l271.1 197.2H240.9L512 196.7zM264 462h117v374H264V462zm189 0h117v374H453V462zm307 374H642V462h118v374z"
+                      />
+                    </svg>
+                  </span>
+                  <span>
+                    <a
+                      href="/payment"
+                    >
+                      Payments
+                    </a>
+                  </span>
+                </li>
+                <li
+                  class="ant-menu-item"
+                  role="menuitem"
+                  style="padding-left: 24px;"
+                >
+                  <span
                     aria-label="shopping"
                     class="anticon anticon-shopping ant-menu-item-icon"
                     role="img"
@@ -2364,11 +2399,7 @@ exports[`<MainLayout /> with variant 2 should render and match the snapshot 1`] 
               data-testid="AppRoutes"
             >
               <div
-<<<<<<< HEAD
-                class="StyledFeatures__StyledFeaturePage-yvjjmt-0 fibwWR"
-=======
                 class="c7"
->>>>>>> origin/main
               >
                 IMAGE_MOCK
               </div>
@@ -2576,18 +2607,8 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
   color: #000;
 }
 
-.c6 .anticon-bell {
-  font-size: 18px;
-  padding-right: 10px;
-}
-
-.c6 .ant-badge {
-  font-size: 18px;
-  padding-right: 20px;
-}
-
-.c6 .ant-badge-count {
-  right: 30px;
+.c6 {
+  margin-right: 10px;
 }
 
 .c4 {
@@ -2721,12 +2742,6 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
   }
 }
 
-@media screen and (max-width:500px) {
-  .c6 .anticon-bell {
-    padding-right: 10px;
-  }
-}
-
 <div
   class="ant-spin-nested-loading"
 >
@@ -2789,11 +2804,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               </span>
             </li>
             <li
-<<<<<<< HEAD
-              class="ant-menu-item Layout__HeaderMenuItem-fhrxn-2 vxYTZ"
-=======
               class="ant-menu-item c3"
->>>>>>> origin/main
               role="menuitem"
               style="padding-left: 24px;"
             >
@@ -3011,6 +3022,36 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               style="padding-left: 24px;"
             >
               <span
+                aria-label="bank"
+                class="anticon anticon-bank ant-menu-item-icon"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="bank"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M894 462c30.9 0 43.8-39.7 18.7-58L530.8 126.2a31.81 31.81 0 00-37.6 0L111.3 404c-25.1 18.2-12.2 58 18.8 58H192v374h-72c-4.4 0-8 3.6-8 8v52c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-52c0-4.4-3.6-8-8-8h-72V462h62zM512 196.7l271.1 197.2H240.9L512 196.7zM264 462h117v374H264V462zm189 0h117v374H453V462zm307 374H642V462h118v374z"
+                  />
+                </svg>
+              </span>
+              <span>
+                <a
+                  href="/payment"
+                />
+              </span>
+            </li>
+            <li
+              class="ant-menu-item c3"
+              role="menuitem"
+              style="padding-left: 24px;"
+            >
+              <span
                 aria-label="shopping"
                 class="anticon anticon-shopping ant-menu-item-icon"
                 role="img"
@@ -3055,7 +3096,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
                   >
                     <span
                       aria-label="shopping-cart"
-                      class="anticon anticon-shopping-cart u-font-size-lg"
+                      class="anticon anticon-shopping-cart u-font-size-xlg"
                       role="img"
                     >
                       <svg
@@ -3082,31 +3123,40 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
               <div
                 class="c6"
               >
-                <span
-                  class="ant-badge"
+                <div
+                  class="u-mr-1 u-d-inline-block"
                 >
-                  <span
-                    aria-label="bell"
-                    class="anticon anticon-bell "
-                    data-testid="BELL_ICON"
-                    role="img"
-                    tabindex="-1"
+                  <button
+                    class="ant-btn ant-btn-text btn-hover-none p-4"
+                    data-testid="badge-Cart"
+                    type="button"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="bell"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
+                    <span
+                      class="ant-badge "
                     >
-                      <path
-                        d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
-                      />
-                    </svg>
-                  </span>
-                </span>
+                      <span
+                        aria-label="bell"
+                        class="anticon anticon-bell u-font-size-xlg"
+                        data-testid="BELL_ICON"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="bell"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M816 768h-24V428c0-141.1-104.3-257.7-240-277.1V112c0-22.1-17.9-40-40-40s-40 17.9-40 40v38.9c-135.7 19.4-240 136-240 277.1v340h-24c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h216c0 61.8 50.2 112 112 112s112-50.2 112-112h216c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM512 888c-26.5 0-48-21.5-48-48h96c0 26.5-21.5 48-48 48zM304 768V428c0-55.6 21.6-107.8 60.9-147.1S456.4 220 512 220c55.6 0 107.8 21.6 147.1 60.9S720 372.4 720 428v340H304z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
               </div>
               <div
                 class="c7"
@@ -3156,11 +3206,7 @@ exports[`<MainLayout /> with variant 3 should render and match the snapshot 1`] 
             data-testid="AppRoutes"
           >
             <div
-<<<<<<< HEAD
-              class="StyledFeatures__StyledFeaturePage-yvjjmt-0 fibwWR"
-=======
               class="c9"
->>>>>>> origin/main
             >
               IMAGE_MOCK
             </div>

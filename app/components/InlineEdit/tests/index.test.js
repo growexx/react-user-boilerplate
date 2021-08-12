@@ -18,7 +18,10 @@ import history from 'utils/history';
 import configureStore from 'configureStore';
 import InlineEdit from 'components/InlineEdit/index';
 import { TEST_IDS } from 'components/InlineEdit/stub';
-let store;
+import { PersistGate } from 'redux-persist/integration/react';
+// let store;
+let prevStore;
+let prevPersistor;
 const props = {
   onSave: jest.fn(),
   value: 'testValue',
@@ -26,18 +29,25 @@ const props = {
 };
 const componentWrapper = () =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <InlineEdit {...props} />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            {/* <Cart />
+             */}
+            <InlineEdit {...props} />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
 describe('<InlineEdit />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
   it('Should render and match the snapshot', () => {
     const {

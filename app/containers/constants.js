@@ -21,6 +21,9 @@ export const ROUTES = {
   CHANGE_PASSWORD: '/change-password',
   TWO_FACTOR_AUTHENTICATION: '/two-factor-authentication',
   FORGOT_PASSWORD: '/forgot-password',
+  PAYMENT: '/payment',
+  PAYMENT_SUCCESS: '/gateway/success',
+  PAYMENT_FAILED: '/gateway/failed',
   PRODUCTS: '/products',
 };
 
@@ -108,3 +111,8 @@ export const GET_DEFAULT_PAGINATION = () => ({
 
 export const GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
 export const FULL_GENERIC_MOMENT_DATE_FORMAT = 'YYYY-MM-DD hh:mm a';
+export const BaseUrlPayment = 'http://localhost:5000';
+export const PAYMENT_INTEGRATION_API = {
+  PAY: `${BaseUrlPayment}/gateway/prepare`,
+  SUCCESS: `${BaseUrlPayment}/gateway/process`,
+};

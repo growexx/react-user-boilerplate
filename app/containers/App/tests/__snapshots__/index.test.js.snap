@@ -79,6 +79,18 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <PrivateRoute
       component={[Function]}
+      path="/payment"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/gateway/success"
+    />
+    <PrivateRoute
+      component={[Function]}
+      path="/gateway/failed"
+    />
+    <PrivateRoute
+      component={[Function]}
       path="/products"
     />
     <PrivateRoute

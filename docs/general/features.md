@@ -26,7 +26,10 @@
 | React-Final-Form        | React-Final-Form support added.                 |
 | Redux-Form              | Redux-Form support added.                       |
 | Social login            | Boilerplate supports social login using firebase|
-| Two Factor Authentication          | Two Factor authentication with otp.             |
+| Two Factor              | Two Factor authentication with otp.             |
+| Authentication          |                                                 |
+| Payment Integration     | Basic Payment via paypal demo.                  |
+| Redux Persist           | Store Data save in browser storage              |
 |                         |                                                 |
 | **Design**              |                                                 |
 |                         |                                                 |
@@ -69,6 +72,9 @@
 | UserExists              | tells if user is logged in or logged out.       |
 | FontFaces               | Add font faces with this function.              |
 | Firebase                | Setup and util functions for firebase           |
+| Braintree-Drop-in       | To create instance of braintree payment card    |
+| Stripe                  | To use stripe hook and card element             |
+| Squareupsandbox         | To test the payment integration with Squar form on dev |
 |                         |                                                 |
 | **Examples**            |                                                 |
 |                         |                                                 |

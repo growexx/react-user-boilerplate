@@ -27,27 +27,35 @@ import { ConnectedRouter } from 'connected-react-router';
 import { browserHistory } from 'react-router-dom';
 import { TEST_IDS } from 'components/InlineEdit/stub';
 import history from 'utils/history';
+import { PersistGate } from 'redux-persist/integration/react';
 import Profile from '../index';
 import configureStore from '../../../configureStore';
 import { DATA_TEST_IDS } from '../constants';
 jest.mock('draft-js/lib/generateRandomKey', () => jest.fn(() => '123'));
 
-let store;
+// let store;
+let prevStore;
+let prevPersistor;
 
 const componentWrapper = () =>
   render(
-    <Provider store={store}>
-      <IntlProvider locale="en">
-        <ConnectedRouter history={history}>
-          <Profile />
-        </ConnectedRouter>
-      </IntlProvider>
+    <Provider store={prevStore}>
+      <PersistGate persistor={prevPersistor}>
+        <IntlProvider locale="en">
+          <ConnectedRouter history={history}>
+            <Profile />
+          </ConnectedRouter>
+        </IntlProvider>
+      </PersistGate>
     </Provider>,
   );
 
 describe('<Profile />', () => {
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
   it('Should render and match the snapshot', () => {
     const {

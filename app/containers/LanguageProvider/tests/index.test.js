@@ -2,7 +2,9 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { Provider } from 'react-redux';
+// import history from 'utils/history';
 import { browserHistory } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import ConnectedLanguageProvider, { LanguageProvider } from '../index';
 import configureStore from '../../../configureStore';
@@ -30,18 +32,24 @@ describe('<LanguageProvider />', () => {
 });
 
 describe('<ConnectedLanguageProvider />', () => {
-  let store;
+  let prevStore;
+  let prevPersistor;
 
   beforeAll(() => {
-    store = configureStore({}, browserHistory);
+    // store = configureStore({}, browserHistory);
+    const { store, persistor } = configureStore({}, browserHistory);
+    prevStore = store;
+    prevPersistor = persistor;
   });
 
   it('should render the default language messages', () => {
     const { queryByText } = render(
-      <Provider store={store}>
-        <ConnectedLanguageProvider messages={translationMessages}>
-          <FormattedMessage {...messages.someMessage} />
-        </ConnectedLanguageProvider>
+      <Provider store={prevStore}>
+        <PersistGate persistor={prevPersistor}>
+          <ConnectedLanguageProvider messages={translationMessages}>
+            <FormattedMessage {...messages.someMessage} />
+          </ConnectedLanguageProvider>
+        </PersistGate>
       </Provider>,
     );
     expect(queryByText(messages.someMessage.defaultMessage)).not.toBeNull();

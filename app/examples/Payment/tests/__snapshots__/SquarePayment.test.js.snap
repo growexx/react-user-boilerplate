@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SquarePayment /> should render with appId and location 1`] = `null`;

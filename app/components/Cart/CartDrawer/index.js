@@ -13,9 +13,12 @@ import {
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { DollarCircleOutlined } from '@ant-design/icons';
-
+import { useHistory } from 'react-router-dom';
+import { ROUTES } from 'containers/constants';
+import { StyledCardWrapper } from '../../CartDrawer/StyledCardWrapper';
 const { Text } = Typography;
 const CartDrawer = ({ visible, setVisible }) => {
+  const history = useHistory();
   const [productsData, setProductsData] = useState(window.product || []);
   useEffect(() => {
     setProductsData(window.product || []);
@@ -42,6 +45,11 @@ const CartDrawer = ({ visible, setVisible }) => {
 
   const onCloseHandler = () => {
     setVisible(false);
+  };
+
+  const handlePaymentRedirect = () => {
+    history.push({ pathname: ROUTES.PAYMENT });
+    onCloseHandler();
   };
 
   const total = productsData
@@ -110,6 +118,19 @@ const CartDrawer = ({ visible, setVisible }) => {
           </div>
         </div>
       </Affix>
+      <StyledCardWrapper>
+        {productsData.length ? (
+          <div className="footer-pay-btn">
+            <Button
+              className="btn"
+              type="primary"
+              onClick={handlePaymentRedirect}
+            >
+              Pay Now
+            </Button>
+          </div>
+        ) : null}
+      </StyledCardWrapper>
     </Drawer>
   );
 };

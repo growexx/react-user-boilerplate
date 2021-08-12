@@ -13,9 +13,11 @@ import {
   FormOutlined,
   LockOutlined,
   PieChartOutlined,
+  BankOutlined,
   ShoppingOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
+
 import {
   ROUTES,
   ROLE_BASED_SIDEBAR_MENU,
@@ -68,6 +70,11 @@ export const MenuItems = [
     to: ROUTES.CHARTS,
     tabName: 'Charts',
     icon: <PieChartOutlined />,
+  },
+  {
+    to: ROUTES.PAYMENT,
+    tabName: 'Payments',
+    icon: <BankOutlined />,
   },
   {
     to: ROUTES.PRODUCTS,

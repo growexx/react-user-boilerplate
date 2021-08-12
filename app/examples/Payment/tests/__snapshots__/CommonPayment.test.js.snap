@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommonPaymentInput /> should render with continue btn disable 1`] = `
+<div
+  class="ant-card common-payment-main"
+>
+  <div
+    class="ant-card-body"
+  >
+    <div
+      class="payment-main-card"
+    >
+      <span
+        class="ant-input-affix-wrapper"
+      >
+        <input
+          class="ant-input"
+          placeholder="abc"
+          type="text"
+          value="abc"
+        />
+        <span
+          class="ant-input-suffix"
+        >
+          <button
+            class="ant-btn ant-btn-link"
+            type="button"
+          >
+            <span>
+              Link
+            </span>
+          </button>
+        </span>
+      </span>
+      <button
+        class="ant-btn ant-btn-primary continue-btn"
+        type="button"
+      >
+        <span>
+          Continue
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
