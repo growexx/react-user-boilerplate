@@ -399,17 +399,6 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
               <div
                 class=""
                 data-block="true"
-<<<<<<< HEAD
-                data-editor="59mid"
-                data-offset-key="82amu-0-0"
-              >
-                <div
-                  class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"
-                  data-offset-key="82amu-0-0"
-                >
-                  <span
-                    data-offset-key="82amu-0-0"
-=======
                 data-editor="123"
                 data-offset-key="123-0-0"
               >
@@ -419,7 +408,6 @@ exports[`<RichTextEditor /> Should render and match the snapshot 1`] = `
                 >
                   <span
                     data-offset-key="123-0-0"
->>>>>>> origin/main
                   >
                     <br
                       data-text="true"
