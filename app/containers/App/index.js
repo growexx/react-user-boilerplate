@@ -27,6 +27,7 @@ import Charts from 'examples/Charts/Loadable';
 import Products from 'examples/Products/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
 import ChangePassword from 'containers/ChangePassword/Loadable';
+import MultiTabSupport from 'examples/MultiTabSupport/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
 import { FAV_ICONS } from './constants';
@@ -72,6 +73,10 @@ export default function App() {
         <PrivateRoute path={ROUTES.USERS} component={Users} />
         <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
         <PrivateRoute path={ROUTES.PRODUCTS} component={Products} />
+        <PrivateRoute
+          path={ROUTES.MULTI_TAB_SUPPORT}
+          component={MultiTabSupport}
+        />
         <PrivateRoute
           path={ROUTES.CHANGE_PASSWORD}
           component={ChangePassword}

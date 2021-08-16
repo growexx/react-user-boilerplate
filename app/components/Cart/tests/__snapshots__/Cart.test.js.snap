@@ -14,7 +14,7 @@ exports[`<Cart /> should render a div 1`] = `
     >
       <span
         aria-label="shopping-cart"
-        class="anticon anticon-shopping-cart u-font-size-lg"
+        class="anticon anticon-shopping-cart u-font-size-xlg"
         role="img"
       >
         <svg

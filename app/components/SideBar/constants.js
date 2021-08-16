@@ -13,6 +13,7 @@ import {
   FormOutlined,
   LockOutlined,
   PieChartOutlined,
+  MessageOutlined,
   ShoppingOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
@@ -68,6 +69,11 @@ export const MenuItems = [
     to: ROUTES.CHARTS,
     tabName: 'Charts',
     icon: <PieChartOutlined />,
+  },
+  {
+    to: ROUTES.MULTI_TAB_SUPPORT,
+    tabName: 'Multi Tab Communication',
+    icon: <MessageOutlined />,
   },
   {
     to: ROUTES.PRODUCTS,
