@@ -9,6 +9,12 @@ const props = {
   requestPaymentStripe: () => {},
 };
 describe('<StripePayment />', () => {
+  it('should render an <form/> tag', () => {
+    const {
+      container: { firstChild },
+    } = render(<StripePayment />);
+    expect(firstChild.tagName).toEqual('FORM');
+  });
   it('should render with token', () => {
     const {
       container: { firstChild },

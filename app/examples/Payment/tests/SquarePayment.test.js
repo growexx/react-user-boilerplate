@@ -4,6 +4,12 @@ import { render } from 'react-testing-library';
 import SquarePayment from '../SquarePayment';
 
 describe('<SquarePayment />', () => {
+  it('should render an <div/> tag', () => {
+    const {
+      container: { firstChild },
+    } = render(<SquarePayment />);
+    expect(firstChild.tagName).toEqual('DIV');
+  });
   it('should render with appId and location', () => {
     const props = {
       appId: '1234abc',
