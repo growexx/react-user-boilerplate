@@ -120,6 +120,7 @@
     "sanitize.css": "8.0.0",
     "sha256": "^0.2.0",
     "styled-components": "4.2.0",
+    "swr": "^1.0.0",
     "validator": "^13.5.2"
   },
   "devDependencies": {
