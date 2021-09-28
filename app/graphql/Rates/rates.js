@@ -11,6 +11,14 @@ export const GET_RATES = gql`
   }
 `;
 
+export const GET_RATES_QUERY = `{
+  rates(currency: "USD") {
+    currency
+    name
+    rate
+  }
+}`;
+
 // MUTATION
 export const PUT_RATES = gql`
   mutation PutRates($type: String!) {

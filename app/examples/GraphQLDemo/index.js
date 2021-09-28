@@ -9,12 +9,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Table } from 'antd';
 import {
-  useQuery /* useMutation, useLazyQuery, useSubscription */,
-} from '@apollo/client';
-import {
-  GET_RATES /* PUT_RATES, RATES_SUBSCRIPTION */,
+  GET_RATES_QUERY /* PUT_RATES, RATES_SUBSCRIPTION */,
 } from 'graphql/Rates/rates';
+import { request } from 'graphql-request';
+import useSWR from 'swr';
 import { TABLE_COLUMNS } from './constants';
+
 const GraphQLDemo = () => {
   /**
    *  useMutation declaration
@@ -38,7 +38,11 @@ const GraphQLDemo = () => {
     //  }
     // );
     // call loadRates whenever needed
-    const { loading, error, data } = useQuery(GET_RATES);
+
+    const fetcher = query =>
+      request(process.env.REACT_APP_GRAPHQL_ENDPOINT, query);
+    const { data, error } = useSWR(GET_RATES_QUERY, fetcher);
+    const loading = !data;
     const dataArray =
       data &&
       data.rates.map(({ currency, rate, name }, index) => ({
