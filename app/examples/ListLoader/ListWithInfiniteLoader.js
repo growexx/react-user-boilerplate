@@ -5,72 +5,57 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { List, message, Avatar, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { API_ENDPOINTS } from 'containers/constants';
 import { loadApp } from 'containers/App/actions';
 import request from 'utils/request';
+import useSWR from 'swr';
 import { ListWithInfiniteLoader as StyledList } from './StyledList';
 import messages from './messages';
 
-const ListWithInfiniteLoader = () => {
-  const [state, setState] = React.useState({
-    data: [],
-    list: [],
-    loading: false,
-    hasMore: true,
-  });
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(loadApp(true));
-    fetchData(res => {
-      setState({
-        ...state,
-        data: res.results,
-        list: res.results,
-        loading: false,
-      });
-      dispatch(loadApp(false));
-    });
-  }, []);
+const ListWithInfiniteLoader = ({ onChangeAppLoading }) => {
+  const [data, setData] = useState([]);
+  const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [count, setCount] = useState(0);
 
-  const fetchData = callback => {
-    request(API_ENDPOINTS.LIST, {
+  const fetchData = url => {
+    request(url, {
       method: 'GET',
-    }).then(res => callback(res));
+    }).then(res => {
+      setData([...data, ...res.results]);
+      setList([...data, ...res.results]);
+      setLoading(false);
+    });
   };
 
+  onChangeAppLoading(true);
+
+  useSWR(`${API_ENDPOINTS.LIST}&count=${count}`, fetchData);
+
+  onChangeAppLoading(false);
+
   const handleInfiniteOnLoad = () => {
-    const { data } = state;
-    setState({
-      ...state,
-      loading: true,
-      list: data.concat(
-        [...new Array(3)].map(() => ({ loading: true, name: {} })),
-      ),
-    });
-    if (data.length > 14) {
+    setLoading(true);
+    setList(
+      data.concat([...new Array(3)].map(() => ({ loading: true, name: {} }))),
+    );
+
+    if (count > 14) {
       message.warning(<FormattedMessage {...messages.listLoaded} />);
-      setState({
-        ...state,
-        hasMore: false,
-        loading: false,
-        list: data,
-      });
+      setHasMore(false);
+      setLoading(false);
+      setList(data);
       return;
     }
-    fetchData(res => {
-      const listData = data.concat(res.results);
-      setState({
-        ...state,
-        data: listData,
-        list: listData,
-        loading: false,
-      });
-    });
+    setCount(count + 1);
   };
 
   return (
@@ -80,11 +65,11 @@ const ListWithInfiniteLoader = () => {
           initialLoad={false}
           pageStart={0}
           loadMore={handleInfiniteOnLoad}
-          hasMore={!state.loading && state.hasMore}
+          hasMore={!loading && hasMore}
           useWindow
         >
           <List
-            dataSource={state.list}
+            dataSource={list}
             renderItem={item => (
               <List.Item key={item.id}>
                 <Skeleton avatar title={false} loading={item.loading} active>
@@ -103,4 +88,19 @@ const ListWithInfiniteLoader = () => {
   );
 };
 
-export default ListWithInfiniteLoader;
+ListWithInfiniteLoader.propTypes = {
+  onChangeAppLoading: PropTypes.func,
+};
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onChangeAppLoading: loading => dispatch(loadApp(loading)),
+  };
+}
+
+const withConnect = connect(
+  undefined,
+  mapDispatchToProps,
+);
+
+export default compose(withConnect)(ListWithInfiniteLoader);

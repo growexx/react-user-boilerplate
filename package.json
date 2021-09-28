@@ -115,6 +115,7 @@
     "sanitize.css": "8.0.0",
     "sha256": "^0.2.0",
     "styled-components": "4.2.0",
+    "swr": "^1.0.1",
     "validator": "^13.5.2"
   },
   "devDependencies": {
@@ -128,7 +129,6 @@
     "@babel/preset-env": "7.4.3",
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.0",
-    "storybook-addon-react-docgen": "^1.2.42",
     "@storybook/addon-actions": "^6.2.8",
     "@storybook/addon-essentials": "^6.2.8",
     "@storybook/addon-links": "^6.2.8",
@@ -185,6 +185,7 @@
     "react-testing-library": "6.1.2",
     "rimraf": "2.6.3",
     "shelljs": "0.8.3",
+    "storybook-addon-react-docgen": "^1.2.42",
     "style-loader": "0.23.1",
     "stylelint": "10.0.1",
     "stylelint-config-recommended": "2.2.0",

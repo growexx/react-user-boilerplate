@@ -4,68 +4,53 @@
  *
  */
 
-import React from 'react';
-import { List, Avatar, Button, Skeleton } from 'antd';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { List, Avatar, Button, Skeleton, Spin } from 'antd';
 import request from 'utils/request';
 import { API_ENDPOINTS } from 'containers/constants';
-import { loadApp } from 'containers/App/actions';
-
+import useSWR from 'swr';
 const count = 3;
 
 const ListWithLoadMore = () => {
   const [state, setState] = React.useState({
     initLoading: true,
-    loading: false,
-    data: [],
     list: [],
   });
+  const [counter, setCounter] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  React.useEffect(() => {
-    getData(res => {
-      setState({
-        initLoading: false,
-        data: res.results,
-        list: res.results,
-      });
-    });
-  }, []);
-  const dispatch = useDispatch();
-  const getData = callback => {
-    dispatch(loadApp(true));
-    request(API_ENDPOINTS.LIST, {
-      method: 'GET',
-    }).then(res => {
-      dispatch(loadApp(false));
-      callback(res);
-    });
-  };
-
-  const onLoadMore = () => {
-    const { data } = state;
+  const fetcher = url => {
+    const { list } = state;
+    setLoading(true);
     setState({
       ...state,
-      loading: true,
-      list: data.concat(
+      list: list.concat(
         [...new Array(count)].map(() => ({ loading: true, name: {} })),
       ),
     });
-    getData(res => {
-      const listData = data.concat(res.results);
-      setState({
-        ...state,
-        data: listData,
-        list: listData,
-        loading: false,
+    request(url, {
+      method: 'GET',
+    })
+      .then(res => {
+        const listData = list.concat(res.results);
+        setState({
+          ...state,
+          initLoading: false,
+          list: listData,
+        });
+      })
+      .finally(() => {
+        setLoading(false);
       });
-      // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-      // In real scene, you can using public method of react-virtualized:
-      // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-      window.dispatchEvent(new Event('resize'));
-    });
   };
 
-  const { initLoading, loading, list } = state;
+  useSWR(`${API_ENDPOINTS.LIST}&count=${counter}`, fetcher);
+
+  const onLoadMore = () => {
+    setCounter(counter + 10);
+  };
+
+  const { initLoading, list } = state;
   const loadMore =
     !initLoading && !loading ? (
       <div
@@ -80,6 +65,9 @@ const ListWithLoadMore = () => {
       </div>
     ) : null;
 
+  if (!state.list.length) {
+    return <Spin />;
+  }
   return (
     <List
       className="demo-loadmore-list"
