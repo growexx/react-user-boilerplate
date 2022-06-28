@@ -23,6 +23,7 @@ export const ROUTES = {
   FORGOT_PASSWORD: '/forgot-password',
   MULTI_TAB_SUPPORT: '/multi-tab-support',
   PRODUCTS: '/products',
+  VERIFY_MFA: '/verify-mfa',
 };
 
 // API-ROUTES
