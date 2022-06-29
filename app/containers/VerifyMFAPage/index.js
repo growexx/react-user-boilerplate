@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { API_ENDPOINTS } from '../constants';
+import { Input, Button, Form } from 'antd';
 
 function VerifyMFAPage() {
   const [id, setId] = useState();
@@ -27,7 +24,7 @@ function VerifyMFAPage() {
         otp,
       };
       const { data } = await axios.post(
-        'http://localhost:3003/auth/verify-mfa',
+        `${API_ENDPOINTS.VERIFY_MFA}`,
         obj,
       );
       setMessage(data.data);
@@ -36,7 +33,7 @@ function VerifyMFAPage() {
       setMessage(e.response.data.data);
       setVariant('warning');
     }
-  };
+  }; 
 
   return (
     <div
@@ -48,26 +45,23 @@ function VerifyMFAPage() {
         border: '2px solid black',
       }}
     >
-      <Container>
-        <Row className="justify-content-md-center">
-          <Col md="auto">
-            <h2>Enter your OTP</h2>
-            <Form>
-              <Form.Group className="mb-3" controlId="otp">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter OTP here"
-                  onChange={e => setOtp(e.target.value)}
-                />
-              </Form.Group>
-              <br />
-              <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+      <p className="createAccount"><h2>Enter your OTP</h2></p>
+      <div className="registrationSubContainer">
+        <div className="accountData input-margin-0">
+          <Form>
+            <Form.Item name="otp">
+              <Input placeholder="Enter OTP here" onChange={e => setOtp(e.target.value)}/>
+            </Form.Item>
+            <Form.Item name="submit">
+              <center>
+                <Button type="submit" htmlType="submit" onClick={handleSubmit}>
+                  Submit
+                </Button>
+              </center>
+            </Form.Item>
+          </Form>
+        </div>
+      </div>
       <br />
       <div className={`${variant}`}>{message}</div>
     </div>
