@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_ENDPOINTS } from '../constants';
 import { Input, Button, Form } from 'antd';
+import { API_ENDPOINTS } from '../constants';
 
 function VerifyMFAPage() {
   const [id, setId] = useState();
@@ -23,17 +23,14 @@ function VerifyMFAPage() {
         uniqueString,
         otp,
       };
-      const { data } = await axios.post(
-        `${API_ENDPOINTS.VERIFY_MFA}`,
-        obj,
-      );
+      const { data } = await axios.post(`${API_ENDPOINTS.VERIFY_MFA}`, obj);
       setMessage(data.data);
       setVariant('success');
     } catch (e) {
       setMessage(e.response.data.data);
       setVariant('warning');
     }
-  }; 
+  };
 
   return (
     <div
@@ -45,12 +42,17 @@ function VerifyMFAPage() {
         border: '2px solid black',
       }}
     >
-      <p className="createAccount"><h2>Enter your OTP</h2></p>
+      <p className="createAccount">
+        <h2>Enter your OTP</h2>
+      </p>
       <div className="registrationSubContainer">
         <div className="accountData input-margin-0">
           <Form>
             <Form.Item name="otp">
-              <Input placeholder="Enter OTP here" onChange={e => setOtp(e.target.value)}/>
+              <Input
+                placeholder="Enter OTP here"
+                onChange={e => setOtp(e.target.value)}
+              />
             </Form.Item>
             <Form.Item name="submit">
               <center>
