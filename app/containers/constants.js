@@ -23,6 +23,7 @@ export const ROUTES = {
   FORGOT_PASSWORD: '/forgot-password',
   MULTI_TAB_SUPPORT: '/multi-tab-support',
   PRODUCTS: '/products',
+  VERIFY_MFA: '/verify-mfa',
 };
 
 // API-ROUTES
@@ -37,6 +38,7 @@ export const API_ENDPOINTS = {
   IMAGE_UPLOAD: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
   FORGOT_PASSWORD: `${API_URL}/${AUTH}/forgetpassword`,
   USERS: `${API_URL}/users`,
+  VERIFY_MFA: `${API_URL}/${AUTH}/verify-mfa`,
 };
 
 // Table Pagination default

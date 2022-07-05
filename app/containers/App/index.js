@@ -30,6 +30,7 @@ import ChangePassword from 'containers/ChangePassword/Loadable';
 import MultiTabSupport from 'examples/MultiTabSupport/Loadable';
 import ForgotPassword from 'containers/Auth/ForgotPassword/Loadable';
 import NumeralConversion from 'examples/NumeralConversion/Loadable';
+import VerifyMFAPage from '../VerifyMFAPage/Loadable';
 import { FAV_ICONS } from './constants';
 import PrivateRoute from './PrivateRoute';
 import RoleMiddleWare from './RoleMiddleWare';
@@ -105,6 +106,7 @@ export default function App() {
           component={ForgotPassword}
         />
         <Route exact path={ROUTES.UNAUTHORIZED} component={UnauthorizedPage} />
+        <Route path={ROUTES.VERIFY_MFA} component={VerifyMFAPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
