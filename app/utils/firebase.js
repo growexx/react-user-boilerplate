@@ -1,40 +1,31 @@
-/* eslint-disable no-console */
-import firebase from 'firebase/app';
-import 'firebase/messaging';
+import { initializeApp } from 'firebase/app';
 
-// initializing firebase app
-firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-});
-export const fcm = firebase.messaging();
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('../firebase-messaging-sw.js', { scope: '/' })
-    .then(async registration => {
-      fcm
-        .getToken({
-          vapidKey: process.env.REACT_APP_FIREBASE_VAPID_KEY,
-          serviceWorkerRegistration: registration,
-        })
-        .then(currentToken => {
-          if (currentToken) {
-            console.log('current token for client: ', currentToken);
-          } else {
-            console.log(
-              'No registration token available. Request permission to generate one.',
-            );
-          }
-        })
-        .catch(err => {
-          console.log('An error occurred while retrieving token. ', err);
-        });
-    })
-    .catch(err => {
-      console.log(err);
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+
+const config = {
+  apiKey: 'AIzaSyDgxfCgbiO0jU2JQ5yPqcSVigloamvF9Xs',
+  authDomain: 'fcm-web-demo-5dce8.firebaseapp.com',
+  projectId: 'fcm-web-demo-5dce8',
+  storageBucket: 'fcm-web-demo-5dce8.appspot.com',
+  messagingSenderId: '655422292094',
+  appId: '1:655422292094:web:fae859d2c598f83c7d182f',
+};
+
+const app = initializeApp(config);
+
+const messaging = getMessaging(app);
+
+export const requestFirebaseNotificationPermission = async () => {
+  const currentToken = await getToken(messaging);
+  if (currentToken) {
+    return currentToken;
+  }
+  return false;
+};
+
+export const onMessageListener = () =>
+  new Promise(resolve => {
+    onMessage(messaging, payload => {
+      resolve(payload);
     });
-}
+  });

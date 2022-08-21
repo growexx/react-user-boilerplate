@@ -26,7 +26,7 @@ export const ROUTES = {
 };
 
 // API-ROUTES
-export const { API_URL } = process.env;
+export const { API_URL } = process.env.API_URL || 3000;
 export const AUTH = 'auth';
 export const API_ENDPOINTS = {
   LOGIN: `${API_URL}/${AUTH}/signin`,

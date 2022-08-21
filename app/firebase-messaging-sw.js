@@ -1,10 +1,13 @@
 /**
  * THIS IS FOR NOTIFICATION FIREBASE
  */
-importScripts('https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/8.8.0/firebase-messaging.js');
+importScripts(
+  'https://www.gstatic.com/firebasejs/9.8.4/firebase-app-compat.js',
+);
+importScripts(
+  'https://www.gstatic.com/firebasejs/9.8.4/firebase-messaging-compat.js',
+);
 importScripts('sw-env.js');
-
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -17,7 +20,16 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage(payload => {
-  const { notification } = payload;
+  // console.log(
+  //   '[firebase-messaging-sw.js] Received background message ',
+  //   payload,
+  // );
 
-  window.self.registration.showNotification(notification.title, notification);
+  const notificationTitle = payload.data.title;
+  const notificationOptions = {
+    body: payload.data.body,
+    icon: '/firebase-logo.png',
+  };
+
+  window.registration.showNotification(notificationTitle, notificationOptions);
 });

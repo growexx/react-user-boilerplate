@@ -16,7 +16,10 @@ import {
   NotificationWrapper,
   StyledPopOver,
 } from 'components/Notification/StyledNotification';
-import { fcm } from 'utils/firebase';
+import {
+  onMessageListener,
+  requestFirebaseNotificationPermission,
+} from 'utils/firebase';
 import {
   NOTIFICATION_LIMIT,
   getNotificationsMock,
@@ -94,9 +97,34 @@ class Notification extends React.Component {
       loading: true,
     });
     this.loadNotifications();
-    fcm.onMessage(payload => {
-      this.loadNotifications('pushNotification', payload);
-    });
+    requestFirebaseNotificationPermission()
+      .then(token => {
+        if (token) {
+          notification.info({
+            message: 'Firebase',
+            description: 'Token retrieved..!',
+          });
+        }
+      })
+      .catch(err => {
+        notification.error({
+          message: 'Error',
+          description: JSON.stringify(err),
+        });
+      });
+
+    onMessageListener()
+      .then(payload => {
+        const { title, body } = payload.notification;
+        this.loadNotifications('pushNotification', payload);
+        notification.success({ message: title, description: body });
+      })
+      .catch(err => {
+        notification.error({
+          message: 'Error',
+          description: JSON.stringify(err),
+        });
+      });
   }
 
   handleReadCount = () => {
