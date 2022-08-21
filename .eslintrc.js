@@ -22,6 +22,10 @@ module.exports = {
       jsx: true,
     },
   },
+  globals: {
+    "firebase": "writable",
+    "importScripts": "readonly",
+  },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],

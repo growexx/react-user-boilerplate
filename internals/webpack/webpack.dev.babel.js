@@ -4,6 +4,7 @@
 
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const OfflinePlugin = require('offline-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -42,6 +43,19 @@ module.exports = require('./webpack.base.babel')({
       failOnError: false, // show a warning when there is a circular dependency
     }),
     new Dotenv(),
+    new OfflinePlugin({
+      relativePaths: false,
+      publicPath: '/',
+      appShell: '/',
+      safeToUseOptionalCaches: true,
+      ServiceWorker: {
+        events: true,
+        entry: path.join(process.cwd(), 'app/firebase-messaging-sw.js'),
+      },
+      excludes: ['.htaccess'],
+
+      caches: {},
+    }),
   ],
 
   // Emit a source map for easier debugging

@@ -16,6 +16,21 @@ import {
 } from 'components/Notification/stub';
 import Notification from 'components/Notification/index';
 import { getNotificationsMock } from 'components/Notification/constants';
+jest.mock('utils/firebase', () => ({
+  fcm: {
+    onMessage: jest.fn(messageCallbackFunction => {
+      messageCallbackFunction({
+        notification: {
+          title: 'New notification',
+          body: 'Notification Changes',
+          click_action: '/',
+          icon:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZZrv3_PEnkdOIZvnr0COONt3kL7rSSq623dB3fyLCgT7GARpReF26nPOre6JCLHKu7KQ&usqp=CAU',
+        },
+      });
+    }),
+  },
+}));
 jest.mock('components/Notification/constants');
 
 describe('<Notification />', () => {

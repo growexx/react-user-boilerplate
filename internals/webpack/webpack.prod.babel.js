@@ -7,6 +7,7 @@ const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const { createServiceWorkerEnv } = require('../../scripts/service-worker-env');
 
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
@@ -143,6 +144,20 @@ module.exports = require('./webpack.base.babel')({
       hashDigestLength: 20,
     }),
     new Dotenv(),
+    {
+      apply(compiler) {
+        // Service Worker Hook
+        compiler.hooks.afterEmit.tapAsync(
+          'DoneCompilation',
+          (compilation, callback) => {
+            // Create Service Worker env file
+            createServiceWorkerEnv(compiler.outputFileSystem, () => {
+              callback();
+            });
+          },
+        );
+      },
+    },
   ],
 
   performance: {

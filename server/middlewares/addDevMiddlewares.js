@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const { createServiceWorkerEnv } = require('../../scripts/service-worker-env');
 
 function createWebpackMiddleware(compiler, publicPath) {
   return webpackDevMiddleware(compiler, {
@@ -18,6 +19,11 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
     compiler,
     webpackConfig.output.publicPath,
   );
+
+  compiler.hooks.afterEmit.tap('DoneCompilation', () => {
+    // Create Service Worker env file
+    createServiceWorkerEnv(compiler.outputFileSystem);
+  });
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));

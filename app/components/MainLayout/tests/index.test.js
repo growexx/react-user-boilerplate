@@ -10,7 +10,11 @@ import { TOKEN_KEY, EMITTER_EVENTS } from 'utils/constants';
 import StorageService from 'utils/StorageService';
 import MainLayout from '../index';
 import configureStore from '../../../configureStore';
-
+jest.mock('utils/firebase', () => ({
+  fcm: {
+    onMessage: jest.fn(),
+  },
+}));
 let store;
 const tokenValue = 'test token';
 const componentWrapper = props =>
