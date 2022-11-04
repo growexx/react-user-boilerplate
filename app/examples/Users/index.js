@@ -316,7 +316,7 @@ export class Users extends Component {
   }
 
   getLatestValue(newValue, oldValue) {
-    return newValue === '' ? newValue : newValue || oldValue;
+    return newValue === undefined ? newValue : newValue || oldValue;
   }
 
   getUpdatedPagination({ status: newStatus, pagination }) {

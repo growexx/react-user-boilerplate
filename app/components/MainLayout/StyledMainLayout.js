@@ -56,7 +56,7 @@ export const StyledMainLayout = styled.div`
     padding: 0;
     background-color: @white;
   }
-  &[data-environment] {
+  ${'' /* &[data-environment] {
     &:before {
       content: attr(data-environment);
       background: #ff8c1e;
@@ -75,7 +75,7 @@ export const StyledMainLayout = styled.div`
       position: relative;
       top: 25px;
     }
-  }
+  } */}
 
   &[data-environment='development'] {
     &:before {
