@@ -38,10 +38,10 @@ Cypress.Commands.add('selectDropdown', (testId, optionText) => {
 });
 
 // Custom form fill for antd
-Cypress.Commands.add('fillFormInput', (num, optionText) => {
-  return cy
+Cypress.Commands.add('fillFormInput', (num, optionText) =>
+  cy
     .get(
       `:nth-child(${num}) > .ant-form-item-control > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-input`,
     )
-    .type(optionText);
-});
+    .type(optionText),
+);
