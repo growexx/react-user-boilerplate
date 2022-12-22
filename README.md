@@ -125,6 +125,13 @@ More about Firebase cloud messaging setup can be found [here](docs/general/fireb
     <br /> 
   Example can be found in <b>feature/RB-87-Notifications-socket.io</b> branch.
   </dd>
+
+ <dt>Upload Image with Editor </dt>
+  <dd> Boilerplate supports Adding user pic with image editing.
+    <br /> 
+  Example can be found in <b>feature/imageCrop</b> branch.
+  </dd>
+
 </dl>
 
 But wait... there's more!

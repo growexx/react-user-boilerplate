@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent-props */
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 
@@ -32,10 +32,15 @@ import {
   Image,
   Tooltip,
   notification,
+  Upload,
+  Form,
 } from 'antd';
 import debounce from 'lodash/debounce';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { UploadOutlined } from '@ant-design/icons';
+import ImgCrop from 'antd-img-crop';
+import { FormattedMessage } from 'react-intl';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import reducer from './reducer';
 import { AInput } from '../../utils/Fields';
@@ -59,6 +64,9 @@ import {
   PageHeaderWrapper,
   SearchWrapper,
 } from './styled';
+import { ACCEPTED_FILE_TYPES, ATTACHMENT_MAX_SIZE } from './utils';
+import messages from './messages';
+// import FormItem from 'antd/lib/form/FormItem';
 
 const logsTableProps = {
   showHeader: true,
@@ -67,12 +75,14 @@ const logsTableProps = {
 export class Users extends Component {
   constructor(props) {
     super(props);
+    this.formRef = createRef();
     this.state = {
       // User Data
       userList: [],
-
+      fileList: [],
+      isFileUpdated: 0,
       isListLoading: true,
-
+      isSubmitting: false,
       // Table Pagination
       pagination: GET_DEFAULT_PAGINATION(),
 
@@ -272,7 +282,9 @@ export class Users extends Component {
         if (isDelete) {
           (demo
             ? deleteUserAPIMock(userId)
-            : request(`${API_URL}?id=${userId}`, { method: 'DELETE' })
+            : request(`${API_URL}?id=${userId}`, {
+                method: 'DELETE',
+              })
           )
             .then(response => {
               resetAction();
@@ -342,7 +354,10 @@ export class Users extends Component {
     sortKey = newSortKey || sortKey;
     search = this.getLatestValue(newSearch, search);
     status = this.getLatestValue(newStatus, status);
-    pagination = this.getUpdatedPagination({ pagination, status });
+    pagination = this.getUpdatedPagination({
+      pagination,
+      status,
+    });
 
     // Actual API Call
     const data = { method: 'GET' };
@@ -469,9 +484,15 @@ export class Users extends Component {
     this.setState(
       {
         isListLoading: true,
+        isSubmitting: true,
       },
+
       () => {
         const isUpdate = !!userId;
+        // if (isUpdate) {
+        //   body.id = userId;
+        // }
+
         const payload = {
           method: isUpdate ? 'PUT' : 'POST',
           body: {
@@ -525,6 +546,8 @@ export class Users extends Component {
     this.setState({
       showUserModal: !showUserModal,
       userId: showUserModal ? '' : userId,
+      fileList: [],
+      newFileWithUrl: [],
     });
   };
 
@@ -541,10 +564,16 @@ export class Users extends Component {
       updateField,
       handleSubmit,
       userStoreData,
+      isSubmitting,
+      fileList,
     } = this.props;
-    const performingAction = pristine || submitting || invalid || isListLoading;
+    const performingAction =
+      pristine ||
+      submitting ||
+      invalid ||
+      isListLoading ||
+      !get(this.state, 'newFileWithUrl[0].url', '');
     const cancelDisabled = submitting || isListLoading;
-
     return (
       <Modal
         title={userId ? 'Edit User' : 'Add User'}
@@ -561,8 +590,9 @@ export class Users extends Component {
           disabled: cancelDisabled,
           'data-testid': TEST_IDS.USER_MODAL_CANCEL,
         }}
+        className="popup-modal"
       >
-        <form onSubmit={this.updateUser} className="mb-3">
+        <Form ref={this.formRef} onSubmit={this.updateUser} className="mb-3">
           <Field
             name="email"
             disabled={!!userId}
@@ -588,9 +618,93 @@ export class Users extends Component {
             onChange={updateField}
             defaultValue={userStoreData.lastName}
           />
-        </form>
+
+          <Form.Item
+            name="image"
+            label="Image* :  "
+            valuePropName="fileList"
+            colon={false}
+            rules={[
+              {
+                required: true,
+                message: 'Please upload Image',
+              },
+            ]}
+            labelCol={{ offset: 2 }}
+          >
+            <ImgCrop grid rotate>
+              <Upload
+                name="image"
+                accept={`${ACCEPTED_FILE_TYPES.map(fileType => fileType)}`}
+                fileList={fileList}
+                beforeUpload={(file, filesList) =>
+                  this.beforeFileUploadHandler(file, filesList)
+                }
+                multiple={false}
+                listType="picture"
+                maxCount={1}
+                disabled={isSubmitting}
+                itemRender={() => (
+                  <Image
+                    width={200}
+                    src={get(this.state, 'newFileWithUrl[0].url', '')}
+                    preview={!isSubmitting}
+                    style={{
+                      marginTop: '20px',
+                    }}
+                  />
+                )}
+              >
+                <Button
+                  type="primary"
+                  ghost
+                  icon={<UploadOutlined />}
+                  disabled={this.state.isSubmitting}
+                >
+                  Click To Upload
+                </Button>
+              </Upload>
+            </ImgCrop>
+          </Form.Item>
+        </Form>
       </Modal>
     );
+  };
+
+  beforeFileUploadHandler = (file, fileList) => {
+    const { size } = file;
+    if (size > ATTACHMENT_MAX_SIZE) {
+      notification.error({
+        message: <FormattedMessage {...messages.imgSizeBig} />,
+      });
+      return Upload.LIST_IGNORE;
+    }
+    this.setUrlToImage(file);
+    this.setState({ fileList, isFileUpdated: 1 });
+    this.formRef.current.setFieldsValue({
+      image: this.state.fileList,
+    });
+    return false;
+  };
+
+  setUrlToImage = file => {
+    const { uid, name, size, type } = file;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.setState({ newFileWithUrl: [] }, () => {
+        const newObj = {
+          uid,
+          name,
+          size,
+          type,
+          url: reader.result,
+        };
+        this.setState({
+          newFileWithUrl: [newObj],
+        });
+      });
+    };
   };
 
   render() {
@@ -669,7 +783,8 @@ Users.propTypes = {
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   invalid: PropTypes.bool,
-
+  isSubmitting: PropTypes.bool,
+  fileList: PropTypes.bool,
   // Mocks API response
   demo: PropTypes.bool,
   // Action
@@ -709,11 +824,12 @@ export default compose(
   withConnect,
   reduxForm({
     form: USERS_KEY,
-    fields: ['firstName', 'lastName', 'email'],
+    fields: ['firstName', 'lastName', 'email', 'image'],
     validate: formValidations.createValidator({
       firstName: [formValidations.required],
       lastName: [formValidations.required],
       email: [formValidations.required, formValidations.validEmail],
+      image: [formValidations.required],
     }),
   }),
 )(Users);
