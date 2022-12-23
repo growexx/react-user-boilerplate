@@ -66,7 +66,6 @@ import {
 } from './styled';
 import { ACCEPTED_FILE_TYPES, ATTACHMENT_MAX_SIZE } from './utils';
 import messages from './messages';
-// import FormItem from 'antd/lib/form/FormItem';
 
 const logsTableProps = {
   showHeader: true,
@@ -489,9 +488,6 @@ export class Users extends Component {
 
       () => {
         const isUpdate = !!userId;
-        // if (isUpdate) {
-        //   body.id = userId;
-        // }
 
         const payload = {
           method: isUpdate ? 'PUT' : 'POST',
@@ -567,13 +563,12 @@ export class Users extends Component {
       isSubmitting,
       fileList,
     } = this.props;
-    const performingAction =
-      pristine ||
-      submitting ||
-      invalid ||
-      isListLoading ||
-      !get(this.state, 'newFileWithUrl[0].url', '');
-    const cancelDisabled = submitting || isListLoading;
+
+    const performingActions =
+      isListLoading || !get(this.state, 'newFileWithUrl[0].url', '');
+    const performingAction = pristine || submitting || invalid;
+
+    const cancelDisabled = submitting || isListLoading || performingActions;
     return (
       <Modal
         title={userId ? 'Edit User' : 'Add User'}
@@ -661,7 +656,7 @@ export class Users extends Component {
                   icon={<UploadOutlined />}
                   disabled={this.state.isSubmitting}
                 >
-                  Click To Upload
+                  <FormattedMessage {...messages.uploadText} />
                 </Button>
               </Upload>
             </ImgCrop>
