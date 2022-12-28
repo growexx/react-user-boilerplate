@@ -66,6 +66,7 @@ import {
 } from './styled';
 import { ACCEPTED_FILE_TYPES, ATTACHMENT_MAX_SIZE } from './utils';
 import messages from './messages';
+import { FEATURE_IMG_TOGGLE } from '../../containers/constants';
 
 const logsTableProps = {
   showHeader: true,
@@ -565,10 +566,12 @@ export class Users extends Component {
     } = this.props;
 
     const performingActions =
-      isListLoading || !get(this.state, 'newFileWithUrl[0].url', '');
-    const performingAction = pristine || submitting || invalid;
+      isListLoading ||
+      (FEATURE_IMG_TOGGLE && !get(this.state, 'newFileWithUrl[0].url', ''));
+    const performingAction =
+      pristine || submitting || invalid || performingActions;
 
-    const cancelDisabled = submitting || isListLoading || performingActions;
+    const cancelDisabled = submitting || isListLoading;
     return (
       <Modal
         title={userId ? 'Edit User' : 'Add User'}
@@ -613,54 +616,55 @@ export class Users extends Component {
             onChange={updateField}
             defaultValue={userStoreData.lastName}
           />
-
-          <Form.Item
-            name="image"
-            label="Image* :  "
-            valuePropName="fileList"
-            colon={false}
-            rules={[
-              {
-                required: true,
-                message: 'Please upload Image',
-              },
-            ]}
-            labelCol={{ offset: 2 }}
-          >
-            <ImgCrop grid rotate>
-              <Upload
-                name="image"
-                accept={`${ACCEPTED_FILE_TYPES.map(fileType => fileType)}`}
-                fileList={fileList}
-                beforeUpload={(file, filesList) =>
-                  this.beforeFileUploadHandler(file, filesList)
-                }
-                multiple={false}
-                listType="picture"
-                maxCount={1}
-                disabled={isSubmitting}
-                itemRender={() => (
-                  <Image
-                    width={200}
-                    src={get(this.state, 'newFileWithUrl[0].url', '')}
-                    preview={!isSubmitting}
-                    style={{
-                      marginTop: '20px',
-                    }}
-                  />
-                )}
-              >
-                <Button
-                  type="primary"
-                  ghost
-                  icon={<UploadOutlined />}
-                  disabled={this.state.isSubmitting}
+          {FEATURE_IMG_TOGGLE && (
+            <Form.Item
+              name="image"
+              label="Image* :  "
+              valuePropName="fileList"
+              colon={false}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please upload Image',
+                },
+              ]}
+              labelCol={{ offset: 2 }}
+            >
+              <ImgCrop grid rotate>
+                <Upload
+                  name="image"
+                  accept={`${ACCEPTED_FILE_TYPES.map(fileType => fileType)}`}
+                  fileList={fileList}
+                  beforeUpload={(file, filesList) =>
+                    this.beforeFileUploadHandler(file, filesList)
+                  }
+                  multiple={false}
+                  listType="picture"
+                  maxCount={1}
+                  disabled={isSubmitting}
+                  itemRender={() => (
+                    <Image
+                      width={200}
+                      src={get(this.state, 'newFileWithUrl[0].url', '')}
+                      preview={!isSubmitting}
+                      style={{
+                        marginTop: '20px',
+                      }}
+                    />
+                  )}
                 >
-                  <FormattedMessage {...messages.uploadText} />
-                </Button>
-              </Upload>
-            </ImgCrop>
-          </Form.Item>
+                  <Button
+                    type="primary"
+                    ghost
+                    icon={<UploadOutlined />}
+                    disabled={this.state.isSubmitting}
+                  >
+                    <FormattedMessage {...messages.uploadText} />
+                  </Button>
+                </Upload>
+              </ImgCrop>
+            </Form.Item>
+          )}
         </Form>
       </Modal>
     );
