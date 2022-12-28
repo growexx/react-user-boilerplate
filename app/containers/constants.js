@@ -27,6 +27,8 @@ export const ROUTES = {
 
 // API-ROUTES
 export const { API_URL } = process.env;
+export const FEATURE_IMG_TOGGLE =
+  `${process.env.REACT_APP_FEATURE_IMG_TOGGLE}` !== 'undefined';
 export const AUTH = 'auth';
 export const API_ENDPOINTS = {
   LOGIN: `${API_URL}/${AUTH}/signin`,
