@@ -16,6 +16,7 @@ import {
   MessageOutlined,
   ShoppingOutlined,
   SearchOutlined,
+  DollarCircleOutlined,
 } from '@ant-design/icons';
 import {
   ROUTES,
@@ -79,6 +80,11 @@ export const MenuItems = [
     to: ROUTES.PRODUCTS,
     tabName: 'Products',
     icon: <ShoppingOutlined />,
+  },
+  {
+    to: ROUTES.PAYPAL,
+    tabName: 'Paypal',
+    icon: <DollarCircleOutlined />,
   },
 ];
 

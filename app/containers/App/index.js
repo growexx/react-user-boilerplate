@@ -23,6 +23,7 @@ import Loader from 'examples/ListLoader/Loadable';
 import Register from 'containers/Auth/Registration/Loadable';
 import ExportDataToCsv from 'examples/ExportDataToCsv/Loadable';
 import Users from 'examples/Users/Loadable';
+import Paypal from 'examples/Paypal/Loadable';
 import Charts from 'examples/Charts/Loadable';
 import Products from 'examples/Products/Loadable';
 import SampleForm from 'examples/SampleForm/Loadable';
@@ -73,6 +74,7 @@ export default function App() {
         <PrivateRoute path={ROUTES.USERS} component={Users} />
         <PrivateRoute path={ROUTES.CHARTS} component={Charts} />
         <PrivateRoute path={ROUTES.PRODUCTS} component={Products} />
+        <PrivateRoute path={ROUTES.PAYPAL} component={Paypal} />
         <PrivateRoute
           path={ROUTES.MULTI_TAB_SUPPORT}
           component={MultiTabSupport}
